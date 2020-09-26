@@ -47,9 +47,9 @@ Remember that _"this document"_ should be `well written` and formatted **appropr
 
 | Name | Task | State |
 | :---         |     :---:      |          ---: |
-| Student Name 1  | MainScene     |  Done |
-| Student Name 2    | Shader      |  Testing |
-| Student Name 3    | README Format      |  Amazing! |
+| Timmy Truong  | Shaders, Interface and README     |![0%](https://progress-bar.dev/0)|
+| Nathan Rearick    | Movement, Camera, Controls     |![25%](https://progress-bar.dev/25)|
+| Lucien Lu    | Level design, Turrets and Projectiles      |![20%](https://progress-bar.dev/20)|
 
 ## Explanation of the game
 Our game is a first person shooter (FPS) that....
