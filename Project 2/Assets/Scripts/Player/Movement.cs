@@ -10,11 +10,26 @@ public class Movement : MonoBehaviour
     public float jumpSpeed;
     public float gravity = -9.81f;
     public bool inAir;
+    public bool inJump;
     public CharacterController cc;
+<<<<<<< Updated upstream
     public Transform groundCheck;
     public Vector3 groundCheckPosition;
     public LayerMask groundMask;
     float playerHeight = 1.84f;
+=======
+    public Animator anim;
+    public Transform groundCheck;   
+    public Transform model;
+    public Vector3 groundCheckPosition;
+    public LayerMask groundMask;
+    float playerHeight = 1.84f;
+
+    float jumptime = 0.8f;
+    bool initialJump;
+    bool landing = false;
+    float timer;
+>>>>>>> Stashed changes
     // Start is called before the first frame update
     void Start()
     {
@@ -35,26 +50,46 @@ public class Movement : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
         velocity.x = x * speed;
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetKey(KeyCode.Space))
 		{
-            Jump();
+            if (!inAir && Input.GetKeyDown(KeyCode.Space))
+            {
+                Jump();
+                initialJump = true;
+            }
+		}
+        //  Change the jump height based on how long the player is holding the jump button on the first jump
+        else if (initialJump && inJump && velocity.y > 0 && velocity.y < jumpSpeed * 0.75f)
+		{
+            velocity.y -= jumpSpeed * 0.05f;
 		}
         velocity.z = 0;
         
     }
 
-    void Jump()
+    public void Jump()
 	{
+<<<<<<< Updated upstream
         if (!inAir)
         {
             velocity.y = jumpSpeed;
         }
+=======
+        //  Prevents height from decaying if it is not the first jump
+        initialJump = false;
+        timer = jumptime;
+        velocity.y = jumpSpeed;
+        inJump = true;
+>>>>>>> Stashed changes
 	}
+
     void CalculateAirborne()
 	{
         
         if(Physics.CheckSphere(groundCheck.position, 0.5f, groundMask)){
             inAir = false;
+            inJump = false;
+            initialJump = false;
 		}
 		else
 		{
