@@ -54,10 +54,9 @@ Remember that _"this document"_ should be `well written` and formatted **appropr
 
 ## Contributers
 
-All the turrets and other map assets are modelled by Kevin Gao, , 
-| | Contributer | Email | Other |
+| | Contributer | Contribution | Email | Other |
 |---|---|---|---|
-| | Kevin Gao | kevin.haha@gmail.com | Instagram: https://www.instagram.com/keving_win98se/ |
+| | Kevin Gao |Turret and map assets modelling | kevin.haha@gmail.com | Instagram: https://www.instagram.com/keving_win98se/ |
 ## Explanation of the game
 Our game is a first person shooter (FPS) that....
 
