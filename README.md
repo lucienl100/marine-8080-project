@@ -56,7 +56,7 @@ Remember that _"this document"_ should be `well written` and formatted **appropr
 
 | | Contributer | Contribution | Email | Other |
 |---|---|---|---|---|
-| <p align="center"><img src="kevingaoinsta.PNG"  width="300" ></p> | Kevin Gao | Turret and map assets modelling | kevin.haha@gmail.com | Instagram: https://www.instagram.com/keving_win98se/ |
+| <p align="center"><img src="kevingaoinsta.PNG"  width="300" ></p> | <b>Kevin Gao</b> | Turret and map assets modelling | kevin.haha@gmail.com | Instagram: https://www.instagram.com/keving_win98se/ |
 ## Explanation of the game
 Our game is a first person shooter (FPS) that....
 
