@@ -40,17 +40,6 @@ public class Movement : MonoBehaviour
         CalculateGravity();
         cc.Move(velocity * Time.deltaTime);
         HandleAdditionalV();
-        if (landing)
-        {
-            NeutralStateTimer();
-        }
-        else if (inAir)
-        {
-            JumpLandingTimer();
-        }
-        ChangeRotation();
-        anim.SetFloat("Speed", Mathf.Abs(velocity.x));
-        anim.SetBool("inAir", inAir);
         groundCheckPosition = groundCheck.position;
     }
 
@@ -107,42 +96,9 @@ public class Movement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         if (!inAir && velocity.y < 0)
         {
-            velocity.y = -2f;
+            velocity.y = -3f;
         }
     }
-    void JumpLandingTimer()
-    {
-        if (Physics.Raycast(this.transform.position, -Vector3.up, 2, groundMask) && velocity.y < 0f)
-        {
-            Debug.Log("landing");
-            anim.SetBool("Landing", true);
-            landing = true;
-            timer = 0.34f;
-        }
-    }
-
-    void NeutralStateTimer()
-    {
-        if (timer <= 0)
-        {
-            anim.SetBool("Landing", false);
-            landing = false;
-        }
-        timer -= Time.deltaTime;
-    }
-
-    void ChangeRotation()
-    {
-        if (velocity.x < 0)
-        {
-            model.localScale = new Vector3(1f, 1f, -1f);
-        }
-        if (velocity.x > 0)
-        {
-            model.localScale = new Vector3(1f, 1f, 1f);
-        }
-    }
-
     public void AddVelocity(Vector3 v)
     {
         additionalV += v;
