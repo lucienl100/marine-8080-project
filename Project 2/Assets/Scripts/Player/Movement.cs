@@ -112,7 +112,7 @@ public class Movement : MonoBehaviour
 		}
 		else
 		{
-            additionalV -= additionalV.normalized * 5f * Time.deltaTime;
+            additionalV -= additionalV.normalized * 10f * Time.deltaTime;
 		}
         
 	}

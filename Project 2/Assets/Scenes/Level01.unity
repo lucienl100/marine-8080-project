@@ -128,7 +128,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh38370
+  m_Name: pb_Mesh14036
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -27992,7 +27992,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh38344
+  m_Name: pb_Mesh14010
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -47530,6 +47530,7 @@ GameObject:
   - component: {fileID: 1576492182}
   - component: {fileID: 1576492184}
   - component: {fileID: 1576492183}
+  - component: {fileID: 1576492185}
   m_Layer: 0
   m_Name: WallCheck
   m_TagString: Untagged
@@ -47564,12 +47565,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastWallJump: {x: 0, y: 0, z: 0}
-  colllsionLocation: {x: 0, y: 0, z: 0}
+  collisionLocation: {x: 0, y: 0, z: 0}
   groundLayer: 8
   jumpWindow: 0.1
   jumpTimer: 0
   minJumpDistance: 2
-  pushStrength: 3
+  pushStrength: 6
 --- !u!136 &1576492184
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -47578,12 +47579,28 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576492181}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.7
   m_Height: 1.4
   m_Direction: 1
   m_Center: {x: 0, y: -0.55, z: 0}
+--- !u!54 &1576492185
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576492181}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!43 &1592808906
 Mesh:
   m_ObjectHideFlags: 0
