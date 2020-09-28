@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
@@ -11,9 +12,8 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Level01", LoadSceneMode.Additive);
     }
-    public void Settings()
+    public void Quit()
     {
-        mm.enabled = false;
-        set.enabled = true;
+        Application.Quit();
     }
 }
