@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
@@ -10,7 +9,7 @@ public class MainMenu : MonoBehaviour
     public Canvas set;
     public void PlayGame()
     {
-        SceneManager.LoadScene("Level01", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Scenes/Level01");
     }
     public void Quit()
     {
