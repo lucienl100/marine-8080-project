@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Railgun : MonoBehaviour, ITurret
 {
+    public AudioSource se;
     public Transform player;
     public GameObject tracer;
     public GameObject rail;
@@ -98,6 +99,7 @@ public class Railgun : MonoBehaviour, ITurret
     }
     public void FireProjectile(GameObject projectile)
     {
+        se.Play();
         GameObject proj = Instantiate(projectile, adjustedBase + barrelLength * currentRotation, t.rotation);
         RailgunProjectile rail = proj.GetComponent<RailgunProjectile>();
         rail.player = player;
