@@ -19,8 +19,12 @@ public class SceneController : MonoBehaviour
     {
         anim.SetTrigger("FadeOut");
     }
-    public void LoadNextScene()
+    public void LoadNextScene(int currentLevel)
     {
+        if (currentLevel >= PlayerPrefs.GetInt("currentLevel"))
+        {
+            PlayerPrefs.SetInt("currentLevel", currentLevel);
+        }
         StartCoroutine(LoadNextLevel(nextBuildIndex));
     }
     IEnumerator LoadNextLevel(int levelIndex)
