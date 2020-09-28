@@ -9,8 +9,6 @@ public class RailgunProjectile : MonoBehaviour, IProjectile
     public float maxPlayerDist = 300f;
     public float lifetime = 2f;
     private float timer = 2f;
-    public ParticleSystem emit1;
-    public ParticleSystem emit2;
     private Transform t;
     private Vector3 startPosition;
     private Vector3 rotation;
@@ -69,8 +67,6 @@ public class RailgunProjectile : MonoBehaviour, IProjectile
         timer -= Time.deltaTime;
         if (timer <= 0f)
         {
-            emit1.transform.parent = null;
-            emit2.transform.parent = null;
             Destroy(this.gameObject);
         }
     }
