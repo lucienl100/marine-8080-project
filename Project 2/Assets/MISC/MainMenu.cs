@@ -5,14 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public Canvas mm;
-    public Canvas set;
+    public GameObject mm;
+    public GameObject set;
+    public GameObject levelselect;
     public void PlayGame()
     {
-        SceneManager.LoadScene("Scenes/Level01");
+        if (PlayerPrefs.GetInt("currentLevel") == 0)
+        {
+            SceneManager.LoadScene("Scenes/Level01");
+        }
+        else
+        {
+            LoadLevelSelect();
+        }
     }
     public void Quit()
     {
         Application.Quit();
+    }
+    public void LoadLevelSelect()
+    {
+        levelselect.SetActive(true);
+        mm.SetActive(false);
     }
 }
