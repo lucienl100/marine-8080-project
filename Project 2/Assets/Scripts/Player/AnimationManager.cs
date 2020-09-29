@@ -21,20 +21,8 @@ public class AnimationManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ChangeRotation();
         anim.SetFloat("Speed", Mathf.Abs(mv.velocity.x));
         anim.SetBool("inAir", CheckDelayInAir() && !CheckDelayLand());
-    }
-    void ChangeRotation()
-    {
-        if (mv.velocity.x < 0)
-        {
-            this.transform.localScale = new Vector3(1f, 1f, -1f);
-        }
-        if (mv.velocity.x > 0)
-        {
-            this.transform.localScale = new Vector3(1f, 1f, 1f);
-        }
     }
     bool CheckDelayInAir()
     {
