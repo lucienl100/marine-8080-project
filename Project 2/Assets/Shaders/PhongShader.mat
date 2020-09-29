@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wall01
+  m_Name: PhongShader
   m_Shader: {fileID: 4800000, guid: 2b9792b95ff6b7c4a9c682b2b4db1d0c, type: 3}
-  m_ShaderKeywords: _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -78,8 +78,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Shininess: 0.078125
-    - _SmoothnessTextureChannel: 1
+    - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
@@ -87,13 +86,11 @@ Material:
     - _fAtt: 1
     - _specN: 1
     m_Colors:
-    - _Color: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _PointLightColor: {r: 1, g: 1, b: 1, a: 1}
     - _PointLightColor1: {r: 1, g: 1, b: 1, a: 1}
     - _PointLightColor2: {r: 1, g: 1, b: 1, a: 1}
     - _PointLightColor3: {r: 1, g: 1, b: 1, a: 1}
-    - _PointLightPosition: {r: 0, g: 0, b: 0, a: 1}
-    - _PointLightPosition1: {r: 25, g: 5, b: -1, a: 1}
+    - _PointLightPosition1: {r: 0, g: 0, b: 0, a: 1}
     - _PointLightPosition2: {r: 0, g: 0, b: 0, a: 1}
     - _PointLightPosition3: {r: 0, g: 0, b: 0, a: 1}
