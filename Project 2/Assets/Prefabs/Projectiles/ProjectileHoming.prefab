@@ -4770,7 +4770,7 @@ GameObject:
   - component: {fileID: 2379976423051071733}
   m_Layer: 0
   m_Name: ProjectileHoming
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4882,6 +4882,7 @@ MonoBehaviour:
   speed: 5
   intSpeed: 1
   maxSpeed: 10
+  acceleration: 5
   rotateSpeed: 90
   yRotation: 270
   facingRight: 0

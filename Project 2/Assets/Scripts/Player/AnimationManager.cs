@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimationManager : MonoBehaviour
 {
     public Animator anim;
+    public LookAtMouse lm;
     public GameObject player;
     private Movement mv;
     private float delay = 0.05f;
@@ -21,7 +22,8 @@ public class AnimationManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        anim.SetFloat("Speed", Mathf.Abs(mv.velocity.x));
+        float dir = (lm.playerIsRight) ? -1 : 1;
+        anim.SetFloat("Speed", dir * mv.velocity.x);
         anim.SetBool("inAir", CheckDelayInAir() && !CheckDelayLand());
     }
     bool CheckDelayInAir()
