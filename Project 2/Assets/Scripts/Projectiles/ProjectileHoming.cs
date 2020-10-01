@@ -47,9 +47,10 @@ public class ProjectileHoming : MonoBehaviour, IProjectile
     }
     public void OnCollisionEnter(Collision c) 
     {
-        Debug.Log("Collided!");
+        
         if (c.gameObject.tag == "Player")
         {
+            Debug.Log("Collided!");
             //Damage the player
             Destroy(this.gameObject);
         }
