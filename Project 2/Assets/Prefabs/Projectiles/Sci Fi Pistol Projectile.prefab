@@ -4765,9 +4765,9 @@ GameObject:
   - component: {fileID: 3602674599940093407}
   - component: {fileID: 3602674599940093400}
   - component: {fileID: 3602674599940093401}
-  - component: {fileID: 3602674599940093402}
   - component: {fileID: 5328666860422659232}
   - component: {fileID: 5228913398134720184}
+  - component: {fileID: 8846808818581186405}
   m_Layer: 0
   m_Name: Sci Fi Pistol Projectile
   m_TagString: Projectile
@@ -4837,19 +4837,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &3602674599940093402
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3602674599940093403}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5328666860422659232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4865,6 +4852,7 @@ MonoBehaviour:
   speed: 8
   maxDist: 50
   player: {fileID: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!54 &5228913398134720184
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4881,3 +4869,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 32
   m_CollisionDetection: 0
+--- !u!136 &8846808818581186405
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3602674599940093403}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.4
+  m_Height: 1
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
