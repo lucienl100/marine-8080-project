@@ -50,7 +50,7 @@ Remember that _"this document"_ should be `well written` and formatted **appropr
 | :---         |     :---:      |          ---: |
 | Timmy Truong  | Shaders, Interface and README     |![10%](https://progress-bar.dev/10)|
 | Nathan Rearick    | Movement, Camera, Controls     |![25%](https://progress-bar.dev/25)|
-| Lucien Lu    | Level design, Turrets/Projectiles, AI, Main Menu      |![20%](https://progress-bar.dev/20)|
+| Lucien Lu    | Level design, Turrets/Projectiles, AI, Main Menu      |![50%](https://progress-bar.dev/20)|
 
 ## Contributers
 
