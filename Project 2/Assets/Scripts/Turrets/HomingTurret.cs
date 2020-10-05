@@ -11,6 +11,8 @@ public class HomingTurret : MonoBehaviour, ITurret
     public float intFireDelay = 2f;
     private float timeToFire;
     private float firingDelay = 3f;
+    Vector3 secondaryFireOff = new Vector3(0f, 0.5f, 0f);
+    private float barrelLength = 1.5f;
     Vector3 lineOfSightBot;
     float highAngle = 45f;
     void Start() 
@@ -23,6 +25,7 @@ public class HomingTurret : MonoBehaviour, ITurret
     {
         if (SearchPlayer())
         {
+            RotateTowardsPlayer();
             ArmTurret();
         }
         else
@@ -39,13 +42,21 @@ public class HomingTurret : MonoBehaviour, ITurret
         }
         timeToFire -= Time.deltaTime;
     }
-    public void FireProjectile(GameObject projectile)
+    public void RotateTowardsPlayer()
     {
         Vector3 turretToPlayer = player.position - t.position;
-        
+
         Quaternion turretToPlayerAngle = Quaternion.LookRotation(turretToPlayer);
-        GameObject proj = Instantiate(projectile, t.position + turretToPlayer.normalized, turretToPlayerAngle);
-        ProjectileHoming homing = proj.GetComponent<ProjectileHoming>();
+        t.rotation = Quaternion.Slerp(t.rotation, turretToPlayerAngle, Time.deltaTime * 5f);
+    }
+    public void FireProjectile(GameObject projectile)
+    {
+        GameObject proju = Instantiate(projectile, t.position + secondaryFireOff + t.forward * barrelLength, t.rotation);
+        GameObject projd = Instantiate(projectile, t.position + t.forward * barrelLength, t.rotation);
+        ProjectileHoming homing = proju.GetComponent<ProjectileHoming>();
+        homing.player = player;
+        homing.yRotation = t.eulerAngles.y;
+        homing = projd.GetComponent<ProjectileHoming>();
         homing.player = player;
         homing.yRotation = t.eulerAngles.y;
     }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3602674599696366747}
   - component: {fileID: 3602674599696366745}
   - component: {fileID: 3602674599696366746}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4768,7 +4768,7 @@ GameObject:
   - component: {fileID: 5328666860422659232}
   - component: {fileID: 5228913398134720184}
   - component: {fileID: 8846808818581186405}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sci Fi Pistol Projectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}

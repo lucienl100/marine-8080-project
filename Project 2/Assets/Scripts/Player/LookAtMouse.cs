@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LookAtMouse : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class LookAtMouse : MonoBehaviour
     private float camdepth = 12.5f;
     public Animator anim;
     Transform t;
+    public Transform crosshair;
     public Transform weapon;
     public Transform chest;
     void Start()
@@ -24,6 +26,8 @@ public class LookAtMouse : MonoBehaviour
         
         mousePosition = Input.mousePosition;
         mousePosition.z = camdepth;
+        crosshair.position = mousePosition;
+        
         mouseWorld = cam.ScreenToWorldPoint(mousePosition);
         if (mouseWorld.x < t.position.x - 0.1f)
         {

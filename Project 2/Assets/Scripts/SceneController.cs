@@ -7,11 +7,13 @@ public class SceneController : MonoBehaviour
 {
     public Animator anim;
     public GameObject pauseMenuUI;
+    public GameObject crosshair;
     private int currBuildIndex;
     private int nextBuildIndex;
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false;
         //Get current scene index and next scene index
         currBuildIndex = SceneManager.GetActiveScene().buildIndex;
         nextBuildIndex = currBuildIndex + 1;
@@ -25,11 +27,15 @@ public class SceneController : MonoBehaviour
     }
     public void PauseGame()
     {
+        crosshair.SetActive(false);
+        Cursor.visible = true;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
     }
     public void UnpauseGame()
     {
+        crosshair.SetActive(true);
+        Cursor.visible = false;
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
     }
