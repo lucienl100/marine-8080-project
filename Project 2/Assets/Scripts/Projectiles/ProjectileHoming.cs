@@ -10,6 +10,8 @@ public class ProjectileHoming : MonoBehaviour, IProjectile
     public float acceleration = 5f;
     public float rotateSpeed = 25f;
     public float yRotation = 270f;
+    public GameObject emitterFire;
+    public GameObject emitterSmoke;
     private Vector3 finalLookRotation;
     public bool facingRight = false;
     private Transform t;
@@ -52,11 +54,22 @@ public class ProjectileHoming : MonoBehaviour, IProjectile
         {
             Debug.Log("Collided!");
             //Damage the player
-            Destroy(this.gameObject);
+            Explode();
         }
-        else if (c.gameObject.tag != "Projectile")
+        else if (c.gameObject.tag != "Projectile" && c.gameObject.tag != "Enemy")
         {
-            Destroy(this.gameObject);
+            Explode();
         }
+    }
+    public void Explode()
+    {
+        emitterFire.transform.parent = null;
+        emitterSmoke.transform.parent = null;
+        emitterFire.GetComponent<Expiry>().timeLeft = 1.5f;
+        emitterSmoke.GetComponent<Expiry>().timeLeft = 1.5f;
+        emitterFire.GetComponent<ParticleSystem>().Stop();
+        emitterSmoke.GetComponent<ParticleSystem>().Stop();
+        emitterSmoke.SetActive(false);
+        Destroy(this.gameObject);
     }
 }

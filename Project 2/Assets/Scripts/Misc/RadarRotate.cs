@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class RadarRotate : MonoBehaviour
 {
     Transform t;
-    public float speed = 5f;
+    public float speed = 15f;
     public GameObject inst;
     public Transform dish;
     public Transform player;

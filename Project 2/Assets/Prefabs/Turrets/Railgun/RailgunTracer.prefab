@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6257636882755735540}
   - component: {fileID: 7768949443607945570}
   - component: {fileID: 1313127897013891329}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4768,7 +4768,7 @@ GameObject:
   - component: {fileID: 6381538254086596453}
   - component: {fileID: 3681486347867286702}
   - component: {fileID: 7911233700270068457}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RailgunTracer
   m_TagString: Projectile
   m_Icon: {fileID: 0}

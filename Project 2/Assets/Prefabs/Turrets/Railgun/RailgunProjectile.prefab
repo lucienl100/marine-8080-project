@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3290069081597882079}
   - component: {fileID: 7269857768973622739}
   - component: {fileID: 8640720875194784815}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4774,7 +4774,7 @@ GameObject:
   - component: {fileID: 5661618894531961137}
   - component: {fileID: 4454380300897988475}
   - component: {fileID: 6317084818194548417}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9528,7 +9528,7 @@ GameObject:
   - component: {fileID: 2786629217545188566}
   - component: {fileID: 6431863790588615369}
   - component: {fileID: 510369610137190788}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14293,7 +14293,7 @@ GameObject:
   - component: {fileID: 3989408228097803876}
   - component: {fileID: 7740370058469219213}
   - component: {fileID: 7176558660732408089}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RailgunProjectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -14406,7 +14406,7 @@ GameObject:
   - component: {fileID: 768624473007976060}
   - component: {fileID: 6936082167547241933}
   - component: {fileID: 6807652352061708803}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
