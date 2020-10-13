@@ -15,11 +15,11 @@ public class Movement : MonoBehaviour
     public CharacterController cc;
     public Animator anim;
     public Transform groundCheck;
+    public Transform model;
     public Vector3 groundCheckPosition;
     public LayerMask groundMask;
     float playerHeight = 1.84f;
-    float leveldepth = -2.5f;
-    Transform t;
+
     float jumptime = 0.8f;
     public bool initialJump;
     bool landing = false;
@@ -28,7 +28,6 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        t = this.transform;
         velocity = Vector3.zero;
         timer = 0f;
     }
@@ -40,7 +39,6 @@ public class Movement : MonoBehaviour
         Move();
         CalculateGravity();
         cc.Move(velocity * Time.deltaTime);
-        t.position = new Vector3(t.position.x, t.position.y, leveldepth);
         HandleAdditionalV();
         groundCheckPosition = groundCheck.position;
     }
@@ -109,13 +107,13 @@ public class Movement : MonoBehaviour
     public void HandleAdditionalV()
     {
         if (Mathf.Abs(additionalV.magnitude) <= (Vector3.one * 5f * Time.deltaTime).magnitude)
-		{
+        {
             additionalV = Vector3.zero;
-		}
-		else
-		{
-            additionalV -= additionalV.normalized * 5f * Time.deltaTime;
-		}
-        
-	}
+        }
+        else
+        {
+            additionalV -= additionalV.normalized * 10f * Time.deltaTime;
+        }
+
+    }
 }

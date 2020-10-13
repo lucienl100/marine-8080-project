@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WallJump : MonoBehaviour
 {
 	public Vector3 lastWallJump;
-	public Vector3 colllsionLocation;
+	public Vector3 collisionLocation;
 	Movement movementScript;
 	public int groundLayer = 8;
 	public float jumpWindow = 0.1f;
@@ -39,22 +40,17 @@ public class WallJump : MonoBehaviour
 			{
 				lastWallJump = transform.position;
 				movementScript.Jump();
-
-				movementScript.AddVelocity(new Vector3(1, 0, 0) * pushStrength * (colllsionLocation.x > transform.position.x ? 1 : -1));
+				movementScript.AddVelocity(new Vector3(1, 0, 0) * pushStrength * (collisionLocation.x > transform.position.x ? -1 : 1));
 			}
 		}
 	}
 
-	private void OnTriggerStay(Collider other)
+	private void OnCollisionStay(Collision collision)
 	{
-		if (other.gameObject.layer == groundLayer)
+		if (collision.gameObject.layer == groundLayer)
 		{
-			Debug.Log("Wall");
-		}
-		if (other.gameObject.layer == groundLayer)
-		{
+			collisionLocation = collision.contacts[0].point;
 			jumpTimer = jumpWindow;
-			colllsionLocation = other.transform.position;
 		}
 	}
 }
