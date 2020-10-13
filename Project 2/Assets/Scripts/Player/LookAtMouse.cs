@@ -39,7 +39,6 @@ public class LookAtMouse : MonoBehaviour
             playerIsRight = false;
             faceRotation = Quaternion.Euler(new Vector3(0f, 90f, 0f));
         }
-        Debug.Log(faceRotation.eulerAngles);
         t.rotation = Quaternion.Slerp(t.rotation, faceRotation, Time.deltaTime * 15.0f);
         t.eulerAngles = new Vector3(0f, t.eulerAngles.y, 0f);
     }
@@ -48,13 +47,6 @@ public class LookAtMouse : MonoBehaviour
         Vector3 dirToLook = mouseWorld - t.position;
         Quaternion rotation = Quaternion.LookRotation(dirToLook);
         chest.rotation = Quaternion.Euler(rotation.eulerAngles.x, chest.eulerAngles.y + 35f, rotation.eulerAngles.z);
-    }
-    private void OnAnimatorIK()
-    {
-        anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
-        anim.SetIKPosition(AvatarIKGoal.LeftHand, weapon.position);
-        anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-        anim.SetIKPosition(AvatarIKGoal.RightHand, weapon.position);
     }
 }
 
