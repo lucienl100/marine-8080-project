@@ -20,7 +20,8 @@ public class LookAtPlayer : MonoBehaviour
     public Transform weapon;
     public Transform chest;
     void Start()
-    { 
+    {
+        Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
         patrolTimer = patrolStep;
         t = this.transform;
         playerIsRight = (player.position.x - t.position.x) > 0 ? true : false;

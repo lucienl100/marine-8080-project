@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastWallJump: {x: 0, y: 0, z: 0}
-  colllsionLocation: {x: 0, y: 0, z: 0}
+  collisionLocation: {x: 0, y: 0, z: 0}
   groundLayer: 8
   jumpWindow: 0.1
   jumpTimer: 0
@@ -294,6 +294,7 @@ GameObject:
   - component: {fileID: 2739813202412132693}
   - component: {fileID: 2739813202412132694}
   - component: {fileID: 2739813202412132692}
+  - component: {fileID: 7151751551515434096}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -359,6 +360,7 @@ MonoBehaviour:
   cc: {fileID: 2739813202412132693}
   anim: {fileID: 0}
   groundCheck: {fileID: 2739813200881310276}
+  model: {fileID: 0}
   groundCheckPosition: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
@@ -383,6 +385,21 @@ MonoBehaviour:
   crosshair: {fileID: 0}
   weapon: {fileID: 2739813202735428248}
   chest: {fileID: 2739813200918084564}
+--- !u!114 &7151751551515434096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739813202412132688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97b43740d973a0468df31e443bb5150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldDuration: 3
+  shield: {fileID: 3194816815202814736, guid: 8f8a604ea8e6d2c458e8d317e23437e5, type: 3}
+  activeShield: {fileID: 0}
 --- !u!114 &2739813202393218613
 MonoBehaviour:
   m_ObjectHideFlags: 0

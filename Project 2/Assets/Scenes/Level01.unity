@@ -9629,7 +9629,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh55624
+  m_Name: pb_Mesh41944
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -26443,7 +26443,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh55890
+  m_Name: pb_Mesh42192
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -41359,9 +41359,17 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_IsSelectable: 1
-  m_SelectedFaces: 
-  m_SelectedEdges: []
-  m_SelectedVertices: 
+  m_SelectedFaces: 25000000
+  m_SelectedEdges:
+  - a: 148
+    b: 149
+  - a: 150
+    b: 148
+  - a: 149
+    b: 151
+  - a: 151
+    b: 150
+  m_SelectedVertices: 94000000950000009600000097000000
 --- !u!23 &1211328497
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -70655,11 +70663,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1242845513039947272, guid: 12b54f1683f363e48bc3f0376b1334c2,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1473541740}
     - target: {fileID: 1242845513808383551, guid: 12b54f1683f363e48bc3f0376b1334c2,
         type: 3}
       propertyPath: m_LocalPosition.x

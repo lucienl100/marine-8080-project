@@ -58,7 +58,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1242845513808383683}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f9dc366290db0e74785b696b3d7f6ab0, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.4
@@ -83,7 +83,7 @@ MonoBehaviour:
   spotRange: 20
   minRange: 3
   patrolStep: 3
-  weapon: {fileID: 0}
+  weapon: {fileID: 1238994976673883028}
   chest: {fileID: 112826924798650058}
 --- !u!114 &9012587981315729658
 MonoBehaviour:
@@ -221,6 +221,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c302494cc9417d4ebf1cc6714ef1c98, type: 3}
+--- !u!4 &1238994976673883028 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1377321076608745577, guid: 9c302494cc9417d4ebf1cc6714ef1c98,
+    type: 3}
+  m_PrefabInstance: {fileID: 156765503947252733}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1242845513718286030
 PrefabInstance:
   m_ObjectHideFlags: 0

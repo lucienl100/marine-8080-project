@@ -7,6 +7,7 @@ TagManager:
   - Projectile
   - Enemy
   - Ground Check
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - Ground
   - Enemy AI
   - Enemy Projectiles
-  - 
-  - 
+  - Shield
+  - Player
   - 
   - 
   - 
