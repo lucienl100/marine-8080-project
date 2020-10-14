@@ -9,10 +9,11 @@ public class ShootingBasic : MonoBehaviour
     public AudioSource se;
     public float timeBetweenShots = 2f;
     private float timer;
-    public Transform player;
+    Transform player;
     Transform t;
     void Start()
     {
+        player = lp.player;
         timer = timeBetweenShots;
         t = this.transform;
     }
