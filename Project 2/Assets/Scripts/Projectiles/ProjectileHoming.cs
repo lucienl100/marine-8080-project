@@ -27,7 +27,6 @@ public class ProjectileHoming : MonoBehaviour, IProjectile
     void Update()
     {
         speed += Mathf.Clamp(Mathf.Exp(2f*speed)-1f, maxSpeed, intSpeed) * Time.deltaTime * acceleration;
-        Debug.Log(speed);
         if (yRotation == 270f && player.position.x - t.position.x < 0 || yRotation == 90f && player.position.x - t.position.x > 0)
         {
             RotateTowardsPlayer();

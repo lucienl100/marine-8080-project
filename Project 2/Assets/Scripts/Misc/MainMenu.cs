@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
     public void NewGame()
     {
         PlayerPrefs.SetInt("currentLevel", 1);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
     public void Continue()
     {
