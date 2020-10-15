@@ -44,9 +44,9 @@ public class LookAtMouse : MonoBehaviour
     }
     void LateUpdate()
     {
-        Vector3 dirToLook = mouseWorld - t.position;
+        Vector3 dirToLook = mouseWorld - t.position - new Vector3(0f, 0.1f, 0f);
         Quaternion rotation = Quaternion.LookRotation(dirToLook);
-        chest.rotation = Quaternion.Euler(rotation.eulerAngles.x, chest.eulerAngles.y + 35f, rotation.eulerAngles.z);
+        chest.rotation = Quaternion.Euler(rotation.eulerAngles.x, chest.eulerAngles.y, rotation.eulerAngles.z);
     }
 }
 
