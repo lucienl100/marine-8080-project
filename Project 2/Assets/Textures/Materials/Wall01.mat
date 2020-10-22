@@ -97,3 +97,6 @@ Material:
     - _PointLightPosition1: {r: 25, g: 5, b: -1, a: 1}
     - _PointLightPosition2: {r: 0, g: 0, b: 0, a: 1}
     - _PointLightPosition3: {r: 0, g: 0, b: 0, a: 1}
+    - _PointLightPositionX: {r: 0, g: 0, b: 0, a: 0}
+    - _PointLightPositionY: {r: 0, g: 0, b: 0, a: 0}
+    - _PointLightPositionZ: {r: 0, g: 0, b: 0, a: 0}
