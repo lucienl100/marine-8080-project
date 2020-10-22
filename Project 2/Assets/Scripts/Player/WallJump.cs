@@ -12,12 +12,7 @@ public class WallJump : MonoBehaviour
 	public float jumpWindow = 0.1f;
 	public float jumpTimer = 0f;
 	public float minJumpDistance = 2f;
-	public float pushStrength = 3f;
-	// Start is called before the first frame update
-	void Start()
-	{
-	}
-
+	public float pushStrength = 1f;
 	private void Awake()
 	{
 		movementScript = transform.parent.GetComponent<Movement>();
@@ -36,11 +31,15 @@ public class WallJump : MonoBehaviour
 		}
 		if (movementScript.inAir && jumpTimer > 0 && Input.GetKeyDown(KeyCode.Space))
 		{
-			if (lastWallJump == null || Mathf.Abs(transform.position.x - lastWallJump.x) >= minJumpDistance)
+			bool isRight = collisionLocation.x > transform.position.x ? true : false;
+			if ((lastWallJump == null || Mathf.Abs(transform.position.x - lastWallJump.x) >= minJumpDistance))
 			{
+				Debug.Log("walljump");
+				movementScript.CeaseControl();
 				lastWallJump = transform.position;
 				movementScript.Jump();
-				movementScript.AddVelocity(new Vector3(1, 0, 0) * pushStrength * (collisionLocation.x > transform.position.x ? -1 : 1));
+				Debug.Log(new Vector3(1, 0, 0) * pushStrength * (collisionLocation.x > transform.position.x ? -1 : 1));
+				movementScript.AddVelocity(new Vector3(1, 0, 0) * pushStrength * (isRight ? -1 : 1));
 			}
 		}
 	}
