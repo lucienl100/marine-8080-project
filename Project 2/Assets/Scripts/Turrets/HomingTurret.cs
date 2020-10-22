@@ -71,7 +71,7 @@ public class HomingTurret : MonoBehaviour, ITurret
     }
     bool CheckHeight()
     {
-        Debug.Log(t.parent.rotation.eulerAngles);
+        // Debug.Log(t.parent.rotation.eulerAngles);
         if (t.parent.rotation.eulerAngles.z == 180f)
         {
             if (player.position.y <= t.position.y)
