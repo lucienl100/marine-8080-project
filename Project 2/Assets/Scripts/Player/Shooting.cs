@@ -12,6 +12,7 @@ public class Shooting : MonoBehaviour
     public float distance = 50f;
     public Transform barrelEnd;
     public Transform chest;
+    public LayerMask layerMask;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +44,7 @@ public class Shooting : MonoBehaviour
         LineRenderer lr = tracer.GetComponent<LineRenderer>();
 
         RaycastHit hit;
-        if (Physics.Raycast(shootingOrigin.position, targetDir, out hit, distance))
+        if (Physics.Raycast(shootingOrigin.position, targetDir, out hit, distance, layerMask))
         {
             if (hit.transform.tag == "Enemy")
             {

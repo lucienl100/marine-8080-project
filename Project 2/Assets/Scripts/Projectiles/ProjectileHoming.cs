@@ -16,31 +16,31 @@ public class ProjectileHoming : MonoBehaviour, IProjectile
     public bool facingRight = false;
     private Transform t;
     public Transform player;
+    private float errorMargin = 0.1f;
+    private float timerDuration = 0.05f;
+    private float timer;
     void Start() 
     {
+        timer = timerDuration;
         if (facingRight)
         {
-            yRotation = 90f;
+            yRotation = 90f; //Facing right
         }
         t = this.transform;
     }
     void Update()
     {
         speed += Mathf.Clamp(Mathf.Exp(2f*speed)-1f, maxSpeed, intSpeed) * Time.deltaTime * acceleration;
-        if (yRotation == 270f && player.position.x - t.position.x < 0 || yRotation == 90f && player.position.x - t.position.x > 0)
-        {
-            RotateTowardsPlayer();
-        }
+        RotateTowardsPlayer();
         Fly();
     }
     public void RotateTowardsPlayer()
     {
         Vector3 lookDir = player.position - t.position;
-        Quaternion toPlayer = Quaternion.LookRotation(lookDir);
-        
-        Quaternion lookRotation = Quaternion.RotateTowards(t.localRotation, toPlayer, Time.deltaTime * rotateSpeed);
-        t.rotation = lookRotation;
-        t.eulerAngles = new Vector3(t.eulerAngles.x, yRotation, 0f);
+        lookDir.z = 0f;
+        //getting the angle between the this -> target and the rigidbody.rotation vector
+        t.rotation = Quaternion.Lerp(t.rotation, Quaternion.FromToRotation(Vector3.forward, lookDir), Time.deltaTime * 3f);
+        t.eulerAngles = new Vector3(t.rotation.eulerAngles.x, yRotation, 0f);
     }
     public void Fly()
     {
