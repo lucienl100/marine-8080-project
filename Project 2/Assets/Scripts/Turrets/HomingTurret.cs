@@ -63,9 +63,29 @@ public class HomingTurret : MonoBehaviour, ITurret
     public bool SearchPlayer()
     {
         Vector3 turretToPlayer = player.position - t.position;
-        if (player.position.y >= t.position.y && Vector3.Angle(turretToPlayer, lineOfSightBot) <= highAngle && turretToPlayer.magnitude <= range)
+        if (CheckHeight() && Vector3.Angle(turretToPlayer, lineOfSightBot) <= highAngle && turretToPlayer.magnitude <= range)
         {
             return true;
+        }
+        return false;
+    }
+    bool CheckHeight()
+    {
+        Debug.Log(t.parent.rotation.eulerAngles);
+        if (t.parent.rotation.eulerAngles.z == 180f)
+        {
+            if (player.position.y <= t.position.y)
+            {
+                Debug.Log("found");
+                return true;
+            }
+        }
+        else
+        {
+            if (player.position.y >= t.position.y)
+            {
+                return true;
+            }
         }
         return false;
     }

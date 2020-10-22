@@ -16,7 +16,10 @@ public class LookAtPlayer : MonoBehaviour
     private float turningTimer = 0.3f;
     private bool playerIsRight;
     private float patrolTimer;
+    
+    Vector3 dirToLook;
     Transform t;
+    public LayerMask layerMask;
     public Transform weapon;
     public Transform chest;
     void Start()
@@ -28,7 +31,10 @@ public class LookAtPlayer : MonoBehaviour
     }
     void Update()
     {
-        if (Mathf.Abs(player.position.x - t.position.x) < spotRange)
+        dirToLook = player.position - t.position;
+        RaycastHit hit;
+        Physics.Raycast(t.position, dirToLook, out hit, Mathf.Infinity, layerMask);
+        if (Mathf.Abs(player.position.x - t.position.x) < spotRange && hit.transform.tag == "Player")
         {
             anim.SetBool("playerInRange", true);
             inRange = true;
@@ -51,7 +57,6 @@ public class LookAtPlayer : MonoBehaviour
     }
     void LateUpdate()
     {
-        Vector3 dirToLook = player.position - t.position;
         Quaternion rotation = Quaternion.LookRotation(dirToLook);
         chest.rotation = Quaternion.Euler(rotation.eulerAngles.x + 15f, chest.eulerAngles.y + 35f, rotation.eulerAngles.z);
     }
