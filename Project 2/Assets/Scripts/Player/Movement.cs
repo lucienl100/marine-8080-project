@@ -146,7 +146,6 @@ public class Movement : MonoBehaviour
     {
         speedScale = 0.001f;
         timer = recoverDuration;
-        Debug.Log(recoverDuration);
     }
     public void RegainControl()
     {

@@ -14390,11 +14390,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a1345ae1c876c4a8eccc49a8ec09bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 150
+  speed: 200
   maxDist: 300
   maxPlayerDist: 300
   lifetime: 2
-  player: {fileID: 0}
+  hitPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &8690810764529339229
 GameObject:
   m_ObjectHideFlags: 0
