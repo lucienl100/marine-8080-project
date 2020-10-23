@@ -52,4 +52,13 @@ public class AnimationManager : MonoBehaviour
         }
         return false;
     }
+    public void Slide()
+    {
+        anim.SetBool("Sliding", true);
+        Invoke("GetUp", 1f);
+    }
+    public void GetUp()
+    {
+        anim.SetBool("Sliding", false);
+    }
 }

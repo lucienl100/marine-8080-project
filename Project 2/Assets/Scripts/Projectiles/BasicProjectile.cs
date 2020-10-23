@@ -32,7 +32,7 @@ public class BasicProjectile : MonoBehaviour
     {
         //Damage the player
     }
-    public void OnCollisionEnter(Collision c)
+    public void OnTriggerEnter(Collider c)
     {
         Debug.Log("Collided!");
         if (c.gameObject.tag == "Player")
@@ -41,7 +41,7 @@ public class BasicProjectile : MonoBehaviour
             GameObject ex = Instantiate(explosion, t.position, t.rotation);
             Destroy(ex, 0.5f);
         }
-        else if (c.gameObject.tag != "Projectile" && c.gameObject.tag != "Enemy")
+        else if (c.gameObject.tag != "Projectile" && c.gameObject.tag != "Enemy" && c.gameObject.tag != "IgnoreProjectiles")
         {
             Destroy(this.gameObject);
             GameObject ex = Instantiate(explosion, t.position, t.rotation);

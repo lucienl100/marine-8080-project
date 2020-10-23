@@ -33,26 +33,28 @@ public class LookAtPlayer : MonoBehaviour
     {
         dirToLook = player.position - t.position;
         RaycastHit hit;
-        Physics.Raycast(t.position, dirToLook, out hit, Mathf.Infinity, layerMask);
-        if ((player.position - t.position).magnitude < spotRange && hit.transform.tag == "Player")
+        if (Physics.Raycast(t.position, dirToLook, out hit, Mathf.Infinity, layerMask))
         {
-            anim.SetBool("playerInRange", true);
-            inRange = true;
-            CheckRotation();
-            if (turningTimer <= 0)
+            if ((player.position - t.position).magnitude < spotRange && hit.transform.tag == "Player")
             {
-                FollowPlayer();
+                anim.SetBool("playerInRange", true);
+                inRange = true;
+                CheckRotation();
+                if (turningTimer <= 0)
+                {
+                    FollowPlayer();
+                }
+                else
+                {
+                    turningTimer -= Time.deltaTime;
+                }
             }
             else
             {
-                turningTimer -= Time.deltaTime;
+                inRange = false;
+                Patrol();
+                anim.SetBool("playerInRange", false);
             }
-        }
-        else
-        {
-            inRange = false;
-            Patrol();
-            anim.SetBool("playerInRange", false);
         }
     }
     void LateUpdate()
@@ -99,7 +101,15 @@ public class LookAtPlayer : MonoBehaviour
             }
         }
         t.rotation = Quaternion.Slerp(t.rotation, faceRotation, Time.deltaTime * 15.0f);
-        t.eulerAngles = new Vector3(0f, t.eulerAngles.y, 0f);
+        //Account for slerp errors
+        if (t.eulerAngles.y > 270 - 10f && t.eulerAngles.y < 270 + 10f)
+        {
+            t.eulerAngles = new Vector3(0f, 270f, 0f);
+        }
+        else if (t.eulerAngles.y > 90 - 10f && t.eulerAngles.y < 90 + 10f)
+        {
+            t.eulerAngles = new Vector3(0f, 90f, 0f);
+        }
     }
     void Patrol()
     {
@@ -120,7 +130,17 @@ public class LookAtPlayer : MonoBehaviour
         else
         {
             t.rotation = Quaternion.Slerp(t.rotation, faceRotation, Time.deltaTime * 15.0f);
+
             turningTimer -= Time.deltaTime;
+        }
+        //Account for slerp errors
+        if (t.eulerAngles.y > 270 - 10f && t.eulerAngles.y < 270 + 10f)
+        {
+            t.eulerAngles = new Vector3(0f, 270f, 0f);
+        }
+        else if (t.eulerAngles.y > 90 - 10f && t.eulerAngles.y < 90 + 10f)
+        {
+            t.eulerAngles = new Vector3(0f, 90f, 0f);
         }
     }
 }

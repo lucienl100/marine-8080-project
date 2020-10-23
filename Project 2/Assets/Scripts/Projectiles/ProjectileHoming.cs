@@ -47,7 +47,7 @@ public class ProjectileHoming : MonoBehaviour, IProjectile
     {
         t.position += t.forward * speed * Time.deltaTime;
     }
-    public void OnCollisionEnter(Collision c) 
+    public void OnTriggerEnter(Collider c) 
     {
         
         if (c.gameObject.tag == "Player")

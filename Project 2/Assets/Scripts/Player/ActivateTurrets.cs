@@ -18,9 +18,12 @@ public class ActivateTurrets : MonoBehaviour
     {
         foreach (GameObject turret in turrets)
         {
-            if ((turret.transform.position - t.position).magnitude > 20f)
+            if ((turret.transform.position - t.position).magnitude > 25f)
             {
-                turret.SetActive(false);
+                if (!turret.GetComponent<Railgun>())
+                {
+                    turret.SetActive(false);
+                }
             }
             else
             {
