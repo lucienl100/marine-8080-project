@@ -7,20 +7,16 @@
 
 //UNITY_SHADER_NO_UPGRADE
 
-Shader "Unlit/PhongShaderUnityLights"
+Shader "Unlit/PhongWireframeShader"
 {
 	Properties
 	{
-		_SurfaceColor ("Surface Color", Color) = (1, 1, 1, 1)
+		_SurfaceColor ("Surface Color", Color) = (0, 0, 0, 1)
 		_fAtt ("fAtt", Range(0,5)) = 1
         _Ka ("Ambient reflection constant",Range(0,5)) = 1.5
         _Kd ("Diffuse reflection constant",Range(0,5)) = 1
         _Ks ("Specular reflection constant", Range(0,5)) = 0.15
         _specN ("SpecularN", Range(1,20)) = 1
-        // _PointLightColor1 ("Point Light Color 1", Color) = (1, 1, 1)
-		// _PointLightColor2 ("Point Light Color 2", Color) = (1, 1, 1)
-		// _PointLightColor3 ("Point Light Color 3", Color) = (1, 1, 1)
-		// _PointLightColor4 ("Point Light Color 4", Color) = (1, 1, 1)
 		_PointLightReds ("Point Light Color 1", Vector) = (1, 1, 1, 1)
 		_PointLightBlues ("Point Light Color 2", Vector) = (1, 1, 1, 1)
 		_PointLightGreens ("Point Light Color 3", Vector) = (1, 1, 1, 1)
@@ -29,6 +25,9 @@ Shader "Unlit/PhongShaderUnityLights"
 		_PointLightPositionZ ("Point Light Position Z", Vector) = (0.0, 0.0, 0.0, 0.0)
 		_mainTexture("Main texture", 2D) = "white" {}
 		_normalMap("Normal map", 2D) = "black" {}
+
+		_OutlineColor ("Outline Color", Color) = (1,1,1,1)
+		_Outline ("Outline width", Range (0, 1)) = .5
 	}
 	SubShader
 	{
@@ -56,6 +55,7 @@ Shader "Unlit/PhongShaderUnityLights"
 				float2 uv : TEXCOORD0;
 				float4 worldVertex : TEXCOORD1;
 				float3 worldNormal : TEXCOORD2;
+				float3 viewDir : TEXCOORD3;
 			};
 
 			sampler2D _mainTexture;
@@ -68,17 +68,15 @@ Shader "Unlit/PhongShaderUnityLights"
 			float _Kd;
 			float _Ks;
 			float _specN;
-			// float4 _PointLightColor1;
-			// float4 _PointLightColor2;
-			// float4 _PointLightColor3;
-			// float4 _PointLightColor4;
 			float4 _PointLightReds;
 			float4 _PointLightBlues;
 			float4 _PointLightGreens;
-			
 			float4 _PointLightPositionX;
 			float4 _PointLightPositionY;
 			float4 _PointLightPositionZ;
+
+			float _Outline;
+ 			float4 _OutlineColor;
 			// Implementation of the vertex shader
 			vertOut vert(vertIn v)
 			{
@@ -100,6 +98,8 @@ Shader "Unlit/PhongShaderUnityLights"
 				o.worldVertex = worldVertex;
 				o.worldNormal = worldNormal;
 				o.uv = TRANSFORM_TEX(v.uv, _mainTexture);
+
+				o.viewDir = WorldSpaceViewDir(v.vertex);
 				return o;
 			}
 
@@ -116,9 +116,14 @@ Shader "Unlit/PhongShaderUnityLights"
 				// Our interpolated normal might not be of length 1
 				float3 interpolatedNormal = normalize(v.worldNormal); // * (2.0f*normalize(normalMap.rgb)-1.0f)
 
+				float3 viewDir = normalize(v.viewDir);
+				float4 rimDot = 1 - dot(viewDir, interpolatedNormal);
+				float rimIntensity = smoothstep(_Outline - 0.01, _Outline + 0.01, rimDot);
+				float4 rim = rimIntensity * _OutlineColor;
+
 				 // Calculate ambient RGB intensities
                 float3 amb = v.color.rgb * UNITY_LIGHTMODEL_AMBIENT.rgb * _Ka;
-				color.rgb = amb.rgb * mainTexture.rgb;
+				color.rgb =  amb.rgb * mainTexture.rgb;
 
                 // Calculate diffuse RBG reflections, we save the results of L.N because we will use it again for specular
                 float3 L;
@@ -133,6 +138,7 @@ Shader "Unlit/PhongShaderUnityLights"
                 float3 spe  ;
 				float4 lightPosition;
 				float4 lightColour;
+
 				for (int index = 0; index < 4; index++) {
 					// Calculate diffuse RBG reflections, we save the results of L.N because we will use it again for specular
 					lightPosition = float4(_PointLightPositionX[index], _PointLightPositionY[index], _PointLightPositionZ[index], 1.0);
@@ -140,8 +146,7 @@ Shader "Unlit/PhongShaderUnityLights"
 					L = normalize(lightPosition - v.worldVertex.xyz);
 					lLength = clamp(5/length(lightPosition - v.worldVertex.xyz), 0, 0.45);
 					LdotN = dot(L, interpolatedNormal);
-					LdotN = saturate(LdotN) > 0 ? 1 : 0;
-					dif = _fAtt * lightColour.rgb * _Kd * saturate(LdotN); // * v.color.rgb;
+					dif = _fAtt * lightColour.rgb * _Kd * v.color.rgb * saturate(LdotN);
 
 					V = normalize(_WorldSpaceCameraPos - v.worldVertex.xyz);
 					H = normalize(V + L);

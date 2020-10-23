@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Turret3
+  m_Name: DarkerGreyMat
   m_Shader: {fileID: 4800000, guid: 16b9517b41343a5498c0758cd955c685, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -77,6 +77,7 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Outline: 0.8
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -88,8 +89,12 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _PointLightBlues: {r: 1, g: 1, b: 1, a: 1}
     - _PointLightColor: {r: 1, g: 0, b: 0, a: 1}
+    - _PointLightGreens: {r: 1, g: 1, b: 1, a: 1}
     - _PointLightPositionX: {r: 0, g: 0, b: 0, a: 0}
     - _PointLightPositionY: {r: 0, g: 0, b: 0, a: 0}
     - _PointLightPositionZ: {r: 0, g: 0, b: 0, a: 0}
-    - _SurfaceColor: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 1}
+    - _PointLightReds: {r: 1, g: 1, b: 1, a: 1}
+    - _SurfaceColor: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
