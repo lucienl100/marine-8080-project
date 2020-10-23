@@ -9,6 +9,8 @@ TagManager:
   - Ground Check
   - Shield
   - Turret
+  - IgnoreProjectiles
+  - Railgun
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,7 @@ public class R2Turret : MonoBehaviour
     public Transform player;
     public GameObject projectile;
     private Transform t;
-    public float range = 10f;
+    public float range = 15f;
     public float intFireDelay = 0.15f;
     private float timeToFire;
     private float firingDelay = 1.5f;
@@ -93,9 +93,5 @@ public class R2Turret : MonoBehaviour
             }
         }
         return false;
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(t.position, range);
     }
 }

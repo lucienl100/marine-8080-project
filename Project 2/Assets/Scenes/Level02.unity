@@ -5595,6 +5595,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d5125f73cc80244bbde9d8282d5aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &317783961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317783955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43723b10ee4052c48b01f693b1e989fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  am: {fileID: 485812442}
+  pushStrength: 0
+--- !u!65 &317783962
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317783955}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5, z: 2}
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!1 &330974702
 GameObject:
   m_ObjectHideFlags: 0
@@ -10824,6 +10851,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: xbotAI2 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1242845513808383683, guid: 12b54f1683f363e48bc3f0376b1334c2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7069472600654760947, guid: 12b54f1683f363e48bc3f0376b1334c2,
         type: 3}
       propertyPath: player
@@ -11116,6 +11148,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1676104213}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &485812442 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2739813201493860073, guid: 5ee224129f3c21c44a6caa0e2a73610c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1109608776}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e151846f3d7271e43885d54ca9bfce8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &494192720
 GameObject:
   m_ObjectHideFlags: 0
@@ -30009,10 +30053,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2739813200881310277, guid: 5ee224129f3c21c44a6caa0e2a73610c,
+        type: 3}
+      propertyPath: m_TagString
+      value: IgnoreProjectiles
+      objectReference: {fileID: 0}
     - target: {fileID: 2739813202309182380, guid: 5ee224129f3c21c44a6caa0e2a73610c,
         type: 3}
       propertyPath: pushStrength
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739813202309182382, guid: 5ee224129f3c21c44a6caa0e2a73610c,
+        type: 3}
+      propertyPath: m_TagString
+      value: IgnoreProjectiles
       objectReference: {fileID: 0}
     - target: {fileID: 2739813202412132688, guid: 5ee224129f3c21c44a6caa0e2a73610c,
         type: 3}

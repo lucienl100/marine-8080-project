@@ -99,11 +99,11 @@ MonoBehaviour:
   rail: {fileID: 6464726438939001174, guid: 30d1d4194ebea2d4ab54995f959212e9, type: 3}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   rotateSpeed: 10
   range: 30
   maxDistance: 300
-  intFireDelay: 2
+  intFireDelay: 0
 --- !u!1 &6522586816096398190
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 5142147700426882639}
   m_Layer: 0
   m_Name: Railgun
-  m_TagString: Turret
+  m_TagString: Railgun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

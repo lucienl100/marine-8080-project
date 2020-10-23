@@ -4779,8 +4779,8 @@ GameObject:
   - component: {fileID: 6762195906795720480}
   - component: {fileID: 975515321312585568}
   - component: {fileID: 4262582473844467110}
-  - component: {fileID: 4888629158941273068}
   - component: {fileID: 3427147218868424574}
+  - component: {fileID: 4888629158941273068}
   - component: {fileID: 2379976423051071733}
   m_Layer: 10
   m_Name: ProjectileHoming
@@ -4853,19 +4853,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &4888629158941273068
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5788357839380250163}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.3
-  m_Center: {x: 0, y: 0, z: 0.12}
 --- !u!54 &3427147218868424574
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4882,6 +4869,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 104
   m_CollisionDetection: 0
+--- !u!135 &4888629158941273068
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5788357839380250163}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Center: {x: 0, y: 0, z: 0.12}
 --- !u!114 &2379976423051071733
 MonoBehaviour:
   m_ObjectHideFlags: 0

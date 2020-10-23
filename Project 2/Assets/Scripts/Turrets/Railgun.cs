@@ -21,14 +21,14 @@ public class Railgun : MonoBehaviour, ITurret
     public float range = 40f;
     public float maxDistance = 300f;
     private float distToCollision;
-    public float intFireDelay = 2f;
+    public float intFireDelay = 0f;
     private float unarmDelay = 0.5f;
     private float barrelLength = 3.5f;
     private float delayBetweenWarning = 1.5f;
     private float timeToFireTracer;
     private float timeToFireRail;
     private float timeToUnarm;
-    private float firingDelay = 4f;
+    private float firingDelay = 2.5f;
     Vector3 lineOfSightBot;
     float highAngle = 45f;
     void Start() 
@@ -83,7 +83,6 @@ public class Railgun : MonoBehaviour, ITurret
             if (Physics.Raycast(adjustedBase + barrelLength * currentRotation, currentRotation, out hit, Mathf.Infinity, groundLayer))
             {
                 distToCollision = Mathf.Min(maxDistance, hit.distance);
-                Debug.Log(hit.distance);
             }
             FireTracer(tracer);
             timeToFireTracer = firingDelay;

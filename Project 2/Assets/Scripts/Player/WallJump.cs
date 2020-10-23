@@ -32,13 +32,14 @@ public class WallJump : MonoBehaviour
 		if (movementScript.inAir && jumpTimer > 0 && Input.GetKeyDown(KeyCode.Space))
 		{
 			bool isRight = collisionLocation.x > transform.position.x ? true : false;
-			if ((lastWallJump == null || Mathf.Abs(transform.position.x - lastWallJump.x) >= minJumpDistance))
+			if ((isRight && Input.GetKey(KeyCode.D)) || (!isRight && Input.GetKey(KeyCode.A)) && (lastWallJump == null || Mathf.Abs(transform.position.x - lastWallJump.x) >= minJumpDistance))
 			{
 				Debug.Log("walljump");
 				movementScript.CeaseControl();
 				lastWallJump = transform.position;
 				movementScript.Jump();
-				Debug.Log(new Vector3(1, 0, 0) * pushStrength * (collisionLocation.x > transform.position.x ? -1 : 1));
+				movementScript.maxRestrictSpeedScale = 0.4f;
+				movementScript.recoverDuration = 3f;
 				movementScript.AddVelocity(new Vector3(1, 0, 0) * pushStrength * (isRight ? -1 : 1));
 			}
 		}

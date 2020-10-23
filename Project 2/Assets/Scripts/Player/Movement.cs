@@ -19,13 +19,14 @@ public class Movement : MonoBehaviour
     public Transform model;
     public Vector3 groundCheckPosition;
     public LayerMask groundMask;
-    float playerHeight = 1.84f;
+    public float maxRestrictSpeedScale = 1f;
+    public bool isSliding = false;
     float speedScale = 1f;
     float jumptime = 0.8f;
     float maxAirVelocity = 10f;
     public bool initialJump;
-    bool landing = false;
-    float timer;
+    public float timer;
+    public float recoverDuration = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -82,7 +83,6 @@ public class Movement : MonoBehaviour
         maxAirVelocity = 10f;
         //  Prevents height from decaying if it is not the first jump
         initialJump = false;
-        timer = jumptime;
         velocity.y = jumpSpeed;
         inJump = true;
     }
@@ -134,18 +134,30 @@ public class Movement : MonoBehaviour
     public void CeaseControl()
     {
         speedScale = 0.001f;
+        timer = recoverDuration;
+        Debug.Log(recoverDuration);
     }
     public void RegainControl()
     {
         speedScale = speedScale*1.1f;
-        if (speedScale > 0.4f)
+        if (speedScale > maxRestrictSpeedScale)
         {
-            speedScale = 0.4f;
+            speedScale = maxRestrictSpeedScale;
+        }
+        Recover();
+    }
+    public void Recover()
+    {
+        timer -= Time.deltaTime;
+        if (timer < 0f)
+        {
+            isSliding = false;
+            maxRestrictSpeedScale = 1f;
         }
     }
     public void ControlGroundVelocity(float x)
     {
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || isSliding)
         {
             velocity.x += x * accelerationAmount * speedScale;
         }
