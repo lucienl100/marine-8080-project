@@ -138,6 +138,40 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5194527759985526875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5340438157933616736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07108df16fcc841428c082c71d9b7bc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  maxLights: 4
+  sphereSize: 30
+--- !u!114 &8841690175487581232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8961224628411824233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07108df16fcc841428c082c71d9b7bc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  maxLights: 4
+  sphereSize: 30
 --- !u!1001 &156765503947252733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -591,6 +625,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 3853268898807207900, guid: b1c3a38b6f015514882b806c33ee98c5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3a44051172311c64aa6925c72862dbba, type: 2}
     - target: {fileID: 3882815353823017779, guid: b1c3a38b6f015514882b806c33ee98c5,
         type: 3}
       propertyPath: m_Layer
@@ -652,6 +691,11 @@ PrefabInstance:
         'mixamorig:RightHand'\n\tTransform 'mixamorig:RightShoulder'\n\tand more
         ...\n\tFrom animation clip 'Pistol Idle'"
       objectReference: {fileID: 0}
+    - target: {fileID: 6148737315974723067, guid: b1c3a38b6f015514882b806c33ee98c5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e47cc2b455de984c823300d614ec031, type: 2}
     - target: {fileID: 6240733294840144465, guid: b1c3a38b6f015514882b806c33ee98c5,
         type: 3}
       propertyPath: m_Layer
@@ -714,6 +758,18 @@ GameObject:
 --- !u!4 &1636425238552027429 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b1c3a38b6f015514882b806c33ee98c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1242845513718286030}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5340438157933616736 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2656431786303760210, guid: b1c3a38b6f015514882b806c33ee98c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1242845513718286030}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8961224628411824233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7882376022164389543, guid: b1c3a38b6f015514882b806c33ee98c5,
     type: 3}
   m_PrefabInstance: {fileID: 1242845513718286030}
   m_PrefabAsset: {fileID: 0}

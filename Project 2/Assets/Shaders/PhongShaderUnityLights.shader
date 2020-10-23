@@ -16,7 +16,9 @@ Shader "Unlit/PhongShaderUnityLights"
         _Kd ("Diffuse reflection constant",Range(0,5)) = 1
         _Ks ("Specular reflection constant", Range(0,5)) = 0.15
         _specN ("SpecularN", Range(1,20)) = 1
-        _PointLightColor ("Point Light Color 1", Color) = (1, 1, 1)
+		_PointLightReds ("Point Light Color 1", Vector) = (1, 1, 1, 1)
+		_PointLightBlues ("Point Light Color 2", Vector) = (1, 1, 1, 1)
+		_PointLightGreens ("Point Light Color 3", Vector) = (1, 1, 1, 1)
         _PointLightPositionX ("Point Light Position X", Vector) = (0.0, 0.0, 0.0, 0.0)
 		_PointLightPositionY ("Point Light Position Y", Vector) = (0.0, 0.0, 0.0, 0.0)
 		_PointLightPositionZ ("Point Light Position Z", Vector) = (0.0, 0.0, 0.0, 0.0)
@@ -60,7 +62,9 @@ Shader "Unlit/PhongShaderUnityLights"
 			float _Kd;
 			float _Ks;
 			float _specN;
-			float3 _PointLightColor;
+			float4 _PointLightReds;
+			float4 _PointLightBlues;
+			float4 _PointLightGreens;
 			float4 _PointLightPositionX;
 			float4 _PointLightPositionY;
 			float4 _PointLightPositionZ;
@@ -103,7 +107,7 @@ Shader "Unlit/PhongShaderUnityLights"
 
 				 // Calculate ambient RGB intensities
                 float3 amb = v.color.rgb * UNITY_LIGHTMODEL_AMBIENT.rgb * _Ka;
-				color.rgb = amb.rgb * mainTexture.rgb;
+				color.rgb =  amb.rgb * mainTexture.rgb;
 
                 // Calculate diffuse RBG reflections, we save the results of L.N because we will use it again for specular
                 float3 L;
@@ -117,21 +121,22 @@ Shader "Unlit/PhongShaderUnityLights"
 				// Calculate specular
                 float3 spe  ;
 				float4 lightPosition;
-
+				float4 lightColour;
 
 				for (int index = 0; index < 4; index++) {
 					// Calculate diffuse RBG reflections, we save the results of L.N because we will use it again for specular
 					lightPosition = float4(_PointLightPositionX[index], _PointLightPositionY[index], _PointLightPositionZ[index], 1.0);
+					lightColour = float4(_PointLightReds[index], _PointLightBlues[index], _PointLightGreens[index], 1.0);
 					L = normalize(lightPosition - v.worldVertex.xyz);
-					lLength = clamp(5/length(lightPosition - v.worldVertex.xyz), 0, 0.5);
+					lLength = clamp(5/length(lightPosition - v.worldVertex.xyz), 0, 0.45);
 					LdotN = dot(L, interpolatedNormal);
-					dif = _fAtt * _PointLightColor.rgb * _Kd * v.color.rgb * saturate(LdotN);
+					dif = _fAtt * lightColour.rgb * _Kd * v.color.rgb * saturate(LdotN);
 
 					V = normalize(_WorldSpaceCameraPos - v.worldVertex.xyz);
 					H = normalize(V + L);
 
 					// Calculate specular
-					spe = _fAtt * _PointLightColor.rgb * _Ks * pow(saturate(dot(interpolatedNormal, H)), _specN);
+					spe = _fAtt * lightColour.rgb * _Ks * pow(saturate(dot(interpolatedNormal, H)), _specN);
 
 					// Combine Phong illumination model components
 					color.rgb += lLength * (dif.rgb + spe.rgb);

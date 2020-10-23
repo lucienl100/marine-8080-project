@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: commando
+  m_Name: xbot2
   m_Shader: {fileID: 4800000, guid: 16b9517b41343a5498c0758cd955c685, type: 3}
-  m_ShaderKeywords: _ALPHABLEND_ON
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -40,14 +40,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 35431cb1272fd7741b60cc9f431a3c05, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _NormalMap:
+    - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -59,12 +55,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Ramp:
-        m_Texture: {fileID: 2800000, guid: 3281e7d3927047d42bdf0e9d5d4501ed, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _mainTexture:
-        m_Texture: {fileID: 2800000, guid: 35431cb1272fd7741b60cc9f431a3c05, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _normalMap:
@@ -72,38 +64,34 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _BillboardStaticLight: 0
     - _BumpScale: 1
-    - _Cutoff: 0.502
+    - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DstBlend: 10
-    - _Emission: 0
+    - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Intensity: 0.8
     - _Ka: 1.5
     - _Kd: 1
     - _Ks: 0.15
     - _Metallic: 0
-    - _Mode: 2
+    - _Mode: 0
     - _OcclusionStrength: 1
-    - _Opacity: 1
     - _Parallax: 0.02
-    - _Saturation: 0.65
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SrcBlend: 5
-    - _ToonContrast: 0.25
+    - _SrcBlend: 1
     - _UVSec: 0
-    - _ZWrite: 0
+    - _ZWrite: 1
     - _fAtt: 1
     - _specN: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
-    - _PointLightColor: {r: 1, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _PointLightBlues: {r: 1, g: 1, b: 1, a: 1}
+    - _PointLightGreens: {r: 1, g: 1, b: 1, a: 1}
     - _PointLightPositionX: {r: 0, g: 0, b: 0, a: 0}
     - _PointLightPositionY: {r: 0, g: 0, b: 0, a: 0}
     - _PointLightPositionZ: {r: 0, g: 0, b: 0, a: 0}
-    - _StaticToonLight: {r: 0, g: 3, b: 0, a: 0}
+    - _PointLightReds: {r: 1, g: 1, b: 1, a: 1}
+    - _SurfaceColor: {r: 1, g: 0, b: 0, a: 1}
