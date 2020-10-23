@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4758157535624439154}
   m_Layer: 8
   m_Name: MissileTurret
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
   player: {fileID: 0}
   projectile: {fileID: 5788357839380250163, guid: 17b8fe5a266288a47a0961f77d9c936a,
     type: 3}
-  range: 20
+  range: 30
   intFireDelay: 2
 --- !u!1001 &4858936858002886019
 PrefabInstance:

@@ -80,7 +80,6 @@ public class Movement : MonoBehaviour
     {
         Debug.Log("jump");
         maxAirVelocity = 10f;
-        CeaseControl();
         //  Prevents height from decaying if it is not the first jump
         initialJump = false;
         timer = jumptime;

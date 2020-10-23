@@ -10,6 +10,7 @@ public class ProjectileHoming : MonoBehaviour, IProjectile
     public float acceleration = 5f;
     public float rotateSpeed = 25f;
     public float yRotation = 270f;
+    public GameObject explosion;
     public GameObject emitterFire;
     public GameObject emitterSmoke;
     private Vector3 finalLookRotation;
@@ -68,7 +69,8 @@ public class ProjectileHoming : MonoBehaviour, IProjectile
         emitterSmoke.GetComponent<Expiry>().timeLeft = 1.5f;
         emitterFire.GetComponent<ParticleSystem>().Stop();
         emitterSmoke.GetComponent<ParticleSystem>().Stop();
-        emitterSmoke.SetActive(false);
+        GameObject ex = Instantiate(explosion, t.position, t.rotation);
+        Destroy(ex, 0.25f);
         Destroy(this.gameObject);
     }
 }

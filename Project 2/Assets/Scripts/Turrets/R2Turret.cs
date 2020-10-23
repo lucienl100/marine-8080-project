@@ -2,27 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HomingTurret : MonoBehaviour, ITurret
+public class R2Turret : MonoBehaviour
 {
     public Transform player;
     public GameObject projectile;
     private Transform t;
     public float range = 10f;
-    public float intFireDelay = 2f;
+    public float intFireDelay = 0.15f;
     private float timeToFire;
-    private float firingDelay = 3f;
-    Vector3 secondaryFireOff = new Vector3(0f, 0.5f, 0f);
-    private float barrelLength = 1.5f;
-    Vector3 lineOfSightBot;
-    float highAngle = 45f;
-    void Start() 
+    private float firingDelay = 1.5f;
+    public Transform firingPosition;
+    void Start()
     {
         timeToFire = intFireDelay;
         t = this.transform;
-        lineOfSightBot = t.forward;
     }
     void Update()
     {
+        Debug.Log(t.position);
         if (SearchPlayer())
         {
             RotateTowardsPlayer();
@@ -47,23 +44,18 @@ public class HomingTurret : MonoBehaviour, ITurret
         Vector3 turretToPlayer = player.position - t.position;
 
         Quaternion turretToPlayerAngle = Quaternion.LookRotation(turretToPlayer);
-        t.rotation = Quaternion.Slerp(t.rotation, turretToPlayerAngle, Time.deltaTime * 5f);
+        t.rotation = Quaternion.Slerp(t.rotation, turretToPlayerAngle, Time.deltaTime * 10f);
     }
     public void FireProjectile(GameObject projectile)
     {
-        GameObject proju = Instantiate(projectile, t.position + secondaryFireOff + t.forward * barrelLength, t.rotation);
-        GameObject projd = Instantiate(projectile, t.position + t.forward * barrelLength, t.rotation);
-        ProjectileHoming homing = proju.GetComponent<ProjectileHoming>();
-        homing.player = player;
-        homing.yRotation = t.eulerAngles.y;
-        homing = projd.GetComponent<ProjectileHoming>();
-        homing.player = player;
-        homing.yRotation = t.eulerAngles.y;
+        GameObject proj = Instantiate(projectile, firingPosition.position, t.rotation);
+        BasicProjectile bp = proj.GetComponent<BasicProjectile>();
+        bp.player = player;
     }
     public bool SearchPlayer()
     {
         Vector3 turretToPlayer = player.position - t.position;
-        if (CheckHeight() && Vector3.Angle(turretToPlayer, lineOfSightBot) <= highAngle && turretToPlayer.magnitude <= range)
+        if (CheckHeight() && turretToPlayer.magnitude <= range)
         {
             return true;
         }
@@ -71,7 +63,7 @@ public class HomingTurret : MonoBehaviour, ITurret
     }
     bool CheckHeight()
     {
-        // Debug.Log(t.parent.rotation.eulerAngles);
+        Debug.Log(t.parent.rotation.eulerAngles);
         if (t.parent.rotation.eulerAngles.z == 180f)
         {
             if (player.position.y <= t.position.y)
@@ -79,9 +71,23 @@ public class HomingTurret : MonoBehaviour, ITurret
                 return true;
             }
         }
-        else
+        else if (t.parent.rotation.eulerAngles.z == 0f && t.parent.rotation.eulerAngles.y == 270f)
         {
             if (player.position.y >= t.position.y)
+            {
+                return true;
+            }
+        }
+        else if (t.parent.rotation.eulerAngles.x == 90f)
+        {
+            if (player.position.x >= t.position.x)
+            {
+                return true;
+            }
+        }
+        else if (t.parent.rotation.eulerAngles.x == 270f)
+        {
+            if (player.position.x >= t.position.x)
             {
                 return true;
             }
