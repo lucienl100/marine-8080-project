@@ -94,8 +94,4 @@ public class R2Turret : MonoBehaviour
         }
         return false;
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(t.position, range);
-    }
 }

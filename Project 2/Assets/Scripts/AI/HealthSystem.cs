@@ -15,7 +15,7 @@ public class HealthSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        originalColor = meshRenderer.material.color;
+        originalColor = meshRenderer.material.GetVector("_SurfaceColor");
         currentHp = maxHp;
         lap = this.GetComponent<LookAtPlayer>();
         a = this.GetComponent<Activate>();

@@ -88,8 +88,4 @@ public class HomingTurret : MonoBehaviour, ITurret
         }
         return false;
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(t.position, range);
-    }
 }

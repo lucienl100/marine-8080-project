@@ -11,12 +11,20 @@ Shader "Unlit/PhongShaderUnityLights"
 {
 	Properties
 	{
+		
+		_SurfaceColor ("Surface Color", Color) = (1, 1, 1, 1)
 		_fAtt ("fAtt", Range(0,5)) = 1
         _Ka ("Ambient reflection constant",Range(0,5)) = 1.5
         _Kd ("Diffuse reflection constant",Range(0,5)) = 1
         _Ks ("Specular reflection constant", Range(0,5)) = 0.15
         _specN ("SpecularN", Range(1,20)) = 1
-        _PointLightColor ("Point Light Color 1", Color) = (1, 1, 1)
+        // _PointLightColor1 ("Point Light Color 1", Color) = (1, 1, 1)
+		// _PointLightColor2 ("Point Light Color 2", Color) = (1, 1, 1)
+		// _PointLightColor3 ("Point Light Color 3", Color) = (1, 1, 1)
+		// _PointLightColor4 ("Point Light Color 4", Color) = (1, 1, 1)
+		_PointLightReds ("Point Light Color 1", Vector) = (1, 1, 1, 1)
+		_PointLightBlues ("Point Light Color 2", Vector) = (1, 1, 1, 1)
+		_PointLightGreens ("Point Light Color 3", Vector) = (1, 1, 1, 1)
         _PointLightPositionX ("Point Light Position X", Vector) = (0.0, 0.0, 0.0, 0.0)
 		_PointLightPositionY ("Point Light Position Y", Vector) = (0.0, 0.0, 0.0, 0.0)
 		_PointLightPositionZ ("Point Light Position Z", Vector) = (0.0, 0.0, 0.0, 0.0)
@@ -55,12 +63,20 @@ Shader "Unlit/PhongShaderUnityLights"
 			float4 _mainTexture_ST;
 			sampler2D _normalMap;
 			float4 _normalMap_ST;
+			float4 _SurfaceColor;
 			float _fAtt;
 			float _Ka;
 			float _Kd;
 			float _Ks;
 			float _specN;
-			float3 _PointLightColor;
+			// float4 _PointLightColor1;
+			// float4 _PointLightColor2;
+			// float4 _PointLightColor3;
+			// float4 _PointLightColor4;
+			float4 _PointLightReds;
+			float4 _PointLightBlues;
+			float4 _PointLightGreens;
+			
 			float4 _PointLightPositionX;
 			float4 _PointLightPositionY;
 			float4 _PointLightPositionZ;
@@ -78,7 +94,7 @@ Shader "Unlit/PhongShaderUnityLights"
 
 				// Transform vertex in world coordinates to camera coordinates, and pass colour
 				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
-				o.color = v.color;
+				o.color = _SurfaceColor;
 
 				// Pass out the world vertex position and world normal to be interpolated
 				// in the fragment shader (and utilised)
@@ -117,22 +133,22 @@ Shader "Unlit/PhongShaderUnityLights"
 				// Calculate specular
                 float3 spe  ;
 				float4 lightPosition;
-
-
+				float4 lightColour;
 				for (int index = 0; index < 4; index++) {
 					// Calculate diffuse RBG reflections, we save the results of L.N because we will use it again for specular
 					lightPosition = float4(_PointLightPositionX[index], _PointLightPositionY[index], _PointLightPositionZ[index], 1.0);
+					lightColour = float4(_PointLightReds[index], _PointLightBlues[index], _PointLightGreens[index], 1.0);
 					L = normalize(lightPosition - v.worldVertex.xyz);
-					lLength = clamp(5/length(lightPosition - v.worldVertex.xyz), 0, 0.5);
+					lLength = clamp(5/length(lightPosition - v.worldVertex.xyz), 0, 0.45);
 					LdotN = dot(L, interpolatedNormal);
 					LdotN = saturate(LdotN) > 0 ? 1 : 0;
-					dif = _fAtt * _PointLightColor.rgb * _Kd * v.color.rgb * saturate(LdotN);
+					dif = _fAtt * lightColour.rgb * _Kd * saturate(LdotN); // * v.color.rgb;
 
 					V = normalize(_WorldSpaceCameraPos - v.worldVertex.xyz);
 					H = normalize(V + L);
 
 					// Calculate specular
-					spe = _fAtt * _PointLightColor.rgb * _Ks * pow(saturate(dot(interpolatedNormal, H)), _specN);
+					spe = _fAtt * lightColour.rgb * _Ks * pow(saturate(dot(interpolatedNormal, H)), _specN);
 
 					// Combine Phong illumination model components
 					color.rgb += lLength * (dif.rgb + spe.rgb);
