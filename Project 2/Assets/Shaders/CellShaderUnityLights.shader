@@ -11,7 +11,6 @@ Shader "Unlit/PhongShaderUnityLights"
 {
 	Properties
 	{
-		
 		_SurfaceColor ("Surface Color", Color) = (1, 1, 1, 1)
 		_fAtt ("fAtt", Range(0,5)) = 1
         _Ka ("Ambient reflection constant",Range(0,5)) = 1.5

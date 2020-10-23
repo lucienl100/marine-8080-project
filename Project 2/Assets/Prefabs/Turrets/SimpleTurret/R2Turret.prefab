@@ -197,6 +197,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b6b250dea66d06548ae592f2eab9b056,
+        type: 3}
+      propertyPath: m_TagString
+      value: Turret
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6b250dea66d06548ae592f2eab9b056, type: 3}
 --- !u!1 &4033310810353715097 stripped
