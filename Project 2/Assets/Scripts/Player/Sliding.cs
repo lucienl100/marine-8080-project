@@ -9,6 +9,8 @@ public class Sliding : MonoBehaviour
     public AnimationManager am;
     CharacterController cc;
     BoxCollider slidingcollider;
+    float colliderHeight;
+    Vector3 colliderCenter;
     public float pushStrength = 3f;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,9 @@ public class Sliding : MonoBehaviour
         mv = this.GetComponent<Movement>();
         cc = this.GetComponent<CharacterController>();
         slidingcollider = this.GetComponent<BoxCollider>();
+        colliderHeight = cc.height;
+        colliderCenter = cc.center;
+
     }
 
     // Update is called once per frame
@@ -30,6 +35,8 @@ public class Sliding : MonoBehaviour
                 am.Slide();
                 mv.isSliding = true;
                 cc.detectCollisions = false;
+                cc.center = new Vector3(0f, -1f, 0f);
+                cc.height = 0f;
                 slidingcollider.enabled = true;
                 Invoke("GetUp", 1f);
             }
@@ -42,9 +49,12 @@ public class Sliding : MonoBehaviour
         mv.recoverDuration = 1f;
         mv.AddVelocity(new Vector3(1, 0, 0) * pushStrength * (lm.playerIsRight ? -1 : 1));
         mv.CeaseControl();
+
     }
     void GetUp()
     {
+        cc.center = colliderCenter;
+        cc.height = colliderHeight;
         slidingcollider.enabled = false;
         cc.detectCollisions = true;
     }

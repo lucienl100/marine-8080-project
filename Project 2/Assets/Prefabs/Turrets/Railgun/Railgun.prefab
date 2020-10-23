@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6522586815325682445}
   - component: {fileID: 6522586815325682444}
   - component: {fileID: 6522586815325682450}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RailGun01_Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   rotateSpeed: 10
-  range: 30
+  range: 50
   maxDistance: 300
   intFireDelay: 0
 --- !u!1 &6522586816096398190
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 6522586817198159924}
   - component: {fileID: 6522586816096398188}
   - component: {fileID: 6522586816096398191}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RailGun01_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 6522586816620965364}
   - component: {fileID: 4042594228335528925}
   - component: {fileID: 5142147700426882639}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Railgun
   m_TagString: Railgun
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4321724187406001277}
   - component: {fileID: 7375464278510628499}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sound Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

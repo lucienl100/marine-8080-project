@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RailgunProjectile : MonoBehaviour, IProjectile
 {
-    public float speed = 300f;
+    public float speed = 500f;
     public float maxDist = 300f;
     public float maxPlayerDist = 300f;
     public float lifetime = 2f;
@@ -12,7 +12,6 @@ public class RailgunProjectile : MonoBehaviour, IProjectile
     private Transform t;
     private Vector3 startPosition;
     private Vector3 rotation;
-    public Transform player;
     void Start() 
     {
         t = this.transform;
@@ -28,39 +27,7 @@ public class RailgunProjectile : MonoBehaviour, IProjectile
     }
     public void Fly()
     {
-        if (CheckPlayer())
-        {
-            DamagePlayer();
-        }
         t.position += t.forward * Time.deltaTime * speed;
-    }
-    public bool CheckPlayer()
-    {
-        RaycastHit hit;
-        float endCheck = Mathf.Min((t.position - startPosition).magnitude, maxDist);
-        float dist = (player.position - t.position).magnitude;
-        if (Physics.Raycast(t.position, -rotation, out hit) && dist <= endCheck && timer >= 1f)
-        {
-            if (hit.collider.gameObject.tag == "Player")
-            {
-                Debug.Log("Railgun hit player!");
-                DamagePlayer();
-            }
-            
-        }
-        return false;
-    }
-    public void DamagePlayer()
-    {
-        //Damage the player
-    }
-    public void OnCollisionEnter(Collision c) 
-    {
-        Debug.Log("Collided!");
-        if (c.gameObject.tag == "Player")
-        {
-            //Damage the player
-        }
     }
     public void TimerCheck()
     {
@@ -72,11 +39,6 @@ public class RailgunProjectile : MonoBehaviour, IProjectile
     }
     public void OutOfBoundsCheck()
     {
-        float dist = (t.position - player.position).magnitude;
-        if (dist > maxPlayerDist)
-        {
-            speed = 0f;
-        }
         if ((t.position - startPosition).magnitude > maxDist)
         {
             speed = 0f;

@@ -17,18 +17,19 @@ public class Railgun : MonoBehaviour, ITurret
     private Vector3 turretToPlayer;
     private Vector3 currentRotation;
     private float facingRight = -1f;
-    public float rotateSpeed = 10f;
+    public float rotateSpeed = 20f;
     public float range = 40f;
     public float maxDistance = 300f;
     private float distToCollision;
-    public float intFireDelay = 0f;
+    public float intFireDelay = 1f;
     private float unarmDelay = 0.5f;
     private float barrelLength = 3.5f;
     private float delayBetweenWarning = 1.5f;
     private float timeToFireTracer;
     private float timeToFireRail;
     private float timeToUnarm;
-    private float firingDelay = 2.5f;
+    public float firingDelay = 2.5f;
+    public LayerMask playerLayer;
     Vector3 lineOfSightBot;
     float highAngle = 45f;
     void Start() 
@@ -101,7 +102,11 @@ public class Railgun : MonoBehaviour, ITurret
         se.Play();
         GameObject proj = Instantiate(projectile, adjustedBase + barrelLength * currentRotation, t.rotation);
         RailgunProjectile rail = proj.GetComponent<RailgunProjectile>();
-        rail.player = player;
+        RaycastHit hit;
+        if (Physics.Raycast(adjustedBase + barrelLength * currentRotation, t.rotation * Vector3.forward, out hit, distToCollision, playerLayer))
+        {
+            //player.gameObject.GetComponent<Health>().Damage();
+        }
         rail.maxDist = distToCollision;
     }
     public bool SearchPlayer()
