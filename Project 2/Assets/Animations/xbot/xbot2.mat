@@ -94,4 +94,4 @@ Material:
     - _PointLightPositionY: {r: 0, g: 0, b: 0, a: 0}
     - _PointLightPositionZ: {r: 0, g: 0, b: 0, a: 0}
     - _PointLightReds: {r: 1, g: 1, b: 1, a: 1}
-    - _SurfaceColor: {r: 1, g: 0, b: 0, a: 1}
+    - _SurfaceColor: {r: 0.2735849, g: 0.26971343, b: 0.26971343, a: 1}

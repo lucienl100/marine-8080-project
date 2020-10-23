@@ -12,10 +12,12 @@ public class HealthSystem : MonoBehaviour
     public ShootingBasic sb;
     Activate a;
     Color originalColor;
+    float fAtt;
     // Start is called before the first frame update
     void Start()
     {
         originalColor = meshRenderer.material.GetVector("_SurfaceColor");
+        fAtt = meshRenderer.material.GetFloat("_Ka");
         currentHp = maxHp;
         lap = this.GetComponent<LookAtPlayer>();
         a = this.GetComponent<Activate>();
@@ -49,11 +51,13 @@ public class HealthSystem : MonoBehaviour
     }
     void Flash()
     {
-        meshRenderer.material.color = Color.red;
+        meshRenderer.material.SetVector("_SurfaceColor", Color.red);
+        meshRenderer.material.SetFloat("_Ka", 4);
     }
     void ResetColor()
     {
-        meshRenderer.material.color = originalColor;
+        meshRenderer.material.SetVector("_SurfaceColor", originalColor);
+        meshRenderer.material.SetFloat("_Ka", fAtt);
     }
     void Decay()
     {

@@ -27,10 +27,13 @@ public class Movement : MonoBehaviour
     public bool initialJump;
     public float timer;
     public float recoverDuration = 2f;
+    private float inAirDelay = 0.1f;
+    private float inAirTimer;
 
     // Start is called before the first frame update
     void Start()
     {
+        inAirTimer = 0.1f;
         velocity = Vector3.zero;
         timer = 0f;
     }
@@ -96,13 +99,21 @@ public class Movement : MonoBehaviour
             inAir = false;
             if (velocity.y < 0)
             {
+                inAirTimer = inAirDelay;
                 inJump = false;
                 initialJump = false;
             }
         }
         else
         {
-            inAir = true;
+            if (inAirTimer <= 0f)
+            {
+                inAir = true;
+            }
+            else
+            {
+                inAirTimer -= Time.deltaTime;
+            }
         }
     }
 
