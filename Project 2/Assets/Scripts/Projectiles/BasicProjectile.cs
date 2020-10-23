@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class BasicProjectile : MonoBehaviour
 {
+    public float damage = 10f;
     public float speed = 5f;
     public float maxDist = 50f;
     Vector3 startPosition;
     private Transform t;
+    public GameObject explosion;
     public Transform player;
     public Quaternion rotation;
     void Start()
@@ -36,10 +38,14 @@ public class BasicProjectile : MonoBehaviour
         if (c.gameObject.tag == "Player")
         {
             Destroy(this.gameObject);
+            GameObject ex = Instantiate(explosion, t.position, t.rotation);
+            Destroy(ex, 0.5f);
         }
         else if (c.gameObject.tag != "Projectile" && c.gameObject.tag != "Enemy")
         {
             Destroy(this.gameObject);
+            GameObject ex = Instantiate(explosion, t.position, t.rotation);
+            Destroy(ex, 0.5f);
         }
     }
     public void OutOfBoundsCheck()

@@ -34,7 +34,7 @@ public class LookAtPlayer : MonoBehaviour
         dirToLook = player.position - t.position;
         RaycastHit hit;
         Physics.Raycast(t.position, dirToLook, out hit, Mathf.Infinity, layerMask);
-        if (Mathf.Abs(player.position.x - t.position.x) < spotRange && hit.transform.tag == "Player")
+        if ((player.position - t.position).magnitude < spotRange && hit.transform.tag == "Player")
         {
             anim.SetBool("playerInRange", true);
             inRange = true;
@@ -57,8 +57,11 @@ public class LookAtPlayer : MonoBehaviour
     }
     void LateUpdate()
     {
-        Quaternion rotation = Quaternion.LookRotation(dirToLook);
-        chest.rotation = Quaternion.Euler(rotation.eulerAngles.x + 15f, chest.eulerAngles.y + 35f, rotation.eulerAngles.z);
+        if (inRange)
+        {
+            Quaternion rotation = Quaternion.LookRotation(dirToLook);
+            chest.rotation = Quaternion.Euler(rotation.eulerAngles.x + 15f, chest.eulerAngles.y + 35f, rotation.eulerAngles.z);
+        }
     }
     void FollowPlayer()
     {

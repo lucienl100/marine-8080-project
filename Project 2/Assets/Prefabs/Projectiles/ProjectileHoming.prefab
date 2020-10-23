@@ -4900,6 +4900,8 @@ MonoBehaviour:
   acceleration: 5
   rotateSpeed: 50
   yRotation: 270
+  explosion: {fileID: 6801000411339992395, guid: f2646568166050445a18a19fbdb6c0b7,
+    type: 3}
   emitterFire: {fileID: 2882088521583161987}
   emitterSmoke: {fileID: 7659092618788906233}
   facingRight: 0

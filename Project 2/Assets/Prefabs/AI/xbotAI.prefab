@@ -102,6 +102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 100
+  meshRenderer: {fileID: 4930260072304571189}
+  anim: {fileID: 1242845513497190026}
+  sb: {fileID: 1242845513039947272}
 --- !u!114 &7069472600654760947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +248,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 156765503947252733}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1242845513039947272 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1374591904664028661, guid: 9c302494cc9417d4ebf1cc6714ef1c98,
+    type: 3}
+  m_PrefabInstance: {fileID: 156765503947252733}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 227c260d63db987469a5670476b3b97b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1242845513718286030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -699,6 +714,12 @@ GameObject:
 --- !u!4 &1636425238552027429 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b1c3a38b6f015514882b806c33ee98c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1242845513718286030}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4930260072304571189 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6148737315974723067, guid: b1c3a38b6f015514882b806c33ee98c5,
     type: 3}
   m_PrefabInstance: {fileID: 1242845513718286030}
   m_PrefabAsset: {fileID: 0}
