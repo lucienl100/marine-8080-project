@@ -81,6 +81,7 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Outline: 0.5
     - _Parallax: 0.02
     - _Shininess: 1
     - _SmoothnessTextureChannel: 0
@@ -93,10 +94,13 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _PointLightBlues: {r: 1, g: 1, b: 1, a: 1}
     - _PointLightColor: {r: 1, g: 0, b: 0, a: 1}
     - _PointLightColor1: {r: 1, g: 1, b: 1, a: 1}
     - _PointLightColor2: {r: 1, g: 1, b: 1, a: 1}
     - _PointLightColor3: {r: 1, g: 1, b: 1, a: 1}
+    - _PointLightGreens: {r: 1, g: 1, b: 1, a: 1}
     - _PointLightPosition: {r: 0, g: 0, b: 0, a: 1}
     - _PointLightPosition1: {r: 25, g: 5, b: -1, a: 1}
     - _PointLightPosition2: {r: 0, g: 0, b: 0, a: 1}
@@ -104,4 +108,6 @@ Material:
     - _PointLightPositionX: {r: 0, g: 0, b: 0, a: 0}
     - _PointLightPositionY: {r: 0, g: 0, b: 0, a: 0}
     - _PointLightPositionZ: {r: 0, g: 0, b: 0, a: 0}
+    - _PointLightReds: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    - _SurfaceColor: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1}

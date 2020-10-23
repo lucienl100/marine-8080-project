@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightToShaderPass : MonoBehaviour
+public class LightToShaderNonSkin : MonoBehaviour
 {
     public LayerMask lightLayer;
-    SkinnedMeshRenderer renderer;
+    MeshRenderer renderer;
     Vector3 naught = new Vector3(-9999f, -9999f, -9999f);
     Transform player;
     public int maxLights = 4;
     public float sphereSize = 30f;
     void Start()
     {
-        renderer = this.GetComponent<SkinnedMeshRenderer>();
+        renderer = this.GetComponent<MeshRenderer>();
         player = this.transform;
     }
 
@@ -61,9 +61,5 @@ public class LightToShaderPass : MonoBehaviour
         renderer.material.SetVector("_PointLightReds", Red);
         renderer.material.SetVector("_PointLightBlues", Blue);
         renderer.material.SetVector("_PointLightGreens", Green);
-        // renderer.material.SetVector("_PointLightColor1", colours[0]);
-        // renderer.material.SetVector("_PointLightColor2", colours[1]);
-        // renderer.material.SetVector("_PointLightColor3", colours[2]);
-        // renderer.material.SetVector("_PointLightColor4", colours[3]);
     }
 }

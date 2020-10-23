@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StaticLightDetection : MonoBehaviour
+public class LightToShaderStatic : MonoBehaviour
 {
     public LayerMask lightLayer;
     Renderer renderer;

@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &9065639186147701593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4033310810283632765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20b2c2d274507b45b38af8033934674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  maxLights: 4
+  sphereSize: 50
 --- !u!54 &4267260710642184975
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -34,6 +51,23 @@ MonoBehaviour:
   range: 15
   intFireDelay: 0.25
   firingPosition: {fileID: 4267260709577341504}
+--- !u!114 &869985934631643438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4033310810353715097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20b2c2d274507b45b38af8033934674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  maxLights: 4
+  sphereSize: 50
 --- !u!1 &4267260709480894461
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,6 +221,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b6b250dea66d06548ae592f2eab9b056,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d47cc280d5ea6d94bbc8b51495b856ba, type: 2}
+    - target: {fileID: -7511558181221131132, guid: b6b250dea66d06548ae592f2eab9b056,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 05594b2d4c532aa4eb9a88e361e7a861, type: 2}
     - target: {fileID: 919132149155446097, guid: b6b250dea66d06548ae592f2eab9b056,
         type: 3}
       propertyPath: m_Name
@@ -293,6 +337,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b4083af338b2a9a47bf1e3431ad04d9a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d47cc280d5ea6d94bbc8b51495b856ba, type: 2}
+    - target: {fileID: -7511558181221131132, guid: b4083af338b2a9a47bf1e3431ad04d9a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 05594b2d4c532aa4eb9a88e361e7a861, type: 2}
     - target: {fileID: 919132149155446097, guid: b4083af338b2a9a47bf1e3431ad04d9a,
         type: 3}
       propertyPath: m_Name
@@ -300,6 +354,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4083af338b2a9a47bf1e3431ad04d9a, type: 3}
+--- !u!1 &4033310810283632765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b4083af338b2a9a47bf1e3431ad04d9a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4267260710674748716}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4373807212901085895 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b4083af338b2a9a47bf1e3431ad04d9a,
