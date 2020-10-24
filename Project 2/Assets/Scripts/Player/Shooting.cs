@@ -40,7 +40,7 @@ public class Shooting : MonoBehaviour
         {
             if (timer <= 0f && ammo != 0)
             {
-                FireRailgun();
+                FireShotgun(); // change this to change gun
                 ammo -= 1;
                 if (ammo == 0)
                 {
@@ -190,7 +190,7 @@ public class Shooting : MonoBehaviour
             {
                 if (enemy.transform.tag == "Enemy")
                 {
-                    enemy.transform.gameObject.GetComponent<HealthSystem>().Damage(50f);
+                    enemy.transform.gameObject.GetComponent<HealthSystem>().Damage(100f);
                 }
             }
         }
