@@ -38,7 +38,8 @@ public class ShootingBasic : MonoBehaviour
         Vector3 lookdir = player.position - t.position;
         Quaternion dir = Quaternion.LookRotation(lookdir);
         dir.eulerAngles = new Vector3(dir.eulerAngles.x, lookdir.x > 0 ? 90f : 270f, 0f);
-        Instantiate(projectile, t.position, dir);
+        GameObject proj = Instantiate(projectile, t.position, dir);
+        proj.GetComponent<BasicProjectile>().player = player;
     }
     public bool ReadyToFire()
     {

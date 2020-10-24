@@ -7,6 +7,7 @@ public class Railgun : MonoBehaviour, ITurret
     public AudioSource se;
     public Transform player;
     public GameObject tracer;
+    public float damage = 50f;
     public GameObject rail;
     public LayerMask groundLayer;
     private Transform t;
@@ -32,6 +33,7 @@ public class Railgun : MonoBehaviour, ITurret
     public LayerMask playerLayer;
     Vector3 lineOfSightBot;
     float highAngle = 45f;
+    //public GameObject hitbox;
     void Start() 
     {
         t = this.transform;
@@ -103,9 +105,11 @@ public class Railgun : MonoBehaviour, ITurret
         GameObject proj = Instantiate(projectile, adjustedBase + barrelLength * currentRotation, t.rotation);
         RailgunProjectile rail = proj.GetComponent<RailgunProjectile>();
         RaycastHit hit;
-        if (Physics.Raycast(adjustedBase + barrelLength * currentRotation, t.rotation * Vector3.forward, out hit, distToCollision, playerLayer))
+        Vector3 barrelposition = adjustedBase + barrelLength * currentRotation;
+        if (Physics.Raycast(barrelposition, t.rotation * Vector3.forward, out hit, distToCollision, playerLayer))
         {
-            //player.gameObject.GetComponent<Health>().Damage();
+            //Instantiate(hitbox, hit.point, Quaternion.identity);
+            player.GetComponent<PlayerHealth>().Damage(damage);
         }
         rail.maxDist = distToCollision;
     }

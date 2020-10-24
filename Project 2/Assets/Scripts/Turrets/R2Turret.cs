@@ -19,7 +19,6 @@ public class R2Turret : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(t.position);
         if (SearchPlayer())
         {
             RotateTowardsPlayer();
@@ -63,7 +62,6 @@ public class R2Turret : MonoBehaviour
     }
     bool CheckHeight()
     {
-        Debug.Log(t.parent.rotation.eulerAngles);
         if (t.parent.rotation.eulerAngles.z == 180f)
         {
             if (player.position.y <= t.position.y)

@@ -5,6 +5,7 @@ using UnityEngine;
 public class ProjectileHoming : MonoBehaviour, IProjectile
 {
     public float speed = 1f;
+    public float damage = 20f;
     public float intSpeed = 1f;
     public float maxSpeed = 10.0f;
     public float acceleration = 5f;
@@ -53,7 +54,7 @@ public class ProjectileHoming : MonoBehaviour, IProjectile
         if (c.gameObject.tag == "Player")
         {
             Debug.Log("Collided!");
-            //Damage the player
+            player.GetComponent<PlayerHealth>().Damage(damage);
             Explode();
         }
         else if (c.gameObject.tag != "Projectile" && c.gameObject.tag != "Enemy")

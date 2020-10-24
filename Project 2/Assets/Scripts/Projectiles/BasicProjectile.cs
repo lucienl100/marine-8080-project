@@ -37,15 +37,19 @@ public class BasicProjectile : MonoBehaviour
         Debug.Log("Collided!");
         if (c.gameObject.tag == "Player")
         {
-            Destroy(this.gameObject);
+            
+            player.GetComponent<PlayerHealth>().Damage(damage);
             GameObject ex = Instantiate(explosion, t.position, t.rotation);
+            Destroy(this.gameObject);
             Destroy(ex, 0.5f);
+            
         }
         else if (c.gameObject.tag != "Projectile" && c.gameObject.tag != "Enemy" && c.gameObject.tag != "IgnoreProjectiles")
         {
-            Destroy(this.gameObject);
             GameObject ex = Instantiate(explosion, t.position, t.rotation);
+            Destroy(this.gameObject);
             Destroy(ex, 0.5f);
+           
         }
     }
     public void OutOfBoundsCheck()
