@@ -55,11 +55,13 @@ public class LightToShaderNonSkin : MonoBehaviour
         Vector4 Red = new Vector4(colours[0][0], colours[1][0], colours[2][0], colours[3][0]);
         Vector4 Blue = new Vector4(colours[0][1], colours[1][1], colours[2][1], colours[3][1]);
         Vector4 Green = new Vector4(colours[0][2], colours[1][2], colours[2][2], colours[3][2]);
-        renderer.material.SetVector("_PointLightPositionX", X);
-        renderer.material.SetVector("_PointLightPositionY", Y);
-        renderer.material.SetVector("_PointLightPositionZ", Z);
-        renderer.material.SetVector("_PointLightReds", Red);
-        renderer.material.SetVector("_PointLightBlues", Blue);
-        renderer.material.SetVector("_PointLightGreens", Green);
+        foreach (Material material in renderer.materials){
+            material.SetVector("_PointLightPositionX", X);
+            material.SetVector("_PointLightPositionY", Y);
+            material.SetVector("_PointLightPositionZ", Z);
+            material.SetVector("_PointLightReds", Red);
+            material.SetVector("_PointLightBlues", Blue);
+            material.SetVector("_PointLightGreens", Green);
+        }
     }
 }
