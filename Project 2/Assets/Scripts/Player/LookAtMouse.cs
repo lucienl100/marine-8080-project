@@ -11,7 +11,7 @@ public class LookAtMouse : MonoBehaviour
     public bool playerIsRight = false;
     Quaternion faceRotation = Quaternion.Euler(new Vector3(0f, 90f, 0f));
     public Camera cam;
-    private float camdepth = 12.5f;
+    private float camdepth = 15f;
     public Animator anim;
     Transform t;
     public Transform crosshair;
