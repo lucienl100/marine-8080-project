@@ -11,6 +11,7 @@ public class Sliding : MonoBehaviour
     BoxCollider slidingcollider;
     float colliderHeight;
     Vector3 colliderCenter;
+
     public float pushStrength = 3f;
     // Start is called before the first frame update
     void Start()
@@ -57,5 +58,9 @@ public class Sliding : MonoBehaviour
         cc.height = colliderHeight;
         slidingcollider.enabled = false;
         cc.detectCollisions = true;
+    }
+    void CooldownTick()
+    {
+
     }
 }
