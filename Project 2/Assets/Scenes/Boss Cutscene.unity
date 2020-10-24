@@ -230,7 +230,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b2e1a8ec8d8e438498f561e1f9b1bcb2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15
+      value: 49.13
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b2e1a8ec8d8e438498f561e1f9b1bcb2,
         type: 3}
@@ -302,6 +302,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: cupa (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b2e1a8ec8d8e438498f561e1f9b1bcb2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6399112912505996239, guid: b2e1a8ec8d8e438498f561e1f9b1bcb2,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -321,7 +326,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17604
+  m_Name: pb_Mesh14646
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -494,17 +499,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b2e1a8ec8d8e438498f561e1f9b1bcb2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21
+      value: 39.04
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b2e1a8ec8d8e438498f561e1f9b1bcb2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.590515
+      value: 2.44
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b2e1a8ec8d8e438498f561e1f9b1bcb2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.6
+      value: -19.03
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b2e1a8ec8d8e438498f561e1f9b1bcb2,
         type: 3}
@@ -679,6 +684,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: cupa (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b2e1a8ec8d8e438498f561e1f9b1bcb2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6399112912505996239, guid: b2e1a8ec8d8e438498f561e1f9b1bcb2,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -692,6 +702,29 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 18902050}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &985007394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 98441592412511861, guid: f87b6d3778e422547b006d50fb7540c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1018774520}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &985007397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985007394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20b2c2d274507b45b38af8033934674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  maxLights: 4
+  sphereSize: 50
 --- !u!1001 &1018774520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -699,6 +732,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 28920074047313884, guid: f87b6d3778e422547b006d50fb7540c2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 05594b2d4c532aa4eb9a88e361e7a861, type: 2}
     - target: {fileID: 980893885969959420, guid: f87b6d3778e422547b006d50fb7540c2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -759,7 +797,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerStation (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1826736769482422338, guid: f87b6d3778e422547b006d50fb7540c2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 05594b2d4c532aa4eb9a88e361e7a861, type: 2}
+    m_RemovedComponents:
+    - {fileID: 980893886402329995, guid: f87b6d3778e422547b006d50fb7540c2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f87b6d3778e422547b006d50fb7540c2, type: 3}
 --- !u!1 &1074076766
 GameObject:
@@ -873,6 +917,29 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1818561053}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1174351694 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7328314837670306128, guid: f87b6d3778e422547b006d50fb7540c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1018774520}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1174351695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174351694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20b2c2d274507b45b38af8033934674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  maxLights: 4
+  sphereSize: 50
 --- !u!1 &1246074981
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,7 +983,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.18939124, g: 0.2669744, b: 0.3018868, a: 1}
+  m_Color: {r: 0, g: 0.0666666, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1110,7 +1177,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1589445000
 Transform:
   m_ObjectHideFlags: 0
@@ -1199,6 +1266,52 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1664130773 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7328314837670306128, guid: f87b6d3778e422547b006d50fb7540c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 980893885184328379}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1664130774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664130773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20b2c2d274507b45b38af8033934674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  maxLights: 4
+  sphereSize: 50
+--- !u!1 &1722572556 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7392149852521614620, guid: f87b6d3778e422547b006d50fb7540c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 980893885184328379}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1722572557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722572556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20b2c2d274507b45b38af8033934674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  maxLights: 4
+  sphereSize: 50
 --- !u!1 &1812391673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,7 +1355,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.18939124, g: 0.2669744, b: 0.3018868, a: 1}
+  m_Color: {r: 1, g: 0.14372864, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1386,6 +1499,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: cupa
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b2e1a8ec8d8e438498f561e1f9b1bcb2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6399112912505996239, guid: b2e1a8ec8d8e438498f561e1f9b1bcb2,
         type: 3}
@@ -8054,10 +8172,8 @@ MonoBehaviour:
   assetGuid: 
   m_IsSelectable: 1
   m_SelectedFaces: 
-  m_SelectedEdges:
-  - a: 304
-    b: 305
-  m_SelectedVertices: 3001000031010000
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!23 &1824822284
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8076,7 +8192,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d6a941647e4e36d42ac0b972a28b996c, type: 2}
+  - {fileID: 2100000, guid: 9262c092b0a270246bfb7554f8376b16, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8188,6 +8304,52 @@ RectTransform:
   m_AnchoredPosition: {x: 612, y: 317}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2056853870 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7392149852521614620, guid: f87b6d3778e422547b006d50fb7540c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1018774520}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2056853871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056853870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20b2c2d274507b45b38af8033934674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  maxLights: 4
+  sphereSize: 50
+--- !u!1 &2095357756 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 98441592412511861, guid: f87b6d3778e422547b006d50fb7540c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 980893885184328379}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2095357759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095357756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20b2c2d274507b45b38af8033934674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  maxLights: 4
+  sphereSize: 50
 --- !u!1 &2109966020
 GameObject:
   m_ObjectHideFlags: 0
@@ -8289,6 +8451,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 28920074047313884, guid: f87b6d3778e422547b006d50fb7540c2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 05594b2d4c532aa4eb9a88e361e7a861, type: 2}
     - target: {fileID: 980893885969959420, guid: f87b6d3778e422547b006d50fb7540c2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8349,7 +8516,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerStation
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1826736769482422338, guid: f87b6d3778e422547b006d50fb7540c2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 05594b2d4c532aa4eb9a88e361e7a861, type: 2}
+    m_RemovedComponents:
+    - {fileID: 980893886402329995, guid: f87b6d3778e422547b006d50fb7540c2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f87b6d3778e422547b006d50fb7540c2, type: 3}
 --- !u!1 &1439147777801795113 stripped
 GameObject:
@@ -8373,7 +8546,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   maxLights: 4
-  sphereSize: 30
+  sphereSize: 50
 --- !u!1001 &2396224342014719030
 PrefabInstance:
   m_ObjectHideFlags: 0

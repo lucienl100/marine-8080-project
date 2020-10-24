@@ -1,56 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &980893885362505150
+--- !u!114 &980893886402329995
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4335795922157169769}
+  m_GameObject: {fileID: 98441592412511861}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b20b2c2d274507b45b38af8033934674, type: 3}
+  m_Script: {fileID: 11500000, guid: 07108df16fcc841428c082c71d9b7bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lightLayer:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 20480
   maxLights: 4
-  sphereSize: 50
---- !u!114 &980893885390969143
+  sphereSize: 30
+--- !u!114 &980893886402330006
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8663546759138747305}
+  m_GameObject: {fileID: 98441592412511861}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b20b2c2d274507b45b38af8033934674, type: 3}
+  m_Script: {fileID: 11500000, guid: 78da8ecd7024c204289e1ee11abe580d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightLayer:
-    serializedVersion: 2
-    m_Bits: 16384
-  maxLights: 4
-  sphereSize: 50
---- !u!114 &980893885411674656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6966993891068859147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b20b2c2d274507b45b38af8033934674, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightLayer:
-    serializedVersion: 2
-    m_Bits: 16384
-  maxLights: 4
-  sphereSize: 50
+  speed: 40
 --- !u!1 &980893885969959421
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,43 +64,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &980893886402330006
+--- !u!114 &980893886645745454
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 98441592412511861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78da8ecd7024c204289e1ee11abe580d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 40
---- !u!114 &980893886402329995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 98441592412511861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07108df16fcc841428c082c71d9b7bc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightLayer:
-    serializedVersion: 2
-    m_Bits: 20480
-  maxLights: 4
-  sphereSize: 30
---- !u!114 &980893886545370220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5326512476838160406}
+  m_GameObject: {fileID: 3327117612729889175}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b20b2c2d274507b45b38af8033934674, type: 3}
@@ -132,13 +81,30 @@ MonoBehaviour:
     m_Bits: 16384
   maxLights: 4
   sphereSize: 50
---- !u!114 &980893886645745454
+--- !u!114 &980893885362505150
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3327117612729889175}
+  m_GameObject: {fileID: 4335795922157169769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20b2c2d274507b45b38af8033934674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  maxLights: 4
+  sphereSize: 50
+--- !u!114 &980893886545370220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5326512476838160406}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b20b2c2d274507b45b38af8033934674, type: 3}
@@ -4903,6 +4869,23 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &980893885411674656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6966993891068859147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20b2c2d274507b45b38af8033934674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  maxLights: 4
+  sphereSize: 50
 --- !u!1 &7151199062049597450
 GameObject:
   m_ObjectHideFlags: 0
@@ -9657,6 +9640,23 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &980893885390969143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8663546759138747305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20b2c2d274507b45b38af8033934674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  maxLights: 4
+  sphereSize: 50
 --- !u!1001 &980893885161718813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9738,12 +9738,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9262c092b0a270246bfb7554f8376b16, type: 2}
+      objectReference: {fileID: 2100000, guid: 05594b2d4c532aa4eb9a88e361e7a861, type: 2}
     - target: {fileID: -5924210980324765869, guid: 212368001be89a445b8400fa3b502160,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9262c092b0a270246bfb7554f8376b16, type: 2}
+      objectReference: {fileID: 2100000, guid: 05594b2d4c532aa4eb9a88e361e7a861, type: 2}
     - target: {fileID: 919132149155446097, guid: 212368001be89a445b8400fa3b502160,
         type: 3}
       propertyPath: m_Name
@@ -9753,17 +9753,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9262c092b0a270246bfb7554f8376b16, type: 2}
+      objectReference: {fileID: 2100000, guid: 05594b2d4c532aa4eb9a88e361e7a861, type: 2}
     - target: {fileID: 2023345538146396321, guid: 212368001be89a445b8400fa3b502160,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9262c092b0a270246bfb7554f8376b16, type: 2}
+      objectReference: {fileID: 2100000, guid: 05594b2d4c532aa4eb9a88e361e7a861, type: 2}
     - target: {fileID: 3287999730043568668, guid: 212368001be89a445b8400fa3b502160,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9262c092b0a270246bfb7554f8376b16, type: 2}
+      objectReference: {fileID: 2100000, guid: f3631623002a4254298fd103c43ce8a8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 212368001be89a445b8400fa3b502160, type: 3}
 --- !u!4 &726887926823625718 stripped
@@ -9883,7 +9883,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9262c092b0a270246bfb7554f8376b16, type: 2}
+      objectReference: {fileID: 2100000, guid: f3631623002a4254298fd103c43ce8a8, type: 2}
     - target: {fileID: 919132149155446097, guid: e990d3c193ac24c4d90ba62bbc590a8e,
         type: 3}
       propertyPath: m_Name

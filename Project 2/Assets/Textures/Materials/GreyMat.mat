@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GreyMat - Copy
+  m_Name: GreyMat
   m_Shader: {fileID: 4800000, guid: 16b9517b41343a5498c0758cd955c685, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -77,7 +77,7 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Outline: 0.8
+    - _Outline: 0.99
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
