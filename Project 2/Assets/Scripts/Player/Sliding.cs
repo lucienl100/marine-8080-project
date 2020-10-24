@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Sliding : MonoBehaviour
 {
@@ -11,11 +12,14 @@ public class Sliding : MonoBehaviour
     BoxCollider slidingcollider;
     float colliderHeight;
     Vector3 colliderCenter;
-
+    public Slider slider;
+    public float cooldown = 5f;
+    private float cdTimer;
     public float pushStrength = 3f;
     // Start is called before the first frame update
     void Start()
     {
+        cdTimer = 0f;
         lm = this.GetComponent<LookAtMouse>();
         mv = this.GetComponent<Movement>();
         cc = this.GetComponent<CharacterController>();
@@ -28,7 +32,7 @@ public class Sliding : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl) && cdTimer <= 0f)
         {
             if (!mv.inAir && ((lm.playerIsRight && mv.velocity.x < -5f) || (!lm.playerIsRight && mv.velocity.x > 5f)))
             {
@@ -42,10 +46,15 @@ public class Sliding : MonoBehaviour
                 Invoke("GetUp", 1f);
             }
         }
-
+        if (cdTimer > 0f)
+        {
+            CooldownTick();
+        }
+        slider.value = Mathf.Max(cdTimer / cooldown, 0f);
     }
     void Slide()
     {
+        cdTimer = cooldown;
         mv.maxRestrictSpeedScale = 0.01f;
         mv.recoverDuration = 1f;
         mv.AddVelocity(new Vector3(1, 0, 0) * pushStrength * (lm.playerIsRight ? -1 : 1));
@@ -61,6 +70,6 @@ public class Sliding : MonoBehaviour
     }
     void CooldownTick()
     {
-
+        cdTimer -= Time.deltaTime;
     }
 }

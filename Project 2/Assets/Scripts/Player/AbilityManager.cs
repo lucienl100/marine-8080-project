@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AbilityManager : MonoBehaviour
 {
@@ -9,11 +10,16 @@ public class AbilityManager : MonoBehaviour
     public float shieldDuration = 3f;
     private float shieldTimer;
     public GameObject shield;
-    public GameObject activeShield;
+    GameObject activeShield;
     Transform player;
+    public float cooldown = 10f;
+    private float cdTimer;
+    public GameObject image;
+    public Slider slider;
     // Start is called before the first frame update
     void Start()
     {
+        cdTimer = 0f;
         shieldTimer = 0f;
         player = this.transform;
         shieldEnabled = false;
@@ -22,6 +28,7 @@ public class AbilityManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (shieldActive)
         {
             if (ShieldTimer())
@@ -30,17 +37,24 @@ public class AbilityManager : MonoBehaviour
                 DeactivateShield();
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Q) && shieldEnabled)
+        else if (Input.GetKeyDown(KeyCode.Q) && shieldEnabled && cdTimer <= 0f)
         {
             Shield();
         }
+        else if (cdTimer > 0f)
+        {
+            CooldownTick();
+        }
+        slider.value = Mathf.Max(cdTimer / cooldown, 0f);
     }
     public void EnableShield()
     {
+        image.SetActive(true);
         shieldEnabled = true;
     }
     public void Shield()
     {
+        cdTimer = cooldown;
         shieldTimer = shieldDuration;
         shieldActive = true;
         activeShield = Instantiate(shield, player.position, Quaternion.identity);
@@ -61,5 +75,9 @@ public class AbilityManager : MonoBehaviour
             shieldTimer -= Time.deltaTime;
             return false;
         }
+    }
+    void CooldownTick()
+    {
+        cdTimer -= Time.deltaTime;
     }
 }

@@ -103,18 +103,16 @@ public class Shooting : MonoBehaviour
         Vector3 adjustedBarrelEnd = new Vector3(barrelEnd.position.x, barrelEnd.position.y, -2.5f);
         Quaternion targetRot = chest.rotation;
         targetRot = Quaternion.Euler(new Vector3(targetRot.eulerAngles.x, lm.playerIsRight ? 270f : 90f, 0f));
-        float hitDistance = distance;
         Vector3 targetDir = (targetRot * Vector3.forward).normalized;
         Vector3 target = shootingOrigin.position + targetDir * distance;
-        
-
+        float hitDistance;
         for (int i = 0; i < 5; i++)
         {
             GameObject tracer = Instantiate(tracerRenderer, shootingOrigin.position, Quaternion.identity);
             LineRenderer lr = tracer.GetComponent<LineRenderer>();
             RaycastHit hit;
             Vector3 noisedTargetDir = new Vector3(targetDir.x, targetDir.y + Random.Range(-0.2f, 0.2f), targetDir.z);
-            if (Physics.Raycast(shootingOrigin.position, noisedTargetDir, out hit, distance, layerMask))
+            if (Physics.Raycast(shootingOrigin.position, noisedTargetDir, out hit, 30f, layerMask))
             {
                 if (hit.transform.tag == "Enemy")
                 {
@@ -122,6 +120,10 @@ public class Shooting : MonoBehaviour
                 }
                 hitDistance = hit.distance;
                 target = hit.point;
+            }
+            else
+            {
+                hitDistance = 30f;
             }
 
             lr.SetPosition(0, adjustedBarrelEnd);
