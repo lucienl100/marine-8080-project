@@ -48,7 +48,7 @@ Remember that _"this document"_ should be `well written` and formatted **appropr
 
 | Name | Task | State |
 | :---         |     :---:      |          ---: |
-| Timmy Truong  | Shaders, Video Editing, Interface and README     |![30%](https://progress-bar.dev/30)|
+| Timmy Truong  | Shaders, Video Editing, Interface, Lighting and README     |![30%](https://progress-bar.dev/30)|
 | Nathan Rearick    | Movement, Evaluation     |![50%](https://progress-bar.dev/50)|
 | Lucien Lu    | Level design, Turrets/Projectiles, AI, Main Menu, Camera, Abilities, Special Movement, Guns, UI      |![60%](https://progress-bar.dev/60)|
 
