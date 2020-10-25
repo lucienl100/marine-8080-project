@@ -25126,7 +25126,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 942258605}
-  - component: {fileID: 942258606}
   m_Layer: 0
   m_Name: Platforms (2)
   m_TagString: Untagged
@@ -25154,23 +25153,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 40
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &942258606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 942258604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b20b2c2d274507b45b38af8033934674, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  maxLights: 4
-  sphereSize: 50
 --- !u!1001 &945417091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52919,6 +52901,14 @@ PrefabInstance:
       propertyPath: ammoText
       value: 
       objectReference: {fileID: 544230632}
+    - target: {fileID: 277217343, guid: 5ee224129f3c21c44a6caa0e2a73610c, type: 3}
+      propertyPath: delayBetweenShots
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 277217343, guid: 5ee224129f3c21c44a6caa0e2a73610c, type: 3}
+      propertyPath: maxAmmo
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 317783961, guid: 5ee224129f3c21c44a6caa0e2a73610c, type: 3}
       propertyPath: slider
       value: 
@@ -69916,7 +69906,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh23710
+  m_Name: pb_Mesh229806
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

@@ -509,7 +509,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldDuration: 3
   shield: {fileID: 3194816815202814736, guid: 8f8a604ea8e6d2c458e8d317e23437e5, type: 3}
-  activeShield: {fileID: 0}
   cooldown: 10
   image: {fileID: 0}
   slider: {fileID: 0}

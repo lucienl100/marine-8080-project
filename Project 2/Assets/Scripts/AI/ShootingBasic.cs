@@ -8,13 +8,14 @@ public class ShootingBasic : MonoBehaviour
     public GameObject projectile;
     public AudioSource se;
     public float timeBetweenShots = 2f;
+    public float intDelay = 0.5f;
     private float timer;
     Transform player;
     Transform t;
     void Start()
     {
         player = lp.player;
-        timer = timeBetweenShots;
+        timer = 0f;
         t = this.transform;
     }
     // Update is called once per frame
@@ -22,14 +23,16 @@ public class ShootingBasic : MonoBehaviour
     {
         if (lp.inRange)
         {
+            Debug.Log("fire");
             if (ReadyToFire())
             {
+                
                 FireProjectile(projectile);
             }
         }
         else
         {
-            timer = timeBetweenShots;
+            timer = intDelay;
         }
     }
     public void FireProjectile(GameObject projectile)
