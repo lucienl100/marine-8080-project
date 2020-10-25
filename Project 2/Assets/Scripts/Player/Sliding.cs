@@ -40,7 +40,7 @@ public class Sliding : MonoBehaviour
                 am.Slide();
                 mv.isSliding = true;
                 cc.detectCollisions = false;
-                cc.center = new Vector3(0f, -1f, 0f);
+                cc.center = new Vector3(0f, -0.9f, 0f);
                 cc.height = 0f;
                 slidingcollider.enabled = true;
                 Invoke("GetUp", 1f);
