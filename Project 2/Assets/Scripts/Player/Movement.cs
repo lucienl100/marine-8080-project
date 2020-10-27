@@ -122,7 +122,7 @@ public class Movement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         if (!inAir && velocity.y < 0)
         {
-            velocity.y = -5f;
+            velocity.y = -3f;
         }
     }
     public void AddVelocity(Vector3 v)

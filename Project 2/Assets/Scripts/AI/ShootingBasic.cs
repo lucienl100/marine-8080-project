@@ -11,7 +11,7 @@ public class ShootingBasic : MonoBehaviour
     public float intDelay = 0.5f;
     private float timer;
     Transform player;
-    public Transform shootingOrigin;
+    Transform t;
     void Start()
     {
         player = lp.player;
@@ -38,10 +38,10 @@ public class ShootingBasic : MonoBehaviour
     public void FireProjectile(GameObject projectile)
     {
         se.Play();
-        Vector3 lookdir = player.position - shootingOrigin.position;
+        Vector3 lookdir = player.position - t.position;
         Quaternion dir = Quaternion.LookRotation(lookdir);
         dir.eulerAngles = new Vector3(dir.eulerAngles.x, lookdir.x > 0 ? 90f : 270f, 0f);
-        GameObject proj = Instantiate(projectile, shootingOrigin.position, dir);
+        GameObject proj = Instantiate(projectile, t.position, dir);
         proj.GetComponent<BasicProjectile>().player = player;
     }
     public bool ReadyToFire()
