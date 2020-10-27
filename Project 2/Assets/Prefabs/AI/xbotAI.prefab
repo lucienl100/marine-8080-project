@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 1242845513808383680}
   - component: {fileID: 1242845513808383681}
   - component: {fileID: 1242845513808383682}
-  - component: {fileID: 9012587981315729658}
   - component: {fileID: 7069472600654760947}
+  - component: {fileID: 5835239156039057201}
+  - component: {fileID: 2044784777512352715}
   m_Layer: 9
   m_Name: xbotAI
   m_TagString: Enemy
@@ -89,22 +90,6 @@ MonoBehaviour:
     m_Bits: 4352
   weapon: {fileID: 1238994976673883028}
   chest: {fileID: 112826924798650058}
---- !u!114 &9012587981315729658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242845513808383683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d91d04de9805bb347965146b6bc011ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHp: 100
-  meshRenderer: {fileID: 4930260072304571189}
-  anim: {fileID: 1242845513497190026}
-  sb: {fileID: 1242845513039947272}
 --- !u!114 &7069472600654760947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +104,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lap: {fileID: 1242845513808383682}
   player: {fileID: 0}
+--- !u!114 &5835239156039057201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242845513808383683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 227c260d63db987469a5670476b3b97b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lp: {fileID: 1242845513808383682}
+  projectile: {fileID: 3602674599940093403, guid: af586654ac88de8409300c962c6e7f48,
+    type: 3}
+  se: {fileID: 4274466429129642795}
+  timeBetweenShots: 2
+  intDelay: 0.5
+  shootingOrigin: {fileID: 1238994976673883028}
+--- !u!114 &2044784777512352715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242845513808383683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4940380f9815e5e4e9d40ed4647dafae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 100
+  meshRenderer: {fileID: 4930260072304571189}
+  anim: {fileID: 1242845513497190026}
+  type: 0
 --- !u!95 &1242845513497190026
 Animator:
   serializedVersion: 3
@@ -282,18 +302,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 156765503947252733}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1242845513039947272 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1374591904664028661, guid: 9c302494cc9417d4ebf1cc6714ef1c98,
+--- !u!82 &4274466429129642795 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4142473781393584342, guid: 9c302494cc9417d4ebf1cc6714ef1c98,
     type: 3}
   m_PrefabInstance: {fileID: 156765503947252733}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 227c260d63db987469a5670476b3b97b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1242845513718286030
 PrefabInstance:
   m_ObjectHideFlags: 0
