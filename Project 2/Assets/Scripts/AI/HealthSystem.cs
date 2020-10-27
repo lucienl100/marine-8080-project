@@ -9,9 +9,11 @@ public class HealthSystem : MonoBehaviour
     public SkinnedMeshRenderer meshRenderer;
     public Animator anim;
     LookAtPlayer lap;
-    public ShootingBasic sb;
+    ShootingBasic sb;
+    ShootingSpread sp;
     Activate a;
     Color originalColor;
+    public int type;
     float fAtt;
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,14 @@ public class HealthSystem : MonoBehaviour
         currentHp = maxHp;
         lap = this.GetComponent<LookAtPlayer>();
         a = this.GetComponent<Activate>();
+        if (type == 0)
+        {
+            sb = this.GetComponent<ShootingBasic>();
+        }
+        if (type == 1)
+        {
+            sp = this.GetComponent<ShootingSpread>();
+        }
     }
 
     // Update is called once per frame
@@ -43,7 +53,14 @@ public class HealthSystem : MonoBehaviour
             Debug.Log("destroyed");
             a.enabled = false;
             lap.enabled = false;
-            sb.enabled = false;
+            if (type == 0)
+            {
+                sb.enabled = false;
+            }
+            if (type == 1)
+            {
+                sp.enabled = false;
+            }
             this.GetComponent<CapsuleCollider>().enabled = false;
             this.GetComponent<Rigidbody>().useGravity = false;
             Decay();

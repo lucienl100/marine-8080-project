@@ -63,9 +63,5 @@ public class LightToShaderSkin : MonoBehaviour
             material.SetVector("_PointLightBlues", Blue);
             material.SetVector("_PointLightGreens", Green);
         }
-        // renderer.material.SetVector("_PointLightColor1", colours[0]);
-        // renderer.material.SetVector("_PointLightColor2", colours[1]);
-        // renderer.material.SetVector("_PointLightColor3", colours[2]);
-        // renderer.material.SetVector("_PointLightColor4", colours[3]);
     }
 }
