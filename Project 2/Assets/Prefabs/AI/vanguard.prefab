@@ -1321,8 +1321,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5373511909612013338}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0.64807755, y: -1.5, z: -25.263203}
+  m_LocalRotation: {x: 0.08052145, y: -0.3812272, z: 0.033353075, w: 0.9203639}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
   m_LocalScale: {x: 1.3999996, y: 1.4, z: 1.3999996}
   m_Children:
   - {fileID: 975327272913304884}
@@ -1330,7 +1330,7 @@ Transform:
   - {fileID: 4152162177706222528}
   m_Father: {fileID: 8798693323156562906}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 10, y: -45, z: 0}
 --- !u!95 &1673492863365466074
 Animator:
   serializedVersion: 3
@@ -1475,14 +1475,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5462219140201827366}
-  m_LocalRotation: {x: -0.00019818335, y: -0.00016437253, z: 0.00017886839, w: 1}
+  m_LocalRotation: {x: 0.70441604, y: -0.06162843, z: -0.06162843, w: 0.70441604}
   m_LocalPosition: {x: 0.119, y: 0.03, z: 0.015}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 5462219140202123268}
   m_Father: {fileID: 6910291523316188547}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 100, y: 90, z: 90}
 --- !u!1 &5462219140201827372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1507,7 +1507,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5462219140201827372}
   m_LocalRotation: {x: -0.00019818335, y: -0.00016443207, z: 0.00017886839, w: 1}
-  m_LocalPosition: {x: 0.77200395, y: 0.102545075, z: 0.016851319}
+  m_LocalPosition: {x: 0.746, y: -0.084, z: 0.156}
   m_LocalScale: {x: 0.099999994, y: 0.10000001, z: 0.100000024}
   m_Children: []
   m_Father: {fileID: 6910291523316188547}
@@ -2776,7 +2776,7 @@ GameObject:
   - component: {fileID: 8798693323156562727}
   - component: {fileID: 666403288765687318}
   - component: {fileID: 4494365937524275334}
-  - component: {fileID: 3323189869113801113}
+  - component: {fileID: 1717383279084779364}
   m_Layer: 9
   m_Name: vanguard
   m_TagString: Enemy
@@ -2826,9 +2826,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.4
-  m_Height: 1.8
+  m_Height: 2.5
   m_Direction: 1
-  m_Center: {x: 0, y: -0.5, z: 0}
+  m_Center: {x: 0, y: -0.7, z: 0}
 --- !u!114 &8798693323156562727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2851,7 +2851,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4352
   weapon: {fileID: 5462219140202123270}
-  chest: {fileID: 4847860211733506596}
+  chest: {fileID: 6267967623035132495}
 --- !u!114 &666403288765687318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2883,9 +2883,9 @@ MonoBehaviour:
     type: 3}
   se: {fileID: 1757709459601352870}
   timeBetweenShots: 1.5
-  intDelay: 0
+  intDelay: 0.5
   shootingOrigin: {fileID: 5462219140202123276}
---- !u!114 &3323189869113801113
+--- !u!114 &1717383279084779364
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2894,13 +2894,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8798693323156562726}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e471b762ebe824e448abe85c5e867dc0, type: 3}
+  m_Script: {fileID: 11500000, guid: 4940380f9815e5e4e9d40ed4647dafae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 200
   meshRenderer: {fileID: 5501632790050653462}
   anim: {fileID: 1673492863365466074}
-  sb: {fileID: 4494365937524275334}
+  type: 1
 --- !u!1 &8932741209548114150
 GameObject:
   m_ObjectHideFlags: 0
