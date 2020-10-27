@@ -20,7 +20,16 @@ public class LightToShaderStatic : MonoBehaviour
         float[] positionY = new float[maxLights];
         float[] positionZ = new float[maxLights];
         Vector4[] colours = new Vector4[maxLights];
+        List<Collider> sortedLights = new List<Collider>();
         foreach (var collider in lights)
+        {
+            sortedLights.Add(collider);
+            i++;
+        }
+        sortedLights.Sort((light1, light2) => light1.ClosestPoint(this.transform.position).magnitude.CompareTo(light2.ClosestPoint(this.transform.position).magnitude));
+        sortedLights = sortedLights.GetRange(0, Mathf.Min(i, 4));
+        i = 0;
+        foreach (var collider in sortedLights)
         {
             if (i > 3)
             {
