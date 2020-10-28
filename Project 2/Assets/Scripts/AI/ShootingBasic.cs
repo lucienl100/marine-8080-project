@@ -16,7 +16,6 @@ public class ShootingBasic : MonoBehaviour
     {
         player = lp.player;
         timer = 0f;
-        t = this.transform;
     }
     // Update is called once per frame
     void Update()

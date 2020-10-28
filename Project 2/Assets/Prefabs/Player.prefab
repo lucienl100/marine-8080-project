@@ -463,9 +463,9 @@ MonoBehaviour:
   inAir: 0
   inJump: 0
   cc: {fileID: 2739813202412132693}
-  anim: {fileID: 0}
+  anim: {fileID: 2739813201493860074}
   groundCheck: {fileID: 2739813200881310276}
-  model: {fileID: 0}
+  model: {fileID: 2739813200918084566}
   groundCheckPosition: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
