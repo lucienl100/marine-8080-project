@@ -187,6 +187,7 @@ public class Movement : MonoBehaviour
         {
             velocity.x = -maxSpeed;
         }
+        velocity.x += additionalV.x;
     }
     public void ControlAirVelocity(float x)
     {

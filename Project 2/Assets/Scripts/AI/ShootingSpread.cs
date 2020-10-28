@@ -42,7 +42,7 @@ public class ShootingSpread : MonoBehaviour
         
         for (int i = 0; i < 4; i++)
         {
-            Vector3 newDir = new Vector3(lookdir.x, lookdir.y + (float)(i - 2) * 0.2f, lookdir.z);
+            Vector3 newDir = new Vector3(lookdir.x, lookdir.y + (float)(i - 1) * 0.25f, lookdir.z);
             Quaternion dir = Quaternion.LookRotation(newDir);
             dir.eulerAngles = new Vector3(dir.eulerAngles.x, newDir.x > 0 ? 90f : 270f, 0f);
             GameObject proj = Instantiate(projectile, shootingOrigin.position, dir);

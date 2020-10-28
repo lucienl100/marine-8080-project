@@ -4852,7 +4852,7 @@ MonoBehaviour:
   damage: 14
   speed: 10
   maxDist: 50
-  explosion: {fileID: 6801000411339992395, guid: 00fe7abc4b3e23a4bbbf2acaf39a1abd,
+  explosion: {fileID: 6801000411339992395, guid: 79e6981a92868324ba1140cdec85943d,
     type: 3}
   player: {fileID: 0}
   rotation: {x: 0, y: 0, z: 0, w: 0}

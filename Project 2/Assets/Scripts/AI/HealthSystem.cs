@@ -9,12 +9,17 @@ public class HealthSystem : MonoBehaviour
     public SkinnedMeshRenderer meshRenderer;
     public Animator anim;
     LookAtPlayer lap;
+    BossMovement bm;
+    Attacks at;
     ShootingBasic sb;
     ShootingSpread sp;
     Activate a;
+
+    public AudioSource hitsound;
     Color originalColor;
     public int type;
     float fAtt;
+    public float ambientAmp = 4f;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +36,11 @@ public class HealthSystem : MonoBehaviour
         {
             sp = this.GetComponent<ShootingSpread>();
         }
+        if (type == 2)
+        {
+            bm = this.GetComponent<BossMovement>();
+            at = this.GetComponent<Attacks>();
+        }
     }
 
     // Update is called once per frame
@@ -44,6 +54,7 @@ public class HealthSystem : MonoBehaviour
         currentHp -= damage;
         Flash();
         Invoke("ResetColor", 0.1f);
+        hitsound.Play();
     }
     void CheckHealth()
     {
@@ -61,6 +72,11 @@ public class HealthSystem : MonoBehaviour
             {
                 sp.enabled = false;
             }
+            if (type == 2)
+            {
+                bm.enabled = false;
+                at.enabled = false;
+            }
             this.GetComponent<CapsuleCollider>().enabled = false;
             this.GetComponent<Rigidbody>().useGravity = false;
             Decay();
@@ -69,7 +85,7 @@ public class HealthSystem : MonoBehaviour
     void Flash()
     {
         meshRenderer.material.SetVector("_SurfaceColor", Color.red);
-        meshRenderer.material.SetFloat("_Ka", 4);
+        meshRenderer.material.SetFloat("_Ka", ambientAmp);
     }
     void ResetColor()
     {
