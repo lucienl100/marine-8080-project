@@ -7,7 +7,6 @@ public class Attacks : MonoBehaviour
     Transform t;
     public Transform player;
     public Transform headLaserOrigin;
-    public Transform hitbox;
     public Transform sweepHitbox;
     public Transform swipeHitbox;
     public Animator anim;
@@ -150,7 +149,6 @@ public class Attacks : MonoBehaviour
         if (Physics.Raycast(headLaserOrigin.position, lookDir, out hit, Mathf.Infinity, groundPlayer))
         {
             Debug.Log(hit.collider.tag);
-            hitbox.position = hit.point;
             if (hit.collider.tag == "Player")
             {
                 playerhit = true;

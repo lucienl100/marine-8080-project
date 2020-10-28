@@ -15,7 +15,6 @@ public class HealthSystem : MonoBehaviour
     ShootingSpread sp;
     Activate a;
 
-    public AudioSource hitsound;
     Color originalColor;
     public int type;
     float fAtt;
@@ -54,7 +53,6 @@ public class HealthSystem : MonoBehaviour
         currentHp -= damage;
         Flash();
         Invoke("ResetColor", 0.1f);
-        hitsound.Play();
     }
     void CheckHealth()
     {
