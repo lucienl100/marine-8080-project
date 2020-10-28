@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicProjectile : MonoBehaviour
+public class BasicProjectile : MonoBehaviour, IProjectile
 {
     public float damage = 10f;
     public float speed = 5f;

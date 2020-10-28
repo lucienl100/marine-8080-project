@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RailgunTracer : MonoBehaviour, IProjectile
+public class RailgunTracer : MonoBehaviour
 {
     public float speed = 300f;
     public float maxDist = 300f;
