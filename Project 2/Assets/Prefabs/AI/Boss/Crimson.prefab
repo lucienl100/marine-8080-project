@@ -10058,7 +10058,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   headLaserOrigin: {fileID: 5053362559663518058}
-  hitbox: {fileID: 0}
   sweepHitbox: {fileID: 5185089222503030918}
   swipeHitbox: {fileID: 6540054242866922709}
   anim: {fileID: 5314966219050221807}
@@ -10080,7 +10079,7 @@ MonoBehaviour:
   laseraudio: {fileID: 6288150676388544300}
   esPE: {fileID: 2684960633684920534}
   ssPE: {fileID: 7853444316506563233}
-  spreadShotProj: {fileID: 3602674599940093403, guid: c7a01b0419ed18f49a7c5c26e01e980a,
+  spreadShotProj: {fileID: 3602674599940093403, guid: 4450db939e876e24d9c65c7c31d33efe,
     type: 3}
   spreadshotSE: {fileID: 3054142527397328528}
   sweepAudio: {fileID: 4244020128654202087}
@@ -10128,9 +10127,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 4000
+  currentHp: 0
   meshRenderer: {fileID: 5314966219054480943}
   anim: {fileID: 5314966219050221807}
-  hitsound: {fileID: 3964556019314703677}
   type: 0
   ambientAmp: 15
 --- !u!1 &6813459668317686444
