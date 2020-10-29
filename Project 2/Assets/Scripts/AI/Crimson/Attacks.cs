@@ -65,7 +65,7 @@ public class Attacks : MonoBehaviour
     {
         if (Mathf.Abs(t.position.x - player.position.x) < 10f)
         {
-            return Random.Range(0f, 0.5f);
+            return Random.Range(0f, 0.75f);
         }
         else
         {
@@ -137,7 +137,7 @@ public class Attacks : MonoBehaviour
         laserLoadup.Play();
         lookDir = (player.position - new Vector3(headLaserOrigin.position.x, headLaserOrigin.position.y, -2.5f)).normalized;
         laserAngle = Quaternion.LookRotation(lookDir);
-        Invoke("FireLaser", 0.75f);
+        Invoke("FireLaser", 0.8f);
     }
     void FireLaser()
     {

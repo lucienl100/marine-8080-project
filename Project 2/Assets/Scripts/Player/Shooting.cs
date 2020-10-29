@@ -19,9 +19,14 @@ public class Shooting : MonoBehaviour
     public Transform chest;
     public LayerMask layerMask;
     public LayerMask groundLayer;
-    public float delayBetweenShots = 0.25f;
-    public float reloadTime = 2f;
+    private float[] delayBetweenShots = new float[] { 0.2f, 1.5f, 0.15f, 1.5f };
+    private float[] reloadTime = new float[] { 2f, 2.5f, 1.5f, 2.5f };
     private float timer;
+    private bool[] guns = new bool[] { true, false, false, false };
+    private bool[] enabledguns = new bool[] { true, false, false, false };
+    public GameObject[] icons;
+    private int[] maxAmmoA = new int[] { 30, 8, 45, 2 };
+    private int[] ammoA = new int[] { 30, 8, 45, 2 };
     // Start is called before the first frame update
     void Start()
     {
@@ -33,40 +38,134 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         Shoot();
+        SwitchGun();
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Reload(ActiveGun());
+        }
     }
     void Shoot()
     {
+        int i = ActiveGun();
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            if (timer <= 0f && ammo != 0)
+            if (timer <= 0f && ammoA[i] != 0)
             {
-                FireRailgun(); // change this to change gun
-                ammo -= 1;
-                if (ammo == 0)
+                FireGun(i);
+                ammoA[i] -= 1;
+                if (ammoA[i] == 0)
                 {
-                    timer = reloadTime;
+                    timer = reloadTime[i];
                 }
                 else
                 {
-                    timer = delayBetweenShots;
+                    timer = delayBetweenShots[i];
                 }
             }
-            
-            
+
+
         }
-        if (timer <= 0f && ammo == 0)
+        if (timer <= 0f && ammoA[i] == 0)
         {
-            ammo = maxAmmo;
+            ammoA[i] = maxAmmoA[i];
         }
         DelayBetweenShot();
-        if (ammo != 0)
+        if (ammoA[i] != 0)
         {
-            ammoText.text = ammo.ToString() + "/" + maxAmmo.ToString();
+            ammoText.text = ammoA[i].ToString() + "/" + maxAmmoA[i].ToString();
         }
         else
         {
             ammoText.text = "Reloading";
         }
+    }
+    void Reload(int i)
+    {
+        ammoA[i] = 0;
+        timer = reloadTime[i];
+    }
+    int ActiveGun()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (guns[i] == true)
+            {
+                return i;
+            }
+        }
+        return 0;
+    }
+    void FireGun(float i)
+    {
+        if (i == 0)
+        {
+            FireRifle();
+        }
+        else if (i == 1)
+        {
+            FireShotgun();
+        }
+        else if (i == 2)
+        {
+            FireSmg();
+        }
+        else
+        {
+            FireRailgun();
+        }
+    }
+    void SwitchGun()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            guns[0] = true;
+            ammo = maxAmmoA[0];
+            for (int i = 1; i < 4; i++)
+            {
+                guns[i] = false;
+
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && enabledguns[1] == true)
+        {
+            guns[1] = true;
+            ammo = maxAmmoA[1];
+            for (int i = 0; i < 4; i++)
+            {
+                if (i != 1)
+                {
+                    guns[i] = false;
+                }
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3) && enabledguns[2] == true)
+        {
+            guns[2] = true;
+            ammo = maxAmmoA[2];
+            for (int i = 0; i < 4; i++)
+            {
+                if (i != 2)
+                {
+                    guns[i] = false;
+                }
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4) && enabledguns[3] == true)
+        {
+            Debug.Log("switched");
+            guns[3] = true;
+            ammo = maxAmmoA[3];
+            for (int i = 0; i < 3; i++)
+            {
+                guns[i] = false;
+            }
+        }
+    }
+    public void EnableGun(int i)
+    {
+        Debug.Log("enabled" + i);
+        enabledguns[i] = true;
+        icons[i].SetActive(true);
     }
     void FireRifle()
     {
