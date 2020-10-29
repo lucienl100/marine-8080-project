@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SpreadShot
+  m_Name: Spreadshot
   m_Shader: {fileID: 4800000, guid: 21fdcf54db3276840bada5d56104f33f, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
