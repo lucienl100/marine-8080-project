@@ -5,7 +5,7 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour
 {
     public float maxHp = 100f;
-    public float currentHp;
+    private float currentHp;
     public SkinnedMeshRenderer meshRenderer;
     public Animator anim;
     LookAtPlayer lap;
