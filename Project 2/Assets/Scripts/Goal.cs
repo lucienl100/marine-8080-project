@@ -28,7 +28,7 @@ public class Goal : MonoBehaviour
     }
     public IEnumerator TransitionDelay()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         sc.WinScreen();
     }
 }

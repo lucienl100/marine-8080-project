@@ -11,6 +11,8 @@ TagManager:
   - Turret
   - IgnoreProjectiles
   - Railgun
+  - Powerup
+  - Boss
   layers:
   - Default
   - TransparentFX

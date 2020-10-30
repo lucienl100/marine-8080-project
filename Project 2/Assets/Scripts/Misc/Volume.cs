@@ -5,8 +5,9 @@ using UnityEngine.Audio;
 
 public class Volume : MonoBehaviour
 {
-public void SetVolume(float sliderLevel)
+    public AudioMixer am;
+    public void SetVolume(float sliderLevel)
     {
-        AudioListener.volume = sliderLevel;
+        am.SetFloat("Volume", sliderLevel);
     }
 }

@@ -12,7 +12,7 @@ public class RadarRotate : MonoBehaviour
     public Transform player;
     public bool completed = false;
     public bool inRange;
-    private float range = 3f;
+    private float range = 8f;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,12 +27,12 @@ public class RadarRotate : MonoBehaviour
             dish.eulerAngles = new Vector3(dish.eulerAngles.x, dish.eulerAngles.y + speed * Time.deltaTime, dish.eulerAngles.z);
             if ((t.position - player.position).magnitude < range)
             {
-                //inst.SetActive(true);
+                inst.SetActive(true);
                 inRange = true;
             }
             else
             {
-                //inst.SetActive(false);
+                inst.SetActive(false);
                 inRange = false;
             }
         }

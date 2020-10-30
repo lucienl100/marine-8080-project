@@ -25,6 +25,8 @@ public class Shooting : MonoBehaviour
     private bool[] guns = new bool[] { true, false, false, false };
     private bool[] enabledguns = new bool[] { true, false, false, false };
     public GameObject[] icons;
+    public AudioSource[] gunsounds;
+    public AudioSource reloadsound;
     private int[] maxAmmoA = new int[] { 30, 8, 45, 2 };
     private int[] ammoA = new int[] { 30, 8, 45, 2 };
     // Start is called before the first frame update
@@ -42,6 +44,7 @@ public class Shooting : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             Reload(ActiveGun());
+            reloadsound.Play();
         }
     }
     void Shoot()
@@ -52,6 +55,7 @@ public class Shooting : MonoBehaviour
             if (timer <= 0f && ammoA[i] != 0)
             {
                 FireGun(i);
+                gunsounds[i].Play();
                 ammoA[i] -= 1;
                 if (ammoA[i] == 0)
                 {
@@ -186,6 +190,10 @@ public class Shooting : MonoBehaviour
             {
                 hit.transform.gameObject.GetComponent<HealthSystem>().Damage(10f);
             }
+            else if (hit.transform.tag == "Boss")
+            {
+                hit.transform.gameObject.GetComponent<HealthSystemBoss>().Damage(10f);
+            }
             hitDistance = hit.distance;
             target = hit.point;
         }
@@ -216,6 +224,10 @@ public class Shooting : MonoBehaviour
                 if (hit.transform.tag == "Enemy")
                 {
                     hit.transform.gameObject.GetComponent<HealthSystem>().Damage(10f);
+                }
+                else if (hit.transform.tag == "Boss")
+                {
+                    hit.transform.gameObject.GetComponent<HealthSystemBoss>().Damage(10f);
                 }
                 hitDistance = hit.distance;
                 target = hit.point;
@@ -250,6 +262,10 @@ public class Shooting : MonoBehaviour
             if (hit.transform.tag == "Enemy")
             {
                 hit.transform.gameObject.GetComponent<HealthSystem>().Damage(10f);
+            }
+            else if (hit.transform.tag == "Boss")
+            {
+                hit.transform.gameObject.GetComponent<HealthSystemBoss>().Damage(10f);
             }
             hitDistance = hit.distance;
             target = hit.point;
@@ -292,6 +308,10 @@ public class Shooting : MonoBehaviour
                 if (enemy.transform.tag == "Enemy")
                 {
                     enemy.transform.gameObject.GetComponent<HealthSystem>().Damage(80f);
+                }
+                else if (enemy.transform.tag == "Boss")
+                {
+                    enemy.transform.gameObject.GetComponent<HealthSystemBoss>().Damage(80f);
                 }
             }
         }

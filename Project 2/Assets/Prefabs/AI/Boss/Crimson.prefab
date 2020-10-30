@@ -4824,7 +4824,8 @@ AudioSource:
   m_GameObject: {fileID: 1547580761223685082}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 586300a5fe853bd448e53fa7ebbcd735,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: c8df9614a31f3cf4da28c0ab0dca0138, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -4951,7 +4952,8 @@ AudioSource:
   m_GameObject: {fileID: 2159199676586529190}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 586300a5fe853bd448e53fa7ebbcd735,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 716af3b951f36b744aafd2f1996a689e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.701
@@ -9992,12 +9994,12 @@ GameObject:
   - component: {fileID: 6501628699432150899}
   - component: {fileID: 3363082879602838316}
   - component: {fileID: 375782088908803039}
+  - component: {fileID: 2365335598572644322}
   - component: {fileID: 8771217670308709425}
   - component: {fileID: 3898961799588676347}
-  - component: {fileID: 4365959916219406017}
   m_Layer: 0
   m_Name: Crimson
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10084,6 +10086,26 @@ MonoBehaviour:
   spreadshotSE: {fileID: 3054142527397328528}
   sweepAudio: {fileID: 4244020128654202087}
   swipeAudio: {fileID: 4460900173834523821}
+--- !u!114 &2365335598572644322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6501628699432150898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04175fc31ba2ab41a3a52efb330a731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 4000
+  currentHp: 0
+  meshRenderer: {fileID: 5314966219054480943}
+  anim: {fileID: 5314966219050221807}
+  deathparticle: {fileID: 8836922080000582104, guid: c2280bad58329ba42a364714c6eb3375,
+    type: 3}
+  type: 0
+  ambientAmp: 15
 --- !u!136 &8771217670308709425
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10114,24 +10136,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4365959916219406017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6501628699432150898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d91d04de9805bb347965146b6bc011ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHp: 4000
-  currentHp: 0
-  meshRenderer: {fileID: 5314966219054480943}
-  anim: {fileID: 5314966219050221807}
-  type: 0
-  ambientAmp: 15
 --- !u!1 &6813459668317686444
 GameObject:
   m_ObjectHideFlags: 0
@@ -14926,7 +14930,8 @@ AudioSource:
   m_GameObject: {fileID: 7540163310738649774}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 586300a5fe853bd448e53fa7ebbcd735,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 40615a12e20ddb74e8a83f0875e3e3bb, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -15053,7 +15058,8 @@ AudioSource:
   m_GameObject: {fileID: 8643123326525344710}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 586300a5fe853bd448e53fa7ebbcd735,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 365b841e5c7da3144be31ca4717e5adf, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -15210,7 +15216,8 @@ AudioSource:
   m_GameObject: {fileID: 9196439516531844804}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 586300a5fe853bd448e53fa7ebbcd735,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 7f365122e133c404c935c0890bba04b2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

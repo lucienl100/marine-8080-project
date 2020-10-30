@@ -32,7 +32,7 @@ public class Sliding : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl) && cdTimer <= 0f)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && cdTimer <= 0f)
         {
             if (!mv.inAir && ((lm.playerIsRight && mv.velocity.x < -5f) || (!lm.playerIsRight && mv.velocity.x > 5f)))
             {

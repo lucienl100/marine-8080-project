@@ -8,6 +8,10 @@ public class MainMenu : MonoBehaviour
     public GameObject nocontinue;
     public GameObject set;
     public GameObject withcontinue;
+    void Start()
+    {
+        Time.timeScale = 1f;
+    }
     public void PlayGame()
     {
         if (PlayerPrefs.GetInt("highestLevel") == 0 && PlayerPrefs.GetInt("currentLevel") == 0)
@@ -22,7 +26,7 @@ public class MainMenu : MonoBehaviour
     public void NewGame()
     {
         PlayerPrefs.SetInt("currentLevel", 1);
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(1);
     }
     public void Continue()
     {

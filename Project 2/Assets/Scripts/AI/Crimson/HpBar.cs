@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HpBar : MonoBehaviour
 {
     Slider hp;
-    public HealthSystem bossHealth;
+    public HealthSystemBoss bossHealth;
     void Start()
     {
         hp = this.GetComponent<Slider>();

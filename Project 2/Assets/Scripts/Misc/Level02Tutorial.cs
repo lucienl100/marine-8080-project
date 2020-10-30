@@ -18,7 +18,6 @@ public class Level02Tutorial : MonoBehaviour
         if (index == 2 && Input.GetKeyDown(KeyCode.Mouse0))
         {
             instructions[2].SetActive(false);
-            instructions[3].SetActive(true);
             done = true;
         }
         if (index == 1 && Input.GetKeyDown(KeyCode.Mouse0))
@@ -32,15 +31,6 @@ public class Level02Tutorial : MonoBehaviour
             instructions[0].SetActive(false);
             instructions[1].SetActive(true);
             index++;
-        }
-        if (done)
-        {
-            if (timer <= 0f)
-            {
-                instructions[3].SetActive(false);
-                this.enabled = false;
-            }
-            timer -= Time.deltaTime;
         }
     }
 }

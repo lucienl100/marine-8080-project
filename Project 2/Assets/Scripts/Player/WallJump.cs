@@ -32,7 +32,7 @@ public class WallJump : MonoBehaviour
 		if (movementScript.inAir && jumpTimer > 0 && Input.GetKeyDown(KeyCode.Space))
 		{
 			bool isRight = collisionLocation.x > transform.position.x ? true : false;
-			if ((isRight && Input.GetKey(KeyCode.D)) || (!isRight && Input.GetKey(KeyCode.A)) && (lastWallJump == null || Mathf.Abs(transform.position.x - lastWallJump.x) >= minJumpDistance))
+			if (lastWallJump == null || Mathf.Abs(transform.position.x - lastWallJump.x) >= minJumpDistance)
 			{
 				Debug.Log("walljump");
 				movementScript.CeaseControl();

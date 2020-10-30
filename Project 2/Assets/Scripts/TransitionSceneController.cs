@@ -35,6 +35,6 @@ public class TransitionSceneController : MonoBehaviour
         Debug.Log("loading main menu");
         yield return new WaitForSeconds(1.5f);
         Debug.Log("loading main menu");
-        SceneManager.LoadScene("Scenes/MainMenu");
+        SceneManager.LoadScene(0);
     }
 }

@@ -2203,7 +2203,8 @@ AudioSource:
   m_GameObject: {fileID: 7576598419562483930}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 586300a5fe853bd448e53fa7ebbcd735,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 97fc87777cd0f8b4e993e4220d3c37f5, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.802
@@ -2775,9 +2776,9 @@ GameObject:
   - component: {fileID: 8798693323156562727}
   - component: {fileID: 666403288765687318}
   - component: {fileID: 4494365937524275334}
-  - component: {fileID: 1717383279084779364}
+  - component: {fileID: 641320898958294604}
   m_Layer: 9
-  m_Name: vanguard
+  m_Name: vanguardAI
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2884,7 +2885,7 @@ MonoBehaviour:
   timeBetweenShots: 2
   intDelay: 0.5
   shootingOrigin: {fileID: 5462219140202123276}
---- !u!114 &1717383279084779364
+--- !u!114 &641320898958294604
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2893,13 +2894,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8798693323156562726}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4940380f9815e5e4e9d40ed4647dafae, type: 3}
+  m_Script: {fileID: 11500000, guid: d91d04de9805bb347965146b6bc011ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 200
+  currentHp: 0
   meshRenderer: {fileID: 5501632790050653462}
   anim: {fileID: 1673492863365466074}
   type: 1
+  ambientAmp: 15
 --- !u!1 &8932741209548114150
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Enabler : MonoBehaviour
 {
     Transform t;
-    public Shooting s;
     private bool goingUp;
     public float ascensionSpeed = 0.5f;
     private Vector3 upper;
@@ -51,7 +50,7 @@ public class Enabler : MonoBehaviour
         if (other.transform.tag == "Player")
         {
             Debug.Log("shield get");
-            s.EnableGun(gunIndex);
+            other.gameObject.GetComponent<Shooting>().EnableGun(gunIndex);
             Destroy(this.gameObject);
         }
     }

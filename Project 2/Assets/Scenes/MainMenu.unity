@@ -2218,7 +2218,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 04
+          m_StringArgument: Level04
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &469362559
@@ -3880,7 +3880,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level05
+          m_StringArgument: BossLevel
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &938060238
@@ -9722,6 +9722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c508b07e9d1e47942bb885b444823fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  am: {fileID: 24100000, guid: 586300a5fe853bd448e53fa7ebbcd735, type: 2}
 --- !u!1 &2100485132
 GameObject:
   m_ObjectHideFlags: 0

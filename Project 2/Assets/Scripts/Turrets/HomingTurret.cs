@@ -6,6 +6,7 @@ public class HomingTurret : MonoBehaviour, ITurret
 {
     public Transform player;
     public GameObject projectile;
+    public AudioSource sfx;
     private Transform t;
     public float range = 10f;
     public float intFireDelay = 2f;
@@ -51,6 +52,7 @@ public class HomingTurret : MonoBehaviour, ITurret
     }
     public void FireProjectile(GameObject projectile)
     {
+        sfx.Play();
         GameObject proju = Instantiate(projectile, t.position + secondaryFireOff + t.forward * barrelLength, t.rotation);
         GameObject projd = Instantiate(projectile, t.position + t.forward * barrelLength, t.rotation);
         ProjectileHoming homing = proju.GetComponent<ProjectileHoming>();

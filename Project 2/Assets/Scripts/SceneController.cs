@@ -2,17 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.Audio;
+using UnityEngine.UI;
 public class SceneController : MonoBehaviour
 {
     public Animator anim;
+    public AudioMixer am;
+    public Slider slider;
     public GameObject pauseMenuUI;
     public GameObject crosshair;
+    public GameObject hud;
     private int currBuildIndex;
     private int nextBuildIndex;
+    public LookAtMouse lam;
+    public Shooting shoot;
+    public GameObject fade;
+    bool paused = false;
     // Start is called before the first frame update
     void Start()
     {
+        Invoke("DisableFade", 2f);
+        Cursor.lockState = CursorLockMode.Confined;
+        Time.timeScale = 1f;
+        float value;
+        am.GetFloat("Volume", out value);
+        slider.value = value;
         Cursor.visible = false;
         //Get current scene index and next scene index
         currBuildIndex = SceneManager.GetActiveScene().buildIndex;
@@ -20,10 +34,21 @@ public class SceneController : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !paused)
         {
             PauseGame();
+            paused = true;
         }
+        else if (Input.GetKeyDown(KeyCode.Escape) && paused)
+        {
+            paused = false;
+            UnpauseGame();
+        }
+        am.SetFloat("Volume", slider.value);
+    }
+    public void DisableFade()
+    {
+        fade.SetActive(false);
     }
     public void PauseGame()
     {
@@ -31,12 +56,18 @@ public class SceneController : MonoBehaviour
         Cursor.visible = true;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
+        hud.SetActive(false);
+        shoot.enabled = false;
+        lam.enabled = false;
     }
     public void UnpauseGame()
     {
         crosshair.SetActive(true);
         Cursor.visible = false;
         pauseMenuUI.SetActive(false);
+        hud.SetActive(true);
+        shoot.enabled = true;
+        lam.enabled = true;
         Time.timeScale = 1f;
     }
     // Update is called once per frame
@@ -67,7 +98,7 @@ public class SceneController : MonoBehaviour
     {
         FadeToLevel();
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene("TransitionScene");
     }
     IEnumerator LoadNextLevel()
     {
@@ -80,8 +111,7 @@ public class SceneController : MonoBehaviour
     {
         FadeToLevel();
         Debug.Log("loading main menu");
-        yield return new WaitForSeconds(2f);
-        Debug.Log("loading main menu");
-        SceneManager.LoadScene("Scenes/MainMenu");
+        yield return new WaitForSeconds(0f);
+        SceneManager.LoadScene(0);
     }
 }

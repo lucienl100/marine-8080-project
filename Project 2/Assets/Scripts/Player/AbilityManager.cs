@@ -15,16 +15,28 @@ public class AbilityManager : MonoBehaviour
     Transform player;
     public float cooldown = 10f;
     private float cdTimer;
-    public GameObject image;
+    public GameObject shieldIcon;
+    public GameObject projIcon;
     public Slider slider;
+    public bool enableShieldAtStart = false;
+    public bool enableBlastAtStart = false;
     // Start is called before the first frame update
     void Start()
     {
+        shieldEnabled = false;
         pb = this.GetComponent<ProjectileBlast>();
+        if (enableShieldAtStart)
+        {
+            EnableShield();
+        }
+        if (enableBlastAtStart)
+        {
+            EnableProjBlast();
+        }
         cdTimer = 0f;
         shieldTimer = 0f;
         player = this.transform;
-        shieldEnabled = false;
+        
     }
 
     // Update is called once per frame
@@ -51,11 +63,12 @@ public class AbilityManager : MonoBehaviour
     }
     public void EnableProjBlast()
     {
+        projIcon.SetActive(true);
         pb.enabled = true;
     }
     public void EnableShield()
     {
-        image.SetActive(true);
+        shieldIcon.SetActive(true);
         shieldEnabled = true;
     }
     public void Shield()
@@ -65,6 +78,7 @@ public class AbilityManager : MonoBehaviour
         shieldActive = true;
         activeShield = Instantiate(shield, player.position, Quaternion.identity);
         activeShield.transform.parent = player;
+        Debug.Log("shield");
     }
     void DeactivateShield()
     {

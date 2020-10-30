@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ProjectileBlast : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ProjectileBlast : MonoBehaviour
     public ParticleSystem blast;
     public float cooldown = 15f;
     float timer;
+    public Slider slider;
     void Start()
     {
         timer = 0f;
@@ -25,6 +27,7 @@ public class ProjectileBlast : MonoBehaviour
         {
             timer -= Time.deltaTime;
         }
+        slider.value = Mathf.Max(timer / cooldown, 0f);
     }
 
     void DestoryProjectiles()

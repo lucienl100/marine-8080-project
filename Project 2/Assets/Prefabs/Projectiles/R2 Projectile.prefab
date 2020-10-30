@@ -98,7 +98,7 @@ MonoBehaviour:
   damage: 10
   speed: 12
   maxDist: 50
-  explosion: {fileID: 6801000411339992395, guid: 87819473d269b2d41a86583d75db0013,
+  explosion: {fileID: 6801000411339992395, guid: fcc11b962f3886644bef5a60a4c8adbb,
     type: 3}
   player: {fileID: 0}
   rotation: {x: 0, y: 0, z: 0, w: 0}

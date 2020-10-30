@@ -6,6 +6,7 @@ public class R2Turret : MonoBehaviour
 {
     public Transform player;
     public GameObject projectile;
+    public AudioSource sfx;
     private Transform t;
     public float range = 15f;
     public float intFireDelay = 0.15f;
@@ -47,6 +48,7 @@ public class R2Turret : MonoBehaviour
     }
     public void FireProjectile(GameObject projectile)
     {
+        sfx.Play();
         GameObject proj = Instantiate(projectile, firingPosition.position, t.rotation);
         BasicProjectile bp = proj.GetComponent<BasicProjectile>();
         bp.player = player;

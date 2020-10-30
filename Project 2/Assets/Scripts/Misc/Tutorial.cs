@@ -34,6 +34,11 @@ public class Tutorial : MonoBehaviour
                 instructions[i].SetActive(false);
             }
         }
+        if (index == 5 && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            done = true;
+            timer = 3f;
+        }
         if (index == 0)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -65,8 +70,9 @@ public class Tutorial : MonoBehaviour
         }
         if (index == 4 && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            done = true;
+            index++;
         }
+        
         if (done)
         {
             if (timer <= 0f)
@@ -77,11 +83,11 @@ public class Tutorial : MonoBehaviour
             }
             timer -= Time.deltaTime;
         }
-        if (index == 5)
+        if (index == 6)
         {
             if (timer <= 0f)
             {
-                instructions[5].SetActive(false);
+                instructions[6].SetActive(false);
                 this.enabled = false;
             }
             timer -= Time.deltaTime;
