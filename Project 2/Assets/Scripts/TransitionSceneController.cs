@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class TransitionSceneController : MonoBehaviour
 {
+    void Start()
+    {
+        Cursor.visible = true;
+    }
     public Animator anim;
     public void FadeToLevel()
     {

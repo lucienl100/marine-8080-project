@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Forceshield : MonoBehaviour
+public class ProjBlastEnabler : MonoBehaviour
 {
     Transform t;
     private bool goingUp;
@@ -50,8 +50,8 @@ public class Forceshield : MonoBehaviour
         if (other.transform.tag == "Player")
         {
             AbilityManager am = other.gameObject.GetComponent<AbilityManager>();
-            Debug.Log("shield get");
-            am.EnableShield();
+            Debug.Log("proj blast get");
+            am.EnableProjBlast();
             Destroy(this.gameObject);
         }
     }

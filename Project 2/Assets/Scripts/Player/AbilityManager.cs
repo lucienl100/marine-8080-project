@@ -10,6 +10,7 @@ public class AbilityManager : MonoBehaviour
     public float shieldDuration = 3f;
     private float shieldTimer;
     public GameObject shield;
+    ProjectileBlast pb;
     GameObject activeShield;
     Transform player;
     public float cooldown = 10f;
@@ -19,6 +20,7 @@ public class AbilityManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pb = this.GetComponent<ProjectileBlast>();
         cdTimer = 0f;
         shieldTimer = 0f;
         player = this.transform;
@@ -46,6 +48,10 @@ public class AbilityManager : MonoBehaviour
             CooldownTick();
         }
         slider.value = Mathf.Max(cdTimer / cooldown, 0f);
+    }
+    public void EnableProjBlast()
+    {
+        pb.enabled = true;
     }
     public void EnableShield()
     {

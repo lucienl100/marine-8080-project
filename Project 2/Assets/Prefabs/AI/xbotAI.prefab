@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1242845513808383682}
   - component: {fileID: 7069472600654760947}
   - component: {fileID: 5835239156039057201}
-  - component: {fileID: 2044784777512352715}
+  - component: {fileID: 7781197208260946822}
   m_Layer: 9
   m_Name: xbotAI
   m_TagString: Enemy
@@ -122,8 +122,7 @@ MonoBehaviour:
   se: {fileID: 4274466429129642795}
   timeBetweenShots: 2
   intDelay: 0.5
-  shootingOrigin: {fileID: 1238994976673883028}
---- !u!114 &2044784777512352715
+--- !u!114 &7781197208260946822
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,13 +131,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1242845513808383683}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4940380f9815e5e4e9d40ed4647dafae, type: 3}
+  m_Script: {fileID: 11500000, guid: d91d04de9805bb347965146b6bc011ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 100
+  currentHp: 0
   meshRenderer: {fileID: 4930260072304571189}
   anim: {fileID: 1242845513497190026}
   type: 0
+  ambientAmp: 10
 --- !u!95 &1242845513497190026
 Animator:
   serializedVersion: 3

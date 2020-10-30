@@ -67,7 +67,7 @@ public class SceneController : MonoBehaviour
     {
         FadeToLevel();
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
     IEnumerator LoadNextLevel()
     {

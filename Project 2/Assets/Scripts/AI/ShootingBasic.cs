@@ -14,6 +14,7 @@ public class ShootingBasic : MonoBehaviour
     Transform t;
     void Start()
     {
+        t = this.transform;
         player = lp.player;
         timer = 0f;
     }
