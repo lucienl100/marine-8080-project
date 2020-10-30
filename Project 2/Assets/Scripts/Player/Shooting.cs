@@ -165,7 +165,7 @@ public class Shooting : MonoBehaviour
     {
         Debug.Log("enabled" + i);
         enabledguns[i] = true;
-        icons[i].SetActive(true);
+        icons[i].GetComponent<Slider>().value = 0f;
     }
     void FireRifle()
     {

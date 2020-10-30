@@ -15,11 +15,17 @@ public class Level02Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (index == 2 && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            instructions[2].SetActive(false);
+            instructions[3].SetActive(true);
+            done = true;
+        }
         if (index == 1 && Input.GetKeyDown(KeyCode.Mouse0))
         {
             instructions[1].SetActive(false);
             instructions[2].SetActive(true);
-            done = true;
+            index++;
         }
         if (index == 0 && Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -31,7 +37,7 @@ public class Level02Tutorial : MonoBehaviour
         {
             if (timer <= 0f)
             {
-                instructions[2].SetActive(false);
+                instructions[3].SetActive(false);
                 this.enabled = false;
             }
             timer -= Time.deltaTime;
