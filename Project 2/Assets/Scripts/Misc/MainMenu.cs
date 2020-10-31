@@ -25,6 +25,10 @@ public class MainMenu : MonoBehaviour
     }
     public void NewGame()
     {
+        for (int i = 1; i < 4; i++)
+        {
+            PlayerPrefs.SetInt("guns" + i.ToString(), 0);
+        }
         PlayerPrefs.SetInt("currentLevel", 1);
         SceneManager.LoadScene(1);
     }

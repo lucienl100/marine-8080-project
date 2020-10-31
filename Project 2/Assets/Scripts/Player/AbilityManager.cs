@@ -17,6 +17,8 @@ public class AbilityManager : MonoBehaviour
     private float cdTimer;
     public GameObject shieldIcon;
     public GameObject projIcon;
+    public GameObject shieldFlash;
+    public GameObject projFlash;
     public Slider slider;
     public bool enableShieldAtStart = false;
     public bool enableBlastAtStart = false;
@@ -68,6 +70,7 @@ public class AbilityManager : MonoBehaviour
     }
     public void EnableShield()
     {
+        shieldFlash.GetComponent<Flash>().FlashImage();
         shieldIcon.SetActive(true);
         shieldEnabled = true;
     }
@@ -99,5 +102,9 @@ public class AbilityManager : MonoBehaviour
     void CooldownTick()
     {
         cdTimer -= Time.deltaTime;
+        if (cdTimer <= 0f)
+        {
+            shieldFlash.GetComponent<Flash>().FlashImage();
+        }
     }
 }

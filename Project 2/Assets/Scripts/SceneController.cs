@@ -10,6 +10,7 @@ public class SceneController : MonoBehaviour
     public AudioMixer am;
     public Slider slider;
     public GameObject pauseMenuUI;
+    public Shooting shooting;
     public GameObject crosshair;
     public GameObject hud;
     private int currBuildIndex;
@@ -21,6 +22,7 @@ public class SceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         Invoke("DisableFade", 2f);
         Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 1f;
@@ -30,6 +32,7 @@ public class SceneController : MonoBehaviour
         Cursor.visible = false;
         //Get current scene index and next scene index
         currBuildIndex = SceneManager.GetActiveScene().buildIndex;
+        PlayerPrefs.SetInt("currentLevel", currBuildIndex);
         nextBuildIndex = currBuildIndex + 1;
     }
     void Update()
@@ -41,7 +44,6 @@ public class SceneController : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && paused)
         {
-            paused = false;
             UnpauseGame();
         }
         am.SetFloat("Volume", slider.value);
@@ -62,6 +64,7 @@ public class SceneController : MonoBehaviour
     }
     public void UnpauseGame()
     {
+        paused = false;
         crosshair.SetActive(true);
         Cursor.visible = false;
         pauseMenuUI.SetActive(false);
@@ -81,6 +84,18 @@ public class SceneController : MonoBehaviour
         {
             //If the next level exceeds the players highest level, open up the next level in the level select.
             PlayerPrefs.SetInt("highestLevel", nextBuildIndex);
+        }
+        bool[] obtainedguns = shooting.enabledguns;
+        for (int i = 0; i < 4; i++)
+        {
+            if (obtainedguns[i])
+            {
+                PlayerPrefs.SetInt("guns" + i.ToString(), 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("guns" + i.ToString(), 0);
+            }
         }
         //Set the current playthrough level to the next level
         PlayerPrefs.SetInt("currentLevel", nextBuildIndex);

@@ -73,11 +73,11 @@ public class BossMovement : MonoBehaviour
         }
         t.rotation = Quaternion.Slerp(t.rotation, faceRotation, Time.deltaTime * 15.0f);
         //Account for slerp errors
-        if (t.eulerAngles.y > 270 - 10f && t.eulerAngles.y < 270 + 10f)
+        if (t.eulerAngles.y > 270 - 10f && t.eulerAngles.y < 270 + 10f && !playerIsRight)
         {
             t.eulerAngles = new Vector3(0f, 270f, 0f);
         }
-        else if (t.eulerAngles.y > 90 - 10f && t.eulerAngles.y < 90 + 10f)
+        else if (t.eulerAngles.y > 90 - 10f && t.eulerAngles.y < 90 + 10f && playerIsRight)
         {
             t.eulerAngles = new Vector3(0f, 90f, 0f);
         }

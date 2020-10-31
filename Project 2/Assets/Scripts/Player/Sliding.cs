@@ -9,6 +9,7 @@ public class Sliding : MonoBehaviour
     Movement mv;
     public AnimationManager am;
     CharacterController cc;
+    public GameObject flash;
     BoxCollider slidingcollider;
     float colliderHeight;
     Vector3 colliderCenter;
@@ -71,5 +72,9 @@ public class Sliding : MonoBehaviour
     void CooldownTick()
     {
         cdTimer -= Time.deltaTime;
+        if (cdTimer <= 0f)
+        {
+            flash.GetComponent<Flash>().FlashImage();
+        }
     }
 }

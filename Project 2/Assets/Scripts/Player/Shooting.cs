@@ -22,9 +22,10 @@ public class Shooting : MonoBehaviour
     private float[] delayBetweenShots = new float[] { 0.2f, 1.5f, 0.15f, 1.5f };
     private float[] reloadTime = new float[] { 2f, 2.5f, 1.5f, 2.5f };
     private float timer;
-    private bool[] guns = new bool[] { true, false, false, false };
-    private bool[] enabledguns = new bool[] { true, false, false, false };
+    public bool[] guns = new bool[] { true, false, false, false };
+    public bool[] enabledguns = new bool[] { true, false, false, false };
     public GameObject[] icons;
+    public GameObject[] iconFlash;
     public AudioSource[] gunsounds;
     public AudioSource reloadsound;
     private int[] maxAmmoA = new int[] { 30, 8, 45, 2 };
@@ -32,6 +33,13 @@ public class Shooting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 1; i < 4; i++)
+        {
+            if (PlayerPrefs.GetInt("guns" + i.ToString()) == 1)
+            {
+                EnableGun(i);
+            }
+        }
         timer = 0f;
         ammo = maxAmmo;
     }
@@ -168,6 +176,7 @@ public class Shooting : MonoBehaviour
     public void EnableGun(int i)
     {
         Debug.Log("enabled" + i);
+        iconFlash[i - 1].GetComponent<Flash>().FlashImage();
         enabledguns[i] = true;
         icons[i].GetComponent<Slider>().value = 0f;
     }
