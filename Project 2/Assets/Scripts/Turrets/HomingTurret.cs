@@ -6,6 +6,7 @@ public class HomingTurret : MonoBehaviour, ITurret
 {
     public Transform player;
     public GameObject projectile;
+    public LayerMask playerLayer;
     public AudioSource sfx;
     private Transform t;
     public float range = 10f;
@@ -65,9 +66,13 @@ public class HomingTurret : MonoBehaviour, ITurret
     public bool SearchPlayer()
     {
         Vector3 turretToPlayer = player.position - t.position;
-        if (CheckHeight() && Vector3.Angle(turretToPlayer, lineOfSightBot) <= highAngle && turretToPlayer.magnitude <= range)
+        RaycastHit hit;
+        if (CheckHeight() && Vector3.Angle(turretToPlayer, lineOfSightBot) <= highAngle && turretToPlayer.magnitude <= range && Physics.Raycast(t.position, turretToPlayer, out hit, Mathf.Infinity, playerLayer))
         {
-            return true;
+            if (hit.collider.tag == "Player")
+            {
+                return true;
+            }
         }
         return false;
     }
