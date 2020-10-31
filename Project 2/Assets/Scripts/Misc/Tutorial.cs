@@ -37,7 +37,7 @@ public class Tutorial : MonoBehaviour
         if (index == 5 && Input.GetKeyDown(KeyCode.Mouse0))
         {
             done = true;
-            timer = 3f;
+            timer = 1f;
         }
         if (index == 0)
         {
