@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     public GameObject withcontinue;
     void Start()
     {
+        Cursor.visible = true;
         Time.timeScale = 1f;
     }
     public void PlayGame()

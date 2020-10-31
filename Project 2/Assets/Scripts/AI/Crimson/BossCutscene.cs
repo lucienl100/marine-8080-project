@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossCutscene : MonoBehaviour
 {
+    public SceneController sc;
     public GameObject cutsceneCamera;
     public GameObject mainCamera;
     public Attacks bossattack;
@@ -45,6 +46,7 @@ public class BossCutscene : MonoBehaviour
     }
     void EnablePlayerControl()
     {
+        sc.enabled = true;
         hud.SetActive(true);
         lam.enabled = true;
         mv.enabled = true;

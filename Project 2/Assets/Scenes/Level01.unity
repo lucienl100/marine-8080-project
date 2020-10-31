@@ -42179,7 +42179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fd8361b94a3883449477e449dc8dec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shooting: {fileID: 0}
+  shooting: {fileID: 2739813201719275327}
   anchorPos: -335
   iconDistance: 45
 --- !u!114 &1064173089
@@ -52748,6 +52748,8 @@ MonoBehaviour:
   lam: {fileID: 2739813201719275326}
   shoot: {fileID: 2739813201719275327}
   fade: {fileID: 1871233931}
+  mv: {fileID: 1949074126}
+  ph: {fileID: 1949074124}
 --- !u!114 &1231574833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84652,6 +84654,30 @@ MonoBehaviour:
     m_Bits: 16384
   maxLights: 4
   sphereSize: 100
+--- !u!114 &1949074124 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 738845937003565989, guid: 5ee224129f3c21c44a6caa0e2a73610c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2739813201719275323}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef00c91ba99ad864da83ec5b2feb6877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1949074126 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2739813202412132694, guid: 5ee224129f3c21c44a6caa0e2a73610c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2739813201719275323}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8babade547763c44a8317a2faea3b4c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1960960128
 GameObject:
   m_ObjectHideFlags: 0

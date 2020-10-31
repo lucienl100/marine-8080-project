@@ -5713,6 +5713,8 @@ MonoBehaviour:
   cooldown: 10
   shieldIcon: {fileID: 0}
   projIcon: {fileID: 0}
+  shieldFlash: {fileID: 0}
+  projFlash: {fileID: 0}
   slider: {fileID: 0}
   enableShieldAtStart: 0
   enableBlastAtStart: 0
@@ -5748,7 +5750,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  guns: 01000000
+  enabledguns: 01000000
   icons: []
+  iconFlash: []
   gunsounds:
   - {fileID: 4564208487771599123}
   - {fileID: 5050601137721056947}
@@ -5772,6 +5777,7 @@ MonoBehaviour:
   lam: {fileID: 2739813202412132692}
   s: {fileID: 277217343}
   mv: {fileID: 2739813202412132694}
+  minHeight: -14
 --- !u!65 &317783962
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5810,6 +5816,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   am: {fileID: 2739813201493860073}
+  flash: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
   slider: {fileID: 0}
   cooldown: 5
   pushStrength: 3
@@ -5827,6 +5837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 25
   blast: {fileID: 2392886726706859482}
+  projFlash: {fileID: 0}
   cooldown: 15
   slider: {fileID: 0}
 --- !u!114 &452771208968622180
