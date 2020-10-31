@@ -12,6 +12,7 @@ public class PlayerHealth : MonoBehaviour
     public LookAtMouse lam;
     public Shooting s;
     public Movement mv;
+    public float minHeight = -14f;
     CharacterController cc;
     // Start is called before the first frame update
     void Start()
@@ -51,7 +52,7 @@ public class PlayerHealth : MonoBehaviour
     }
     void CheckOutOfBounds()
     {
-        if (this.transform.position.y < -14f)
+        if (this.transform.position.y < minHeight)
         {
             Die();
         }

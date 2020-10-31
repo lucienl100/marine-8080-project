@@ -10104,6 +10104,7 @@ MonoBehaviour:
   anim: {fileID: 5314966219050221807}
   deathparticle: {fileID: 8836922080000582104, guid: c2280bad58329ba42a364714c6eb3375,
     type: 3}
+  be: {fileID: 0}
   type: 0
   ambientAmp: 15
 --- !u!136 &8771217670308709425
@@ -10358,7 +10359,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -11001,7 +11002,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 200
+      scalar: 50
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -11054,7 +11055,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 300
+      scalar: 100
       minScalar: 0
       maxCurve:
         serializedVersion: 2

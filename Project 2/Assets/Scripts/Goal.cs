@@ -24,11 +24,6 @@ public class Goal : MonoBehaviour
     public void LoadNext() 
     {
         Debug.Log("Goal reached");
-        StartCoroutine(TransitionDelay());
-    }
-    public IEnumerator TransitionDelay()
-    {
-        yield return new WaitForSeconds(1f);
         sc.WinScreen();
     }
 }

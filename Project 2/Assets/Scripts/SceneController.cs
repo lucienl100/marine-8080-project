@@ -18,12 +18,12 @@ public class SceneController : MonoBehaviour
     public LookAtMouse lam;
     public Shooting shoot;
     public GameObject fade;
+    public Movement mv;
+    public PlayerHealth ph;
     bool paused = false;
     // Start is called before the first frame update
     void Start()
     {
-        
-        Invoke("DisableFade", 2f);
         Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 1f;
         float value;
@@ -47,10 +47,6 @@ public class SceneController : MonoBehaviour
             UnpauseGame();
         }
         am.SetFloat("Volume", slider.value);
-    }
-    public void DisableFade()
-    {
-        fade.SetActive(false);
     }
     public void PauseGame()
     {
@@ -111,8 +107,12 @@ public class SceneController : MonoBehaviour
     }
     IEnumerator LoadWinScreen()
     {
+        fade.SetActive(true);
+        ph.enabled = false;
+        mv.enabled = false;
         FadeToLevel();
-        yield return new WaitForSeconds(2f);
+        Time.timeScale = 0.5f;
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("TransitionScene");
     }
     IEnumerator LoadNextLevel()
