@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7268013063358583328}
   - component: {fileID: 6143334375697813530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4267260709480894460}
   - component: {fileID: 4267260709480894463}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R2Turret
   m_TagString: Turret
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4267260709577341504}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FiringPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b6b250dea66d06548ae592f2eab9b056,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b6b250dea66d06548ae592f2eab9b056,
         type: 3}
@@ -481,6 +481,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: R2Turret_Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b4083af338b2a9a47bf1e3431ad04d9a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4083af338b2a9a47bf1e3431ad04d9a, type: 3}

@@ -9,25 +9,27 @@ public class LookAtPlayer : MonoBehaviour
     public Transform player;
     public Animator anim;
     public bool inRange;
-    public float spotRange = 15f;
+    private float spotRange = 15f;
     public float minRange = 3f;
     public float patrolStep = 3f;
     private float turningTime = 0.3f;
     private float turningTimer = 0.3f;
     private bool playerIsRight;
     private float patrolTimer;
-    
+    bool facingRight;
     Vector3 dirToLook;
     Transform t;
     public LayerMask layerMask;
     public Transform weapon;
     public Transform chest;
-    void Start()
+    void Awake()
     {
+        
+        t = this.transform;
         Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
         patrolTimer = patrolStep;
-        t = this.transform;
         playerIsRight = (player.position.x - t.position.x) > 0 ? true : false;
+        facingRight = t.rotation.eulerAngles.y == 90f ? true : false;
     }
     void Update()
     {
@@ -55,6 +57,12 @@ public class LookAtPlayer : MonoBehaviour
                 Patrol();
                 anim.SetBool("playerInRange", false);
             }
+        }
+        else
+        {
+            inRange = false;
+            Patrol();
+            anim.SetBool("playerInRange", false);
         }
     }
     void LateUpdate()
@@ -100,13 +108,14 @@ public class LookAtPlayer : MonoBehaviour
                 turningTimer = turningTime;
             }
         }
-        t.rotation = Quaternion.Slerp(t.rotation, faceRotation, Time.deltaTime * 15.0f);
+        t.eulerAngles = new Vector3(t.eulerAngles.x, Mathf.Lerp(t.eulerAngles.y, faceRotation.eulerAngles.y, Time.deltaTime * 15.0f), t.eulerAngles.z);
+        Debug.Log(t.rotation.eulerAngles);
         //Account for slerp errors
-        if (t.eulerAngles.y > 270 - 10f && t.eulerAngles.y < 270 + 10f)
+        if (t.eulerAngles.y > 270 - 10f && t.eulerAngles.y < 270 + 10f && !playerIsRight)
         {
             t.eulerAngles = new Vector3(0f, 270f, 0f);
         }
-        else if (t.eulerAngles.y > 90 - 10f && t.eulerAngles.y < 90 + 10f)
+        else if (t.eulerAngles.y > 90 - 10f && t.eulerAngles.y < 90 + 10f && playerIsRight)
         {
             t.eulerAngles = new Vector3(0f, 90f, 0f);
         }
@@ -118,6 +127,7 @@ public class LookAtPlayer : MonoBehaviour
             faceRotation = Quaternion.Euler(new Vector3(0f, faceRotation.eulerAngles.y + 180f, 0f));
             patrolTimer = patrolStep;
             turningTimer = turningTime;
+            facingRight = !facingRight;
         }
         else
         {
@@ -134,11 +144,11 @@ public class LookAtPlayer : MonoBehaviour
             turningTimer -= Time.deltaTime;
         }
         //Account for slerp errors
-        if (t.eulerAngles.y > 270 - 10f && t.eulerAngles.y < 270 + 10f)
+        if (t.eulerAngles.y > 270 - 10f && t.eulerAngles.y < 270 + 10f && !facingRight)
         {
             t.eulerAngles = new Vector3(0f, 270f, 0f);
         }
-        else if (t.eulerAngles.y > 90 - 10f && t.eulerAngles.y < 90 + 10f)
+        else if (t.eulerAngles.y > 90 - 10f && t.eulerAngles.y < 90 + 10f && facingRight)
         {
             t.eulerAngles = new Vector3(0f, 90f, 0f);
         }

@@ -8,6 +8,7 @@ public class ProjectileBlast : MonoBehaviour
     Transform t;
     public float radius = 30;
     public ParticleSystem blast;
+    public GameObject projFlash;
     public float cooldown = 15f;
     float timer;
     public Slider slider;
@@ -25,7 +26,7 @@ public class ProjectileBlast : MonoBehaviour
 		}
         else if (timer > 0f)
         {
-            timer -= Time.deltaTime;
+            CDTick();
         }
         slider.value = Mathf.Max(timer / cooldown, 0f);
     }
@@ -42,4 +43,12 @@ public class ProjectileBlast : MonoBehaviour
 			}
 		}
 	}
+    void CDTick()
+    {
+        timer -= Time.deltaTime;
+        if (timer <= 0f)
+        {
+            projFlash.GetComponent<Flash>().FlashImage();
+        }
+    }
 }
