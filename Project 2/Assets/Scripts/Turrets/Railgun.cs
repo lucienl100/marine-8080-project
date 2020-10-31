@@ -108,16 +108,22 @@ public class Railgun : MonoBehaviour, ITurret
         Vector3 barrelposition = adjustedBase + barrelLength * currentRotation;
         if (Physics.Raycast(barrelposition, t.rotation * Vector3.forward, out hit, distToCollision, playerLayer))
         {
-            //Instantiate(hitbox, hit.point, Quaternion.identity);
-            player.GetComponent<PlayerHealth>().Damage(damage);
+            if (hit.collider.tag == "Player")
+            {
+                player.GetComponent<PlayerHealth>().Damage(damage);
+            }
         }
         rail.maxDist = distToCollision;
     }
     public bool SearchPlayer()
     {
-        if (player.position.y>= barrelEnd.y && Vector3.Angle(turretToPlayer, lineOfSightBot) <= highAngle && turretToPlayer.magnitude <= range)
+        RaycastHit hit;
+        if (player.position.y>= barrelEnd.y && Vector3.Angle(turretToPlayer, lineOfSightBot) <= highAngle && turretToPlayer.magnitude <= range && Physics.Raycast(t.position, turretToPlayer, out hit, Mathf.Infinity, playerLayer))
         {
-            return true;
+            if (hit.collider.tag == "Player")
+            {
+                return true;
+            }
         }
         return false;
     }

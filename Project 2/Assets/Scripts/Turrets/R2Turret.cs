@@ -8,6 +8,7 @@ public class R2Turret : MonoBehaviour
     public GameObject projectile;
     public AudioSource sfx;
     private Transform t;
+    public LayerMask playerLayer;
     public float range = 15f;
     public float intFireDelay = 0.15f;
     private float timeToFire;
@@ -56,9 +57,13 @@ public class R2Turret : MonoBehaviour
     public bool SearchPlayer()
     {
         Vector3 turretToPlayer = player.position - t.position;
-        if (CheckHeight() && turretToPlayer.magnitude <= range)
+        RaycastHit hit;
+        if (CheckHeight() && turretToPlayer.magnitude <= range && Physics.Raycast(t.position, turretToPlayer, out hit, Mathf.Infinity, playerLayer))
         {
-            return true;
+            if (hit.collider.tag == "Player")
+            {
+                return true;
+            }
         }
         return false;
     }

@@ -194,6 +194,9 @@ MonoBehaviour:
   projectile: {fileID: 322463850630374665, guid: ec051e511d590904d88221bab3eea12a,
     type: 3}
   sfx: {fileID: 6143334375697813530}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 4352
   range: 15
   intFireDelay: 0.25
   firingPosition: {fileID: 4267260709577341504}

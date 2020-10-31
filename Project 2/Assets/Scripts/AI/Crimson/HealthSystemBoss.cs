@@ -12,7 +12,7 @@ public class HealthSystemBoss : MonoBehaviour
     Attacks at;
     public GameObject deathparticle;
     public BossEnding be;
-
+    public PlayerHealth ph;
     Color originalColor;
     public int type;
     float fAtt;
@@ -43,6 +43,7 @@ public class HealthSystemBoss : MonoBehaviour
     {
         if (currentHp <= 0f)
         {
+            ph.enabled = false;
             anim.SetTrigger("Die");
             Debug.Log("destroyed");
             bm.enabled = false;
