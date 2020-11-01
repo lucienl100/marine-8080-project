@@ -29,7 +29,7 @@ Transform:
   m_Children:
   - {fileID: 1238566750945621552}
   m_Father: {fileID: 615539193580763398}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 10, y: 90, z: 90}
 --- !u!1 &1241635269769567432
 GameObject:
@@ -193,7 +193,6 @@ MonoBehaviour:
   player: {fileID: 0}
   anim: {fileID: 1242845513497190026}
   inRange: 0
-  spotRange: 20
   minRange: 3
   patrolStep: 3
   layerMask:
@@ -233,6 +232,7 @@ MonoBehaviour:
   se: {fileID: 4274466429129642795}
   timeBetweenShots: 2
   intDelay: 0.5
+  shootingOrigin: {fileID: 5700334326630421054}
 --- !u!114 &7781197208260946822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +270,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &2404053900211895983
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5700334326630421054}
+  m_Layer: 9
+  m_Name: ShootingOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5700334326630421054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2404053900211895983}
+  m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
+  m_LocalPosition: {x: 0.20000032, y: 0, z: 0.05}
+  m_LocalScale: {x: 0.019999996, y: 0.020000005, z: 0.019999992}
+  m_Children: []
+  m_Father: {fileID: 615539193580763398}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
 --- !u!114 &1247018438
 MonoBehaviour:
   m_ObjectHideFlags: 0
