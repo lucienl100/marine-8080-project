@@ -7,6 +7,7 @@ public class AbilityManager : MonoBehaviour
 {
     private bool shieldEnabled = false;
     private bool shieldActive = false;
+    public bool[] enabledAbilities = new bool[] { false, false };
     public float shieldDuration = 3f;
     private float shieldTimer;
     public GameObject shield;
@@ -27,18 +28,21 @@ public class AbilityManager : MonoBehaviour
     {
         shieldEnabled = false;
         pb = this.GetComponent<ProjectileBlast>();
-        if (enableShieldAtStart)
+        for (int i = 0; i < 2; i++)
         {
-            EnableShield();
-        }
-        if (enableBlastAtStart)
-        {
-            EnableProjBlast();
+            if (i == 1 && PlayerPrefs.GetInt("ability" + i.ToString()) == 1)
+            {
+                EnableShield();
+            }
+            else if (PlayerPrefs.GetInt("ability" + i.ToString()) == 1)
+            {
+                EnableProjBlast();
+            }
+
         }
         cdTimer = 0f;
         shieldTimer = 0f;
         player = this.transform;
-        
     }
 
     // Update is called once per frame
@@ -65,11 +69,13 @@ public class AbilityManager : MonoBehaviour
     }
     public void EnableProjBlast()
     {
+        enabledAbilities[1] = true;
         projIcon.SetActive(true);
         pb.enabled = true;
     }
     public void EnableShield()
     {
+        enabledAbilities[0] = true;
         shieldFlash.GetComponent<Flash>().FlashImage();
         shieldIcon.SetActive(true);
         shieldEnabled = true;

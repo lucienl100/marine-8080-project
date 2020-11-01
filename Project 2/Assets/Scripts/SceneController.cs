@@ -12,15 +12,20 @@ public class SceneController : MonoBehaviour
     public GameObject pauseMenuUI;
     public Shooting shooting;
     public GameObject crosshair;
+    public GameObject shieldTooltip;
+    public GameObject projTooltip;
+    public GameObject hpTooltip;
     public GameObject hud;
     private int currBuildIndex;
     private int nextBuildIndex;
     public LookAtMouse lam;
     public Shooting shoot;
+    public AbilityManager ability;
     public GameObject fade;
     public Movement mv;
     public PlayerHealth ph;
     bool paused = false;
+    bool tooltip = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,29 +42,45 @@ public class SceneController : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !paused)
+        if (tooltip)
         {
-            PauseGame();
-            paused = true;
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                shieldTooltip.SetActive(false);
+                projTooltip.SetActive(false);
+                hpTooltip.SetActive(false);
+                tooltip = false;
+                UnpauseGame();
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && paused)
+        else
         {
-            UnpauseGame();
+            if (Input.GetKeyDown(KeyCode.Escape) && !paused)
+            {
+                PauseGame();
+                paused = true;
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape) && paused)
+            {
+                UnpauseGame();
+            }
+            am.SetFloat("Volume", slider.value);
         }
-        am.SetFloat("Volume", slider.value);
     }
     public void PauseGame()
     {
+        Time.timeScale = 0f;
         crosshair.SetActive(false);
         Cursor.visible = true;
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+        
         hud.SetActive(false);
         shoot.enabled = false;
         lam.enabled = false;
     }
     public void UnpauseGame()
     {
+        Time.timeScale = 1f;
         paused = false;
         crosshair.SetActive(true);
         Cursor.visible = false;
@@ -67,9 +88,38 @@ public class SceneController : MonoBehaviour
         hud.SetActive(true);
         shoot.enabled = true;
         lam.enabled = true;
-        Time.timeScale = 1f;
+        
     }
-    // Update is called once per frame
+    public void HealthpackTooltip()
+    {
+        Cursor.visible = true;
+        Time.timeScale = 0f;
+        hud.SetActive(false);
+        shoot.enabled = false;
+        lam.enabled = false;
+        tooltip = true;
+        hpTooltip.SetActive(true);
+    }
+    public void ShieldTooltip()
+    {
+        Cursor.visible = true;
+        Time.timeScale = 0f;
+        hud.SetActive(false);
+        shoot.enabled = false;
+        lam.enabled = false;
+        tooltip = true;
+        shieldTooltip.SetActive(true);
+    }
+    public void ProjTooltip()
+    {
+        Cursor.visible = true;
+        Time.timeScale = 0f;
+        hud.SetActive(false);
+        shoot.enabled = false;
+        lam.enabled = false;
+        tooltip = true;
+        projTooltip.SetActive(true);
+    }
     public void FadeToLevel()
     {
         anim.SetTrigger("FadeOut");
@@ -93,7 +143,19 @@ public class SceneController : MonoBehaviour
                 PlayerPrefs.SetInt("guns" + i.ToString(), 0);
             }
         }
+        for (int i = 0; i < ability.enabledAbilities.Length; i++)
+        {
+            if (ability.enabledAbilities[i])
+            {
+                PlayerPrefs.SetInt("ability" + i.ToString(), 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("ability" + i.ToString(), 0);
+            }
+        }
         //Set the current playthrough level to the next level
+        PlayerPrefs.SetInt("level" + nextBuildIndex.ToString(), 1);
         PlayerPrefs.SetInt("currentLevel", nextBuildIndex);
         StartCoroutine(LoadWinScreen());
     }

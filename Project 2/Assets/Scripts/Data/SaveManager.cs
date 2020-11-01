@@ -16,6 +16,12 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.SetInt("highestLevel", 0);
         PlayerPrefs.SetInt("currentLevel", 0);
         PlayerPrefs.SetFloat("volume", 1);
+        PlayerPrefs.DeleteKey("tooltip0");
+        PlayerPrefs.DeleteKey("tooltip1");
+        for (int i = 1; i < 5; i++)
+        {
+            PlayerPrefs.DeleteKey("level" + i.ToString());
+        }
         Debug.Log("Reseted all data");
     }
 }

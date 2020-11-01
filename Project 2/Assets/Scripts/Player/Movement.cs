@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
     public float jumpSpeed;
     public float maxSpeed = 10f;
     public float gravity = -9.81f;
+    public float gravityScale = 1f;
     public bool inAir;
     public bool inJump;
     public CharacterController cc;
@@ -35,6 +36,7 @@ public class Movement : MonoBehaviour
     {
         inAirTimer = 0.1f;
         velocity = Vector3.zero;
+        gravityScale = 1f;
         timer = 0f;
     }
 
@@ -119,7 +121,7 @@ public class Movement : MonoBehaviour
 
     void CalculateGravity()
     {
-        velocity.y += gravity * Time.deltaTime;
+        velocity.y += gravityScale * gravity * Time.deltaTime + additionalV.y;
         if (!inAir && velocity.y < 0)
         {
             velocity.y = -3f;

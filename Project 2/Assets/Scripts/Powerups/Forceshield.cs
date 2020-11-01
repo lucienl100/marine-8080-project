@@ -10,6 +10,7 @@ public class Forceshield : MonoBehaviour
     private Vector3 upper;
     private Vector3 bottom;
     private float height = 0.5f;
+    public SceneController sc;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +53,12 @@ public class Forceshield : MonoBehaviour
             AbilityManager am = other.gameObject.GetComponent<AbilityManager>();
             Debug.Log("shield get");
             am.EnableShield();
+            if (PlayerPrefs.GetInt("tooltip0") == 0)
+            {
+                sc.ShieldTooltip();
+
+            }
+            PlayerPrefs.SetInt("tooltip0", 1);
             Destroy(this.gameObject);
         }
     }

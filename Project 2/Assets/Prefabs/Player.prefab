@@ -5708,6 +5708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a97b43740d973a0468df31e443bb5150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledAbilities: 0000
   shieldDuration: 3
   shield: {fileID: 3194816815202814736, guid: 8f8a604ea8e6d2c458e8d317e23437e5, type: 3}
   cooldown: 10
@@ -5821,7 +5822,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   slider: {fileID: 0}
-  cooldown: 5
+  cooldown: 3
   pushStrength: 3
 --- !u!114 &5506219082335537451
 MonoBehaviour:

@@ -30,6 +30,11 @@ public class MainMenu : MonoBehaviour
         {
             PlayerPrefs.SetInt("guns" + i.ToString(), 0);
         }
+        for (int i = 0; i < 2; i++)
+        {
+            PlayerPrefs.SetInt("tooltip" + i.ToString(), 0);
+            PlayerPrefs.SetInt("ability" + i.ToString(), 0);
+        }
         PlayerPrefs.SetInt("currentLevel", 1);
         SceneManager.LoadScene(1);
     }
