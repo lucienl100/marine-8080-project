@@ -11,10 +11,9 @@ public class ShootingBasic : MonoBehaviour
     public float intDelay = 0.5f;
     private float timer;
     Transform player;
-    Transform t;
+    public Transform shootingOrigin;
     void Start()
     {
-        t = this.transform;
         player = lp.player;
         timer = 0f;
     }
@@ -38,11 +37,15 @@ public class ShootingBasic : MonoBehaviour
     public void FireProjectile(GameObject projectile)
     {
         se.Play();
-        Vector3 lookdir = player.position - t.position;
-        Quaternion dir = Quaternion.LookRotation(lookdir);
-        dir.eulerAngles = new Vector3(dir.eulerAngles.x, lookdir.x > 0 ? 90f : 270f, 0f);
-        GameObject proj = Instantiate(projectile, t.position, dir);
+        Vector3 lookDir = (player.position - shootingOrigin.position).normalized;
+        Quaternion dir = Quaternion.LookRotation(lookDir);
+        //Make sure the projectile travels straight in the x axis
+        dir.eulerAngles = new Vector3(dir.eulerAngles.x, lookDir.x > 0 ? 90f : 270f, 0f);
+        GameObject proj = Instantiate(projectile, shootingOrigin.position, dir);
+        //Set the player attribute of the projectile to player to destroy it when out of range.
+
         proj.GetComponent<BasicProjectile>().player = player;
+
     }
     public bool ReadyToFire()
     {

@@ -14,9 +14,11 @@ public class PlayerHealth : MonoBehaviour
     public Movement mv;
     public float minHeight = -14f;
     CharacterController cc;
+    float difficulty;
     // Start is called before the first frame update
     void Start()
     {
+        difficulty = PlayerPrefs.GetFloat("difficulty");
         cc = this.GetComponent<CharacterController>();
         health = 100f;
     }
@@ -34,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
     public void Damage(float damage)
     {
         Debug.Log("got hit");
-        health -= damage;
+        health -= damage * difficulty;
         if (health <= 0f)
         {
             health = 0f;
