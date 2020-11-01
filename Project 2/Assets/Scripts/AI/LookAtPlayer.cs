@@ -109,7 +109,6 @@ public class LookAtPlayer : MonoBehaviour
             }
         }
         t.eulerAngles = new Vector3(t.eulerAngles.x, Mathf.Lerp(t.eulerAngles.y, faceRotation.eulerAngles.y, Time.deltaTime * 15.0f), t.eulerAngles.z);
-        Debug.Log(t.rotation.eulerAngles);
         //Account for slerp errors
         if (t.eulerAngles.y > 270 - 10f && t.eulerAngles.y < 270 + 10f && !playerIsRight)
         {
@@ -136,6 +135,7 @@ public class LookAtPlayer : MonoBehaviour
         if (turningTimer <= 0)
         {
             t.position += t.forward * Time.deltaTime * 3f;
+            t.position = new Vector3(t.position.x, t.position.y, -2.5f);
         }
         else
         {

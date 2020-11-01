@@ -38,7 +38,7 @@ public class Sliding : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && cdTimer <= 0f)
         {
-            if (!mv.inAir && ((lm.playerIsRight && mv.velocity.x < -5f) || (!lm.playerIsRight && mv.velocity.x > 5f)))
+            if (!mv.inAir && ((mv.velocity.x < -1f) || (mv.velocity.x > 1f)))
             {
                 Slide();
                 am.Slide();
@@ -65,7 +65,7 @@ public class Sliding : MonoBehaviour
         cdTimer = cooldown;
         mv.maxRestrictSpeedScale = 0.01f;
         mv.recoverDuration = 1f;
-        mv.AddVelocity(new Vector3(1, 0, 0) * pushStrength * (lm.playerIsRight ? -1 : 1));
+        mv.AddVelocity(new Vector3(1, 0, 0) * pushStrength * (mv.velocity.x < -1f ? -1 : 1));
         slidingRight = lm.playerIsRight ? 1 : -1;
         mv.CeaseControl();
     }

@@ -20,29 +20,34 @@ public class WallJump : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.J))
-		{
-			movementScript.AddVelocity(new Vector3(3, 0, 0));
-		}
 		jumpTimer = Mathf.Max(jumpTimer - Time.deltaTime, 0);
 		if (!movementScript.inAir)
 		{
 			lastWallJump.x = float.PositiveInfinity;
 		}
-		if (movementScript.inAir && jumpTimer > 0 && Input.GetKeyDown(KeyCode.Space))
+		if (CheckWall())
 		{
-			bool isRight = collisionLocation.x > transform.position.x ? true : false;
-			if (lastWallJump == null || Mathf.Abs(transform.position.x - lastWallJump.x) >= minJumpDistance)
+			WallSlide();
+			if (Input.GetKeyDown(KeyCode.Space))
 			{
-				Debug.Log("walljump");
-				movementScript.CeaseControl();
-				lastWallJump = transform.position;
-				movementScript.Jump();
-				movementScript.maxRestrictSpeedScale = 0.4f;
-				movementScript.recoverDuration = 3f;
-				movementScript.AddVelocity(new Vector3(1, 0, 0) * pushStrength * (isRight ? -1 : 1));
+				bool isRight = collisionLocation.x > transform.position.x ? true : false;
+				if (lastWallJump == null || Mathf.Abs(transform.position.x - lastWallJump.x) >= minJumpDistance)
+				{
+					Debug.Log("walljump");
+					movementScript.CeaseControl();
+					lastWallJump = transform.position;
+					movementScript.Jump();
+					movementScript.maxRestrictSpeedScale = 0.4f;
+					movementScript.recoverDuration = 3f;
+					movementScript.AddVelocity(new Vector3(1, 0, 0) * pushStrength * (isRight ? -1 : 1));
+				}
 			}
 		}
+		else
+		{
+			movementScript.gravityScale = 1f;
+		}
+		
 	}
 
 	private void OnCollisionStay(Collision collision)
@@ -51,6 +56,24 @@ public class WallJump : MonoBehaviour
 		{
 			collisionLocation = collision.contacts[0].point;
 			jumpTimer = jumpWindow;
+		}
+	}
+	public bool CheckWall()
+	{
+		return movementScript.inAir && jumpTimer > 0;
+	}
+	public void WallSlide()
+	{
+		bool isRight = collisionLocation.x > transform.position.x ? true : false;
+		if (CheckWall() && (lastWallJump == null || Mathf.Abs(transform.position.x - lastWallJump.x) >= minJumpDistance) && ((Input.GetKey(KeyCode.D) && isRight) || (Input.GetKey(KeyCode.A) && !isRight)) && movementScript.velocity.y < 0f)
+		{
+
+			movementScript.gravityScale = 0.25f;
+			Debug.Log("wallsliding");
+		}
+		else
+		{
+			movementScript.gravityScale = 1f;
 		}
 	}
 }

@@ -10,7 +10,7 @@ public class ProjBlastEnabler : MonoBehaviour
     private Vector3 upper;
     private Vector3 bottom;
     private float height = 0.5f;
-
+    public SceneController sc;
 
     // Start is called before the first frame update
     void Start()
@@ -51,8 +51,15 @@ public class ProjBlastEnabler : MonoBehaviour
         if (other.transform.tag == "Player")
         {
             AbilityManager am = other.gameObject.GetComponent<AbilityManager>();
+            
             Debug.Log("proj blast get");
+            
             am.EnableProjBlast();
+            if (PlayerPrefs.GetInt("tooltip1") == 0)
+            {
+                sc.ProjTooltip();
+            }
+            PlayerPrefs.SetInt("tooltip1", 1);
             Destroy(this.gameObject);
         }
     }

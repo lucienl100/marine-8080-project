@@ -50,6 +50,14 @@ public class PlayerHealth : MonoBehaviour
         anim.SetTrigger("Die");
         Invoke("RestartScene", 1f);
     }
+    public void AddHealth(float add)
+    {
+        health += add;
+        if (health > 100f)
+        {
+            health = 100f;
+        }
+    }
     void CheckOutOfBounds()
     {
         if (this.transform.position.y < minHeight)

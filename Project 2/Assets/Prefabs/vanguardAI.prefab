@@ -2844,7 +2844,6 @@ MonoBehaviour:
   player: {fileID: 0}
   anim: {fileID: 1673492863365466074}
   inRange: 0
-  spotRange: 20
   minRange: 3
   patrolStep: 3
   layerMask:
@@ -2882,7 +2881,7 @@ MonoBehaviour:
   projectile: {fileID: 3602674599940093403, guid: cd02b545d007e7c48a05f2788f108741,
     type: 3}
   se: {fileID: 1757709459601352870}
-  timeBetweenShots: 2
+  timeBetweenShots: 2.3
   intDelay: 0.5
   shootingOrigin: {fileID: 5462219140202123276}
 --- !u!114 &641320898958294604
