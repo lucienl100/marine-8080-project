@@ -26,11 +26,12 @@ Shader "Unlit/PhongWireframeShader"
 		_mainTexture("Main texture", 2D) = "white" {}
 		_normalMap("Normal map", 2D) = "black" {}
 
-		_OutlineColor ("Outline Color", Color) = (1,1,1,1)
-		_Outline ("Outline width", Range (0, 1)) = .5
+		_WireframeVal ("Wireframe width", Range(0., 0.5)) = 0.05
+		_WireframeColor ("Wireframe color", color) = (1., 1., 1., 1.)
 	}
 	SubShader
 	{
+		// Phong shading pass
 		Pass
 		{
 			CGPROGRAM
@@ -75,8 +76,6 @@ Shader "Unlit/PhongWireframeShader"
 			float4 _PointLightPositionY;
 			float4 _PointLightPositionZ;
 
-			float _Outline;
- 			float4 _OutlineColor;
 			// Implementation of the vertex shader
 			vertOut vert(vertIn v)
 			{
@@ -116,12 +115,7 @@ Shader "Unlit/PhongWireframeShader"
 				// Our interpolated normal might not be of length 1
 				float3 interpolatedNormal = normalize(v.worldNormal); // * (2.0f*normalize(normalMap.rgb)-1.0f)
 
-				float3 viewDir = normalize(v.viewDir);
-				float4 rimDot = 1 - dot(viewDir, interpolatedNormal);
-				float rimIntensity = smoothstep(_Outline - 0.01, _Outline + 0.01, rimDot);
-				float4 rim = rimIntensity * _OutlineColor;
-
-				 // Calculate ambient RGB intensities
+				// Calculate ambient RGB intensities
                 float3 amb = v.color.rgb * UNITY_LIGHTMODEL_AMBIENT.rgb * _Ka;
 				color.rgb =  amb.rgb * mainTexture.rgb;
 
@@ -140,16 +134,19 @@ Shader "Unlit/PhongWireframeShader"
 				float4 lightColour;
 
 				for (int index = 0; index < 4; index++) {
-					// Calculate diffuse RBG reflections, we save the results of L.N because we will use it again for specular
+					// Set light position and colour based on 
 					lightPosition = float4(_PointLightPositionX[index], _PointLightPositionY[index], _PointLightPositionZ[index], 1.0);
 					lightColour = float4(_PointLightReds[index], _PointLightBlues[index], _PointLightGreens[index], 1.0);
+					
+					// Calculate diffuse RBG reflections, we save the results of L.N because we will use it again for specular
 					L = normalize(lightPosition - v.worldVertex.xyz);
-					lLength = clamp(5/length(lightPosition - v.worldVertex.xyz), 0, 0.45);
 					LdotN = dot(L, interpolatedNormal);
 					dif = _fAtt * lightColour.rgb * _Kd * v.color.rgb * saturate(LdotN);
-
 					V = normalize(_WorldSpaceCameraPos - v.worldVertex.xyz);
 					H = normalize(V + L);
+
+					// clamp power of light based on distance
+					lLength = clamp(5/length(lightPosition - v.worldVertex.xyz), 0, 0.45);
 
 					// Calculate specular
 					spe = _fAtt * lightColour.rgb * _Ks * pow(saturate(dot(interpolatedNormal, H)), _specN);
@@ -160,6 +157,85 @@ Shader "Unlit/PhongWireframeShader"
 
                 color.a = 1.0f;
                 return color;
+			}
+			ENDCG
+		}
+		
+		// Wireframe pass
+		Pass
+		{
+			CGPROGRAM
+			#pragma vertex vert
+			#pragma fragment frag
+			#pragma geometry geom
+
+			#include "UnityCG.cginc"
+
+			struct vertIn {
+				float4 worldPos : SV_POSITION;
+			};
+
+			struct vertOut {
+				float4 pos : SV_POSITION;
+				float3 bary : TEXCOORD0;
+			};
+			
+			float _Outline;
+ 			float4 _OutlineColor;
+
+			// Implementation of the vertex shader
+			vertIn vert(appdata_base v) {
+				vertIn o;
+				o.worldPos = mul(unity_ObjectToWorld, v.vertex);
+				return o;
+			}
+
+			// Implementation of the geometry shader
+			[maxvertexcount(3)]
+			void geom(triangle vertIn triIn[3], inout TriangleStream<vertOut> triStream) {
+				float3 noWire = float3(0, 0, 0);
+
+				// Define edges length
+				float edgeALength = length(triIn[0].worldPos - triIn[1].worldPos);
+				float edgeBLength = length(triIn[1].worldPos - triIn[2].worldPos);
+				float edgeCLength = length(triIn[2].worldPos - triIn[0].worldPos);
+				
+				// Remove diagonal lines
+				if (edgeALength > edgeBLength && edgeALength > edgeCLength) {
+					noWire.y = 1;
+				} else if (edgeBLength > edgeCLength && edgeBLength > edgeALength) {
+					noWire.x = 1;
+				} else {
+					noWire.z = 1;
+				}
+
+				// Remove diagonal wires by setting bary to 1 for each vertex
+				vertOut o;
+				o.pos = mul(UNITY_MATRIX_VP, triIn[0].worldPos);
+				o.bary = float3(1, 0, 0) + noWire;
+				triStream.Append(o);
+
+				o.pos = mul(UNITY_MATRIX_VP, triIn[1].worldPos);
+				o.bary = float3(0, 0, 1) + noWire;
+				triStream.Append(o);
+
+				o.pos = mul(UNITY_MATRIX_VP, triIn[2].worldPos);
+				o.bary = float3(0, 1, 0) + noWire;
+				triStream.Append(o);
+			}
+
+			float _WireframeVal;
+			fixed4 _WireframeColor;
+
+			// Implementation of the fragment shader
+			fixed4 frag(vertOut v) : SV_Target {
+				// Discard if too far from edge or diagonal
+				if(!(v.bary.x <= _WireframeVal || v.bary.y <= _WireframeVal || v.bary.z <= _WireframeVal)) {
+					discard;
+				}
+				
+				// Return wireframe colour
+				return _WireframeColor;
 			}
 			ENDCG
 		}

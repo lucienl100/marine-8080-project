@@ -115,3 +115,4 @@ Material:
     - _PointLightReds: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _SurfaceColor: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1}
+    - _WireframeColor: {r: 0, g: 0, b: 0, a: 1}

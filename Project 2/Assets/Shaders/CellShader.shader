@@ -111,12 +111,6 @@ Shader "Unlit/CellShader"
 
 				o.viewDir = WorldSpaceViewDir(v.vertex);
 
-				// float3 norm   = mul ((float3x3)UNITY_MATRIX_IT_MV, v.normal);
-				// float2 offset = TransformViewToProjection(norm.xy);
-
-				// o.vertex.xy += offset * o.vertex.z * _Outline;
-				// o.color = _OutlineColor;
-
 				return o;
 			}
 
@@ -127,13 +121,10 @@ Shader "Unlit/CellShader"
 				fixed4 normalMap = tex2D(_normalMap, v.uv);
                 float4 color;
 
-				// float dist = distance(worldVertex,_WorldSpaceLightPos0);
-				// o.emission = (dist - 300) / 1400;
-
 				// Our interpolated normal might not be of length 1
 				float3 interpolatedNormal = normalize(v.worldNormal); // * (2.0f*normalize(normalMap.rgb)-1.0f)
 
-
+				// Add cell shading rim on edge
 				float3 viewDir = normalize(v.viewDir);
 				float4 rimDot = 1 - dot(viewDir, interpolatedNormal);
 				float rimIntensity = smoothstep(_Outline - 0.01, _Outline + 0.01, rimDot);
@@ -152,23 +143,26 @@ Shader "Unlit/CellShader"
                 float3 V;
                 float3 H;
 
-
 				// Calculate specular
                 float3 spe  ;
 				float4 lightPosition;
 				float4 lightColour;
 				for (int index = 0; index < 4; index++) {
-					// Calculate diffuse RBG reflections, we save the results of L.N because we will use it again for specular
+					// Set light position and colour based on 
 					lightPosition = float4(_PointLightPositionX[index], _PointLightPositionY[index], _PointLightPositionZ[index], 1.0);
 					lightColour = float4(_PointLightReds[index], _PointLightBlues[index], _PointLightGreens[index], 1.0);
+
+					// Calculate diffuse RBG reflections, we save the results of L.N because we will use it again for specular
 					L = normalize(lightPosition - v.worldVertex.xyz);
-					lLength = clamp(5/length(lightPosition - v.worldVertex.xyz), 0, 0.45);
 					LdotN = dot(L, interpolatedNormal);
+					// Limit L.N to 0 & 1 to create cell shading effect
 					LdotN = saturate(LdotN) > 0 ? 1 : 0;
 					dif = _fAtt * lightColour.rgb * _Kd * saturate(LdotN); // * v.color.rgb;
-
 					V = normalize(_WorldSpaceCameraPos - v.worldVertex.xyz);
 					H = normalize(V + L);
+
+					// clamp power of light based on distance
+					lLength = clamp(5/length(lightPosition - v.worldVertex.xyz), 0, 0.45);
 
 					// Calculate specular
 					spe = _fAtt * lightColour.rgb * _Ks * pow(saturate(dot(interpolatedNormal, H)), _specN);

@@ -53239,6 +53239,7 @@ MonoBehaviour:
   crosshair: {fileID: 805796209}
   shieldTooltip: {fileID: 1549472815}
   projTooltip: {fileID: 1368161502}
+  hpTooltip: {fileID: 0}
   hud: {fileID: 1861098460}
   lam: {fileID: 2739813201719275326}
   shoot: {fileID: 2739813201719275327}
@@ -56733,7 +56734,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh893984
+  m_Name: pb_Mesh36384
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
