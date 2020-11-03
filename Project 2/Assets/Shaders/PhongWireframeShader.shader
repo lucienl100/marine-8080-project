@@ -1,13 +1,6 @@
-﻿// Note we are using a Unity "directional" light here. This means the 
-// incoming light "position" data is actually a vector representing the
-// light direction rather than an actual world-space position. As an 
-// experiment, try moving the UnityLight object in the game and notice
-// how it has no effect on the lighting for the cube using this shader. 
-// (Only *rotating* it will have an effect.)
+﻿//UNITY_SHADER_NO_UPGRADE
 
-//UNITY_SHADER_NO_UPGRADE
-
-Shader "Unlit/PhongWireframeShader"
+Shader "Custom/Geometry/PhongWireframeShader"
 {
 	Properties
 	{
@@ -26,12 +19,13 @@ Shader "Unlit/PhongWireframeShader"
 		_mainTexture("Main texture", 2D) = "white" {}
 		_normalMap("Normal map", 2D) = "black" {}
 
-		_WireframeVal ("Wireframe width", Range(0., 0.5)) = 0.05
+		
+		_WireframeVal ("Wireframe width", Range(0., 0.5)) = 0.09
 		_WireframeColor ("Wireframe color", color) = (1., 1., 1., 1.)
 	}
+
 	SubShader
 	{
-		// Phong shading pass
 		Pass
 		{
 			CGPROGRAM
@@ -56,7 +50,6 @@ Shader "Unlit/PhongWireframeShader"
 				float2 uv : TEXCOORD0;
 				float4 worldVertex : TEXCOORD1;
 				float3 worldNormal : TEXCOORD2;
-				float3 viewDir : TEXCOORD3;
 			};
 
 			sampler2D _mainTexture;
@@ -89,7 +82,7 @@ Shader "Unlit/PhongWireframeShader"
 				float3 worldNormal = normalize(mul(transpose((float3x3)unity_WorldToObject), v.normal.xyz));
 
 				// Transform vertex in world coordinates to camera coordinates, and pass colour
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.color = _SurfaceColor;
 
 				// Pass out the world vertex position and world normal to be interpolated
@@ -97,8 +90,6 @@ Shader "Unlit/PhongWireframeShader"
 				o.worldVertex = worldVertex;
 				o.worldNormal = worldNormal;
 				o.uv = TRANSFORM_TEX(v.uv, _mainTexture);
-
-				o.viewDir = WorldSpaceViewDir(v.vertex);
 				return o;
 			}
 
@@ -109,27 +100,20 @@ Shader "Unlit/PhongWireframeShader"
 				fixed4 normalMap = tex2D(_normalMap, v.uv);
                 float4 color;
 
-				// float dist = distance(worldVertex,_WorldSpaceLightPos0);
-				// o.emission = (dist - 300) / 1400;
-
 				// Our interpolated normal might not be of length 1
 				float3 interpolatedNormal = normalize(v.worldNormal); // * (2.0f*normalize(normalMap.rgb)-1.0f)
 
-				// Calculate ambient RGB intensities
+				 // Calculate ambient RGB intensities
                 float3 amb = v.color.rgb * UNITY_LIGHTMODEL_AMBIENT.rgb * _Ka;
 				color.rgb =  amb.rgb * mainTexture.rgb;
 
-                // Calculate diffuse RBG reflections, we save the results of L.N because we will use it again for specular
                 float3 L;
 				float lLength;
                 float LdotN;
                 float3 dif;
-
                 float3 V;
                 float3 H;
-
-				// Calculate specular
-                float3 spe  ;
+                float3 spe;
 				float4 lightPosition;
 				float4 lightColour;
 
@@ -142,11 +126,12 @@ Shader "Unlit/PhongWireframeShader"
 					L = normalize(lightPosition - v.worldVertex.xyz);
 					LdotN = dot(L, interpolatedNormal);
 					dif = _fAtt * lightColour.rgb * _Kd * v.color.rgb * saturate(LdotN);
-					V = normalize(_WorldSpaceCameraPos - v.worldVertex.xyz);
-					H = normalize(V + L);
 
 					// clamp power of light based on distance
 					lLength = clamp(5/length(lightPosition - v.worldVertex.xyz), 0, 0.45);
+
+					V = normalize(_WorldSpaceCameraPos - v.worldVertex.xyz);
+					H = normalize(V + L);
 
 					// Calculate specular
 					spe = _fAtt * lightColour.rgb * _Ks * pow(saturate(dot(interpolatedNormal, H)), _specN);
@@ -160,10 +145,11 @@ Shader "Unlit/PhongWireframeShader"
 			}
 			ENDCG
 		}
-		
+
 		// Wireframe pass
 		Pass
 		{
+			Cull Back
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
@@ -179,9 +165,6 @@ Shader "Unlit/PhongWireframeShader"
 				float4 pos : SV_POSITION;
 				float3 bary : TEXCOORD0;
 			};
-			
-			float _Outline;
- 			float4 _OutlineColor;
 
 			// Implementation of the vertex shader
 			vertIn vert(appdata_base v) {
@@ -193,34 +176,33 @@ Shader "Unlit/PhongWireframeShader"
 			// Implementation of the geometry shader
 			[maxvertexcount(3)]
 			void geom(triangle vertIn triIn[3], inout TriangleStream<vertOut> triStream) {
-				float3 noWire = float3(0, 0, 0);
+				float3 noWire = float3(0., 0., 0.);
 
 				// Define edges length
-				float edgeALength = length(triIn[0].worldPos - triIn[1].worldPos);
-				float edgeBLength = length(triIn[1].worldPos - triIn[2].worldPos);
-				float edgeCLength = length(triIn[2].worldPos - triIn[0].worldPos);
+				float EdgeALength = length(triIn[0].worldPos - triIn[1].worldPos);
+				float EdgeBLength = length(triIn[1].worldPos - triIn[2].worldPos);
+				float EdgeCLength = length(triIn[2].worldPos - triIn[0].worldPos);
 				
-				// Find diagonal lines (longest line in triangle)
-				if (edgeALength > edgeBLength && edgeALength > edgeCLength) {
-					noWire.y = 1; // edge A
-				} else if (edgeBLength > edgeCLength && edgeBLength > edgeALength) {
-					noWire.x = 1; // edge B
-				} else {
-					noWire.z = 1; // edge C
-				}
+				// Find diagonal line (longest line in triangle)
+				if(EdgeALength > EdgeBLength && EdgeALength > EdgeCLength)
+					noWire.y = 1.; // edge A
+				else if (EdgeBLength > EdgeCLength && EdgeBLength > EdgeALength)
+					noWire.x = 1.; // edge B
+				else
+					noWire.z = 1.; // edge C
 
 				// Remove diagonal wires by setting bary to 1 for each vertex
 				vertOut o;
 				o.pos = mul(UNITY_MATRIX_VP, triIn[0].worldPos);
-				o.bary = float3(1, 0, 0) + noWire;
+				o.bary = float3(1., 0., 0.) + noWire;
 				triStream.Append(o);
 
 				o.pos = mul(UNITY_MATRIX_VP, triIn[1].worldPos);
-				o.bary = float3(0, 0, 1) + noWire;
+				o.bary = float3(0., 0., 1.) + noWire;
 				triStream.Append(o);
 
 				o.pos = mul(UNITY_MATRIX_VP, triIn[2].worldPos);
-				o.bary = float3(0, 1, 0) + noWire;
+				o.bary = float3(0., 1., 0.) + noWire;
 				triStream.Append(o);
 			}
 
@@ -239,5 +221,6 @@ Shader "Unlit/PhongWireframeShader"
 			}
 			ENDCG
 		}
+
 	}
 }
