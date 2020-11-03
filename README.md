@@ -103,10 +103,17 @@ The participants were instructed to load up the game and play the entire game th
 
 <b>Feedback</b>
 In general the game was well recieved. 33% found the game "Average", while 33% found the game "Fun" and 33% found the game "Very Fun", from this, we can infer that the game was at least somewhat enjoyable for the participants
-<img src="fun.png"  width="300">
-At first, the user interface of the game as well as the heads-up display proved to be somewhat poorly designed; evaluation 1, 2 and 3 all suggested that the in game HUD needs to be more indicative of what ability is off cooldown and what gun their using. According to this information, we improved the user interface and this is backed up by all of the participants who were evaluated later voting for "Slightly Agree" and "Agree" to the statement: <i>"I found the game interface/UI friendly and easy to understand. (Eg. Icons are very clear in what they do)</i>
-<img src="gameinterface.png"  width="300">
-*Note that the first 3 participants who were exposed to the early user interface voted only for "Not agree nor disgree" and "Disagree".
+<img src="fun.PNG"  width="300">
+At first, the user interface of the game as well as the heads-up display proved to be somewhat poorly designed; evaluation 1, 2 and 3 all suggested that the in game HUD needs to be more indicative of what ability is off cooldown and what gun their using. According to this information, we improved the user interface (which will be explained in the next section) and this is backed up by all of the participants who were evaluated later voting for "Slightly Agree" and "Agree" to the statement: <i>"I found the game interface/UI friendly and easy to understand. (Eg. Icons are very clear in what they do)</i>
+<img src="gameinterface.PNG"  width="300">
+Note that the first 3 participants who were exposed to the early user interface voted only for "Not agree nor disgree" and "Disagree".
+
+The game instructions were clear and the query results prove this:
+<img src="objective.PNG" width="300">
+
+One issue we had was the balacing of the elements of the game, according to the participants' suggestions and comments during Think Aloud evaluation as well as the questionnaire. Level 4 (Second last level) proved to be a great challenge to beat in comparison to the other levels (this issue was addressed and fixed, next section for more information). Another unbalanced element are the weapons the player unlocks. In the Think Aloud observation, the shotgun was only used once every time (that is when it was first picked up) and never used again after. While, the SMG was often the most used weapon in the game. The questionnaire results back this claim up:
+<img src="shotgunbuff.PNG", width="300">
+<img src="smgnerf.PNG", width="300">
 ## Using Images
 
 You can use images/gif by adding them to a folder in your repo:
