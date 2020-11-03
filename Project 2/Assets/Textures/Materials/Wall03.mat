@@ -110,4 +110,4 @@ Material:
     - _PointLightPositionZ: {r: 0, g: 0, b: 0, a: 0}
     - _PointLightReds: {r: 1, g: 1, b: 1, a: 1}
     - _SurfaceColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
-    - _WireframeColor: {r: 1, g: 1, b: 1, a: 1}
+    - _WireframeColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}

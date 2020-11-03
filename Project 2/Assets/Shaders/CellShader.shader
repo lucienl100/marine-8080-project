@@ -1,11 +1,4 @@
-﻿// Note we are using a Unity "directional" light here. This means the 
-// incoming light "position" data is actually a vector representing the
-// light direction rather than an actual world-space position. As an 
-// experiment, try moving the UnityLight object in the game and notice
-// how it has no effect on the lighting for the cube using this shader. 
-// (Only *rotating* it will have an effect.)
-
-//UNITY_SHADER_NO_UPGRADE
+﻿//UNITY_SHADER_NO_UPGRADE
 
 Shader "Unlit/CellShader"
 {
@@ -100,7 +93,7 @@ Shader "Unlit/CellShader"
 				float3 worldNormal = normalize(mul(transpose((float3x3)unity_WorldToObject), v.normal.xyz));
 
 				// Transform vertex in world coordinates to camera coordinates, and pass colour
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.color = _SurfaceColor;
 
 				// Pass out the world vertex position and world normal to be interpolated
