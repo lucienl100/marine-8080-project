@@ -27,10 +27,8 @@ public class LevelSelect : MonoBehaviour
         {
             PlayerPrefs.SetInt("guns" + i.ToString(), 0);
         }
-        for (int i = 0; i < 2; i++)
-        {
-            PlayerPrefs.SetInt("ability" + i.ToString(), 0);
-        }
+        PlayerPrefs.SetInt("ability0", 0);
+        PlayerPrefs.SetInt("ability1", 0);
         SceneManager.LoadScene(levelname);
     }
 }

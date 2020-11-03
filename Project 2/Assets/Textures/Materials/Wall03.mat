@@ -85,7 +85,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _WireframeVal: 0.03
+    - _WireframeVal: 0.09
     - _ZWrite: 1
     - _fAtt: 5
     - _specN: 1

@@ -7,6 +7,7 @@ public class TransitionSceneController : MonoBehaviour
 {
     void Start()
     {
+        Time.timeScale = 1f;
         Cursor.visible = true;
     }
     public Animator anim;

@@ -28,17 +28,14 @@ public class AbilityManager : MonoBehaviour
     {
         shieldEnabled = false;
         pb = this.GetComponent<ProjectileBlast>();
-        for (int i = 0; i < 2; i++)
+        if (PlayerPrefs.GetInt("ability0") == 1)
         {
-            if (i == 1 && PlayerPrefs.GetInt("ability" + i.ToString()) == 1)
-            {
-                EnableShield();
-            }
-            else if (PlayerPrefs.GetInt("ability" + i.ToString()) == 1)
-            {
-                EnableProjBlast();
-            }
-
+            Debug.Log("shield");
+            EnableShield();
+        }
+        if (PlayerPrefs.GetInt("ability1") == 1)
+        {
+            EnableProjBlast();
         }
         cdTimer = 0f;
         shieldTimer = 0f;

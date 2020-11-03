@@ -69,6 +69,6 @@ public class PlayerHealth : MonoBehaviour
     }
     void RestartScene()
     {
-        SceneManager.LoadScene(8);
+        SceneManager.LoadScene(9);
     }
 }

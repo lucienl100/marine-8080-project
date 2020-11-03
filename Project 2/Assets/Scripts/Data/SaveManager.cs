@@ -18,9 +18,18 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.SetFloat("volume", 1);
         PlayerPrefs.DeleteKey("tooltip0");
         PlayerPrefs.DeleteKey("tooltip1");
-        for (int i = 1; i < 5; i++)
+        for (int i = 1; i < 6; i++)
         {
             PlayerPrefs.DeleteKey("level" + i.ToString());
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            PlayerPrefs.SetInt("ability0", 0);
+            PlayerPrefs.SetInt("ability1", 0);
+        }
+        for (int i = 1; i < 4; i++)
+        {
+            PlayerPrefs.SetInt("guns" + i.ToString(), 0);
         }
         Debug.Log("Reseted all data");
     }

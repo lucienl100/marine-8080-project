@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Railgun : MonoBehaviour, ITurret
 {
+    public bool upsideDown = false;
     public AudioSource se;
     public Transform player;
     public GameObject tracer;
@@ -118,13 +119,27 @@ public class Railgun : MonoBehaviour, ITurret
     public bool SearchPlayer()
     {
         RaycastHit hit;
-        if (player.position.y>= barrelEnd.y && Vector3.Angle(turretToPlayer, lineOfSightBot) <= highAngle && turretToPlayer.magnitude <= range && Physics.Raycast(t.position, turretToPlayer, out hit, Mathf.Infinity, playerLayer))
+        if (!upsideDown)
         {
-            if (hit.collider.tag == "Player")
+            if (player.position.y >= barrelEnd.y && Vector3.Angle(turretToPlayer, lineOfSightBot) <= highAngle && turretToPlayer.magnitude <= range && Physics.Raycast(t.position, turretToPlayer, out hit, Mathf.Infinity, playerLayer))
             {
-                return true;
+                if (hit.collider.tag == "Player")
+                {
+                    return true;
+                }
             }
         }
+        else
+        {
+            if (player.position.y <= barrelEnd.y && Vector3.Angle(turretToPlayer, lineOfSightBot) <= highAngle && turretToPlayer.magnitude <= range && Physics.Raycast(t.position, turretToPlayer, out hit, Mathf.Infinity, playerLayer))
+            {
+                if (hit.collider.tag == "Player")
+                {
+                    return true;
+                }
+            }
+        }
+        
         return false;
     }
     public void ArmRailgun()

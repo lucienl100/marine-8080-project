@@ -7,6 +7,7 @@ public class ActivateTurrets : MonoBehaviour
     // Start is called before the first frame update
     Transform t;
     GameObject[] turrets;
+    public float radius = 25;
     void Start()
     {
         t = this.transform;
@@ -18,7 +19,7 @@ public class ActivateTurrets : MonoBehaviour
     {
         foreach (GameObject turret in turrets)
         {
-            if ((turret.transform.position - t.position).magnitude > 25f)
+            if ((turret.transform.position - t.position).magnitude > radius)
             {
                 if (!turret.GetComponent<Railgun>())
                 {
