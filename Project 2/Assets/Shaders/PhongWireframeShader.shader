@@ -200,13 +200,13 @@ Shader "Unlit/PhongWireframeShader"
 				float edgeBLength = length(triIn[1].worldPos - triIn[2].worldPos);
 				float edgeCLength = length(triIn[2].worldPos - triIn[0].worldPos);
 				
-				// Remove diagonal lines
+				// Find diagonal lines (longest line in triangle)
 				if (edgeALength > edgeBLength && edgeALength > edgeCLength) {
-					noWire.y = 1;
+					noWire.y = 1; // edge A
 				} else if (edgeBLength > edgeCLength && edgeBLength > edgeALength) {
-					noWire.x = 1;
+					noWire.x = 1; // edge B
 				} else {
-					noWire.z = 1;
+					noWire.z = 1; // edge C
 				}
 
 				// Remove diagonal wires by setting bary to 1 for each vertex
