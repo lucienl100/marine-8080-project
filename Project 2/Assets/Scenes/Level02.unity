@@ -62706,6 +62706,7 @@ MonoBehaviour:
   - {fileID: 844924657}
   - {fileID: 535779004}
   - {fileID: 1820855993}
+  s: {fileID: 1874336068}
 --- !u!43 &2139594506
 Mesh:
   m_ObjectHideFlags: 0
