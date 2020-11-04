@@ -17,6 +17,7 @@ public class HealthSystemBoss : MonoBehaviour
     public int type;
     float fAtt;
     public float ambientAmp = 4f;
+    float difficulty;
     // Start is called before the first frame update
     void Start()
     {

@@ -69,7 +69,6 @@ public class SceneController : MonoBehaviour
             }
             am.SetFloat("Volume", slider.value);
         }
-        Debug.Log(Time.timeScale);
     }
     public void PauseGame()
     {

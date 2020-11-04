@@ -10,7 +10,7 @@ public class Difficulty : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        difficulty = 2 * PlayerPrefs.GetFloat("difficulty") - 1;
+        difficulty = 1;
         PlayerPrefs.SetFloat("difficulty", (difficulty + 1) * 0.5f);
     }
 

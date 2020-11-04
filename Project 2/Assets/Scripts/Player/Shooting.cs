@@ -225,7 +225,7 @@ public class Shooting : MonoBehaviour
         Vector3 targetDir = (targetRot * Vector3.forward).normalized;
         Vector3 target = shootingOrigin.position + targetDir * distance;
         float hitDistance;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 8; i++)
         {
             GameObject tracer = Instantiate(tracerRenderer, shootingOrigin.position, Quaternion.identity);
             LineRenderer lr = tracer.GetComponent<LineRenderer>();
@@ -235,11 +235,11 @@ public class Shooting : MonoBehaviour
             {
                 if (hit.transform.tag == "Enemy")
                 {
-                    hit.transform.gameObject.GetComponent<HealthSystem>().Damage(10f / difficulty);
+                    hit.transform.gameObject.GetComponent<HealthSystem>().Damage(14f / difficulty);
                 }
                 else if (hit.transform.tag == "Boss")
                 {
-                    hit.transform.gameObject.GetComponent<HealthSystemBoss>().Damage(10f / difficulty);
+                    hit.transform.gameObject.GetComponent<HealthSystemBoss>().Damage(8f / difficulty);
                 }
                 hitDistance = hit.distance;
                 target = hit.point;
@@ -273,11 +273,11 @@ public class Shooting : MonoBehaviour
         {
             if (hit.transform.tag == "Enemy")
             {
-                hit.transform.gameObject.GetComponent<HealthSystem>().Damage(10f / difficulty);
+                hit.transform.gameObject.GetComponent<HealthSystem>().Damage(9f / difficulty);
             }
             else if (hit.transform.tag == "Boss")
             {
-                hit.transform.gameObject.GetComponent<HealthSystemBoss>().Damage(10f / difficulty);
+                hit.transform.gameObject.GetComponent<HealthSystemBoss>().Damage(9f / difficulty);
             }
             hitDistance = hit.distance;
             target = hit.point;
@@ -319,11 +319,11 @@ public class Shooting : MonoBehaviour
             {
                 if (enemy.transform.tag == "Enemy")
                 {
-                    enemy.transform.gameObject.GetComponent<HealthSystem>().Damage(80f / difficulty);
+                    enemy.transform.gameObject.GetComponent<HealthSystem>().Damage(90f / difficulty);
                 }
                 else if (enemy.transform.tag == "Boss")
                 {
-                    enemy.transform.gameObject.GetComponent<HealthSystemBoss>().Damage(80f / difficulty);
+                    enemy.transform.gameObject.GetComponent<HealthSystemBoss>().Damage(90f / difficulty);
                 }
             }
         }
