@@ -29,8 +29,9 @@ public class SceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Confined;
+        
         float value;
         am.GetFloat("Volume", out value);
         slider.value = value;
@@ -55,20 +56,24 @@ public class SceneController : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Escape) && !paused)
-            {
-                PauseGame();
-                paused = true;
-            }
-            else if (Input.GetKeyDown(KeyCode.Escape) && paused)
+            if (Input.GetKeyDown(KeyCode.Escape) && paused)
             {
                 UnpauseGame();
+                paused = false;
+                
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape) && !paused) 
+            {
+                paused = true;
+                PauseGame();
             }
             am.SetFloat("Volume", slider.value);
         }
+        Debug.Log(Time.timeScale);
     }
     public void PauseGame()
     {
+        Debug.Log("paused");
         Time.timeScale = 0f;
         crosshair.SetActive(false);
         Cursor.visible = true;
@@ -190,5 +195,9 @@ public class SceneController : MonoBehaviour
         Debug.Log("loading main menu");
         yield return new WaitForSeconds(0f);
         SceneManager.LoadScene(0);
+    }
+    public void ResetTimeScale()
+    {
+        Time.timeScale = 1f;
     }
 }
