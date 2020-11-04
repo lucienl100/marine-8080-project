@@ -14,7 +14,7 @@ public class HealthSystem : MonoBehaviour
     ShootingBasic sb;
     ShootingSpread sp;
     Activate a;
-
+    public AudioSource hitsound;
     Color originalColor;
     public int type;
     float fAtt;
@@ -49,6 +49,7 @@ public class HealthSystem : MonoBehaviour
     }
     public void Damage(float damage)
     {
+        hitsound.Play();
         currentHp -= damage;
         Flash();
         Invoke("ResetColor", 0.1f);

@@ -6,6 +6,7 @@ public class Goal : MonoBehaviour
 {
     public SceneController sc;
     RadarRotate rr;
+    public AudioSource sfx;
     public int levelNo;
     private float delay = 3f;
     void Start()
@@ -16,6 +17,7 @@ public class Goal : MonoBehaviour
     {
         if (rr.inRange && Input.GetKeyDown(KeyCode.E))
         {
+            sfx.Play();
             rr.completed = true;
             rr.inst.SetActive(false);
             LoadNext();

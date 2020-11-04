@@ -4954,9 +4954,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 586300a5fe853bd448e53fa7ebbcd735,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 716af3b951f36b744aafd2f1996a689e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: af97d93d62772ef438cfcbc255d2365e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.701
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5080,8 +5080,9 @@ AudioSource:
   m_GameObject: {fileID: 2753025076373439859}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 97fc87777cd0f8b4e993e4220d3c37f5, type: 3}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 586300a5fe853bd448e53fa7ebbcd735,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 613408520af3ee5469c897816ddbb309, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.555
   m_Pitch: 1
@@ -10064,6 +10065,8 @@ MonoBehaviour:
   swipeHitbox: {fileID: 6540054242866922709}
   anim: {fileID: 5314966219050221807}
   laser: {fileID: 6464726438939001174, guid: 3ba528f5c934c5b4eb97cc9c2380f3b7, type: 3}
+  laserwarning: {fileID: 6464726438939001174, guid: 503d4c9f662c5cb4e89190868a1917bb,
+    type: 3}
   sweepProjectile: {fileID: 3602674599940093403, guid: 88a3d21b64da9ff42aa39178de07ac0e,
     type: 3}
   playerLayer:
@@ -10102,9 +10105,11 @@ MonoBehaviour:
   currentHp: 0
   meshRenderer: {fileID: 5314966219054480943}
   anim: {fileID: 5314966219050221807}
+  hitsound: {fileID: 3964556019314703677}
   deathparticle: {fileID: 8836922080000582104, guid: c2280bad58329ba42a364714c6eb3375,
     type: 3}
   be: {fileID: 0}
+  ph: {fileID: 0}
   type: 0
   ambientAmp: 15
 --- !u!136 &8771217670308709425
@@ -14933,7 +14938,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 586300a5fe853bd448e53fa7ebbcd735,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 40615a12e20ddb74e8a83f0875e3e3bb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: afe0992e00e0be0499d666c7652d79d2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

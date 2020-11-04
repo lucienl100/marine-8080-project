@@ -167,6 +167,15 @@ public class SceneController : MonoBehaviour
     {
         StartCoroutine(LoadNextLevel());
     }
+    public void Restart()
+    {
+        Time.timeScale = 1f;
+        fade.SetActive(true);
+        FadeToLevel();
+        ph.enabled = false;
+        mv.enabled = false;
+        SceneManager.LoadScene(PlayerPrefs.GetInt("currentLevel"));
+    }
     public void MainMenu()
     {
         StartCoroutine(LoadMainMenu());

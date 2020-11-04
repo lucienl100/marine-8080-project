@@ -10,6 +10,7 @@ public class HealthSystemBoss : MonoBehaviour
     public Animator anim;
     BossMovement bm;
     Attacks at;
+    public AudioSource hitsound;
     public GameObject deathparticle;
     public BossEnding be;
     public PlayerHealth ph;
@@ -35,6 +36,7 @@ public class HealthSystemBoss : MonoBehaviour
     }
     public void Damage(float damage)
     {
+        hitsound.Play();
         Debug.Log("took damage");
         currentHp -= damage;
         Flash();

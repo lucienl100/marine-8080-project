@@ -11,6 +11,7 @@ public class Attacks : MonoBehaviour
     public Transform swipeHitbox;
     public Animator anim;
     public GameObject laser;
+    public GameObject laserwarning;
     public GameObject sweepProjectile;
     public LayerMask playerLayer;
     public LayerMask groundPlayer;
@@ -133,10 +134,12 @@ public class Attacks : MonoBehaviour
     }
     void Laser()
     {
+        
         loadupaudio.Play();
         laserLoadup.Play();
         lookDir = (player.position - new Vector3(headLaserOrigin.position.x, headLaserOrigin.position.y, -2.5f)).normalized;
         laserAngle = Quaternion.LookRotation(lookDir);
+        Instantiate(laserwarning, new Vector3(headLaserOrigin.position.x, headLaserOrigin.position.y, -2.5f), laserAngle);
         Invoke("FireLaser", 0.8f);
     }
     void FireLaser()
