@@ -80,8 +80,10 @@ You are Marine 8080, a newly recruited private, enrolled into the Special Space 
 You will have to be careful, as the human body can only tolerate so much damage. Run, jump and slide out of the barrage of ammunition that will be thrown at you. Don’t forget to take advantage of the arsenal of weapons and abilities that you will come across, you never know what could lie ahead of you.
 
 # Description
-Space Marine 8080 is a 2.5D platformer where the main objective of the game is to shoot, move and reach the end of each level. The player has access to 4 different weapons, all with different strengths and weaknesses, allowing for the player to choose a playstyle or adapt to their environment.
+Space Marine 8080 is a 2.5D platformer inspired by the game 'My Friend Pedro', where the main objective of the game is to shoot, move and reach the end of each level in style. The versatility and freedom that is offered to the player allows for them to play their own way, as there is no 'correct' way to complete a level.
 
+# Weapons
+The player has access to 4 different weapons, all with different strengths and weaknesses, allowing for the player to choose a playstyle or adapt to their environment.
 ## The Rifle
 <b>Strengths</b>
 <ul>
@@ -152,6 +154,30 @@ Space Marine 8080 is a 2.5D platformer where the main objective of the game is t
   <img src="Gifs/2020-11-05_06-11-31.gif"  width="500" >
 </p>
 
+# Abilities
+Additionally, the player has access to several abilities which allow for them to exceed what is normally possible.
+## Sliding
+Causes the player to slide on the ground while running, making the player's hitbox smaller.
+<p align="center">
+  <img src="Gifs/2020-11-05_06-15-43.gif"  width="300" >
+</p>
+## Wall Jumps
+Lets the player jump off a series of opposing walls.
+<p align="center">
+  <img src="Gifs/2020-11-05_06-18-19.gif"  width="300" >
+</p>
+## Force Field
+Creates a spherical ball of energy that surrounds the player, blocking any projectiles that collide with it
+<p align="center">
+  <img src="Gifs/2020-11-05_06-17-29.gif"  width="300" >
+</p>
+## Projectile Blast
+Emits a strong blast of energy which destroys all nearby projectiles.
+<p align="center">
+  <img src="Gifs/2020-11-05_06-16-34.gif"  width="300" >
+</p>
+
+# Enemies
 ## How to use the game ##
 The program is a unity game. Once launched, click “Play” to be faced with various options. “New game” to start from the first level, “Continue” to start on the level where you last left off, “Level select” to open up a menu of each unlocked level (to unlock a level, one must progress to it through the previous levels). Clicking on “Difficulty” will change the difficulty of the game between Easy, Normal and Hard. 
 Easy: 50% Damage taken and 150% Damage done. 
