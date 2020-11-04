@@ -74,8 +74,110 @@ Project is created with:
 * Ipsum version: 2.33
 * Ament library version: 999
 
-## Brief Explanation of the Game ##
-You are Marine 8080, a newly recruited private to a special space marine force. A 2.5D combat platformer, you must guide Marine 8080 (the player) from the start to the end of each level in order to activate the radars (Goal objects) until they come face to face with the source of all the trouble. As a game that involves combat, the player begins with 100 health points and will be confronted by a large variety of obstacles (enemies). The player can take damage and die from enemy AI and turret projectiles as well as falling into the void; it is up to the player to survive these hazards. To supplement the player against these hurdles, various powerups and health packs can be picked up to aid the player.
+# Synopsis
+You are Marine 8080, a newly recruited private, enrolled into the Special Space Marine Force. Your objective is to navigate throughout the 6 uniquely designed locations from start to the finish, activating every radar you come across. Of course, the opposition will not let you succeed so easily, as a scouting survey of the area reports that the facility is well armed, additionally indicating that a large source of energy is radiating from the centre.
+
+You will have to be careful, as the human body can only tolerate so much damage. Run, jump and slide out of the barrage of ammunition that will be thrown at you. Don’t forget to take advantage of the arsenal of weapons and abilities that you will come across, you never know what could lie ahead of you.
+
+# Description
+Space Marine 8080 is a 2.5D platformer inspired by the game 'My Friend Pedro', where the main objective of the game is to shoot, move and reach the end of each level in style. The versatility and freedom that is offered to the player allows for them to play their own way, as there is no 'correct' way to complete a level.
+
+# Weapons
+The player has access to 4 different weapons, all with different strengths and weaknesses, allowing for the player to choose a playstyle or adapt to their environment.
+## The Rifle
+<b>Strengths</b>
+<ul>
+	<li>Long Range</li>
+	<li>Moderate Rate of Fire</li>
+	<li>Moderate Magazine Size</li>
+	<li>Low Bullet Spread</li>
+</ul>
+
+<b>Weaknesses</b>
+<ul>
+	<li>Low Damage Per Second (DPS)</li>
+	<li>Low Damage Per Shot</li>
+</ul>
+<p align="center">
+  <img src="Gifs/2020-11-05_06-09-08.gif"  width="300" >
+</p>
+
+## The Shotgun
+<b>Strengths</b>
+<ul>
+	<li>High Damage Per Second (DPS)</li>
+	<li>High Damage Per Shot</li>
+</ul>
+
+<b>Weaknesses</b>
+<ul>
+	<li>Short Range</li>
+	<li>High Bullet Spread</li>
+	<li>Low Magazine Size</li>
+	<li>Low Rate of Fire</li>
+</ul>
+<p align="center">
+  <img src="Gifs/2020-11-05_05-59-42.gif"  width="300" >
+</p>
+
+## The Sub Machine Gun (SMG)
+<b>Strengths</b>
+<ul>
+	<li>High Damage Per Second (DPS)</li>
+	<li>High Magazine Size</li>
+	<li>High Rate of Fire</li>
+</ul>
+
+<b>Weaknesses</b>
+<ul>
+	<li>Moderate Range</li>
+	<li>Moderate Bullet Spread</li>
+</ul>
+<p align="center">
+  <img src="Gifs/2020-11-05_06-00-54.gif"  width="300" >
+</p>
+
+## The Railgun
+<b>Strengths</b>
+<ul>
+	<li>High Range</li>
+	<li>Shots Can Penetrate Enemies</li>
+	<li>Low Bullet Spread</li>
+</ul>
+
+<b>Weaknesses</b>
+<ul>
+	<li>Low Rate of Fire</li>
+	<li>Low Magazine Size</li>
+	<li>Low Damage Per Second (DPS)</li>
+<p align="center">
+  <img src="Gifs/2020-11-05_06-11-31.gif"  width="500" >
+</p>
+
+# Abilities
+Additionally, the player has access to several abilities which allow for them to exceed what is normally possible.
+## Sliding
+Causes the player to slide on the ground while running, making the player's hitbox smaller.
+<p align="center">
+  <img src="Gifs/2020-11-05_06-15-43.gif"  width="300" >
+</p>
+## Wall Jumps
+Lets the player jump off a series of opposing walls.
+<p align="center">
+  <img src="Gifs/2020-11-05_06-18-19.gif"  width="300" >
+</p>
+## Force Field
+Creates a spherical ball of energy that surrounds the player, blocking any projectiles that collide with it
+<p align="center">
+  <img src="Gifs/2020-11-05_06-17-29.gif"  width="300" >
+</p>
+## Projectile Blast
+Emits a strong blast of energy which destroys all nearby projectiles.
+<p align="center">
+  <img src="Gifs/2020-11-05_06-16-34.gif"  width="300" >
+</p>
+
+# Enemies
 ## How to use the game ##
 The program is a unity game. Once launched, click “Play” to be faced with various options. “New game” to start from the first level, “Continue” to start on the level where you last left off, “Level select” to open up a menu of each unlocked level (to unlock a level, one must progress to it through the previous levels). Clicking on “Difficulty” will change the difficulty of the game between Easy, Normal and Hard. 
 Easy: 50% Damage taken and 150% Damage done. 
