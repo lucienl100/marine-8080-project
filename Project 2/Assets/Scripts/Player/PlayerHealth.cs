@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
     public float minHeight = -14f;
     CharacterController cc;
     float difficulty;
+    public HitFlash hf;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("got hit");
         health -= damage * difficulty;
+        hf.FlashImage();
         if (health <= 0f)
         {
             health = 0f;

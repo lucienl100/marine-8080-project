@@ -9,6 +9,7 @@ public class Tutorial : MonoBehaviour
     public GameObject mainCamera;
     public GameObject hud;
     private int index;
+    public Shooting s;
     public float delay = 1f;
     public float intDelay = 10f;
     private float timer;
@@ -16,6 +17,8 @@ public class Tutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        s.enabled = false;
+        
         timer = intDelay;
         index = 0;
     }
@@ -66,6 +69,7 @@ public class Tutorial : MonoBehaviour
         }
         if (index == 3 && Input.GetKeyDown(KeyCode.LeftShift))
         {
+            Invoke("EnableShooting", 0.1f);
             done = true;
         }
         if (index == 4 && Input.GetKeyDown(KeyCode.Mouse0))
@@ -89,8 +93,13 @@ public class Tutorial : MonoBehaviour
             {
                 instructions[6].SetActive(false);
                 this.enabled = false;
+                PlayerPrefs.SetInt("tutorial1", 1);
             }
             timer -= Time.deltaTime;
         }
+    }
+    void EnableShooting()
+    {
+        s.enabled = true;
     }
 }

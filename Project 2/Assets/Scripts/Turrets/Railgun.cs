@@ -105,6 +105,11 @@ public class Railgun : MonoBehaviour, ITurret
         se.Play();
         GameObject proj = Instantiate(projectile, adjustedBase + barrelLength * currentRotation, t.rotation);
         RailgunProjectile rail = proj.GetComponent<RailgunProjectile>();
+        Invoke("CheckRayDamage", 0.1f);
+        rail.maxDist = distToCollision;
+    }
+    void CheckRayDamage()
+    {
         RaycastHit hit;
         Vector3 barrelposition = adjustedBase + barrelLength * currentRotation;
         if (Physics.Raycast(barrelposition, t.rotation * Vector3.forward, out hit, distToCollision, playerLayer))
@@ -114,7 +119,6 @@ public class Railgun : MonoBehaviour, ITurret
                 player.GetComponent<PlayerHealth>().Damage(damage);
             }
         }
-        rail.maxDist = distToCollision;
     }
     public bool SearchPlayer()
     {

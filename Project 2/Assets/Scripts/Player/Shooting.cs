@@ -69,6 +69,7 @@ public class Shooting : MonoBehaviour
                 ammoA[i] -= 1;
                 if (ammoA[i] == 0)
                 {
+                    reloadsound.Play();
                     timer = reloadTime[i];
                 }
                 else

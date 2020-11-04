@@ -15,6 +15,7 @@ public class HomingTurret : MonoBehaviour, ITurret
     private float firingDelay = 3f;
     Vector3 secondaryFireOff = new Vector3(0f, 0.5f, 0f);
     private float barrelLength = 1.5f;
+    public Transform shootingOrigin;
     Vector3 lineOfSightBot;
     float highAngle = 45f;
     void Start() 
@@ -42,7 +43,11 @@ public class HomingTurret : MonoBehaviour, ITurret
             FireProjectile(projectile);
             timeToFire = firingDelay;
         }
-        timeToFire -= Time.deltaTime;
+        else
+        {
+            timeToFire -= Time.deltaTime;
+        }
+        
     }
     public void RotateTowardsPlayer()
     {
@@ -65,10 +70,11 @@ public class HomingTurret : MonoBehaviour, ITurret
     }
     public bool SearchPlayer()
     {
-        Vector3 turretToPlayer = player.position - t.position;
+        Vector3 turretToPlayer = player.position - shootingOrigin.position;
         RaycastHit hit;
-        if (CheckHeight() && Vector3.Angle(turretToPlayer, lineOfSightBot) <= highAngle && turretToPlayer.magnitude <= range && Physics.Raycast(t.position, turretToPlayer, out hit, Mathf.Infinity, playerLayer))
+        if (CheckHeight() && Vector3.Angle(turretToPlayer, lineOfSightBot) <= highAngle && turretToPlayer.magnitude <= range && Physics.Raycast(shootingOrigin.position, turretToPlayer, out hit, Mathf.Infinity, playerLayer))
         {
+            Debug.Log(hit.collider.gameObject.name);
             if (hit.collider.tag == "Player")
             {
                 return true;
@@ -78,7 +84,7 @@ public class HomingTurret : MonoBehaviour, ITurret
     }
     bool CheckHeight()
     {
-        // Debug.Log(t.parent.rotation.eulerAngles);
+        Debug.Log(t.parent.rotation.eulerAngles);
         if (t.parent.rotation.eulerAngles.z == 180f)
         {
             if (player.position.y <= t.position.y)

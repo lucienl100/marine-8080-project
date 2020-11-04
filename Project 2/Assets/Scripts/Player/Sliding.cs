@@ -20,6 +20,7 @@ public class Sliding : MonoBehaviour
     public float cooldown = 5f;
     private float cdTimer;
     public float pushStrength = 3f;
+    public bool isSliding = false;
     Transform t;
     // Start is called before the first frame update
     void Start()
@@ -68,6 +69,7 @@ public class Sliding : MonoBehaviour
         mv.AddVelocity(new Vector3(1, 0, 0) * pushStrength * (mv.velocity.x < -1f ? -1 : 1));
         slidingRight = lm.playerIsRight ? 1 : -1;
         mv.CeaseControl();
+        isSliding = true;
     }
     void GetUp()
     {
@@ -84,6 +86,7 @@ public class Sliding : MonoBehaviour
             cc.height = colliderHeight;
             slidingcollider.enabled = false;
             cc.detectCollisions = true;
+            isSliding = false;
         }
 
     }

@@ -12,9 +12,11 @@ public class ShootingSpread : MonoBehaviour
     private float timer;
     Transform player;
     public Transform shootingOrigin;
+    Sliding playerslide;
     void Start()
     {
         player = lp.player;
+        playerslide = player.GetComponent<Sliding>();
         timer = 0f;
     }
     // Update is called once per frame
@@ -36,13 +38,21 @@ public class ShootingSpread : MonoBehaviour
     public void FireProjectile(GameObject projectile)
     {
         se.Play();
-        Vector3 lookdir = (player.position - shootingOrigin.position).normalized;
-        
+        Vector3 lookDir;
+        if (!playerslide.isSliding)
+        {
+            lookDir = (player.position - shootingOrigin.position).normalized;
+        }
+        else
+        {
+            lookDir = (new Vector3(player.position.x, player.position.y - 1f, player.position.z) - shootingOrigin.position).normalized;
+        }
+
         //Make sure the projectiles fire straight in the x axis.
-        
+
         for (int i = 0; i < 4; i++)
         {
-            Vector3 newDir = new Vector3(lookdir.x, lookdir.y + (float)(i - 1) * 0.25f, lookdir.z);
+            Vector3 newDir = new Vector3(lookDir.x, lookDir.y + (float)(i - 1) * 0.25f, lookDir.z);
             Quaternion dir = Quaternion.LookRotation(newDir);
             dir.eulerAngles = new Vector3(dir.eulerAngles.x, newDir.x > 0 ? 90f : 270f, 0f);
             GameObject proj = Instantiate(projectile, shootingOrigin.position, dir);

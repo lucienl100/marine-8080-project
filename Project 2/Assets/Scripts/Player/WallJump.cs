@@ -33,7 +33,6 @@ public class WallJump : MonoBehaviour
 				bool isRight = collisionLocation.x > transform.position.x ? true : false;
 				if (lastWallJump == null || Mathf.Abs(transform.position.x - lastWallJump.x) >= minJumpDistance)
 				{
-					Debug.Log("walljump");
 					movementScript.CeaseControl();
 					lastWallJump = transform.position;
 					movementScript.Jump();

@@ -22,11 +22,8 @@ public class SaveManager : MonoBehaviour
         {
             PlayerPrefs.DeleteKey("level" + i.ToString());
         }
-        for (int i = 0; i < 2; i++)
-        {
-            PlayerPrefs.SetInt("ability0", 0);
-            PlayerPrefs.SetInt("ability1", 0);
-        }
+        PlayerPrefs.SetInt("ability0", 0);
+        PlayerPrefs.SetInt("ability1", 0);
         for (int i = 1; i < 4; i++)
         {
             PlayerPrefs.SetInt("guns" + i.ToString(), 0);

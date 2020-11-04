@@ -49,7 +49,6 @@ public class HealthSystem : MonoBehaviour
     }
     public void Damage(float damage)
     {
-        Debug.Log("took damage");
         currentHp -= damage;
         Flash();
         Invoke("ResetColor", 0.1f);
@@ -59,7 +58,6 @@ public class HealthSystem : MonoBehaviour
         if (currentHp <= 0f)
         {
             anim.SetTrigger("Die");
-            Debug.Log("destroyed");
             a.enabled = false;
             lap.enabled = false;
             if (type == 0)
