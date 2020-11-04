@@ -118,7 +118,7 @@ public class Attacks : MonoBehaviour
         if (Physics.CheckBox(sweepHitbox.position, hitboxsize, Quaternion.identity, playerLayer))
         {
             pH.Damage(25f);
-            pMV.AddVelocity((mv.playerIsRight ? 1f : -1f) * new Vector3(1f, 0.5f, 0f) * sweepForce);
+            pMV.AddVelocity((mv.playerIsRight ? 1f : -1f) * new Vector3(1f, 0f, 0f) * sweepForce);
             pMV.CeaseControl();
             pMV.maxRestrictSpeedScale = 0.5f;
         }
