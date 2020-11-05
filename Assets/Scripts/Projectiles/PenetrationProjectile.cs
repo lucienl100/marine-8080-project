@@ -29,6 +29,7 @@ public class PenetrationProjectile : MonoBehaviour
     }
     public void Fly()
     {
+        //Lock the z position
         t.position =  new Vector3(Mathf.Lerp(t.position.x, dest.x, Time.deltaTime * speed), t.position.y, -2.5f);
         t.rotation = rotation;
     }
@@ -37,7 +38,7 @@ public class PenetrationProjectile : MonoBehaviour
         Debug.Log("Collided!");
         if (c.gameObject.tag == "Player" && collided == false)
         {
-            
+            //Damage the player
             player.GetComponent<PlayerHealth>().Damage(damage);
             GameObject ex = Instantiate(explosion, t.position, t.rotation);
             Destroy(ex, 0.5f);
@@ -45,6 +46,7 @@ public class PenetrationProjectile : MonoBehaviour
         }
         else if (c.gameObject.tag != "Projectile" && c.gameObject.tag != "Enemy" && c.gameObject.tag != "IgnoreProjectiles" && c.gameObject.tag != "Player")
         {
+            //Destroy the projectile if it hits a shield or ground
             GameObject ex = Instantiate(explosion, t.position, t.rotation);
             Destroy(this.gameObject);
             Destroy(ex, 0.5f);
@@ -53,6 +55,7 @@ public class PenetrationProjectile : MonoBehaviour
     }
     public void OutOfBoundsCheck()
     {
+        //Destroy the projectile if it flies too far from the start position
         if ((t.position - startPosition).magnitude > maxDist - 1f)
         {
             Destroy(this.gameObject);

@@ -13,16 +13,13 @@ public class SaveManager : MonoBehaviour
 
     public void DeleteData()
     {
+        //Deletes all the player preferences, where the data is stored
         PlayerPrefs.SetInt("highestLevel", 0);
         PlayerPrefs.SetInt("currentLevel", 0);
         PlayerPrefs.SetFloat("volume", 1);
         PlayerPrefs.DeleteKey("tooltip0");
         PlayerPrefs.DeleteKey("tooltip1");
         PlayerPrefs.DeleteKey("tooltip2");
-        for (int i = 1; i < 6; i++)
-        {
-            PlayerPrefs.DeleteKey("level" + i.ToString());
-        }
         PlayerPrefs.SetInt("ability0", 0);
         PlayerPrefs.SetInt("ability1", 0);
         for (int i = 1; i < 4; i++)

@@ -39,10 +39,10 @@ public class Tutorial : MonoBehaviour
                     instructions[i].SetActive(false);
                 }
             }
-            if (index == 5 && Input.GetKeyDown(KeyCode.Mouse0))
+            if (index == 5 && Input.GetKey(KeyCode.Mouse0))
             {
                 done = true;
-                timer = 1f;
+                timer = 2f;
             }
             if (index == 0)
             {
@@ -77,7 +77,10 @@ public class Tutorial : MonoBehaviour
             {
                 index++;
             }
-
+            if (index == 6 && Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                index++;
+            }
             if (done)
             {
                 if (timer <= 0f)
@@ -88,11 +91,12 @@ public class Tutorial : MonoBehaviour
                 }
                 timer -= Time.deltaTime;
             }
-            if (index == 6)
+
+            if (index == 7)
             {
                 if (timer <= 0f)
                 {
-                    instructions[6].SetActive(false);
+                    instructions[7].SetActive(false);
                     this.enabled = false;
                     PlayerPrefs.SetInt("tutorial1", 1);
                 }

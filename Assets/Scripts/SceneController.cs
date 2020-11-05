@@ -45,6 +45,7 @@ public class SceneController : MonoBehaviour
     {
         if (tooltip)
         {
+            //Freeze game for tooltip
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 shieldTooltip.SetActive(false);
@@ -69,6 +70,7 @@ public class SceneController : MonoBehaviour
     }
     public void PauseGame()
     {
+        //Freeze time and disable shooting and looking around
         paused = true;
         Debug.Log("paused");
         Time.timeScale = 0f;
@@ -82,6 +84,7 @@ public class SceneController : MonoBehaviour
     }
     public void UnpauseGame()
     {
+        //Unfreeze time and enable player movement and combat
         paused = false;
         Time.timeScale = 1f;
         paused = false;
@@ -105,6 +108,7 @@ public class SceneController : MonoBehaviour
     }
     public void ShieldTooltip()
     {
+        //Display shield tooltip
         Cursor.visible = true;
         Time.timeScale = 0f;
         hud.SetActive(false);
@@ -115,6 +119,7 @@ public class SceneController : MonoBehaviour
     }
     public void ProjTooltip()
     {
+        //Display projectile blast tooltip
         Cursor.visible = true;
         Time.timeScale = 0f;
         hud.SetActive(false);
@@ -125,16 +130,16 @@ public class SceneController : MonoBehaviour
     }
     public void FadeToLevel()
     {
+        //Fade animation
         anim.SetTrigger("FadeOut");
     }
     public void WinScreen()
     {
-        if (nextBuildIndex >= PlayerPrefs.GetInt("highestLevel"))
-        {
-            //If the next level exceeds the players highest level, open up the next level in the level select.
-            PlayerPrefs.SetInt("highestLevel", nextBuildIndex);
-        }
+        ph.enabled = false;
+        mv.enabled = false;
+        lam.enabled = false;
         bool[] obtainedguns = shooting.enabledguns;
+        //Preserve the obtained guns for the next level
         for (int i = 0; i < 4; i++)
         {
             if (obtainedguns[i])
@@ -146,6 +151,7 @@ public class SceneController : MonoBehaviour
                 PlayerPrefs.SetInt("guns" + i.ToString(), 0);
             }
         }
+        //Preserve the obtained abilities for the next level
         for (int i = 0; i < ability.enabledAbilities.Length; i++)
         {
             if (ability.enabledAbilities[i])
@@ -158,7 +164,6 @@ public class SceneController : MonoBehaviour
             }
         }
         //Set the current playthrough level to the next level
-        PlayerPrefs.SetInt("level" + nextBuildIndex.ToString(), 1);
         PlayerPrefs.SetInt("currentLevel", nextBuildIndex);
         StartCoroutine(LoadWinScreen());
     }

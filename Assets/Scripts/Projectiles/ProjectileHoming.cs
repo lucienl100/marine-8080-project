@@ -32,6 +32,7 @@ public class ProjectileHoming : MonoBehaviour, IProjectile
     }
     void Update()
     {
+        //Speed up over time
         speed += Mathf.Clamp(Mathf.Exp(2f*speed)-1f, maxSpeed, intSpeed) * Time.deltaTime * acceleration;
         RotateTowardsPlayer();
         Fly();
@@ -40,7 +41,7 @@ public class ProjectileHoming : MonoBehaviour, IProjectile
     {
         Vector3 lookDir = player.position - t.position;
         lookDir.z = 0f;
-        //getting the angle between the this -> target and the rigidbody.rotation vector
+        //Get the rotation between the current angle and the angle towards the player
         t.rotation = Quaternion.Lerp(t.rotation, Quaternion.FromToRotation(Vector3.forward, lookDir), Time.deltaTime * 3f);
         t.eulerAngles = new Vector3(t.rotation.eulerAngles.x, yRotation, 0f);
     }

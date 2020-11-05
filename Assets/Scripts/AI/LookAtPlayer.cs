@@ -9,6 +9,8 @@ public class LookAtPlayer : MonoBehaviour
     public Transform player;
     public Transform groundCheck;
     public Animator anim;
+    public Transform body;
+    Vector3 localPosBody;
     Rigidbody rb;
     public bool inRange;
     private float spotRange = 18f;
@@ -32,6 +34,7 @@ public class LookAtPlayer : MonoBehaviour
     float timer;
     void Awake()
     {
+        localPosBody = body.localPosition;
         rb = this.GetComponent<Rigidbody>();
         timer = delay;
         t = this.transform;
@@ -47,8 +50,16 @@ public class LookAtPlayer : MonoBehaviour
         dirToLook = player.position - t.position;
         slideDirToLook = new Vector3(player.position.x, player.position.y - 1f, player.position.z) - t.position;
         RaycastHit hit;
-        if (!playerslide.isSliding && (Physics.Raycast(t.position, dirToLook, out hit, Mathf.Infinity, layerMask)) || (playerslide.isSliding && Physics.Raycast(t.position, slideDirToLook, out hit, Mathf.Infinity, layerMask)))
+        if ((player.position - t.position).magnitude < 1.5f)
         {
+            anim.SetBool("playerInRange", true);
+            inRange = true;
+            CheckRotation();
+        }
+        //Cast two rays, one for player sliding and one for player standing
+        else if (!playerslide.isSliding && (Physics.Raycast(t.position, dirToLook, out hit, Mathf.Infinity, layerMask)) || (playerslide.isSliding && Physics.Raycast(t.position, slideDirToLook, out hit, Mathf.Infinity, layerMask)))
+        {
+            //If player is in range and the raycast hits the player, meaning the player is in view, follow the player
             if ((player.position - t.position).magnitude < spotRange && hit.transform.tag == "Player")
             {
                 anim.SetBool("playerInRange", true);
@@ -91,6 +102,7 @@ public class LookAtPlayer : MonoBehaviour
         if (inRange)
         {
             Quaternion rotation;
+            //Account for player sliding hitbox
             if (playerslide.isSliding)
             {
                 rotation = Quaternion.LookRotation(slideDirToLook);
@@ -102,6 +114,7 @@ public class LookAtPlayer : MonoBehaviour
             
             chest.rotation = Quaternion.Euler(rotation.eulerAngles.x + 15f, chest.eulerAngles.y + 35f, rotation.eulerAngles.z);
         }
+        body.localPosition = localPosBody;
     }
     void FollowPlayer()
     {
@@ -156,6 +169,7 @@ public class LookAtPlayer : MonoBehaviour
     }
     void Patrol()
     {
+        Debug.Log("patrol");
         //Code for going back and forth around the enemies location
         if (timer <= 0f && !CheckGround())
         {

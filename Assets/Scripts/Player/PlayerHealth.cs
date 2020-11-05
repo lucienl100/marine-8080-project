@@ -33,10 +33,12 @@ public class PlayerHealth : MonoBehaviour
         {
             Die();
         }
+        //Display the health
         healthText.text = ((int)health).ToString();
     }
     public void Damage(float damage)
     {
+        //Method for taking damage
         Debug.Log("got hit");
         health -= damage * difficulty;
         hitsound.Play();
@@ -54,7 +56,7 @@ public class PlayerHealth : MonoBehaviour
         mv.enabled = false;
         cc.Move(new Vector3(0f, -9.8f * Time.deltaTime, 0f));
         anim.SetTrigger("Die");
-        Invoke("RestartScene", 1f);
+        Invoke("GameOver", 1f);
     }
     public void AddHealth(float add)
     {
@@ -66,13 +68,15 @@ public class PlayerHealth : MonoBehaviour
     }
     void CheckOutOfBounds()
     {
+        //Check if the player is too low in the level
         if (this.transform.position.y < minHeight)
         {
             Die();
         }
     }
-    void RestartScene()
+    void GameOver()
     {
+        //Load gameover scene
         SceneManager.LoadScene(9);
     }
 }

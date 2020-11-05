@@ -27,6 +27,7 @@ public class HealthSystem : MonoBehaviour
         currentHp = maxHp;
         lap = this.GetComponent<LookAtPlayer>();
         a = this.GetComponent<Activate>();
+        //Get component depending on which type of enemy
         if (type == 0)
         {
             sb = this.GetComponent<ShootingBasic>();
@@ -58,9 +59,11 @@ public class HealthSystem : MonoBehaviour
     {
         if (currentHp <= 0f)
         {
+            //Enemy dies
             anim.SetTrigger("Die");
             a.enabled = false;
             lap.enabled = false;
+            //Disable the type of shooting script based on the enemy type
             if (type == 0)
             {
                 sb.enabled = false;
@@ -81,16 +84,19 @@ public class HealthSystem : MonoBehaviour
     }
     void Flash()
     {
+        //Flash the enemy bright red
         meshRenderer.material.SetVector("_SurfaceColor", Color.red);
         meshRenderer.material.SetFloat("_Ka", ambientAmp);
     }
     void ResetColor()
     {
+        //Return enemy to normal color
         meshRenderer.material.SetVector("_SurfaceColor", originalColor);
         meshRenderer.material.SetFloat("_Ka", fAtt);
     }
     void Decay()
     {
+        //Destroy the object
         Destroy(this.gameObject, 3f);
     }
 }

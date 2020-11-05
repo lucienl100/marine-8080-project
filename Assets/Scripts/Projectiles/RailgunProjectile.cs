@@ -39,6 +39,7 @@ public class RailgunProjectile : MonoBehaviour
     }
     public void OutOfBoundsCheck()
     {
+        //Destroy the projectile if too far from the start position
         if ((t.position - startPosition).magnitude > maxDist)
         {
             speed = 0f;

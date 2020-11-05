@@ -39,6 +39,7 @@ public class ShootingSpread : MonoBehaviour
     {
         se.Play();
         Vector3 lookDir;
+        //Account for player sliding hitbox
         if (!playerslide.isSliding)
         {
             lookDir = (player.position - shootingOrigin.position).normalized;

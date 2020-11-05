@@ -195,6 +195,7 @@ MonoBehaviour:
   player: {fileID: 0}
   groundCheck: {fileID: 8798972864829082317}
   anim: {fileID: 1242845513497190026}
+  body: {fileID: 1636425238552027429}
   inRange: 0
   minRange: 3
   patrolStep: 3

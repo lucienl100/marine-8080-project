@@ -39,6 +39,7 @@ public class Sliding : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && cdTimer <= 0f)
         {
+            //If the player is on the ground and has a minimum velocity of 1f, slide.
             if (!mv.inAir && ((mv.velocity.x < -1f) || (mv.velocity.x > 1f)))
             {
                 Slide();
@@ -57,6 +58,7 @@ public class Sliding : MonoBehaviour
         }
         if (retracing)
         {
+            //Try to get up until no longer retracing
             GetUp();
         }
         slider.value = Mathf.Max(cdTimer / cooldown, 0f);
@@ -66,13 +68,16 @@ public class Sliding : MonoBehaviour
         cdTimer = cooldown;
         mv.maxRestrictSpeedScale = 0.01f;
         mv.recoverDuration = 0.75f;
+        //Add velocity on Movement's additionalV variable
         mv.AddVelocity(new Vector3(1, 0, 0) * pushStrength * (mv.velocity.x < -1f ? -1 : 1));
         slidingRight = lm.playerIsRight ? 1 : -1;
+        //Cease movement control for a duration
         mv.CeaseControl();
         isSliding = true;
     }
     void GetUp()
     {
+        //If the player tries to stand up but is blocked by a ground object, retrace.
         if (Physics.CheckSphere(t.position, 0.1f, groundLayer))
         {
             Debug.Log("retracing");
@@ -92,6 +97,7 @@ public class Sliding : MonoBehaviour
     }
     void Retrace()
     {
+        //Move back to where the player entered the unstandable location
         cc.Move(slidingRight * Vector3.right * Time.deltaTime * 5f);
         Debug.Log(t.position);
     }

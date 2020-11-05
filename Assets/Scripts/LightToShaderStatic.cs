@@ -5,7 +5,7 @@ using UnityEngine;
 public class LightToShaderStatic : MonoBehaviour
 {
     public LayerMask lightLayer;
-    Renderer renderer;
+    Renderer mRenderer;
     public int maxLights = 4;
     public float sphereSize = 50f;
     Vector3 naught = new Vector3(-9999f, -9999f, -9999f);
@@ -13,13 +13,14 @@ public class LightToShaderStatic : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        renderer = this.GetComponent<Renderer>();
+        mRenderer = this.GetComponent<Renderer>();
         int i = 0;
         Collider[] lights = Physics.OverlapSphere(this.transform.position, sphereSize, lightLayer);
         float[] positionX = new float[maxLights];
         float[] positionY = new float[maxLights];
         float[] positionZ = new float[maxLights];
         Vector4[] colours = new Vector4[maxLights];
+        //Detect up to four nearby lights
         foreach (var collider in lights)
         {
             if (i > 3)
@@ -33,6 +34,7 @@ public class LightToShaderStatic : MonoBehaviour
             colours[i] = collider.GetComponent<Light>().color;
             i++;
         }
+        //Set the remaining light position and color variables to values that won't impact the lighting in the shader
         if (i < 3)
         {
             while (i < 3)
@@ -50,8 +52,8 @@ public class LightToShaderStatic : MonoBehaviour
         Vector4 Red = new Vector4(colours[0][0], colours[1][0], colours[2][0], colours[3][0]);
         Vector4 Blue = new Vector4(colours[0][1], colours[1][1], colours[2][1], colours[3][1]);
         Vector4 Green = new Vector4(colours[0][2], colours[1][2], colours[2][2], colours[3][2]);
-
-        foreach (Material material in renderer.materials){
+        //Pass the light information into the shader
+        foreach (Material material in mRenderer.materials){
             material.SetVector("_PointLightPositionX", X);
             material.SetVector("_PointLightPositionY", Y);
             material.SetVector("_PointLightPositionZ", Z);

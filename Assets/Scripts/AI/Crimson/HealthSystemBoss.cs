@@ -36,6 +36,7 @@ public class HealthSystemBoss : MonoBehaviour
     }
     public void Damage(float damage)
     {
+        //Method for taking damage
         hitsound.Play();
         currentHp -= damage;
         Flash();
@@ -45,6 +46,7 @@ public class HealthSystemBoss : MonoBehaviour
     {
         if (currentHp <= 0f)
         {
+            //Boss dies
             ph.enabled = false;
             anim.SetTrigger("Die");
             Debug.Log("destroyed");
@@ -57,11 +59,13 @@ public class HealthSystemBoss : MonoBehaviour
     }
     void Flash()
     {
+        //Flash bright red
         meshRenderer.material.SetVector("_SurfaceColor", Color.red);
         meshRenderer.material.SetFloat("_Ka", ambientAmp);
     }
     void ResetColor()
     {
+        //Reset mesh color
         meshRenderer.material.SetVector("_SurfaceColor", originalColor);
         meshRenderer.material.SetFloat("_Ka", fAtt);
     }

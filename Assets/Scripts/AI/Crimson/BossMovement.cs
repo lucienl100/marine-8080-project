@@ -41,6 +41,7 @@ public class BossMovement : MonoBehaviour
     }
     void FollowPlayer()
     {
+        //Follow the player until within a minimum range
         if (Mathf.Abs(player.position.x - t.position.x) > minRange)
         {
             anim.SetBool("Following", true);
@@ -54,6 +55,7 @@ public class BossMovement : MonoBehaviour
     }
     void CheckRotation()
     {
+        //Face player
         if (t.position.x < player.position.x - 0.1f)
         {
             if (!playerIsRight)

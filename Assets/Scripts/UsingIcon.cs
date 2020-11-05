@@ -21,6 +21,7 @@ public class UsingIcon : MonoBehaviour
         {
             if (shooting.guns[i])
             {
+                //Change using icon position depending on what gun is being used
                 rect.localPosition = new Vector3(anchorPos+ i * iconDistance, rect.localPosition.y, 0f);
             }
         }

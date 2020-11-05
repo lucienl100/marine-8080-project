@@ -30,6 +30,7 @@ public class WallJump : MonoBehaviour
 			WallSlide();
 			if (Input.GetKeyDown(KeyCode.Space))
 			{
+				//If the player isn't above where he last wall jumped off on the same wall or is a different wall, allow wall jump
 				if (lastWallJump == null || Mathf.Abs(transform.position.x - lastWallJump.x) >= minJumpDistance || lastWallJump.y > transform.position.y)
 				{
 					bool isRight = collisionLocation.x > transform.position.x ? true : false;
@@ -56,6 +57,7 @@ public class WallJump : MonoBehaviour
 		//Checks if the player is touching a wall
 		if (collision.gameObject.layer == groundLayer)
 		{
+			//Set the timer window for when the player can walljump
 			collisionLocation = collision.contacts[0].point;
 			jumpTimer = jumpWindow;
 		}

@@ -135,11 +135,13 @@ public class Movement : MonoBehaviour
     }
     public void AddVelocity(Vector3 v)
     {
+        //Add velocity with the medium of the variable additionalV
         additionalV += v;
     }
 
     public void HandleAdditionalV()
     {
+        //Slowly reduce the additional velocity
         if (Mathf.Abs(additionalV.magnitude) <= (Vector3.one * 5f * Time.deltaTime).magnitude)
         {
             additionalV = Vector3.zero;

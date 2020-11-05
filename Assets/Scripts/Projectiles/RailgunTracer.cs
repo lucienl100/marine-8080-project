@@ -38,6 +38,7 @@ public class RailgunTracer : MonoBehaviour
     }
     public void OutOfBoundsCheck()
     {
+        //Destroy the projectile if too far from the player or start point
         float dist = (t.position - player.position).magnitude;
         if (dist > maxPlayerDist)
         {

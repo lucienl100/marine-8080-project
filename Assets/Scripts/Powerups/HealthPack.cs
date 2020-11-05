@@ -30,6 +30,7 @@ public class HealthPack : MonoBehaviour
     }
     void Move()
     {
+        //Float movement
         if (goingUp)
         {
             t.position = Vector3.Slerp(t.position, upper, Time.deltaTime * ascensionSpeed);
@@ -57,6 +58,7 @@ public class HealthPack : MonoBehaviour
             am.AddHealth(healAmount);
             if (PlayerPrefs.GetInt("tooltip2") == 0)
             {
+                //Activate tooltip if touched or seen for the first time
                 sc.ShieldTooltip();
 
             }

@@ -17,6 +17,7 @@ public class ActivateTurrets : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Disable turrets not in player range to improve performance
         foreach (GameObject turret in turrets)
         {
             if ((turret.transform.position - t.position).magnitude > radius)

@@ -21,7 +21,7 @@ public class ProjectileBlast : MonoBehaviour
     {
 		if (Input.GetKeyDown(KeyCode.F) && timer <= 0f)
 		{
-            DestoryProjectiles();
+            DestroyProjectiles();
             timer = cooldown;
 		}
         else if (timer > 0f)
@@ -31,12 +31,13 @@ public class ProjectileBlast : MonoBehaviour
         slider.value = Mathf.Max(timer / cooldown, 0f);
     }
 
-    void DestoryProjectiles()
+    void DestroyProjectiles()
 	{
         blast.Play();
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
         foreach (var hitCollider in colliders)
 		{
+            //Grab each object with IProjectile derived scripts and destroy them
             if(hitCollider.gameObject.GetComponent<IProjectile>() != null)
 			{
                 Destroy(hitCollider.gameObject);

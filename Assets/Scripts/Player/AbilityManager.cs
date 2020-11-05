@@ -28,6 +28,7 @@ public class AbilityManager : MonoBehaviour
     {
         shieldEnabled = false;
         pb = this.GetComponent<ProjectileBlast>();
+        //If level was progressed from previous, enable unlocked abilities last level
         if (PlayerPrefs.GetInt("ability0") == 1)
         {
             Debug.Log("shield");
@@ -45,7 +46,6 @@ public class AbilityManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (shieldActive)
         {
             if (ShieldTimer())
@@ -56,6 +56,7 @@ public class AbilityManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Q) && shieldEnabled && cdTimer <= 0f)
         {
+            //Enable shield
             Shield();
         }
         else if (cdTimer > 0f)
@@ -66,6 +67,7 @@ public class AbilityManager : MonoBehaviour
     }
     public void EnableProjBlast()
     {
+        //Method for enabling projectile blast and showing visuals
         projFlash.GetComponent<Flash>().FlashImage();
         enabledAbilities[1] = true;
         projIcon.SetActive(true);
@@ -73,6 +75,7 @@ public class AbilityManager : MonoBehaviour
     }
     public void EnableShield()
     {
+        //Method for enabling shield and showing visuals
         enabledAbilities[0] = true;
         shieldFlash.GetComponent<Flash>().FlashImage();
         shieldIcon.SetActive(true);
@@ -80,12 +83,12 @@ public class AbilityManager : MonoBehaviour
     }
     public void Shield()
     {
+        //Method for activating shield
         cdTimer = cooldown;
         shieldTimer = shieldDuration;
         shieldActive = true;
         activeShield = Instantiate(shield, player.position, Quaternion.identity);
         activeShield.transform.parent = player;
-        Debug.Log("shield");
     }
     void DeactivateShield()
     {

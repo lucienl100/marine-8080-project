@@ -68,6 +68,7 @@ public class Attacks : MonoBehaviour
     }
     float RollMove()
     {
+        //Randomly generate a number based on distance between player and boss
         if (Mathf.Abs(t.position.x - player.position.x) < 2f)
         {
             return Random.Range(0f, 0.49f);
@@ -83,6 +84,7 @@ public class Attacks : MonoBehaviour
     }
     void PerformMove(float moveF)
     {
+        //Perform the move based on the float given
         Debug.Log(moveF);
         if (moveF < 0.25f)
         {

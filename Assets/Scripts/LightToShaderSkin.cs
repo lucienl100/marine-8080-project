@@ -25,6 +25,7 @@ public class LightToShaderSkin : MonoBehaviour
         float[] positionY = new float[maxLights];
         float[] positionZ = new float[maxLights];
         Vector4[] colours = new Vector4[maxLights];
+        //Detect up to four nearby lights
         foreach (var collider in locatedLights)
         {
             if (i > 3)
@@ -38,6 +39,7 @@ public class LightToShaderSkin : MonoBehaviour
             colours[i] = collider.GetComponent<Light>().color;
             i++;
         }
+        //Set the remaining light position and color variables to values that won't impact the lighting in the shader
         if (i < 3)
         {
             while (i < 3)
@@ -55,6 +57,7 @@ public class LightToShaderSkin : MonoBehaviour
         Vector4 Red = new Vector4(colours[0][0], colours[1][0], colours[2][0], colours[3][0]);
         Vector4 Blue = new Vector4(colours[0][1], colours[1][1], colours[2][1], colours[3][1]);
         Vector4 Green = new Vector4(colours[0][2], colours[1][2], colours[2][2], colours[3][2]);
+        //Pass the light information into the shader
         foreach (Material material in renderer.materials){
             material.SetVector("_PointLightPositionX", X);
             material.SetVector("_PointLightPositionY", Y);

@@ -27,12 +27,9 @@ public class BasicProjectile : MonoBehaviour, IProjectile
     public void Fly()
     {
         t.position += t.forward * Time.deltaTime * speed;
+        //Lock the z position to the depth
         t.position = new Vector3(t.position.x, t.position.y, depth);
         t.rotation = rotation;
-    }
-    public void DamagePlayer()
-    {
-        //Damage the player
     }
     public void OnTriggerEnter(Collider c)
     {
@@ -55,6 +52,7 @@ public class BasicProjectile : MonoBehaviour, IProjectile
     }
     public void OutOfBoundsCheck()
     {
+        //If the projectile flies too far, destroy it
         if ((t.position - startPosition).magnitude > maxDist)
         {
             Destroy(this.gameObject);
