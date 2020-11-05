@@ -21,12 +21,13 @@ If developer: go to "Assets\Scenes\MainMenu.unity" to find the initial scene to 
 * [Synopsis](#synopsis)
 * [Weapons](#weapons)
 * [Abilities](#abilities)
+* [Enemies](#enemies)
 * [How to use the game](#how-to-use-the-game)
 * [Modelling objects and entities](#modelling-objects-and-entities)
 * [Camera motion](#camera-motion)
 * [Graphics pipeline](#graphics-pipeline)
 * [Shaders](#shaders)
-* [Evaluation](#Evaluation)
+* [Evaluation](#evaluation)
 
 ## Team Members
 
