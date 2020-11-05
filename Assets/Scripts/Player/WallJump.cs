@@ -23,21 +23,25 @@ public class WallJump : MonoBehaviour
 		jumpTimer = Mathf.Max(jumpTimer - Time.deltaTime, 0);
 		if (!movementScript.inAir)
 		{
-			lastWallJump.x = float.PositiveInfinity;
+			lastWallJump.y = float.PositiveInfinity;
 		}
 		if (CheckWallAvaliable())
 		{
 			WallSlide();
 			if (Input.GetKeyDown(KeyCode.Space))
 			{
-				bool isRight = collisionLocation.x > transform.position.x ? true : false;
-				movementScript.isWallSliding = false;
-				movementScript.CeaseControl();
-				lastWallJump = transform.position;
-				movementScript.Jump();
-				movementScript.maxRestrictSpeedScale = 0.4f;
-				movementScript.recoverDuration = 3f;
-				movementScript.AddVelocity(new Vector3(1, 0, 0) * pushStrength * (isRight ? -1 : 1));
+				if (lastWallJump == null || Mathf.Abs(transform.position.x - lastWallJump.x) >= minJumpDistance || lastWallJump.y > transform.position.y)
+				{
+					bool isRight = collisionLocation.x > transform.position.x ? true : false;
+					movementScript.isWallSliding = false;
+					movementScript.CeaseControl();
+					lastWallJump = transform.position;
+					movementScript.Jump();
+					movementScript.maxRestrictSpeedScale = 0.4f;
+					movementScript.recoverDuration = 3f;
+					movementScript.AddVelocity(new Vector3(1, 0, 0) * pushStrength * (isRight ? -1 : 1));
+				}
+				
 			}
 		}
 		else
@@ -65,7 +69,7 @@ public class WallJump : MonoBehaviour
 	{
 		//Method to check if the player is holding the moving against the wall and change the y velocity in Movement
 		bool isRight = collisionLocation.x > transform.position.x ? true : false;
-		if ((lastWallJump == null || Mathf.Abs(transform.position.x - lastWallJump.x) >= minJumpDistance) && ((Input.GetKey(KeyCode.D) && isRight) || (Input.GetKey(KeyCode.A) && !isRight)) && movementScript.velocity.y < 0f)
+		if ((lastWallJump == null || Mathf.Abs(transform.position.x - lastWallJump.x) >= minJumpDistance || transform.position.y < lastWallJump.y) && ((Input.GetKey(KeyCode.D) && isRight) || (Input.GetKey(KeyCode.A) && !isRight)) && movementScript.velocity.y < 0f)
 		{
 
 			movementScript.isWallSliding = true;

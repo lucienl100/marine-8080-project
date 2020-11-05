@@ -7,7 +7,7 @@ public class FollowPlayer : MonoBehaviour
     public Transform player;
     private Transform cam;
     public float speed = 3f;
-    public float camDepth = -17.5f
+    public float camDepth = -17.5f;
     void Start()
     {
         cam = this.transform;
