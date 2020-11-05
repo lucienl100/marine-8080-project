@@ -14,8 +14,8 @@ public class Shooting : MonoBehaviour
     public float distance = 50f;
     private float shotgunDist = 20f;
     private float smgDist = 28f;
-    private float rifleDist = 35f;
-    private float railDist = 35f;
+    private float rifleDist = 32f;
+    private float railDist = 32f;
     public Text ammoText;
     public int maxAmmo = 30;
     private int ammo;
