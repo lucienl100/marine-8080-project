@@ -34,7 +34,7 @@ If developer: go to "Assets\Scenes\MainMenu.unity" to find the initial scene to 
 | Name | Task | State |
 | :---         |     :---:      |          ---: |
 | Timmy Truong  | Shaders, Video Editing, Interface, Lighting and README     |![100%](https://progress-bar.dev/100)|
-| Nathan Rearick    | Movement, Evaluation     |![100%](https://progress-bar.dev/100)|
+| Nathan Rearick    | Movement System, Abilities, Game Concept Design, Evaluation, Bug Catcher     |![100%](https://progress-bar.dev/100)|
 | Lucien Lu    | Level design, Turrets/Projectiles, AI, Main Menu, Camera, Abilities, Special Movement, Guns, UI      |![100%](https://progress-bar.dev/100)|
 
 ## Contributers
@@ -206,6 +206,36 @@ This is what the entire game leads up to, the final boss fight. Crimson is the t
 		<img src="Gifs/2020-11-05_06-45-39.gif"  width="35%" >
 	</div>
 </div>
+
+## User Interface (UI)
+### Main Menu
+<i>If opened in the Unity Engine as a developer: go to "Assets\Scenes\MainMenu.unity" to find the initial scene to start the game.</i>
+
+Once the game is opened, the player is sent to the main menu.
+<p align="center">
+  <img src="Images/Unity_2020-11-06_05-04-18.png"  width="300" >
+</p>
+Here, the player can select ‘Play’, which will bring them to a screne where they can configure what level to play, and the difficulty. The difficulties have the following properties set to the player:
+<ul>
+	<li>Easy: 50% damage received, 150% damage delt</li>
+	<li>Medium: 100% damage received, 100% damage delt</li>
+	<li>Hard: 150% damage received, 50% damage delt</li>
+</ul>
+The player can also choose to play other levels that they are up to / already completed.
+<p align="center">
+  <img src="Images/Unity_2020-11-06_05-09-06.png"  width="300" >
+</p>
+Additionally, the player can select the gear icon, representing the ‘Options’ page (icon is an example of a mental model).
+<p align="center">
+  <img src="Images/Unity_2020-11-06_06-30-14.png"  width="300" >
+</p>
+Here, the player can adjust the volume of the game, as well as reset their save data to a state like when they first play the game.
+
+### Design of Main Menu
+The main menu was designed to have a minimalistic, dim rendering of a scene in game, which does not draw the player’s eyes away from the text on the main menu. The brighter and larger text on the left side of the screen supports both younger and older audiences as they are clearly separated from each other, and stand out from the background. Each button applies the principle of infinite edges, which simply states that the user does not need to deaccelerate their mouse to click on the button, as buttons extend all the way to the left edge of the screen. 
+
+### Heads up Display (HUD)
+<b>Location of Information</b>
 
 ## How to use the game 
 
