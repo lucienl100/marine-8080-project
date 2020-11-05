@@ -32,9 +32,9 @@ If developer: go to "Assets\Scenes\MainMenu.unity" to find the initial scene to 
 
 | Name | Task | State |
 | :---         |     :---:      |          ---: |
-| Timmy Truong  | Shaders, Video Editing, Interface, Lighting and README     |![90%](https://progress-bar.dev/90)|
-| Nathan Rearick    | Movement, Evaluation     |![90%](https://progress-bar.dev/90)|
-| Lucien Lu    | Level design, Turrets/Projectiles, AI, Main Menu, Camera, Abilities, Special Movement, Guns, UI      |![95%](https://progress-bar.dev/95)|
+| Timmy Truong  | Shaders, Video Editing, Interface, Lighting and README     |![100%](https://progress-bar.dev/100)|
+| Nathan Rearick    | Movement, Evaluation     |![100%](https://progress-bar.dev/100)|
+| Lucien Lu    | Level design, Turrets/Projectiles, AI, Main Menu, Camera, Abilities, Special Movement, Guns, UI      |![100%](https://progress-bar.dev/100)|
 
 ## Contributers
 
