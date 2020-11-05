@@ -3,7 +3,9 @@
 
 ## Group 10's Game: Space Marine 8080
 
-<img src="Gifs/githubbanner.gif">
+<p align="center">
+	<img src="Gifs/githubbanner.gif">
+</p>
 
 ## [Video Trailer](https://www.youtube.com/watch?v=AM5vhYM9AzE)
 
