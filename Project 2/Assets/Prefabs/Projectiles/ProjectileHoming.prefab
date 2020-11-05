@@ -4895,6 +4895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  damage: 15
   intSpeed: 1
   maxSpeed: 10
   acceleration: 5

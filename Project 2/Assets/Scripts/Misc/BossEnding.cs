@@ -8,7 +8,7 @@ public class BossEnding : MonoBehaviour
     public GameObject instructions;
     public Animator anim;
     private int index;
-    private float timer = 2f;
+    private float timer = 3f;
     bool done = false;
     void Start()
     {
@@ -21,7 +21,7 @@ public class BossEnding : MonoBehaviour
         {
             instructions.SetActive(true);
             done = true;
-            Invoke("FadeOut", 5f);
+            Invoke("FadeOut", 8f);
         }
         timer -= Time.deltaTime;
     }
@@ -32,6 +32,6 @@ public class BossEnding : MonoBehaviour
     }
     void Credits()
     {
-        SceneManager.LoadScene(7);
+        SceneManager.LoadScene(8);
     }
 }

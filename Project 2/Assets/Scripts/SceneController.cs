@@ -24,7 +24,7 @@ public class SceneController : MonoBehaviour
     public GameObject fade;
     public Movement mv;
     public PlayerHealth ph;
-    bool paused = false;
+    public bool paused = false;
     bool tooltip = false;
     // Start is called before the first frame update
     void Start()
@@ -59,12 +59,9 @@ public class SceneController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape) && paused)
             {
                 UnpauseGame();
-                paused = false;
-                
             }
             else if (Input.GetKeyDown(KeyCode.Escape) && !paused) 
             {
-                paused = true;
                 PauseGame();
             }
             am.SetFloat("Volume", slider.value);
@@ -72,6 +69,7 @@ public class SceneController : MonoBehaviour
     }
     public void PauseGame()
     {
+        paused = true;
         Debug.Log("paused");
         Time.timeScale = 0f;
         crosshair.SetActive(false);
@@ -84,6 +82,7 @@ public class SceneController : MonoBehaviour
     }
     public void UnpauseGame()
     {
+        paused = false;
         Time.timeScale = 1f;
         paused = false;
         crosshair.SetActive(true);

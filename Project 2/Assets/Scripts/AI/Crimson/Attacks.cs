@@ -22,7 +22,7 @@ public class Attacks : MonoBehaviour
 
     public bool sweep;
     Vector3 hitboxsize = new Vector3(2.5f, 1f, 2.5f);
-    Vector3 swipehitbox = new Vector3(3.8f, 3f, 3.8f);
+    Vector3 swipehitbox = new Vector3(4.5f, 3f, 4.5f);
     float sweepForce = 10f;
     
     public ParticleSystem sweepPE;
@@ -64,6 +64,10 @@ public class Attacks : MonoBehaviour
     }
     float RollMove()
     {
+        if (Mathf.Abs(t.position.x - player.position.x) < 2f)
+        {
+            return Random.Range(0f, 0.49f);
+        }
         if (Mathf.Abs(t.position.x - player.position.x) < 10f)
         {
             return Random.Range(0f, 0.75f);
@@ -231,7 +235,7 @@ public class Attacks : MonoBehaviour
         if (Physics.CheckBox(swipeHitbox.position, swipehitbox, Quaternion.identity, playerLayer))
         {
             pH.Damage(30f);
-            pMV.AddVelocity((mv.playerIsRight ? 1f : -1f) * new Vector3(1f, 0.5f, 0f) * sweepForce);
+            pMV.AddVelocity((mv.playerIsRight ? 1f : -1f) * new Vector3(1f, 0f, 0f) * sweepForce);
             pMV.CeaseControl();
             pMV.maxRestrictSpeedScale = 0.5f;
         }

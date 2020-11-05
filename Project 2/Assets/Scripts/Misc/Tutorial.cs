@@ -14,11 +14,11 @@ public class Tutorial : MonoBehaviour
     public float intDelay = 10f;
     private float timer;
     bool done = false;
+    SceneController sc;
     // Start is called before the first frame update
     void Start()
     {
-        s.enabled = false;
-        
+        sc = this.gameObject.GetComponent<SceneController>();
         timer = intDelay;
         index = 0;
     }
@@ -26,80 +26,78 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < instructions.Length; i++)
+        if (!sc.paused)
         {
-            if (i == index)
+            for (int i = 0; i < instructions.Length; i++)
             {
-                instructions[i].SetActive(true);
+                if (i == index)
+                {
+                    instructions[i].SetActive(true);
+                }
+                else
+                {
+                    instructions[i].SetActive(false);
+                }
             }
-            else
+            if (index == 5 && Input.GetKeyDown(KeyCode.Mouse0))
             {
-                instructions[i].SetActive(false);
+                done = true;
+                timer = 1f;
             }
-        }
-        if (index == 5 && Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            done = true;
-            timer = 1f;
-        }
-        if (index == 0)
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (index == 0)
             {
-                hud.SetActive(true);
-                cutCamera.SetActive(false);
-                mainCamera.SetActive(true);
-                index++;
-                timer = delay;
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    hud.SetActive(true);
+                    cutCamera.SetActive(false);
+                    mainCamera.SetActive(true);
+                    index++;
+                    timer = delay;
+                }
+                timer -= Time.deltaTime;
             }
-            timer -= Time.deltaTime;
-        }
-        if (index == 1 && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)))
-        {
-            if (timer <= 0f)
+            if (index == 1 && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)))
             {
-                index++;
-                timer = delay;
+                if (timer <= 0f)
+                {
+                    index++;
+                    timer = delay;
+                }
+                timer -= Time.deltaTime;
             }
-            timer -= Time.deltaTime;
-        }
-        if (index == 2 && Input.GetKeyDown(KeyCode.Space))
-        {
-            done = true;
-        }
-        if (index == 3 && Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            Invoke("EnableShooting", 0.1f);
-            done = true;
-        }
-        if (index == 4 && Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            index++;
-        }
-        
-        if (done)
-        {
-            if (timer <= 0f)
+            if (index == 2 && Input.GetKeyDown(KeyCode.Space))
+            {
+                done = true;
+            }
+            if (index == 3 && Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                done = true;
+            }
+            if (index == 4 && Input.GetKeyDown(KeyCode.Mouse0))
             {
                 index++;
-                timer = 2f;
-                done = false;
             }
-            timer -= Time.deltaTime;
-        }
-        if (index == 6)
-        {
-            if (timer <= 0f)
+
+            if (done)
             {
-                instructions[6].SetActive(false);
-                this.enabled = false;
-                PlayerPrefs.SetInt("tutorial1", 1);
+                if (timer <= 0f)
+                {
+                    index++;
+                    timer = 2f;
+                    done = false;
+                }
+                timer -= Time.deltaTime;
             }
-            timer -= Time.deltaTime;
+            if (index == 6)
+            {
+                if (timer <= 0f)
+                {
+                    instructions[6].SetActive(false);
+                    this.enabled = false;
+                    PlayerPrefs.SetInt("tutorial1", 1);
+                }
+                timer -= Time.deltaTime;
+            }
         }
-    }
-    void EnableShooting()
-    {
-        s.enabled = true;
     }
 }

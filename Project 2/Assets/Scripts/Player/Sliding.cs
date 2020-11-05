@@ -65,7 +65,7 @@ public class Sliding : MonoBehaviour
     {
         cdTimer = cooldown;
         mv.maxRestrictSpeedScale = 0.01f;
-        mv.recoverDuration = 1f;
+        mv.recoverDuration = 0.75f;
         mv.AddVelocity(new Vector3(1, 0, 0) * pushStrength * (mv.velocity.x < -1f ? -1 : 1));
         slidingRight = lm.playerIsRight ? 1 : -1;
         mv.CeaseControl();

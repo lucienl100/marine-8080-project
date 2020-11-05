@@ -13,6 +13,7 @@ public class PlayerHealth : MonoBehaviour
     public Shooting s;
     public Movement mv;
     public float minHeight = -14f;
+    public AudioSource hitsound;
     CharacterController cc;
     float difficulty;
     public HitFlash hf;
@@ -38,6 +39,7 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("got hit");
         health -= damage * difficulty;
+        hitsound.Play();
         hf.FlashImage();
         if (health <= 0f)
         {

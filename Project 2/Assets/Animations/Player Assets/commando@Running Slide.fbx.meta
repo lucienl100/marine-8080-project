@@ -41,7 +41,7 @@ ModelImporter:
       name: Running Slide
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 0
+      firstFrame: 2
       lastFrame: 17
       wrapMode: 0
       orientationOffsetY: 315
