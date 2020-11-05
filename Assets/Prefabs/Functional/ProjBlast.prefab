@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6514717326431973929}
   - component: {fileID: 5729536603805356036}
   - component: {fileID: 683149202952882581}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 2616851142532881328}
   - component: {fileID: 2616851142532881329}
   - component: {fileID: 4785414078183048477}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: ProjBlast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ascensionSpeed: 0.5
+  sc: {fileID: 0}
 --- !u!1 &7314510794728699257
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1948258452586949690}
   - component: {fileID: 4644676648872085550}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +242,7 @@ GameObject:
   - component: {fileID: 5852552657806776074}
   - component: {fileID: 2937789734816719252}
   - component: {fileID: 6756294276484070731}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,7 +319,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7298601273801722991}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: SpikyBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

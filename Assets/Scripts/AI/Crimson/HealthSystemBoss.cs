@@ -37,7 +37,6 @@ public class HealthSystemBoss : MonoBehaviour
     public void Damage(float damage)
     {
         hitsound.Play();
-        Debug.Log("took damage");
         currentHp -= damage;
         Flash();
         Invoke("ResetColor", 0.1f);

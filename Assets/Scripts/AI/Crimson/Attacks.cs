@@ -13,6 +13,7 @@ public class Attacks : MonoBehaviour
     public GameObject laser;
     public GameObject laserwarning;
     public GameObject sweepProjectile;
+    public float sweepDamage = 15f;
     public LayerMask playerLayer;
     public LayerMask groundPlayer;
     BossMovement mv;
@@ -22,7 +23,8 @@ public class Attacks : MonoBehaviour
 
     public bool sweep;
     Vector3 hitboxsize = new Vector3(2.5f, 1f, 2.5f);
-    Vector3 swipehitbox = new Vector3(4.5f, 3f, 4.5f);
+    Vector3 swipehitbox = new Vector3(4.7f, 3f, 4.7f);
+    public float swipeDamage = 39f;
     float sweepForce = 10f;
     
     public ParticleSystem sweepPE;
@@ -30,6 +32,8 @@ public class Attacks : MonoBehaviour
     public ParticleSystem laserLoadup;
     public ParticleSystem laserExplosion;
     public Quaternion laserAngle;
+    public float laserDamage = 50f;
+    Vector3 laserOrigin;
     public AudioSource loadupaudio;
     public AudioSource laseraudio;
     Vector3 lookDir;
@@ -74,7 +78,7 @@ public class Attacks : MonoBehaviour
         }
         else
         {
-            return Random.Range(0.26f, 1f);
+            return Random.Range(0.28f, 1f);
         }
     }
     void PerformMove(float moveF)
@@ -118,10 +122,10 @@ public class Attacks : MonoBehaviour
     }
     void SweepDamage()
     {
-
+        //Applies damage to anyone in range of the sweep, on top of the projectile
         if (Physics.CheckBox(sweepHitbox.position, hitboxsize, Quaternion.identity, playerLayer))
         {
-            pH.Damage(25f);
+            pH.Damage(sweepDamage);
             pMV.AddVelocity((mv.playerIsRight ? 1f : -1f) * new Vector3(1f, 0f, 0f) * sweepForce);
             pMV.CeaseControl();
             pMV.maxRestrictSpeedScale = 0.5f;
@@ -129,6 +133,7 @@ public class Attacks : MonoBehaviour
     }
     void FireSweep()
     {
+        //Fires the sweep projectile
         GameObject sweep = Instantiate(sweepProjectile, sweepHitbox.position, Quaternion.LookRotation(new Vector3(1f, 0f, 0f) * (mv.playerIsRight ? 1f : -1f)));
         sweep.GetComponent<PenetrationProjectile>().player = player;
     }
@@ -138,22 +143,28 @@ public class Attacks : MonoBehaviour
     }
     void Laser()
     {
-        
+        //Loads up the laser
         loadupaudio.Play();
         laserLoadup.Play();
         lookDir = (player.position - new Vector3(headLaserOrigin.position.x, headLaserOrigin.position.y, -2.5f)).normalized;
         laserAngle = Quaternion.LookRotation(lookDir);
-        Instantiate(laserwarning, new Vector3(headLaserOrigin.position.x, headLaserOrigin.position.y, -2.5f), laserAngle);
-        Invoke("FireLaser", 0.8f);
+        laserOrigin = new Vector3(headLaserOrigin.position.x, headLaserOrigin.position.y, -2.5f);
+        //Fire tracer warning
+        Instantiate(laserwarning, laserOrigin, laserAngle);
+        Invoke("FireLaser", 0.7f);
     }
     void FireLaser()
     {
+        //Fire actual laser
         laseraudio.Play();
         laserExplosion.Play();
         bool playerhit = false;
+        //Since the laser is wide, use 2 parallel raycasts through the perpendicular ray vector
         Vector3 perp = Vector3.Cross(lookDir, Vector3.up).normalized;
+        perp = new Vector3(perp.z, perp.y, perp.x);
         RaycastHit hit;
-        if (Physics.Raycast(headLaserOrigin.position, lookDir, out hit, Mathf.Infinity, groundPlayer))
+        //Check three parallel raycasts for player
+        if (Physics.Raycast(laserOrigin, lookDir, out hit, Mathf.Infinity, groundPlayer))
         {
             Debug.Log(hit.collider.tag);
             if (hit.collider.tag == "Player")
@@ -161,7 +172,7 @@ public class Attacks : MonoBehaviour
                 playerhit = true;
             }
         }
-        if (Physics.Raycast(headLaserOrigin.position + 0.75f * perp, lookDir, out hit, Mathf.Infinity, groundPlayer))
+        if (Physics.Raycast(laserOrigin + 0.75f * perp, lookDir, out hit, Mathf.Infinity, groundPlayer))
         {
             Debug.Log(hit.collider.tag);
             if (hit.collider.tag == "Player")
@@ -169,7 +180,7 @@ public class Attacks : MonoBehaviour
                 playerhit = true;
             }
         }
-        if (Physics.Raycast(headLaserOrigin.position - 0.75f * perp, lookDir, out hit, Mathf.Infinity, groundPlayer))
+        if (Physics.Raycast(laserOrigin - 0.75f * perp, lookDir, out hit, Mathf.Infinity, groundPlayer))
         {
             Debug.Log(hit.collider.tag);
             if (hit.collider.tag == "Player")
@@ -179,14 +190,15 @@ public class Attacks : MonoBehaviour
         }
         if (playerhit)
         {
-            pH.Damage(40f);
+            pH.Damage(laserDamage);
         }
         anim.SetTrigger("LaserFire");
         mv.cd = false;
-        Instantiate(laser, new Vector3(headLaserOrigin.position.x, headLaserOrigin.position.y, -2.5f), laserAngle);
+        Instantiate(laser, laserOrigin, laserAngle);
     }
     void SuccesiveFire()
     {
+        //Fires spreadshot multiple times
         lookDir = (player.position - new Vector3(headLaserOrigin.position.x, headLaserOrigin.position.y, -2.5f)).normalized;
         Invoke("RegainControl", 2.3f);
         for (int i = 0; i < 5; i++)
@@ -201,13 +213,12 @@ public class Attacks : MonoBehaviour
         spreadshotSE.Play();
 
         float offset = Random.Range(-.25f, .25f);
-        //Make sure the projectiles fire straight in the x axis.
-
         for (int i = 0; i < 4; i++)
         {
             Vector3 newDir = new Vector3(lookDir.x, lookDir.y + (float)(i - 1) * 0.25f + offset, lookDir.z);
             Quaternion dir = Quaternion.LookRotation(newDir);
             dir.eulerAngles = new Vector3(dir.eulerAngles.x, newDir.x > 0 ? 90f : 270f, 0f);
+            //Make sure the projectiles fire straight in the x axis.
             GameObject proj = Instantiate(spreadShotProj, new Vector3(headLaserOrigin.position.x, headLaserOrigin.position.y, -2.5f), dir);
             //Set the player attribute of the projectile to player to destroy it when out of range.
 
@@ -232,9 +243,10 @@ public class Attacks : MonoBehaviour
     }
     void SwipeDamage()
     {
+        //Check swipe hitbox for player
         if (Physics.CheckBox(swipeHitbox.position, swipehitbox, Quaternion.identity, playerLayer))
         {
-            pH.Damage(30f);
+            pH.Damage(swipeDamage);
             pMV.AddVelocity((mv.playerIsRight ? 1f : -1f) * new Vector3(1f, 0f, 0f) * sweepForce);
             pMV.CeaseControl();
             pMV.maxRestrictSpeedScale = 0.5f;

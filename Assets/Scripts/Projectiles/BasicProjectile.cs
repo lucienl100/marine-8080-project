@@ -36,7 +36,6 @@ public class BasicProjectile : MonoBehaviour, IProjectile
     }
     public void OnTriggerEnter(Collider c)
     {
-        Debug.Log("Collided!");
         if (c.gameObject.tag == "Player")
         {
             

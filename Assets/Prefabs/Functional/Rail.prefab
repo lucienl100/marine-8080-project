@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4901932371837602558}
   - component: {fileID: 1767404154430804273}
   - component: {fileID: 2473461740514322263}
-  m_Layer: 16
+  m_Layer: 17
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4828,7 +4828,7 @@ GameObject:
   - component: {fileID: 5962758853147161891}
   - component: {fileID: 3236879159265531589}
   - component: {fileID: 5474444573328912246}
-  m_Layer: 16
+  m_Layer: 17
   m_Name: Rail
   m_TagString: Powerup
   m_Icon: {fileID: 0}

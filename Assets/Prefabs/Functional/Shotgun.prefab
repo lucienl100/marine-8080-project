@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3675743698404832561}
   - component: {fileID: 5768792892845069621}
   - component: {fileID: 9014080828211094830}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Particle System (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4825,7 +4825,7 @@ GameObject:
   - component: {fileID: 6460756776225484585}
   - component: {fileID: 8145539130662574785}
   - component: {fileID: 7967621391602435260}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Shotgun
   m_TagString: Powerup
   m_Icon: {fileID: 0}
@@ -4919,7 +4919,7 @@ GameObject:
   - component: {fileID: 3746918463912979134}
   - component: {fileID: 3746918463914109054}
   - component: {fileID: 1827267223106628324}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}

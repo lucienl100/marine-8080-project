@@ -190,7 +190,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: If you have any queries or criticism on the game, please do contact us.
+  m_Text: We hope you have a great day!
 --- !u!222 &3419989
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3056,7 +3056,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Turret models made and supplied by Kevin Gao.
+  m_Text: Turret models and level assets made and supplied by Kevin Gao.
 --- !u!222 &961416164
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4954,7 +4954,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -617}
-  m_SizeDelta: {x: 700, y: 140}
+  m_SizeDelta: {x: 700, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1693271869
 MonoBehaviour:
@@ -4988,7 +4988,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enemy models and animations are from Mixamo.
+  m_Text: Enemy models and animations taken from Mixamo.
 --- !u!222 &1693271870
 CanvasRenderer:
   m_ObjectHideFlags: 0

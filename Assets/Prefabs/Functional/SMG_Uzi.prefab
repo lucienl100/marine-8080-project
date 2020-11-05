@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2377875809461529573}
   - component: {fileID: 5458442791232053331}
   - component: {fileID: 3586669140674478218}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4827,7 +4827,7 @@ GameObject:
   - component: {fileID: 5312519475689249168}
   - component: {fileID: 6187957720401814662}
   - component: {fileID: 615472268809850637}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: SMG_Uzi
   m_TagString: Powerup
   m_Icon: {fileID: 0}
@@ -4969,7 +4969,7 @@ GameObject:
   - component: {fileID: 4674485433557595747}
   - component: {fileID: 4674485433556628643}
   - component: {fileID: 8306035567851008121}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5066,7 +5066,7 @@ GameObject:
   - component: {fileID: 4674485433557595753}
   - component: {fileID: 4674485433556628649}
   - component: {fileID: 4632151820384093927}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Magazin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5163,7 +5163,7 @@ GameObject:
   - component: {fileID: 4674485433557595755}
   - component: {fileID: 4674485433556628651}
   - component: {fileID: 8616168495723934650}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5259,7 +5259,7 @@ GameObject:
   - component: {fileID: 4674485433554728525}
   - component: {fileID: 4674485433557595757}
   - component: {fileID: 4674485433556628653}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Stock_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5339,7 +5339,7 @@ GameObject:
   - component: {fileID: 4674485433557595759}
   - component: {fileID: 4674485433556628655}
   - component: {fileID: 1351286344433668507}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Stock
   m_TagString: Untagged
   m_Icon: {fileID: 0}

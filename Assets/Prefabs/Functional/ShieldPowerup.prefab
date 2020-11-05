@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 578335183401897905}
   - component: {fileID: 578335183401897918}
   - component: {fileID: 578335183401897919}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Forcefield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 2616851142532881328}
   - component: {fileID: 2616851142532881329}
   - component: {fileID: 2616851142532881330}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: ShieldPowerup
   m_TagString: Untagged
   m_Icon: {fileID: 0}

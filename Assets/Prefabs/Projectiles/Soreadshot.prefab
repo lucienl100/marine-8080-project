@@ -4849,13 +4849,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd2b7a1e41c3d345a1b640afab19a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 7
+  damage: 10
   speed: 12
   maxDist: 50
   explosion: {fileID: 6801000411339992395, guid: 79e6981a92868324ba1140cdec85943d,
     type: 3}
   player: {fileID: 0}
   rotation: {x: 0, y: 0, z: 0, w: 0}
+  depth: -2.5
 --- !u!54 &5228913398134720184
 Rigidbody:
   m_ObjectHideFlags: 0

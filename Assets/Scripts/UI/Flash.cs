@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class Flash : MonoBehaviour
 {
     public Image flashImage;
-    private float flashSpeed = 1.8f;
-    private Color flashColour = new Color(1f, 1f, 1f, 2f);
+    private float flashSpeed = 2.2f;
+    private Color flashColour = new Color(1f, 1f, 1f, 1f);
     public bool flash;
-    Vector2 flashSize = new Vector2(450f, 450f);
+    Vector2 flashSize = new Vector2(300f, 300f);
     private Color originalColor = new Color(0.5f, 0.5f, 0.5f, 0f);
     void Update()
     {
