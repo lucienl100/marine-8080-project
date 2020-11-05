@@ -350,7 +350,7 @@ return color;
 The second pass applies a wireframe to the object to add to the environment’s sci-fi / space aesthetic. In this pass the vertex shader similarly just passes through information but a geometry shader is added to read the edges of each triangle in order to highlight in the fragment shader. The for each triangle; the longest edge is set to be ignored in order to not show diagonal wireframe lines. This shader is mainly applied to the environment such as walls and the ground.
 
 <b>In the second pass:</b>
-```
+```c#
 void geom(triangle vertIn triIn[3], inout TriangleStream<vertOut> triStream) {
 	float3 noWire = float3(0., 0., 0.);
 
