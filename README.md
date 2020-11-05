@@ -270,8 +270,16 @@ Additionally, when the player hits an enemy, the enemy will flash red and play a
 
 ### Tutorial
 Once the player launches the first level through the main menu, the player will provided information which will assist them in learning the basics of the game. Controls for switching weapons and using abilities are always displayed on the HUD.
-
+<p align="center">
+  <img src="Images/Unity_2020-11-06_07-29-45.png"  width="300" >
+</p>
 Throughout the course of the game, the player will receive additional information that will provide information on how to complete the level, as well as explain any new abilities they come across. 
+<p align="center">
+  <img src="Gifs/2020-11-06_07-33-13.gif"  width="300" >
+</p>
+<p align="center">
+  <img src="Images/Unity_2020-11-06_07-35-55.png"  width="300" >
+</p>
 ## How to use the game 
 
 If developer: go to "Assets\Scenes\MainMenu.unity" to find the initial scene to start the game.
