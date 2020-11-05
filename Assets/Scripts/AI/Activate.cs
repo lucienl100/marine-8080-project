@@ -16,7 +16,8 @@ public class Activate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((player.position - t.position).magnitude < 30f)
+        //Activate LookAtPlayer script when the player is close enough
+        if ((player.position - t.position).magnitude < 35f)
         {
             lap.enabled = true;
         }

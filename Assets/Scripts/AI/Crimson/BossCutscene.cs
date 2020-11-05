@@ -7,7 +7,7 @@ public class BossCutscene : MonoBehaviour
     public SceneController sc;
     public GameObject cutsceneCamera;
     public GameObject mainCamera;
-    public Attacks bossattack;
+    public BossAttacks bossattack;
     public BossMovement bossmovement;
     public Animator bossanim;
     public LookAtMouse lam;

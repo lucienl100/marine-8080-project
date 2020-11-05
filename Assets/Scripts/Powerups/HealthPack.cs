@@ -54,7 +54,7 @@ public class HealthPack : MonoBehaviour
         if (other.transform.tag == "Player")
         {
             PlayerHealth am = other.gameObject.GetComponent<PlayerHealth>();
-            Debug.Log("shield get");
+            //Heal player
             am.AddHealth(healAmount);
             if (PlayerPrefs.GetInt("tooltip2") == 0)
             {

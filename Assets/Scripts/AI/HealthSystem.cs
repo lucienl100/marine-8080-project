@@ -10,7 +10,7 @@ public class HealthSystem : MonoBehaviour
     public Animator anim;
     LookAtPlayer lap;
     BossMovement bm;
-    Attacks at;
+    BossAttacks at;
     ShootingBasic sb;
     ShootingSpread sp;
     Activate a;
@@ -39,7 +39,7 @@ public class HealthSystem : MonoBehaviour
         if (type == 2)
         {
             bm = this.GetComponent<BossMovement>();
-            at = this.GetComponent<Attacks>();
+            at = this.GetComponent<BossAttacks>();
         }
     }
 

@@ -28,6 +28,7 @@ public class Forceshield : MonoBehaviour
     }
     void Move()
     {
+        //Float movement
         if (goingUp)
         {
             t.position = Vector3.Slerp(t.position, upper, Time.deltaTime * ascensionSpeed);
@@ -50,9 +51,10 @@ public class Forceshield : MonoBehaviour
     {
         if (other.transform.tag == "Player")
         {
+            //Enable shield ability
             AbilityManager am = other.gameObject.GetComponent<AbilityManager>();
-            Debug.Log("shield get");
             am.EnableShield();
+            //If seen or touched for the first time, enable tooltip
             if (PlayerPrefs.GetInt("tooltip0") == 0)
             {
                 sc.ShieldTooltip();

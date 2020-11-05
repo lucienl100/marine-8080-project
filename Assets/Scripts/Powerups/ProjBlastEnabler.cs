@@ -28,6 +28,7 @@ public class ProjBlastEnabler : MonoBehaviour
     }
     void Move()
     {
+        //Float movement
         if (goingUp)
         {
             t.position = Vector3.Slerp(t.position, upper, Time.deltaTime * ascensionSpeed);
@@ -50,11 +51,11 @@ public class ProjBlastEnabler : MonoBehaviour
     {
         if (other.transform.tag == "Player")
         {
+            //Enable projectile blast ability
             AbilityManager am = other.gameObject.GetComponent<AbilityManager>();
             
-            Debug.Log("proj blast get");
-            
             am.EnableProjBlast();
+            //Activate tooltip if seen or touched for the first time
             if (PlayerPrefs.GetInt("tooltip1") == 0)
             {
                 sc.ProjTooltip();

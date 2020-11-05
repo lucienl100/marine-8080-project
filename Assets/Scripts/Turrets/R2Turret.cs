@@ -26,6 +26,7 @@ public class R2Turret : MonoBehaviour
     }
     void Update()
     {
+        //If player is found by the turret
         if (SearchPlayer())
         {
             RotateTowardsPlayer();
@@ -53,14 +54,19 @@ public class R2Turret : MonoBehaviour
     }
     public void FireProjectile(GameObject projectile)
     {
+        //Fire the projectile
         sfx.Play();
         GameObject proj = Instantiate(projectile, firingPosition.position, t.rotation);
         BasicProjectile bp = proj.GetComponent<BasicProjectile>();
+
+        //Assign player variable to BasicProjectile script
         bp.player = player;
     }
     public bool SearchPlayer()
     {
         Vector3 turretToPlayer;
+
+        //Account for sliding hitbox depending on if the player is sliding or not
         dirToLook = player.position - t.position;
         slideDirToLook = new Vector3(player.position.x, player.position.y - 1f, player.position.z) - t.position;
         if (!playerslide.isSliding)
@@ -72,6 +78,7 @@ public class R2Turret : MonoBehaviour
             turretToPlayer = slideDirToLook;
         }
         RaycastHit hit;
+        //Try to detect player through raycast
         if (CheckHeight() && turretToPlayer.magnitude <= range && Physics.Raycast(t.position, turretToPlayer, out hit, Mathf.Infinity, playerLayer))
         {
             if (hit.collider.tag == "Player")
@@ -83,6 +90,7 @@ public class R2Turret : MonoBehaviour
     }
     bool CheckHeight()
     {
+        //Check if the barrel can rotate towards the player
         if (t.parent.rotation.eulerAngles.z == 180f)
         {
             if (player.position.y <= t.position.y)

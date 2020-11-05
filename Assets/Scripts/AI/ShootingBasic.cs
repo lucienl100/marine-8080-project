@@ -49,7 +49,7 @@ public class ShootingBasic : MonoBehaviour
             lookDir = (new Vector3(player.position.x, player.position.y - 1f, player.position.z) - shootingOrigin.position).normalized;
         }
         Quaternion dir = Quaternion.LookRotation(lookDir);
-        //Make sure the projectile travels straight in the x axis
+        //Make sure the projectile travels straight in the x axis by reassigning eulerAngles to 90 or 270
         dir.eulerAngles = new Vector3(dir.eulerAngles.x, lookDir.x > 0 ? 90f : 270f, 0f);
         GameObject proj = Instantiate(projectile, shootingOrigin.position, dir);
         //Set the player attribute of the projectile to player to destroy it when out of range.

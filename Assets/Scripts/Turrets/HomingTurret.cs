@@ -38,6 +38,7 @@ public class HomingTurret : MonoBehaviour, ITurret
     }
     public void ArmTurret()
     {
+        //Called when the player is found by SearchPlayer()
         if (timeToFire <= 0f)
         {
             FireProjectile(projectile);
@@ -58,9 +59,14 @@ public class HomingTurret : MonoBehaviour, ITurret
     }
     public void FireProjectile(GameObject projectile)
     {
+        //Fire two projectiles
         sfx.Play();
+        //Projectile upper
         GameObject proju = Instantiate(projectile, t.position + secondaryFireOff + t.forward * barrelLength, t.rotation);
+        //Projectile lower
         GameObject projd = Instantiate(projectile, t.position + t.forward * barrelLength, t.rotation);
+
+        //Assign variables to ProjectileHoming
         ProjectileHoming homing = proju.GetComponent<ProjectileHoming>();
         homing.player = player;
         homing.yRotation = t.eulerAngles.y;
@@ -70,11 +76,12 @@ public class HomingTurret : MonoBehaviour, ITurret
     }
     public bool SearchPlayer()
     {
+        //Look for player
         Vector3 turretToPlayer = player.position - shootingOrigin.position;
         RaycastHit hit;
         if (CheckHeight() && Vector3.Angle(turretToPlayer, lineOfSightBot) <= highAngle && turretToPlayer.magnitude <= range && Physics.Raycast(shootingOrigin.position, turretToPlayer, out hit, Mathf.Infinity, playerLayer))
         {
-            Debug.Log(hit.collider.gameObject.name);
+            //If the player is in the angle range of the barrel and has a direct line of sight, return true.
             if (hit.collider.tag == "Player")
             {
                 return true;
@@ -84,6 +91,7 @@ public class HomingTurret : MonoBehaviour, ITurret
     }
     bool CheckHeight()
     {
+        //Check if the turret is upside down or not, then checks if the player is below or above the turret barrel respectively
         if (t.parent.rotation.eulerAngles.z == 180f)
         {
             if (player.position.y <= t.position.y)

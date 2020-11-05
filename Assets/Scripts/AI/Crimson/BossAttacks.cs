@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attacks : MonoBehaviour
+public class BossAttacks : MonoBehaviour
 {
     Transform t;
     public Transform player;

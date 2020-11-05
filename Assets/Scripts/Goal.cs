@@ -15,6 +15,7 @@ public class Goal : MonoBehaviour
     }
     public void Update()
     {
+        //If the player is in range of the goal and E is pressed, finish the level
         if (rr.inRange && Input.GetKeyDown(KeyCode.E))
         {
             sfx.Play();

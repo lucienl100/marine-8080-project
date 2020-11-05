@@ -144,10 +144,12 @@ public class Movement : MonoBehaviour
         //Slowly reduce the additional velocity
         if (Mathf.Abs(additionalV.magnitude) <= (Vector3.one * 5f * Time.deltaTime).magnitude)
         {
+            //If below certain threshold, set velocity to zero vector
             additionalV = Vector3.zero;
         }
         else
         {
+            //Else gruadually decrease velocity
             additionalV -= additionalV.normalized * 10f * Time.deltaTime;
         }
 
@@ -187,12 +189,14 @@ public class Movement : MonoBehaviour
         }
         else
         {
+            //If not holding any movement key, reduce the velocity gradually to zero
             velocity.x = Mathf.Lerp(velocity.x, 0f, Time.deltaTime * 15f);
             if (velocity.x < 0.05f && velocity.x > -0.05f)
             {
                 velocity.x = 0f;
             }
         }
+        //Clamp velocity to maxSpeed
         if (velocity.x > maxSpeed)
         {
             velocity.x = maxSpeed;
@@ -219,8 +223,10 @@ public class Movement : MonoBehaviour
             }
         }
         velocity.x += additionalV.x;
+        //Clamp air velocity
         velocity.x = Mathf.Min(velocity.x, maxAirVelocity);
         velocity.x = Mathf.Max(velocity.x, -maxAirVelocity);
+        //Reduce air velocity over time
         maxAirVelocity -= Time.deltaTime * (maxAirVelocity - 5f) / (maxSpeed) * 5f;
     }
 }

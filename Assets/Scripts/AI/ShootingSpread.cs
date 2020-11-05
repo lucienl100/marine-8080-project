@@ -48,13 +48,11 @@ public class ShootingSpread : MonoBehaviour
         {
             lookDir = (new Vector3(player.position.x, player.position.y - 1f, player.position.z) - shootingOrigin.position).normalized;
         }
-
-        //Make sure the projectiles fire straight in the x axis.
-
         for (int i = 0; i < 4; i++)
         {
             Vector3 newDir = new Vector3(lookDir.x, lookDir.y + (float)(i - 1) * 0.25f, lookDir.z);
             Quaternion dir = Quaternion.LookRotation(newDir);
+            //Make sure the projectile travels straight in the x axis by reassigning eulerAngles to 90 or 270
             dir.eulerAngles = new Vector3(dir.eulerAngles.x, newDir.x > 0 ? 90f : 270f, 0f);
             GameObject proj = Instantiate(projectile, shootingOrigin.position, dir);
             //Set the player attribute of the projectile to player to destroy it when out of range.

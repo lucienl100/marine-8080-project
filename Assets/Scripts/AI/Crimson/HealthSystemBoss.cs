@@ -9,7 +9,7 @@ public class HealthSystemBoss : MonoBehaviour
     public SkinnedMeshRenderer meshRenderer;
     public Animator anim;
     BossMovement bm;
-    Attacks at;
+    BossAttacks at;
     public AudioSource hitsound;
     public GameObject deathparticle;
     public BossEnding be;
@@ -26,7 +26,7 @@ public class HealthSystemBoss : MonoBehaviour
         fAtt = meshRenderer.material.GetFloat("_Ka");
         currentHp = maxHp;
         bm = this.GetComponent<BossMovement>();
-        at = this.GetComponent<Attacks>();
+        at = this.GetComponent<BossAttacks>();
     }
 
     // Update is called once per frame
