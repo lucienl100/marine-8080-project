@@ -207,6 +207,29 @@ This is what the entire game leads up to, the final boss fight. Crimson is the t
 	</div>
 </div>
 
+## User Interface (UI)
+### Main Menu
+<i>If opened in the Unity Engine as a developer: go to "Assets\Scenes\MainMenu.unity" to find the initial scene to start the game.</i>
+
+Once the game is opened, the player is sent to the main menu.
+<p align="center">
+  <img src="Images/Unity_2020-11-06_05-04-18.png"  width="300" >
+</p>
+Here, the player can select ‘Play’, which will bring them to a screne where they can configure what level to play, and the difficulty. The difficulties have the following properties set to the player:
+<ul>
+	<li>Easy: 50% damage received, 150% damage delt</li>
+	<li>Medium: 100% damage received, 100% damage delt</li>
+	<li>Hard: 150% damage received, 50% damage delt</li>
+</ul>
+The player can also choose to play other levels that they are up to / already completed.
+<p align="center">
+  <img src="Images/Unity_2020-11-06_05-09-06.png"  width="300" >
+</p>
+Additionally, the player can select the gear icon, representing the ‘Options’ page (icon is an example of a mental model).
+<p align="center">
+  <img src="Images/Unity_2020-11-06_06-30-14.png"  width="300" >
+</p>
+Here, the player can adjust the volume of the game, as well as reset their save data to a state like when they first play the game.
 ## How to use the game 
 
 If developer: go to "Assets\Scenes\MainMenu.unity" to find the initial scene to start the game.
