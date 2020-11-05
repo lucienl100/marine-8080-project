@@ -236,7 +236,50 @@ The main menu was designed to have a minimalistic, dim rendering of a scene in g
 
 ### Heads up Display (HUD)
 <b>Location of Information</b>
+<p align="center">
+  <img src="Images/Unity_2020-11-06_08-54-29.png"  width="300" >
+</p>
+The HUD was designed so that all of the key information that the player is provided with is on the bottom and top of the screen. This is because most of the action that goes on is in the centre of the screen, and by putting the information in these locations, the gameplay is unlikely to be blocked by it.
+<p align="center">
+  <img src="Images/Unity_2020-11-06_05-30-41.png"  width="300" >
+</p>
+Additionally, some of the levels are designed in a way where the elements of the HUD appear on the walls of the floors and ceilings of the levels (in the image above), where the player does not need to have vision of that space of area at the time.
 
+<b>Colour Design</b>
+White was chosen as the colour for the text in the peripherals of the HUD as it’s a good peripheral colour and works well in contrast with the black border that surrounds it. The black border around the icons and text also causes it to stand out from the white/grey background.
+
+The current weapon that the player is holding is highlighted yellow, which is also a strong peripheral colour. This allows for the player to know which weapon they are holding without moving their eyes away from the centre of the screen.
+
+The red colour for the crosshair was chosen as it is an effective colour to have in the centre of the player’s field of view. Since the crosshair is likely to located where the player is looking the most, this will allow for them to keep track of the crosshair more easily.
+
+### User Interaction
+Below are some notable features that were implemented into the game to subtlety provide information/feedback to the player whilst they are performing tasks. 
+
+When the player uses an ability, the ability icon goes through a series of animations. The box becomes dark, and slowly fills up until the ability’s cooldown is up. Once it is up, the ability icon flashes on the screen to indicate to the player that the ability is off cooldown, and can be used again.
+<p align="center">
+  <img src="Gifs/2020-11-06_06-18-15.gif"  width="300" >
+</p>
+When the player receives damage, the outer edges of the screen flash red to notify the player. Red was chosen as it isn’t too distracting in the peripherals of the player’s vision, however is still somewhat noticeable.
+<p align="center">
+  <img src="Gifs/2020-11-06_09-02-03.gif"  width="300" >
+</p>
+Additionally, when the player hits an enemy, the enemy will flash red and play an audio sound to indicate that the enemy has been hit.
+<p align="center">
+  <img src="Gifs/2020-11-05_06-00-54.gif"  width="300" >
+</p>
+
+### Tutorial
+Once the player launches the first level through the main menu, the player will provided information which will assist them in learning the basics of the game. Controls for switching weapons and using abilities are always displayed on the HUD.
+<p align="center">
+  <img src="Images/Unity_2020-11-06_07-29-45.png"  width="300" >
+</p>
+Throughout the course of the game, the player will receive additional information that will provide information on how to complete the level, as well as explain any new abilities they come across. 
+<p align="center">
+  <img src="Gifs/2020-11-06_07-33-13.gif"  width="300" >
+</p>
+<p align="center">
+  <img src="Images/Unity_2020-11-06_07-35-55.png"  width="300" >
+</p>
 ## How to use the game 
 
 If developer: go to "Assets\Scenes\MainMenu.unity" to find the initial scene to start the game.
