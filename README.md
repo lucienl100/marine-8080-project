@@ -162,16 +162,19 @@ Causes the player to slide on the ground while running, making the player's hitb
 <p align="center">
   <img src="Gifs/2020-11-05_06-15-43.gif"  width="300" >
 </p>
+
 ## Wall Jumps
 Lets the player jump off a series of opposing walls.
 <p align="center">
   <img src="Gifs/2020-11-05_06-18-19.gif"  width="300" >
 </p>
+
 ## Force Field
 Creates a spherical ball of energy that surrounds the player, blocking any projectiles that collide with it
 <p align="center">
   <img src="Gifs/2020-11-05_06-17-29.gif"  width="300" >
 </p>
+
 ## Projectile Blast
 Emits a strong blast of energy which destroys all nearby projectiles.
 <p align="center">
@@ -215,19 +218,19 @@ These are the types of turrets you always want to be paying attention to. With t
 This is what the entire game leads up to, the final boss fight. Crimson is the toughest enemy in the game by far, having several different attack patterns and abilities which will sure put the player's skills to test. The player will have to use everything in their arsenal if they desire to be victorious.
 <div class="row">
 	<div class="column">
-		<img src="Gifs/2020-11-05_06-43-18.gif"  width="40%" >
+		<img src="Gifs/2020-11-05_06-43-18.gif"  width="35%" >
 	</div>
 	<div class="column">
-		<img src="Gifs/2020-11-05_06-44-25.gif"  width="40%" >
+		<img src="Gifs/2020-11-05_06-44-25.gif"  width="35%" >
 	</div>
 </div>
 <br>
 <div class="row">
 	<div class="column">
-		<img src="Gifs/2020-11-05_06-45-00.gif"  width="40%">
+		<img src="Gifs/2020-11-05_06-45-00.gif"  width="35%">
 	</div>
 	<div class="column">
-		<img src="Gifs/2020-11-05_06-45-39.gif"  width="40%" >
+		<img src="Gifs/2020-11-05_06-45-39.gif"  width="35%" >
 	</div>
 </div>
 
