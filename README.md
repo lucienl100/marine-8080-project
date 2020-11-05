@@ -230,6 +230,10 @@ Additionally, the player can select the gear icon, representing the ‘Options�
   <img src="Images/Unity_2020-11-06_06-30-14.png"  width="300" >
 </p>
 Here, the player can adjust the volume of the game, as well as reset their save data to a state like when they first play the game.
+
+### Design of Main Menu
+The main menu was designed to have a minimalistic, dim rendering of a scene in game, which does not draw the player’s eyes away from the text on the main menu. The brighter and larger text on the left side of the screen supports both younger and older audiences as they are clearly separated from each other, and stand out from the background. Each button applies the principle of infinite edges, which simply states that the user does not need to deaccelerate their mouse to click on the button, as buttons extend all the way to the left edge of the screen. 
+
 ## How to use the game 
 
 If developer: go to "Assets\Scenes\MainMenu.unity" to find the initial scene to start the game.
