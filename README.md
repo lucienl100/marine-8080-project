@@ -34,7 +34,7 @@ If developer: go to "Assets\Scenes\MainMenu.unity" to find the initial scene to 
 | Name | Task | State |
 | :---         |     :---:      |          ---: |
 | Timmy Truong  | Shaders, Video Editing, Interface, Lighting and README     |![100%](https://progress-bar.dev/100)|
-| Nathan Rearick    | Movement, Evaluation     |![100%](https://progress-bar.dev/100)|
+| Nathan Rearick    | Movement System, Abilities, Game Concept Design, Evaluation, Bug Catcher     |![100%](https://progress-bar.dev/100)|
 | Lucien Lu    | Level design, Turrets/Projectiles, AI, Main Menu, Camera, Abilities, Special Movement, Guns, UI      |![100%](https://progress-bar.dev/100)|
 
 ## Contributers
@@ -233,6 +233,9 @@ Here, the player can adjust the volume of the game, as well as reset their save 
 
 ### Design of Main Menu
 The main menu was designed to have a minimalistic, dim rendering of a scene in game, which does not draw the player’s eyes away from the text on the main menu. The brighter and larger text on the left side of the screen supports both younger and older audiences as they are clearly separated from each other, and stand out from the background. Each button applies the principle of infinite edges, which simply states that the user does not need to deaccelerate their mouse to click on the button, as buttons extend all the way to the left edge of the screen. 
+
+### Heads up Display (HUD)
+<b>Location of Information</b>
 
 ## How to use the game 
 
