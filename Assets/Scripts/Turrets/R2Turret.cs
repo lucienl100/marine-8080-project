@@ -13,9 +13,14 @@ public class R2Turret : MonoBehaviour
     public float intFireDelay = 0.15f;
     private float timeToFire;
     private float firingDelay = 1.5f;
+    Sliding playerslide;
     public Transform firingPosition;
+
+    Vector3 dirToLook;
+    Vector3 slideDirToLook;
     void Start()
     {
+        playerslide = player.gameObject.GetComponent<Sliding>();
         timeToFire = intFireDelay;
         t = this.transform;
     }
@@ -42,8 +47,7 @@ public class R2Turret : MonoBehaviour
     }
     public void RotateTowardsPlayer()
     {
-        Vector3 turretToPlayer = player.position - t.position;
-
+        Vector3 turretToPlayer = playerslide.isSliding ? slideDirToLook : dirToLook;
         Quaternion turretToPlayerAngle = Quaternion.LookRotation(turretToPlayer);
         t.rotation = Quaternion.Slerp(t.rotation, turretToPlayerAngle, Time.deltaTime * 10f);
     }
@@ -56,7 +60,17 @@ public class R2Turret : MonoBehaviour
     }
     public bool SearchPlayer()
     {
-        Vector3 turretToPlayer = player.position - t.position;
+        Vector3 turretToPlayer;
+        dirToLook = player.position - t.position;
+        slideDirToLook = new Vector3(player.position.x, player.position.y - 1f, player.position.z) - t.position;
+        if (!playerslide.isSliding)
+        {
+            turretToPlayer = dirToLook;
+        }
+        else
+        {
+            turretToPlayer = slideDirToLook;
+        }
         RaycastHit hit;
         if (CheckHeight() && turretToPlayer.magnitude <= range && Physics.Raycast(t.position, turretToPlayer, out hit, Mathf.Infinity, playerLayer))
         {

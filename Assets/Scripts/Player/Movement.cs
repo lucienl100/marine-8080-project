@@ -11,7 +11,6 @@ public class Movement : MonoBehaviour
     public float jumpSpeed;
     public float maxSpeed = 10f;
     public float gravity = -9.81f;
-    public float gravityScale = 1f;
     public bool inAir;
     public bool inJump;
     public CharacterController cc;
@@ -30,13 +29,12 @@ public class Movement : MonoBehaviour
     public float recoverDuration = 2f;
     private float inAirDelay = 0.1f;
     private float inAirTimer;
-
+    public bool isWallSliding = false;
     // Start is called before the first frame update
     void Start()
     {
         inAirTimer = 0.1f;
         velocity = Vector3.zero;
-        gravityScale = 1f;
         timer = 0f;
     }
 
@@ -121,7 +119,15 @@ public class Movement : MonoBehaviour
 
     void CalculateGravity()
     {
-        velocity.y += gravityScale * gravity * Time.deltaTime + additionalV.y;
+        //Method for calculating velocity in when player is in the air, otherwise set give a negative y velocity to make sure the player is on the ground
+        if (isWallSliding)
+        {
+            velocity.y = -3f;
+        }
+        else
+        {
+            velocity.y += gravity * Time.deltaTime + additionalV.y;
+        }
         if (!inAir && velocity.y < 0)
         {
             velocity.y = -3f;
@@ -146,16 +152,19 @@ public class Movement : MonoBehaviour
     }
     public void CeaseControl()
     {
+        //Method to remove horizontal control for a duration
         speedScale = 0.001f;
         timer = recoverDuration;
     }
     public void RegainControl()
     {
+        //Method to regain lost horizontal control
         speedScale = speedScale*1.1f;
         if (speedScale > maxRestrictSpeedScale)
         {
             speedScale = maxRestrictSpeedScale;
         }
+        //Call recover to tick a timer to negate maxRestrictSpeedScale
         Recover();
     }
     public void Recover()
@@ -169,6 +178,7 @@ public class Movement : MonoBehaviour
     }
     public void ControlGroundVelocity(float x)
     {
+        //Method for calculating ground velocity
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || isSliding)
         {
             velocity.x += x * accelerationAmount * speedScale;
@@ -193,6 +203,7 @@ public class Movement : MonoBehaviour
     }
     public void ControlAirVelocity(float x)
     {
+        //Method for calculating air velocity
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             velocity.x += x * accelerationAmount * speedScale * 0.25f;

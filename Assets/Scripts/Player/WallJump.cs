@@ -25,54 +25,55 @@ public class WallJump : MonoBehaviour
 		{
 			lastWallJump.x = float.PositiveInfinity;
 		}
-		if (CheckWall())
+		if (CheckWallAvaliable())
 		{
 			WallSlide();
 			if (Input.GetKeyDown(KeyCode.Space))
 			{
 				bool isRight = collisionLocation.x > transform.position.x ? true : false;
-				if (lastWallJump == null || Mathf.Abs(transform.position.x - lastWallJump.x) >= minJumpDistance)
-				{
-					movementScript.CeaseControl();
-					lastWallJump = transform.position;
-					movementScript.Jump();
-					movementScript.maxRestrictSpeedScale = 0.4f;
-					movementScript.recoverDuration = 3f;
-					movementScript.AddVelocity(new Vector3(1, 0, 0) * pushStrength * (isRight ? -1 : 1));
-				}
+				movementScript.isWallSliding = false;
+				movementScript.CeaseControl();
+				lastWallJump = transform.position;
+				movementScript.Jump();
+				movementScript.maxRestrictSpeedScale = 0.4f;
+				movementScript.recoverDuration = 3f;
+				movementScript.AddVelocity(new Vector3(1, 0, 0) * pushStrength * (isRight ? -1 : 1));
 			}
 		}
 		else
 		{
-			movementScript.gravityScale = 1f;
+			movementScript.isWallSliding = false;
 		}
 		
 	}
 
 	private void OnCollisionStay(Collision collision)
 	{
+		//Checks if the player is touching a wall
 		if (collision.gameObject.layer == groundLayer)
 		{
 			collisionLocation = collision.contacts[0].point;
 			jumpTimer = jumpWindow;
 		}
 	}
-	public bool CheckWall()
+	public bool CheckWallAvaliable()
 	{
+		//Uses the idea that the jumpTimer is always above 0 when colliding with a wall
 		return movementScript.inAir && jumpTimer > 0;
 	}
 	public void WallSlide()
 	{
+		//Method to check if the player is holding the moving against the wall and change the y velocity in Movement
 		bool isRight = collisionLocation.x > transform.position.x ? true : false;
-		if (CheckWall() && (lastWallJump == null || Mathf.Abs(transform.position.x - lastWallJump.x) >= minJumpDistance) && ((Input.GetKey(KeyCode.D) && isRight) || (Input.GetKey(KeyCode.A) && !isRight)) && movementScript.velocity.y < 0f)
+		if ((lastWallJump == null || Mathf.Abs(transform.position.x - lastWallJump.x) >= minJumpDistance) && ((Input.GetKey(KeyCode.D) && isRight) || (Input.GetKey(KeyCode.A) && !isRight)) && movementScript.velocity.y < 0f)
 		{
 
-			movementScript.gravityScale = 0.25f;
+			movementScript.isWallSliding = true;
 			Debug.Log("wallsliding");
 		}
 		else
 		{
-			movementScript.gravityScale = 1f;
+			movementScript.isWallSliding = false;
 		}
 	}
 }

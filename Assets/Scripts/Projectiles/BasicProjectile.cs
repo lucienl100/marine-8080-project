@@ -12,6 +12,7 @@ public class BasicProjectile : MonoBehaviour, IProjectile
     public GameObject explosion;
     public Transform player;
     public Quaternion rotation;
+    public float depth = -2.5f;
     void Start()
     {
         t = this.transform;
@@ -26,6 +27,7 @@ public class BasicProjectile : MonoBehaviour, IProjectile
     public void Fly()
     {
         t.position += t.forward * Time.deltaTime * speed;
+        t.position = new Vector3(t.position.x, t.position.y, depth);
         t.rotation = rotation;
     }
     public void DamagePlayer()

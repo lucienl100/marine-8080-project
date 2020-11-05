@@ -66,6 +66,7 @@ public class AbilityManager : MonoBehaviour
     }
     public void EnableProjBlast()
     {
+        projFlash.GetComponent<Flash>().FlashImage();
         enabledAbilities[1] = true;
         projIcon.SetActive(true);
         pb.enabled = true;

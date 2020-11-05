@@ -26,14 +26,17 @@ public class Shooting : MonoBehaviour
     public bool[] enabledguns = new bool[] { true, false, false, false };
     public GameObject[] icons;
     public GameObject[] iconFlash;
+    public GameObject[] gunModels;
     public AudioSource[] gunsounds;
     public AudioSource reloadsound;
     private int[] maxAmmoA = new int[] { 30, 8, 45, 2 };
     private int[] ammoA = new int[] { 30, 8, 45, 2 };
     float difficulty;
+    int idx;
     // Start is called before the first frame update
     void Start()
     {
+        idx = 0;
         difficulty = PlayerPrefs.GetFloat("difficulty");
         for (int i = 1; i < 4; i++)
         {
@@ -133,47 +136,32 @@ public class Shooting : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            guns[0] = true;
-            ammo = maxAmmoA[0];
-            for (int i = 1; i < 4; i++)
-            {
-                guns[i] = false;
-
-            }
+            idx = 0;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2) && enabledguns[1] == true)
         {
-            guns[1] = true;
-            ammo = maxAmmoA[1];
-            for (int i = 0; i < 4; i++)
-            {
-                if (i != 1)
-                {
-                    guns[i] = false;
-                }
-            }
+            idx = 1;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3) && enabledguns[2] == true)
         {
-            guns[2] = true;
-            ammo = maxAmmoA[2];
-            for (int i = 0; i < 4; i++)
-            {
-                if (i != 2)
-                {
-                    guns[i] = false;
-                }
-            }
+            idx = 2;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4) && enabledguns[3] == true)
         {
-            Debug.Log("switched");
-            guns[3] = true;
-            ammo = maxAmmoA[3];
-            for (int i = 0; i < 3; i++)
+            idx = 3;
+        }
+        guns[idx] = true;
+        ammo = maxAmmoA[idx];
+        gunModels[idx].SetActive(true);
+        for (int i = 0; i < 4; i++)
+        {
+            if (i != idx)
             {
+                gunModels[i].SetActive(false);
                 guns[i] = false;
             }
+            
+
         }
     }
     public void EnableGun(int i)

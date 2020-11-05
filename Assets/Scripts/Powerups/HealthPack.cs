@@ -12,6 +12,8 @@ public class HealthPack : MonoBehaviour
     private float height = 0.5f;
     public SceneController sc;
     public float healAmount = 25f;
+
+    public GameObject PE;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +60,7 @@ public class HealthPack : MonoBehaviour
                 sc.ShieldTooltip();
 
             }
+            Instantiate(PE, this.transform.position, Quaternion.identity);
             PlayerPrefs.SetInt("tooltip2", 1);
             Destroy(this.gameObject);
         }

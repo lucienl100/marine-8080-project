@@ -313,7 +313,7 @@ RectTransform:
   m_GameObject: {fileID: 49110250}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4237499, y: 1.4237499, z: 1.4237499}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 976451307}
   m_Father: {fileID: 1393360315}
@@ -337,8 +337,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashImage: {fileID: 49110254}
-  flashSpeed: 2
-  flashColour: {r: 1, g: 1, b: 1, a: 1}
   flash: 0
 --- !u!114 &49110253
 MonoBehaviour:
@@ -728,8 +726,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashImage: {fileID: 205769028}
-  flashSpeed: 2
-  flashColour: {r: 1, g: 1, b: 1, a: 1}
   flash: 0
 --- !u!114 &205769027
 MonoBehaviour:
@@ -1051,7 +1047,7 @@ RectTransform:
   - {fileID: 1425829534}
   - {fileID: 1354843909}
   m_Father: {fileID: 8436173307553375507}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1269,8 +1265,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashImage: {fileID: 302668087}
-  flashSpeed: 2
-  flashColour: {r: 1, g: 1, b: 1, a: 1}
   flash: 0
 --- !u!114 &302668086
 MonoBehaviour:
@@ -2021,7 +2015,7 @@ RectTransform:
   m_GameObject: {fileID: 375554067}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4237499, y: 1.4237499, z: 1.4237499}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1911321338}
   m_Father: {fileID: 1221958156}
@@ -2045,8 +2039,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashImage: {fileID: 375554071}
-  flashSpeed: 2
-  flashColour: {r: 1, g: 1, b: 1, a: 1}
   flash: 0
 --- !u!114 &375554070
 MonoBehaviour:
@@ -5163,7 +5155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.105882354, a: 1}
+  m_Color: {r: 0.9647059, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -26819,7 +26811,7 @@ RectTransform:
   m_Children:
   - {fileID: 1442459267}
   m_Father: {fileID: 8436173307553375507}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -29321,7 +29313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.105882354, a: 0}
+  m_Color: {r: 0.9647059, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -38607,8 +38599,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashImage: {fileID: 1425829537}
-  flashSpeed: 2
-  flashColour: {r: 1, g: 1, b: 1, a: 1}
   flash: 0
 --- !u!114 &1425829536
 MonoBehaviour:
@@ -40673,7 +40663,7 @@ RectTransform:
   m_Children:
   - {fileID: 747054029}
   m_Father: {fileID: 8436173307553375507}
-  m_RootOrder: 10
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -40758,7 +40748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.27450982, a: 0.7882353}
+  m_Color: {r: 0.9647059, g: 1, b: 0, a: 0.7882353}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -40886,7 +40876,7 @@ RectTransform:
   - {fileID: 205769025}
   - {fileID: 1218621514}
   m_Father: {fileID: 8436173307553375507}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -41941,7 +41931,7 @@ RectTransform:
   - {fileID: 2006236435}
   - {fileID: 1387691328}
   m_Father: {fileID: 8436173307553375507}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -42146,7 +42136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.10550451, a: 1}
+  m_Color: {r: 0.9647059, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -56408,8 +56398,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashImage: {fileID: 2006236438}
-  flashSpeed: 2
-  flashColour: {r: 1, g: 1, b: 1, a: 1}
   flash: 0
 --- !u!114 &2006236437
 MonoBehaviour:
@@ -69053,11 +69041,11 @@ RectTransform:
   - {fileID: 8436173308695682102}
   - {fileID: 8436173308371811699}
   - {fileID: 8436173308211597908}
+  - {fileID: 1571904484}
   - {fileID: 922444904}
   - {fileID: 1647056735}
   - {fileID: 1720867751}
   - {fileID: 260242855}
-  - {fileID: 1571904484}
   - {fileID: 2023493203}
   - {fileID: 1253768141}
   - {fileID: 1393360315}
@@ -69206,6 +69194,7 @@ MonoBehaviour:
   fade: {fileID: 751713916}
   mv: {fileID: 1651546391}
   ph: {fileID: 2112453351}
+  paused: 0
 --- !u!114 &8436173307839002564
 MonoBehaviour:
   m_ObjectHideFlags: 0

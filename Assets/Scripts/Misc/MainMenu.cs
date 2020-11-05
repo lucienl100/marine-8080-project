@@ -35,6 +35,7 @@ public class MainMenu : MonoBehaviour
             PlayerPrefs.SetInt("tooltip" + i.ToString(), 0);
             PlayerPrefs.SetInt("ability" + i.ToString(), 0);
         }
+        PlayerPrefs.SetInt("tooltip2", 0);
         PlayerPrefs.SetInt("currentLevel", 1);
         SceneManager.LoadScene(1);
     }

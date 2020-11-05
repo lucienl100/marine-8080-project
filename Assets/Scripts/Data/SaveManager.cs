@@ -18,6 +18,7 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.SetFloat("volume", 1);
         PlayerPrefs.DeleteKey("tooltip0");
         PlayerPrefs.DeleteKey("tooltip1");
+        PlayerPrefs.DeleteKey("tooltip2");
         for (int i = 1; i < 6; i++)
         {
             PlayerPrefs.DeleteKey("level" + i.ToString());
