@@ -1,30 +1,41 @@
 **The University of Melbourne**
 # COMP30019 – Graphics and Interaction
 
-## Group 10's Game: Space Marine 8080
+### Group 10's Game: Space Marine 8080
 
-<img src="Gifs/banner.gif">
+<p align="center">
+	<img src="Gifs/githubbanner.gif">
+</p>
 
-## [Video Trailer](https://www.youtube.com/watch?v=AM5vhYM9AzE)
+### [Video Trailer](https://www.youtube.com/watch?v=AM5vhYM9AzE)
+
+If developer: go to "Assets\Scenes\MainMenu.unity" to find the initial scene to start the game.
+
 
 ## Table of contents
 * [Team Members](#team-members)
 * [Contributers](#contributers)
 * [Technologies](#technologies)
-* [Using Images](#using-images)
-* [Code Snipets ](#code-snippets)
+* [Contributers](#contributers)
+* [Description](#description)
+* [Synopsis](#synopsis)
+* [Weapons](#weapons)
+* [Abilities](#abilities)
+* [Enemies](#enemies)
 * [How to use the game](#how-to-use-the-game)
-* [How we modelled objects and entities](#how-we-modelled-objects-and-entities)
-* [Graphics Pipeline](#graphics-pipeline)
-* [Shader](#shaders)
+* [Modelling objects and entities](#modelling-objects-and-entities)
+* [Camera motion](#camera-motion)
+* [Graphics pipeline](#graphics-pipeline)
+* [Shaders](#shaders)
+* [Evaluation](#evaluation)
 
 ## Team Members
 
 | Name | Task | State |
 | :---         |     :---:      |          ---: |
-| Timmy Truong  | Shaders, Video Editing, Interface, Lighting and README     |![90%](https://progress-bar.dev/90)|
-| Nathan Rearick    | Movement, Evaluation     |![90%](https://progress-bar.dev/90)|
-| Lucien Lu    | Level design, Turrets/Projectiles, AI, Main Menu, Camera, Abilities, Special Movement, Guns, UI      |![95%](https://progress-bar.dev/95)|
+| Timmy Truong  | Shaders, Video Editing, Interface, Lighting and README     |![100%](https://progress-bar.dev/100)|
+| Nathan Rearick    | Movement, Evaluation     |![100%](https://progress-bar.dev/100)|
+| Lucien Lu    | Level design, Turrets/Projectiles, AI, Main Menu, Camera, Abilities, Special Movement, Guns, UI      |![100%](https://progress-bar.dev/100)|
 
 ## Contributers
 
@@ -36,17 +47,17 @@
 Project is created with:
 * Unity 2019.4.3f1
 
-# Synopsis
+## Description
+Space Marine 8080 is a 2.5D platformer inspired by the game 'My Friend Pedro', where the main objective of the game is to shoot, move and reach the end of each level in style. The versatility and freedom that is offered to the player allows for them to play their own way, as there is no 'correct' way to complete a level.
+
+## Synopsis
 You are Marine 8080, a newly recruited private, enrolled into the Special Space Marine Force. Your objective is to navigate throughout the 6 uniquely designed locations from start to the finish, activating every radar you come across. Of course, the opposition will not let you succeed so easily, as a scouting survey of the area reports that the facility is well armed, additionally indicating that a large source of energy is radiating from the centre.
 
 You will have to be careful, as the human body can only tolerate so much damage. Run, jump and slide out of the barrage of ammunition that will be thrown at you. Don’t forget to take advantage of the arsenal of weapons and abilities that you will come across, you never know what could lie ahead of you.
 
-# Description
-Space Marine 8080 is a 2.5D platformer inspired by the game 'My Friend Pedro', where the main objective of the game is to shoot, move and reach the end of each level in style. The versatility and freedom that is offered to the player allows for them to play their own way, as there is no 'correct' way to complete a level.
-
-# Weapons
+## Weapons
 The player has access to 4 different weapons, all with different strengths and weaknesses, allowing for the player to choose a playstyle or adapt to their environment.
-## The Rifle
+### The Rifle
 <b>Strengths</b>
 <ul>
 	<li>Long Range</li>
@@ -64,7 +75,7 @@ The player has access to 4 different weapons, all with different strengths and w
   <img src="Gifs/2020-11-05_06-09-08.gif"  width="300" >
 </p>
 
-## The Shotgun
+### The Shotgun
 <b>Strengths</b>
 <ul>
 	<li>High Damage Per Second (DPS)</li>
@@ -82,7 +93,7 @@ The player has access to 4 different weapons, all with different strengths and w
   <img src="Gifs/2020-11-05_05-59-42.gif"  width="300" >
 </p>
 
-## The Sub Machine Gun (SMG)
+### The Sub Machine Gun (SMG)
 <b>Strengths</b>
 <ul>
 	<li>High Damage Per Second (DPS)</li>
@@ -99,7 +110,7 @@ The player has access to 4 different weapons, all with different strengths and w
   <img src="Gifs/2020-11-05_06-00-54.gif"  width="300" >
 </p>
 
-## The Railgun
+### The Railgun
 <b>Strengths</b>
 <ul>
 	<li>High Range</li>
@@ -116,67 +127,67 @@ The player has access to 4 different weapons, all with different strengths and w
   <img src="Gifs/2020-11-05_06-11-31.gif"  width="500" >
 </p>
 
-# Abilities
+## Abilities
 Additionally, the player has access to several abilities which allow for them to exceed what is normally possible.
 
-## Sliding
+### Sliding
 Causes the player to slide on the ground while running, making the player's hitbox smaller.
 <p align="center">
   <img src="Gifs/2020-11-05_06-15-43.gif"  width="300" >
 </p>
 
-## Wall Jumps
+### Wall Jumps
 Lets the player jump off a series of opposing walls.
 <p align="center">
   <img src="Gifs/2020-11-05_06-18-19.gif"  width="300" >
 </p>
 
-## Force Field
+### Force Field
 Creates a spherical ball of energy that surrounds the player, blocking any projectiles that collide with it
 <p align="center">
   <img src="Gifs/2020-11-05_06-17-29.gif"  width="300" >
 </p>
 
-## Projectile Blast
+### Projectile Blast
 Emits a strong blast of energy which destroys all nearby projectiles.
 <p align="center">
   <img src="Gifs/2020-11-05_06-16-34.gif"  width="300" >
 </p>
 
-# Enemies
+## Enemies
 There are multiple types of enemies the player will encounter, including sentient AI and turrets. Turrets cannot be destroyed.
 
-## X-BOT
+### X-BOT
 X-BOTs are the weakest form of AI, they will patrol the corridors of the facilities. They will use a pistol to shoot a slow projectile towards the player.
 <p align="center">
   <img src="Gifs/2020-11-05_06-22-52.gif"  width="300" >
 </p>
 
-## Vanguard
+### Vanguard
 Vanguards are stronger, larger, and much more deadly than X-BOTs. These brutes pack an energy infused shotgun which will decimate the player if they get too close.
 <p align="center">
   <img src="Gifs/2020-11-05_06-23-50.gif"  width="300" >
 </p>
 
-## Projectile Turret
+### Projectile Turret
 These surface bound machines have the capability to rotate 180 degrees around its central axis, attempting to target the player's location at the time of firing. These weapons may not be dangerous on their own, but a whole group of them in one area will sure get the player moving on their feet.
 <p align="center">
   <img src="Gifs/2020-11-05_08-31-26.gif"  width="300" >
 </p>
 
-## Homing Projectile Turret
+### Homing Projectile Turret
 Similar to the Projectile Turret, these weapons can rotate on their axis, however, they have a smaller limit of rotation. They will fire projectiles which will attempt to chase the player, gaining speed the longer they are in the air.
 <p align="center">
   <img src="Gifs/2020-11-05_08-30-57.gif"  width="300" >
 </p>
 
-## Railgun Turret
+### Railgun Turret
 These are the types of turrets you always want to be paying attention to. With their enormous barrel, these things can concentrate millions of joules of energy into one centrally focused beam of energy. The turret will always shoot a smaller laser before the blast, indicating to the player that the turret is about fire, allowing for them enough time to react.
 <p align="center">
   <img src="Gifs/2020-11-05_08-33-14.gif"  width="300" >
 </p>
 
-## Crimson
+### Crimson
 This is what the entire game leads up to, the final boss fight. Crimson is the toughest enemy in the game by far, having several different attack patterns and abilities which will sure put the player's skills to test. The player will have to use everything in their arsenal if they desire to be victorious.
 <div class="row">
 	<div class="column">
@@ -196,7 +207,10 @@ This is what the entire game leads up to, the final boss fight. Crimson is the t
 	</div>
 </div>
 
-## How to use the game ##
+## How to use the game 
+
+If developer: go to "Assets\Scenes\MainMenu.unity" to find the initial scene to start the game.
+
 The program is a unity game. Once launched, click “Play” to be faced with various options. “New game” to start from the first level, “Continue” to start on the level where you last left off, “Level select” to open up a menu of each unlocked level (to unlock a level, one must progress to it through the previous levels). Clicking on “Difficulty” will change the difficulty of the game between Easy, Normal and Hard. 
 Easy: 50% Damage taken and 150% Damage done. 
 Normal: 100% Damage taken and 100% Damage done. 
@@ -204,7 +218,8 @@ Hard: 150% Damage taken and 50% Damage done.
 There is also an “Options” button which allows the user to delete all saved data, resetting all level unlocks and forces the user to start from scratch, or adjust the volume.
 
 Once the game is begun, the commander will instruct you of the basics. In the heads-up display, on the bottom left, is the player’s current health. In the bottom middle is a list of the player’s unlocked abilities with their respective key to activate on top. In the bottom right, is the current active weapon’s ammo over max ammo. In the top left, are the weapons the player can use where blacked out weapon icons means the weapon hasn’t been unlocked (found) yet. The weapon icons are paried with a number indicating the key to press to switch to the associated weapon.
-## How we modelled objects and entities ##
+
+## Modelling objects and entities
 The turret models, platforms and scenery decorations (crates, columns) are created by Kevin Gao through Blender, kevin.haha@gmail.com. Whilst the weapon models are taken from the asset store. As for the levels, everything was made using Unity’s ProBuilder. For the Player model, it was taken from https://vrcmods.com/item/4352-commando, a website for VRChat avatar models. To match our intended style of the game, we recolored the texture map. To top off the models, every model (gun, enemy, player, ProBuilder objects, etc.) one can find in the game is equipped with one of multiple custom shaders, the phong wireframe shader, the cel shader, the pulse shader and a variation of the pulse shader, the forcefield shader.
 
 As for all the entities (Player, turrets, enemies, etc.), all are placed on the -2.5f value of the z axis with respect to the 2.5D aspect of the game. However, this would lead to some rotation and transform.eulerAngles manipulation as float data types have small errors, especially when modifying eulerAngles, for example 89.999 instead of 90, this may seem small but accumulates quickly and causes the entities to somehow move too far away from the -2.5f value of the z position and cause issues for example, shooting to miss.
@@ -231,7 +246,7 @@ else if (t.eulerAngles.y > 90 - 10f && t.eulerAngles.y < 90 + 10f && facingRight
 }
 ```
 
-## Camera motion ##
+## Camera motion 
 As for the camera motion, a simple fixed z coordinate (z dimension is the depth for this game) camera is implemented which essentially chases the player and attempts to focus the player in the center of the camera. To make the game feel more smooth, instead of snapping straight to the player, Spherical interpolation is used to give the camera a “falling behind” feeling while keeping up with the player.
 
 ```c#
@@ -253,7 +268,7 @@ As for the camera motion, a simple fixed z coordinate (z dimension is the depth 
         cam.position = new Vector3(cam.position.x, cam.position.y, moveposition.z);
     }
 ```
-## Graphics pipeline ## 
+## Graphics pipeline  
 
 Our game works through Unity’s graphics pipeline by working with custom scripts and shaders applied to every visible object. Most of the graphics rendering is done through the GPU programmed with shaders as it is a much more efficient dedicated hardware designed for that type of computing than the CPU. 
 
@@ -263,7 +278,7 @@ In regards to the shaders themselves; there are three main shaders. A phong refl
 
 
 
-## Shaders ##
+## Shaders 
 
 There are three main custom shaders in the game. The first one is a custom phong reflection model wireframe shader. This shader takes in four point light sources (provided by scripts) alongside the surface texture/colour and phong parameters. From this input it applies two passes; the first pass shades the object using normal Phong Reflection with the light source intensity clamped. The vertex shader passes through information required in the pixel/fragment shader to do per pixel shading in this pass.
 
@@ -400,7 +415,8 @@ if (i < 3)
 }
 ```
 Monobehaviour script to pass light information onto shader
-## Evaluation ##
+
+## Evaluation 
 As for the evaluation part of the game, we decided to utilize the <b>"Think Aloud"</b> observation method, this is because we will be able to understand what the user is feeling while playing the game, any signs of stress or confusion can be noted down and analysed to locate the flaws of the software and improve on it. In addition a questionnaire was given to the participants for the querying section of the evaluation. The questionnaire focuses on the friendliness of the user interface and heads-up display, the clarity of the objective of the game, balancing of the game elements (player weapons and level difficulty increase rate), the friendliness of the controls and requests for any bug reports.
 The questionnaire can be found here:
 https://forms.gle/vT7nAQWQCxUX2znr5
