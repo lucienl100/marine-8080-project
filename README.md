@@ -278,10 +278,141 @@ In regards to the shaders themselves; there are three main shaders. A phong refl
 
 ## How the shaders work ##
 
-There are three main custom shaders in the game. The first one is a phong reflection model shader. This shader takes in four point light sources (provided by scripts) alongside the surface texture/colour and phong parameters. From this input it applies two passes; the first pass shades the object using normal Phong Reflection with the light source clamped. The vertex shader passes through information required in the pixel/fragment shader to do per pixel shading in this pass. The second pass applies a wireframe to the object to add to the environment’s sci-fi / space aesthetic. In this pass the vertex shader similarly just passes through information but a geometry shader is added to read the edges of each triangle in order to highlight in the fragment shader. The for each triangle; the longest edge is set to be ignored in order to not show diagonal wireframe lines. This shader is mainly applied to the environment such as walls and the ground.
+There are three main custom shaders in the game. The first one is a custom phong reflection model wireframe shader. This shader takes in four point light sources (provided by scripts) alongside the surface texture/colour and phong parameters. From this input it applies two passes; the first pass shades the object using normal Phong Reflection with the light source intensity clamped. The vertex shader passes through information required in the pixel/fragment shader to do per pixel shading in this pass.
+
+<b>In the first pass:</b>
+```c#
+ // Calculate ambient RGB intensities
+float3 amb = v.color.rgb * UNITY_LIGHTMODEL_AMBIENT.rgb * _Ka;
+color.rgb =  amb.rgb * mainTexture.rgb;
+
+float3 L;
+float lLength;
+float LdotN;
+float3 dif;
+float3 V;
+float3 H;
+float3 spe;
+float4 lightPosition;
+float4 lightColour;
+
+for (int index = 0; index < 4; index++) {
+	// Set light position and colour based on 
+	lightPosition = float4(_PointLightPositionX[index], _PointLightPositionY[index], _PointLightPositionZ[index], 1.0);
+	lightColour = float4(_PointLightReds[index], _PointLightBlues[index], _PointLightGreens[index], 1.0);
+
+	// Calculate diffuse RBG reflections, we save the results of L.N because we will use it again for specular
+	L = normalize(lightPosition - v.worldVertex.xyz);
+	LdotN = dot(L, interpolatedNormal);
+	dif = _fAtt * lightColour.rgb * _Kd * v.color.rgb * saturate(LdotN);
+
+	// clamp power of light based on distance
+	lLength = clamp(5/length(lightPosition - v.worldVertex.xyz), 0, 0.45);
+
+	V = normalize(_WorldSpaceCameraPos - v.worldVertex.xyz);
+	H = normalize(V + L);
+
+	// Calculate specular
+	spe = _fAtt * lightColour.rgb * _Ks * pow(saturate(dot(interpolatedNormal, H)), _specN);
+
+	// Combine Phong illumination model components
+	color.rgb += lLength * (dif.rgb + spe.rgb);
+}
+
+color.a = 1.0f;
+return color;
+```
+The second pass applies a wireframe to the object to add to the environment’s sci-fi / space aesthetic. In this pass the vertex shader similarly just passes through information but a geometry shader is added to read the edges of each triangle in order to highlight in the fragment shader. The for each triangle; the longest edge is set to be ignored in order to not show diagonal wireframe lines. This shader is mainly applied to the environment such as walls and the ground.
+
+<b>In the second pass:</b>
+```
+void geom(triangle vertIn triIn[3], inout TriangleStream<vertOut> triStream) {
+	float3 noWire = float3(0., 0., 0.);
+
+	// Define edges length
+	float EdgeALength = length(triIn[0].worldPos - triIn[1].worldPos);
+	float EdgeBLength = length(triIn[1].worldPos - triIn[2].worldPos);
+	float EdgeCLength = length(triIn[2].worldPos - triIn[0].worldPos);
+
+	// Find diagonal line (longest line in triangle)
+	if(EdgeALength > EdgeBLength && EdgeALength > EdgeCLength)
+		noWire.y = 1.; // edge A
+	else if (EdgeBLength > EdgeCLength && EdgeBLength > EdgeALength)
+		noWire.x = 1.; // edge B
+	else
+		noWire.z = 1.; // edge C
+
+	// Remove diagonal wires by setting bary to 1 for each vertex
+	vertOut o;
+	o.pos = mul(UNITY_MATRIX_VP, triIn[0].worldPos);
+	o.bary = float3(1., 0., 0.) + noWire;
+	triStream.Append(o);
+
+	o.pos = mul(UNITY_MATRIX_VP, triIn[1].worldPos);
+	o.bary = float3(0., 0., 1.) + noWire;
+	triStream.Append(o);
+
+	o.pos = mul(UNITY_MATRIX_VP, triIn[2].worldPos);
+	o.bary = float3(0., 1., 0.) + noWire;
+	triStream.Append(o);
+}
+```
 
 The next shader is the cell shading shader which modifies the phong reflection model. This one works similarly to the previous phong reflection shader where it takes in four point lights from object scripts and uses a custom pixel and fragment shader. However to create a cell shaded effect the diffuse is limited to 0 and 1 instead of a smooth gradient and a sharp rim/outline is applied using a view direction vector. This shader is applied to characters such as the player, enemies, turret and some environmental objects to create a more cartoony look to the models.
 
+<b>Diffuse calculation:</b>
+```c#
+// Calculate diffuse RBG reflections, we save the results of L.N because we will use it again for specular
+L = normalize(lightPosition - v.worldVertex.xyz);
+LdotN = dot(L, interpolatedNormal);
+// Limit L.N to 0 & 1 to create cell shading effect
+LdotN = saturate(LdotN) > 0 ? 1 : 0;
+dif = _fAtt * lightColour.rgb * _Kd * saturate(LdotN); // * v.color.rgb;
+V = normalize(_WorldSpaceCameraPos - v.worldVertex.xyz);
+H = normalize(V + L);
+```
+
+As for the scripts to pass light information onto the shader, 3 types of similar scripts, "Light to shader static", "Light to shader skin", "Light to shader non-skin" are used.
+
+"Light to shader static" only checks the light information once at void Start() since the object is assumed to be static.
+
+"Light to shader skin" and "Light to shader non-skin" checks for light sources in void Update(), essentially checking up to 4 lights in a specified radius every Update(), therefore these scripts are used for moving objects, for example, the player, the enemy and turret barrels.
+"Skin" is for Skinned mesh renderers while "Non-skin" is for normal mesh renderers.
+
+The scripts detect lights this way, note that the Vector3 "naught" represents a location very far away from where any light source can be, essentially negating any impact of the "fake" light onto the shader lighting calculations.
+```c#
+int i = 0;
+Collider[] locatedLights = Physics.OverlapSphere(player.position, sphereSize, lightLayer);
+float[] positionX = new float[maxLights];
+float[] positionY = new float[maxLights];
+float[] positionZ = new float[maxLights];
+Vector4[] colours = new Vector4[maxLights];
+foreach (var collider in locatedLights)
+{
+    if (i > 3)
+    {
+	break;
+    }
+    Transform light = collider.transform;
+    positionX[i] = light.position.x;
+    positionY[i] = light.position.y;
+    positionZ[i] = light.position.z;
+    colours[i] = collider.GetComponent<Light>().color;
+    i++;
+}
+if (i < 3)
+{
+    while (i < 3)
+    {
+	positionX[i] = naught.x;
+	positionY[i] = naught.y;
+	positionZ[i] = naught.z;
+	colours[i] = new Vector4(0.0f, 0.0f, 0.0f, 1.0f);
+	i++;
+    }
+}
+```
+Monobehaviour script to pass light information onto shader
 ## Evaluation ##
 As for the evaluation part of the game, we decided to utilize the <b>"Think Aloud"</b> observation method, this is because we will be able to understand what the user is feeling while playing the game, any signs of stress or confusion can be noted down and analysed to locate the flaws of the software and improve on it. In addition a questionnaire was given to the participants for the querying section of the evaluation. The questionnaire focuses on the friendliness of the user interface and heads-up display, the clarity of the objective of the game, balancing of the game elements (player weapons and level difficulty increase rate), the friendliness of the controls and requests for any bug reports.
 The questionnaire can be found here:
