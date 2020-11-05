@@ -243,7 +243,32 @@ There is also an “Options” button which allows the user to delete all saved 
 
 Once the game is begun, the commander will instruct you of the basics. In the heads-up display, on the bottom left, is the player’s current health. In the bottom middle is a list of the player’s unlocked abilities with their respective key to activate on top. In the bottom right, is the current active weapon’s ammo over max ammo. In the top left, are the weapons the player can use where blacked out weapon icons means the weapon hasn’t been unlocked (found) yet. The weapon icons are paried with a number indicating the key to press to switch to the associated weapon.
 ## How we modelled objects and entities ##
-The turret models, platforms and scenery decorations (crates, columns) are created by Kevin Gao through Blender, kevin.haha@gmail.com. Whilst the weapon models are taken from the asset store. As for the levels, everything was made using Unity’s ProBuilder. For the Player model, it was taken from https://vrcmods.com/item/4352-commando, a website for VRChat avatar models. To match our intended style of the game, we recolored the texture map. To top off the models, every model (gun, enemy, player, ProBuilder objects, etc.) one can find in the game is equipped with one of multiple custom shaders, the phong wireframe shader, the cel shader with outline .
+The turret models, platforms and scenery decorations (crates, columns) are created by Kevin Gao through Blender, kevin.haha@gmail.com. Whilst the weapon models are taken from the asset store. As for the levels, everything was made using Unity’s ProBuilder. For the Player model, it was taken from https://vrcmods.com/item/4352-commando, a website for VRChat avatar models. To match our intended style of the game, we recolored the texture map. To top off the models, every model (gun, enemy, player, ProBuilder objects, etc.) one can find in the game is equipped with one of multiple custom shaders, the phong wireframe shader, the cel shader, the pulse shader and a variation of the pulse shader, the forcefield shader.
+
+As for all the entities (Player, turrets, enemies, etc.), all are placed on the -2.5f value of the z axis with respect to the 2.5D aspect of the game. However, this would lead to some rotation and transform.eulerAngles manipulation as float data types have small errors, especially when modifying eulerAngles, for example 89.999 instead of 90, this may seem small but accumulates quickly and causes the entities to somehow move too far away from the -2.5f value of the z position and cause issues for example, shooting to miss.
+To counteract this, in the update frame, the z position of the entity is reassigned to -2.5f every call.
+
+For example, in the enemy patrol script:
+
+```c#
+t.position += t.forward * Time.deltaTime * 3f;
+t.position = new Vector3(t.position.x, t.position.y, -2.5f);
+```
+
+Another issue in modelling the entities, due to using Spherical interpolation on enemy movement, the very end of the interpolation is very gradual and as we do not want the object to move forward while the eulerAngle.y is not 90 (right) and 270 (left), we need to wait for the spherical interpolation to finish, however, for it to perfectly interpolate, it will take significant time, so instead, a quick fix is implemented:
+
+```c#
+//Account for slerp errors
+if (t.eulerAngles.y > 270 - 10f && t.eulerAngles.y < 270 + 10f && !facingRight)
+{
+    t.eulerAngles = new Vector3(0f, 270f, 0f);
+}
+else if (t.eulerAngles.y > 90 - 10f && t.eulerAngles.y < 90 + 10f && facingRight)
+{
+    t.eulerAngles = new Vector3(0f, 90f, 0f);
+}
+```
+
 ## Camera motion ##
 As for the camera motion, a simple fixed z coordinate (z dimension is the depth for this game) camera is implemented which essentially chases the player and attempts to focus the player in the center of the camera. To make the game feel more smooth, instead of snapping straight to the player, Spherical interpolation is used to give the camera a “falling behind” feeling while keeping up with the player.
 
