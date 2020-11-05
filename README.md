@@ -1,9 +1,11 @@
 **The University of Melbourne**
 # COMP30019 – Graphics and Interaction
 
-Group 10's Game: Space Marine 8080
+## Group 10's Game: Space Marine 8080
 
-[Video Trailer](https://www.youtube.com/watch?v=AM5vhYM9AzE)
+<img src="Gifs/banner.gif">
+
+## [Video Trailer](https://www.youtube.com/watch?v=AM5vhYM9AzE)
 
 ## Table of contents
 * [Team Members](#team-members)
