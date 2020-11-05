@@ -156,21 +156,25 @@ The player has access to 4 different weapons, all with different strengths and w
 
 # Abilities
 Additionally, the player has access to several abilities which allow for them to exceed what is normally possible.
+
 ## Sliding
 Causes the player to slide on the ground while running, making the player's hitbox smaller.
 <p align="center">
   <img src="Gifs/2020-11-05_06-15-43.gif"  width="300" >
 </p>
+
 ## Wall Jumps
 Lets the player jump off a series of opposing walls.
 <p align="center">
   <img src="Gifs/2020-11-05_06-18-19.gif"  width="300" >
 </p>
+
 ## Force Field
 Creates a spherical ball of energy that surrounds the player, blocking any projectiles that collide with it
 <p align="center">
   <img src="Gifs/2020-11-05_06-17-29.gif"  width="300" >
 </p>
+
 ## Projectile Blast
 Emits a strong blast of energy which destroys all nearby projectiles.
 <p align="center">
@@ -178,6 +182,58 @@ Emits a strong blast of energy which destroys all nearby projectiles.
 </p>
 
 # Enemies
+There are multiple types of enemies the player will encounter, including sentient AI and turrets. Turrets cannot be destroyed.
+
+## X-BOT
+X-BOTs are the weakest form of AI, they will patrol the corridors of the facilities. They will use a pistol to shoot a slow projectile towards the player.
+<p align="center">
+  <img src="Gifs/2020-11-05_06-22-52.gif"  width="300" >
+</p>
+
+## Vanguard
+Vanguards are stronger, larger, and much more deadly than X-BOTs. These brutes pack an energy infused shotgun which will decimate the player if they get too close.
+<p align="center">
+  <img src="Gifs/2020-11-05_06-23-50.gif"  width="300" >
+</p>
+
+## Projectile Turret
+These surface bound machines have the capability to rotate 180 degrees around its central axis, attempting to target the player's location at the time of firing. These weapons may not be dangerous on their own, but a whole group of them in one area will sure get the player moving on their feet.
+<p align="center">
+  <img src="Gifs/2020-11-05_08-31-26.gif"  width="300" >
+</p>
+
+## Homing Projectile Turret
+Similar to the Projectile Turret, these weapons can rotate on their axis, however, they have a smaller limit of rotation. They will fire projectiles which will attempt to chase the player, gaining speed the longer they are in the air.
+<p align="center">
+  <img src="Gifs/2020-11-05_08-30-57.gif"  width="300" >
+</p>
+
+## Railgun Turret
+These are the types of turrets you always want to be paying attention to. With their enormous barrel, these things can concentrate millions of joules of energy into one centrally focused beam of energy. The turret will always shoot a smaller laser before the blast, indicating to the player that the turret is about fire, allowing for them enough time to react.
+<p align="center">
+  <img src="Gifs/2020-11-05_08-33-14.gif"  width="300" >
+</p>
+
+## Crimson
+This is what the entire game leads up to, the final boss fight. Crimson is the toughest enemy in the game by far, having several different attack patterns and abilities which will sure put the player's skills to test. The player will have to use everything in their arsenal if they desire to be victorious.
+<div class="row">
+	<div class="column">
+		<img src="Gifs/2020-11-05_06-43-18.gif"  width="35%" >
+	</div>
+	<div class="column">
+		<img src="Gifs/2020-11-05_06-44-25.gif"  width="35%" >
+	</div>
+</div>
+<br>
+<div class="row">
+	<div class="column">
+		<img src="Gifs/2020-11-05_06-45-00.gif"  width="35%">
+	</div>
+	<div class="column">
+		<img src="Gifs/2020-11-05_06-45-39.gif"  width="35%" >
+	</div>
+</div>
+
 ## How to use the game ##
 The program is a unity game. Once launched, click “Play” to be faced with various options. “New game” to start from the first level, “Continue” to start on the level where you last left off, “Level select” to open up a menu of each unlocked level (to unlock a level, one must progress to it through the previous levels). Clicking on “Difficulty” will change the difficulty of the game between Easy, Normal and Hard. 
 Easy: 50% Damage taken and 150% Damage done. 
