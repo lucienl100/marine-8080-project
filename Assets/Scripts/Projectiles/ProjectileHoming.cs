@@ -21,6 +21,7 @@ public class ProjectileHoming : MonoBehaviour, IProjectile
     private float errorMargin = 0.1f;
     private float timerDuration = 0.05f;
     private float timer;
+    private float depth = -2.5f;
     void Start() 
     {
         timer = timerDuration;
@@ -48,6 +49,8 @@ public class ProjectileHoming : MonoBehaviour, IProjectile
     public void Fly()
     {
         t.position += t.forward * speed * Time.deltaTime;
+        //Account for rotation error
+        t.position = new Vector3(t.position.x, t.position.y, depth);
     }
     public void OnTriggerEnter(Collider c) 
     {

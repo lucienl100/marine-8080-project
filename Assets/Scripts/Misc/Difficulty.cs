@@ -18,6 +18,7 @@ public class Difficulty : MonoBehaviour
     void Update()
     {
         DifficultyUpdate();
+        PlayerPrefs.SetFloat("difficulty", (difficulty + 1) * 0.5f);
     }
     void DifficultyUpdate()
     {
@@ -37,6 +38,5 @@ public class Difficulty : MonoBehaviour
     public void ChangeDifficulty()
     {
         difficulty = (difficulty + 1) % 3;
-        PlayerPrefs.SetFloat("difficulty", (difficulty+1) * 0.5f);
     }
 }

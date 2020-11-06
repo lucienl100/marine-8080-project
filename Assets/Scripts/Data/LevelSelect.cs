@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class LevelSelect : MonoBehaviour
 {
     public Button[] levels;
-    void Start()
+    void Update()
     {
         for (int i = 1; i < levels.Length; i++)
         {
