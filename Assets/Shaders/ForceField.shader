@@ -53,10 +53,11 @@
 
             fixed4 frag (vertexOut i) : COLOR
             {
-                // sample the texture
                 float horizontalDist = abs(i.objPosition.x);
                 fixed4 hexagons = tex2D(_HexagonTex, i.uv);
+                //Calculate the noise
                 float noise = abs(sin(_Time.y*_PulseSpeed - horizontalDist.x*_PulseObjScale + hexagons.r));
+                //Calculate pulse color
                 fixed4 hexagonPulse = hexagons * _PulseIntensity * noise;
                 fixed4 color;
                 color.rgb = _Color.rgb + hexagonPulse.rgb*noise;
