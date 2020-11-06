@@ -165,6 +165,7 @@ public class SceneController : MonoBehaviour
         }
         //Set the current playthrough level to the next level
         PlayerPrefs.SetInt("currentLevel", nextBuildIndex);
+        PlayerPrefs.SetInt("level" + (nextBuildIndex - 1).ToString(), 1);
         StartCoroutine(LoadWinScreen());
     }
     public void NextLevel()

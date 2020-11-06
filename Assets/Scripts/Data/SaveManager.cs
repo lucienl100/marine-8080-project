@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
+    public float numLevels = 6;
     public void UnlockNextLevel(int currentLevel)
     {
         PlayerPrefs.SetInt("highestLevel", currentLevel + 1);
@@ -22,6 +23,10 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.DeleteKey("tooltip2");
         PlayerPrefs.SetInt("ability0", 0);
         PlayerPrefs.SetInt("ability1", 0);
+        for (int i = 1; i < numLevels; i++)
+        {
+            PlayerPrefs.SetInt("level" + i.ToString(), 0);
+        }
         for (int i = 1; i < 4; i++)
         {
             PlayerPrefs.SetInt("guns" + i.ToString(), 0);
