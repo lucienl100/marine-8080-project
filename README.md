@@ -531,6 +531,10 @@ return color;
 ```
 The second pass applies a wireframe to the object to add to the environment’s sci-fi / space aesthetic. In this pass the vertex shader similarly just passes through information but a geometry shader is added to read the edges of each triangle in order to highlight in the fragment shader. The for each triangle; the longest edge is set to be ignored in order to not show diagonal wireframe lines. This shader is mainly applied to the environment such as walls and the ground.
 
+<p align="center">
+  <img src="Images/wireframes.png">
+</p>
+
 <b>In the second pass geometry shader:</b>
 ```c#
 void geom(triangle vertIn triIn[3], inout TriangleStream<vertOut> triStream) {
@@ -566,6 +570,10 @@ void geom(triangle vertIn triIn[3], inout TriangleStream<vertOut> triStream) {
 ```
 
 The next shader is the cell shading shader which modifies the phong reflection model. This one works similarly to the previous phong reflection shader where it takes in four point lights from object scripts and uses a custom pixel and fragment shader. However to create a cell shaded effect the diffuse is limited to 0 and 1 instead of a smooth gradient and a sharp rim/outline is applied using a view direction vector. This shader is applied to characters such as the player, enemies, turret and some environmental objects to create a more cartoony look to the models.
+
+<p align="center">
+  <img src="Images/phongvscell.png">
+</p>
 
 <b>Diffuse calculation within fragment shader:</b>
 ```c#
