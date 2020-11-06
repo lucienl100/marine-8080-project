@@ -280,6 +280,7 @@ Throughout the course of the game, the player will receive additional informatio
 <p align="center">
   <img src="Images/Unity_2020-11-06_07-35-55.png"  width="300" >
 </p>
+
 ## How to use the game 
 
 If developer: go to "Assets\Scenes\MainMenu.unity" to find the initial scene to start the game.
@@ -293,10 +294,9 @@ There is also an “Options” button which allows the user to delete all saved 
 Once the game is begun, the commander will instruct you of the basics. In the heads-up display, on the bottom left, is the player’s current health. In the bottom middle is a list of the player’s unlocked abilities with their respective key to activate on top. In the bottom right, is the current active weapon’s ammo over max ammo. In the top left, are the weapons the player can use where blacked out weapon icons means the weapon hasn’t been unlocked (found) yet. The weapon icons are paried with a number indicating the key to press to switch to the associated weapon.
 
 ## Modelling objects and entities
-The turret models, platforms and scenery decorations (crates, columns) are created by Kevin Gao through Blender, kevin.haha@gmail.com. Whilst the weapon models are taken from the asset store. As for the levels, everything was made using Unity’s ProBuilder. For the Player model, it was taken from https://vrcmods.com/item/4352-commando, a website for VRChat avatar models. To match our intended style of the game, we recolored the texture map. To top off the models, every model (gun, enemy, player, ProBuilder objects, etc.) one can find in the game is equipped with one of multiple custom shaders, the phong wireframe shader, the cel shader, the pulse shader and a variation of the pulse shader, the forcefield shader.
+The turret models, platforms and scenery decorations (crates, columns) are created by Kevin Gao through Blender, whilst the weapon models are taken from the asset store.The level layouts were made using Unity’s ProBuilder. The player model was taken from https://vrcmods.com/item/4352-commando, a website for VRChat avatar models. To match our intended style of the game, we recoloured the texture map of the player. To top off the models, every model (gun, enemy, player, ProBuilder objects, etc.) in the game is equipped with one of multiple custom shaders, the phong wireframe shader, the cel shader, variations of a pulse shader, and a forcefield shader.
 
-As for all the entities (Player, turrets, enemies, etc.), all are placed on the -2.5f value of the z axis with respect to the 2.5D aspect of the game. However, this would lead to some rotation and transform.eulerAngles manipulation as float data types have small errors, especially when modifying eulerAngles, for example 89.999 instead of 90, this may seem small but accumulates quickly and causes the entities to somehow move too far away from the -2.5f value of the z position and cause issues for example, shooting to miss.
-To counteract this, in the update frame, the z position of the entity is reassigned to -2.5f every call.
+All of the entities (Player, turrets, enemies, etc.), are placed on the -2.5f value of the z axis in the game. Since we want all entities to remain on the same z value, this would cause some issues with their rotation as the small errors in calculations that occur with floats accumulate over time, causing the z position to slowly change over time, causing some entities to walk off. This problem was solved by manually reassigning the z position back to its original value every time a euler angle calculation was made, and the angle is rounded to the nearest direction (left or right).
 
 For example, in the enemy patrol script:
 
@@ -305,7 +305,7 @@ t.position += t.forward * Time.deltaTime * 3f;
 t.position = new Vector3(t.position.x, t.position.y, -2.5f);
 ```
 
-Another issue in modelling the entities, due to using Spherical interpolation on enemy movement, the very end of the interpolation is very gradual and as we do not want the object to move forward while the eulerAngle.y is not 90 (right) and 270 (left), we need to wait for the spherical interpolation to finish, however, for it to perfectly interpolate, it will take significant time, so instead, a quick fix is implemented:
+Another issue with handling the entities is due to using spherical interpolation on enemy movement. Due to the nature of spherical interpolation (asymptotic properties), the process would take to long to completely rotate an entity, since the change in rotation towards the end is almost unnoticeable. Since we want the entity to move right after rotating, we want to clamp the rotation to the nearest direction (left or right) instead of waiting for the spherical interpolation to finish. This processes removes the long pause after the rotation, before the entity begins moving again. 
 
 ```c#
 //Account for slerp errors
