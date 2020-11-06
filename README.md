@@ -521,61 +521,61 @@ It was discovered that the UI for the game could be improved upon, as there appe
 
 <b>Before</b>
 <p align="center">
-  <img src="Images/chrome_2020-11-06_15-04-00.png"  width="300" >
+  <img src="Images/chrome_2020-11-06_15-04-00.png">
 </p>
 <b>After</b>
 <p align="center">
-  <img src="Images/ApplicationFrameHost_2020-11-06_15-04-40.png"  width="300" >
+  <img src="Images/ApplicationFrameHost_2020-11-06_15-04-40.png">
 </p>
 
 It was found that players did not know which direction to go in specific areas, so we added arrows in locations where players commonly got lost.
 <p align="center">
-  <img src="Images/chrome_2020-11-06_15-09-14.png"  width="300" >
+  <img src="Images/chrome_2020-11-06_15-09-14.png">
 </p>
 <p align="center">
-  <img src="Images/Unity_2020-11-06_15-09-38.png"  width="300" >
+  <img src="Images/Unity_2020-11-06_15-09-38.png">
 </p>
 
 It was indicated that the weapons the player was given were very unbalanced, with almost every participant suggesting that we 'buff' the shotgun, while leaving the rest of the weapons as they were due to the low amount of responses.
 <p align="center">
-  <img src="Images/chrome_2020-11-06_15-11-31.png"  width="300" >
+  <img src="Images/chrome_2020-11-06_15-11-31.png">
 </p>
 <p align="center">
-  <img src="Images/chrome_2020-11-06_15-11-36.png"  width="300" >
+  <img src="Images/chrome_2020-11-06_15-11-36.png">
 </p>
 <p align="center">
-  <img src="Images/chrome_2020-11-06_15-11-41.png"  width="300" >
+  <img src="Images/chrome_2020-11-06_15-11-41.png">
 </p>
 
 Every participant did not have any framerate issues, therefore no optimisation was found to be needed.
 <p align="center">
-  <img src="Images/chrome_2020-11-06_15-12-42.png"  width="300" >
+  <img src="Images/chrome_2020-11-06_15-12-42.png">
 </p>
 
 The majority of participants found that the game's difficulty fell between "Just Right" and "Hard", however, we felt that the participants died too often on the harder levels, so we decided to decrease the difficulty. This was done by adding health packs to the level.
 <p align="center">
-  <img src="Images/chrome_2020-11-06_15-14-56.png"  width="300" >
+  <img src="Images/chrome_2020-11-06_15-14-56.png">
 </p>
 
 Most players found that the difficulty increase between level 3 and 4 was too big. So we decided to make a new level that was in between the difficulty of level 3 and 4 to have a much more smoother difficulty increase
 <p align="center">
-  <img src="Images/chrome_2020-11-06_15-17-05.png"  width="300" >
+  <img src="Images/chrome_2020-11-06_15-17-05.png">
 </p>
 
 Some players felt that sliding and wall jumping felt a bit strange, so we decided to improve this by adding the ability to slide while facing the other direction, and to slowly slide down the wall when holding against it.
 <p align="center">
-  <img src="Images/chrome_2020-11-06_15-20-47.png"  width="300" >
+  <img src="Images/chrome_2020-11-06_15-20-47.png">
 </p>
 <p align="center">
-  <img src="Images/chrome_2020-11-06_15-20-53.png"  width="300" >
+  <img src="Images/chrome_2020-11-06_15-20-53.png">
 </p>
 <p align="center">
-  <img src="Images/chrome_2020-11-06_15-21-04.png"  width="300" >
+  <img src="Images/chrome_2020-11-06_15-21-04.png">
 </p>
 
 Many bugs were discovered throughout the process, since we recorded each session, we were able to fix all of the bugs discovered.
 <p align="center">
-  <img src="Images/chrome_2020-11-06_15-21-38.png"  width="300" >
+  <img src="Images/chrome_2020-11-06_15-21-38.png">
 </p>
 
 
