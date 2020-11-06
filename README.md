@@ -22,7 +22,6 @@ If developer: go to "Assets\Scenes\MainMenu.unity" to find the initial scene to 
 * [Weapons](#weapons)
 * [Abilities](#abilities)
 * [Enemies](#enemies)
-* [User Interface (UI)](#user-interface)
 * [How to use the game](#how-to-use-the-game)
 * [Modelling objects and entities](#modelling-objects-and-entities)
 * [Camera motion](#camera-motion)
@@ -208,7 +207,7 @@ This is what the entire game leads up to, the final boss fight. Crimson is the t
 	</div>
 </div>
 
-## User Interface
+## User Interface (UI)
 ### Main Menu
 <i>If opened in the Unity Engine as a developer: go to "Assets\Scenes\MainMenu.unity" to find the initial scene to start the game.</i>
 
@@ -491,13 +490,27 @@ if (i < 3)
 Monobehaviour script to pass light information onto shader
 
 ## Evaluation 
-As for the evaluation part of the game, we decided to utilize the <b>"Think Aloud"</b> observation method, this is because we will be able to understand what the user is feeling while playing the game, any signs of stress or confusion can be noted down and analysed to locate the flaws of the software and improve on it. In addition a questionnaire was given to the participants for the querying section of the evaluation. The questionnaire focuses on the friendliness of the user interface and heads-up display, the clarity of the objective of the game, balancing of the game elements (player weapons and level difficulty increase rate), the friendliness of the controls and requests for any bug reports.
+As for the evaluation part of the game, we decided to utilize the <b>"Cooperative Evaluation"</b> observation method, which is a variation on the <b>"Think Aloud"</b> method. This method was chosen as it will allow us to understand what the user is feeling while playing the game, and any signs of stress or confusion can be noted down to be analysed later on. The game was distributed to 9 participants (8 male, 1 female), all within the age range of 19-23. These individuals all fell into our target demographic, which were young people with some gaming experience. 
+
+During each session, the individual was told to screen share their application through Discord. Each session was recorded so that we could replay the footage to reproduce any bugs that they encounter, which makes the process of fixing them easier. 
+
+# Observation Technique
+One of the advantages of this technique is that it is like an ongoing discussion between two people. It allows for both parties to ask questions, so that we can answer questions if they need assistance, and we can ask them questions so that we can understand their though process while playing. Some questions that were asked while they were playing were, "What part of the level are you struggling with the most?" and "Where do you think you need to go next?". These questions allow for us to identify particilar sections that may be too 'unbalanced' with the rest of the level, or sections where the player is confused on what to do. Another advantage that this method has is that the play tester is encouraged to criticise the game. This is because they can point out issues or opinions that they have about the game or a portion of the game at the time they notice it, rather than forgetting to mention it later on.
+
+Some of the disadvantages that this method had was that there was no baseline for consistency for each session. Each player played the game at their own pace, with the fastest participant completing the game in 15 minutes, and the slowest participant taking just over an hour. With out a doubt, the faster player had less difficulty picking up the controls and mastering the game mechanics than the slower player, and thus provided different pieces of data. The faster player's results would suggest that the game was too easy, whilst the slower player's results would suggest that portions of the game was too difficult. To try to account for this problem, we attempted to get as many participants as possible (9) to generate a middle ground to find areas of the game that were too difficult, as well as write down any common complaints or suggestions that were mentioned. Another problem with this method is that it takes a long time for each session. Each session lasted in the range between 45-60 minutes, so if we wanted to increase the number of participants, we would have to allocate a lot more time.
+
+One of the main observations that was noticed was that players were struggling to get past the middle and end of some of the levels due to them being nervous about not having enough health towards the later stages of the level, especially on the longer levels. So to solve this issue, we implemented health packs in various locations in the levels which offer a small boost to their health bar so that they felt more confident in comepleting the level, thus decreasing the future particpant's completion times. More changes that were made will be discussed later on.
+
+# Surveying Technique
+After each evaluation session with the participants, each one was given a questionnaire which asked several questions related to their experience and opinion of the game.  
+questionnaire was given to the participants for the querying section of the evaluation. It most noticeably gauges the player's ability to understand the information displayed on the UI, and opinion on the current state of the game, as well as any suggestions they might have. One of the advantages of using a questionnaire was that we were able to have a consistent set of questions that was asked, so that we can use their answers and compare them against other participants so that we can find areas where there are lots of similarities, and areas with lots of disparities. Additionally, these questionnaires did not take much time for each participant to complete, averaging around 10 minutes for each person, so it was much quicker in comparison to the observation technique used.
+
+However, the disadvantage of using a questionnaire is that sometimes it can be difficult to compare people's interpretation of a question. For example, the section where it asks the user "I found the game interface/UI friendly and easy to understand", it can be difficult to compare answers as one person's perception of a friendly and easy UI can be drastrically different to another person's. We even see this issue occur in the results, as the average answer was 'Agree', while we still had one particpant answer 'Slightly Disagree'. To combat this issue, we added a followup question for each question that we thought would be difficult to analyse based off of a multiple choice answer, which asks for them to be specific on the reason why they felt that way. The issue with that solution was that the followup questions are not required, and the majority of participants did not fill in an answer.
+
+Overall, the questionnaire essentially filled in the areas where the previous observation technique lacked, allowing us to analyse as much data as possible so that we can improve the game as much as possible.
+
 The questionnaire can be found here:
 https://forms.gle/vT7nAQWQCxUX2znr5
-
-<b>Evaluation subjects</b>
-We performed Think Aloud observation method analysis on a total of 9 people, the demographic of these people are in the age range between 19-23, young adults, there were 8 male participants and 1 female participant.
-The participants were instructed to load up the game and play the entire game through clicking New Game, the participants were expected to finish every level in consecutive order. Rest breaks were allowed as we have implemented a pause menu and a "Continue" button in the main menu. The participants gameplay along with their voice and the evaluater's voice was recorded as a video using OBS and brought together to be analysed as a group. In addition, the evaluater utilised "paper and pencil" to note down any significant statements or remarks made by the participant as well as any bugs or issues and suggestions found and given by the participant. As the evaluater cannot capture all the information live, the recording proved fruitful in gathering useful information that was skipped over or not noted down.
 
 <b>Feedback</b>
 In general the game was well recieved. 33% found the game "Average", while 33% found the game "Fun" and 33% found the game "Very Fun", from this, we can infer that the game was at least somewhat enjoyable for the participants.
