@@ -16,12 +16,12 @@ If developer: go to "Assets\Scenes\MainMenu.unity" to find the initial scene to 
 * [Team Members](#team-members)
 * [Contributers](#contributers)
 * [Technologies](#technologies)
-* [Contributers](#contributers)
 * [Description](#description)
 * [Synopsis](#synopsis)
 * [Weapons](#weapons)
 * [Abilities](#abilities)
 * [Enemies](#enemies)
+* [User Interface](#user-interface)
 * [How to use the game](#how-to-use-the-game)
 * [Modelling objects and entities](#modelling-objects-and-entities)
 * [Camera motion](#camera-motion)
@@ -207,7 +207,7 @@ This is what the entire game leads up to, the final boss fight. Crimson is the t
 	</div>
 </div>
 
-## User Interface (UI)
+## User Interface
 ### Main Menu
 <i>If opened in the Unity Engine as a developer: go to "Assets\Scenes\MainMenu.unity" to find the initial scene to start the game.</i>
 
