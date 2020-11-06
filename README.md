@@ -494,15 +494,15 @@ As for the evaluation part of the game, we decided to utilize the <b>"Cooperativ
 
 During each session, the individual was told to screen share their application through Discord. Each session was recorded so that we could replay the footage to reproduce any bugs that they encounter, which makes the process of fixing them easier. 
 
-# Observation Technique
+### Observation Technique
 One of the advantages of this technique is that it is like an ongoing discussion between two people. It allows for both parties to ask questions, so that we can answer questions if they need assistance, and we can ask them questions so that we can understand their though process while playing. Some questions that were asked while they were playing were, "What part of the level are you struggling with the most?" and "Where do you think you need to go next?". These questions allow for us to identify particilar sections that may be too 'unbalanced' with the rest of the level, or sections where the player is confused on what to do. Another advantage that this method has is that the play tester is encouraged to criticise the game. This is because they can point out issues or opinions that they have about the game or a portion of the game at the time they notice it, rather than forgetting to mention it later on.
 
 Some of the disadvantages that this method had was that there was no baseline for consistency for each session. Each player played the game at their own pace, with the fastest participant completing the game in 15 minutes, and the slowest participant taking just over an hour. With out a doubt, the faster player had less difficulty picking up the controls and mastering the game mechanics than the slower player, and thus provided different pieces of data. The faster player's results would suggest that the game was too easy, whilst the slower player's results would suggest that portions of the game was too difficult. To try to account for this problem, we attempted to get as many participants as possible (9) to generate a middle ground to find areas of the game that were too difficult, as well as write down any common complaints or suggestions that were mentioned. Another problem with this method is that it takes a long time for each session. Each session lasted in the range between 45-60 minutes, so if we wanted to increase the number of participants, we would have to allocate a lot more time.
 
 One of the main observations that was noticed was that players were struggling to get past the middle and end of some of the levels due to them being nervous about not having enough health towards the later stages of the level, especially on the longer levels. So to solve this issue, we implemented health packs in various locations in the levels which offer a small boost to their health bar so that they felt more confident in comepleting the level, thus decreasing the future particpant's completion times. More changes that were made will be discussed later on.
 
-# Surveying Technique
-After each evaluation session with the participants, each one was given a questionnaire which asked several questions related to their experience and opinion of the game.  
+### Surveying Technique
+After each evaluation session with the participants, each one was given a <b>questionnaire</b> which asked several questions related to their experience and opinion of the game.  
 questionnaire was given to the participants for the querying section of the evaluation. It most noticeably gauges the player's ability to understand the information displayed on the UI, and opinion on the current state of the game, as well as any suggestions they might have. One of the advantages of using a questionnaire was that we were able to have a consistent set of questions that was asked, so that we can use their answers and compare them against other participants so that we can find areas where there are lots of similarities, and areas with lots of disparities. Additionally, these questionnaires did not take much time for each participant to complete, averaging around 10 minutes for each person, so it was much quicker in comparison to the observation technique used.
 
 However, the disadvantage of using a questionnaire is that sometimes it can be difficult to compare people's interpretation of a question. For example, the section where it asks the user "I found the game interface/UI friendly and easy to understand", it can be difficult to compare answers as one person's perception of a friendly and easy UI can be drastrically different to another person's. We even see this issue occur in the results, as the average answer was 'Agree', while we still had one particpant answer 'Slightly Disagree'. To combat this issue, we added a followup question for each question that we thought would be difficult to analyse based off of a multiple choice answer, which asks for them to be specific on the reason why they felt that way. The issue with that solution was that the followup questions are not required, and the majority of participants did not fill in an answer.
@@ -512,23 +512,27 @@ Overall, the questionnaire essentially filled in the areas where the previous ob
 The questionnaire can be found here:
 https://forms.gle/vT7nAQWQCxUX2znr5
 
-<b>Feedback</b>
-In general the game was well recieved. 33% found the game "Average", while 33% found the game "Fun" and 33% found the game "Very Fun", from this, we can infer that the game was at least somewhat enjoyable for the participants.
+### Questionnaire and Observation Feedback + Improvements
 <img src="Images/fun.PNG">
+In general, the game was well recieved. There was a 3 way split between "Average", "Fun" and "Very Fun" when asked "How fun did you find the game?". This is good indication that the game has great potential, however there is always more room for improvement.
 
-At first, the user interface of the game as well as the heads-up display proved to be somewhat poorly designed; evaluation 1, 2 and 3 all suggested that the in game HUD needs to be more indicative of what ability is off cooldown and what gun their using. According to this information, we improved the user interface (which will be explained in the next section) and this is backed up by all of the participants who were evaluated later voting for "Slightly Agree" and "Agree" to the statement: <i>"I found the game interface/UI friendly and easy to understand. (Eg. Icons are very clear in what they do)</i>
+It was discovered that the UI for the game could be improved upon, as there appeared to be a large variety of answers for the question related to it. Some answered in the followup quesiton that the UI was not visible in light backgrounds, and that some of the icons were obscured.
 
-<img src="Images/gameinterface.PNG">
+We attempted to improve the UI by adding black borders around the text to stand out from the background, and to change the colour of the selected weapon to yellow, so that the user can more easily see which weapon they are using in their peripherals.
 
-Note that the first 3 participants who were exposed to the early user interface voted only for "Not agree nor disgree" and "Disagree".
+It was found that players did not know which direction to go in specific areas, so we added arrows in locations where players commonly got lost.
 
-The game instructions were clear and the query results prove this:
+It was indicated that the weapons the player was given were very unbalanced, with almost every participant suggesting that we 'buff' the shotgun, while leaving the rest of the weapons as they were due to the low amount of responses.
 
-<img src="Images/objective.PNG">
+Every participant did not have any framerate issues, therefore no optimisation was found to be needed.
 
-One issue we had was the balacing of the elements of the game, according to the participants' suggestions and comments during Think Aloud evaluation as well as the questionnaire. Level 4 (Second last level) proved to be a great challenge to beat in comparison to the other levels (this issue was addressed and fixed, next section for more information). Another unbalanced element are the weapons the player unlocks. In the Think Aloud observation, the shotgun was only used once every time (that is when it was first picked up) and never used again after. While, the SMG was often the most used weapon in the game. The questionnaire results back this claim up:
+The majority of participants found that the game's difficulty fell between "Just Right" and "Hard", however, we felt that the participants died too often on the harder levels, so we decided to decrease the difficulty. This was done by adding health packs to the level.
 
-<img src="Images/shotgunbuff.PNG">
+Most players found that the difficulty increase between level 3 and 4 was too big. So we decided to make a new level that was in between the difficulty of level 3 and 4 to have a much more smoother difficulty increase
 
-<img src="Images/smgnerf.PNG">
+Some players felt that sliding and wall jumping felt a bit strange, so we decided to improve this by adding the ability to slide while facing the other direction, and to slowly slide down the wall when holding against it.
+
+Many bugs were discovered throughout the process, since we recorded each session, we were able to fix all of the bugs discovered.
+
+
 
