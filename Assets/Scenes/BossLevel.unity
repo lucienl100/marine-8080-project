@@ -29467,7 +29467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1882275803}
   speed: 3
-  camDepth: -17.5
+  camDepth: -20
 --- !u!81 &1109784192
 AudioListener:
   m_ObjectHideFlags: 0

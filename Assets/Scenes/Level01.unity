@@ -92279,7 +92279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1473541740}
   speed: 3
-  camDepth: -17.5
+  camDepth: -20
 --- !u!114 &2143542808
 MonoBehaviour:
   m_ObjectHideFlags: 0
