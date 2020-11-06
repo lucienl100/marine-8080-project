@@ -31,7 +31,6 @@ public class AbilityManager : MonoBehaviour
         //If level was progressed from previous, enable unlocked abilities last level
         if (PlayerPrefs.GetInt("ability0") == 1)
         {
-            Debug.Log("shield");
             EnableShield();
         }
         if (PlayerPrefs.GetInt("ability1") == 1)

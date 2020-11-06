@@ -31,6 +31,7 @@ public class SaveManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("guns" + i.ToString(), 0);
         }
+        PlayerPrefs.DeleteAll();
         Debug.Log("Reseted all data");
     }
 }
