@@ -40,7 +40,7 @@ public class WallJump : MonoBehaviour
 					movementScript.Jump();
 					movementScript.maxRestrictSpeedScale = 0.4f;
 					movementScript.recoverDuration = 3f;
-					movementScript.AddVelocity(new Vector3(1, 0, 0) * pushStrength * (isRight ? -1 : 1));
+					movementScript.AddVelocity(new Vector3(0.7f, 0, 0) * pushStrength * (isRight ? -1 : 1));
 				}
 				
 			}

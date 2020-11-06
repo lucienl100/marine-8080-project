@@ -28,7 +28,6 @@ public class HitFlash : MonoBehaviour
     }
     public void FlashImage()
     {
-        Debug.Log("FLASH");
         flash = true;
     }
 }

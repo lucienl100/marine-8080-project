@@ -169,7 +169,6 @@ public class LookAtPlayer : MonoBehaviour
     }
     void Patrol()
     {
-        Debug.Log("patrol");
         //Code for going back and forth around the enemies location
         if (timer <= 0f && !CheckGround())
         {

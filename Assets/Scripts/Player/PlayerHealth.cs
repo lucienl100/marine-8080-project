@@ -39,7 +39,6 @@ public class PlayerHealth : MonoBehaviour
     public void Damage(float damage)
     {
         //Method for taking damage
-        Debug.Log("got hit");
         health -= damage * difficulty;
         hitsound.Play();
         hf.FlashImage();

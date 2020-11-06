@@ -163,7 +163,7 @@ public class Movement : MonoBehaviour
     public void RegainControl()
     {
         //Method to regain lost horizontal control
-        speedScale = speedScale*1.1f;
+        speedScale += speedScale* 5f * Time.deltaTime;
         if (speedScale > maxRestrictSpeedScale)
         {
             speedScale = maxRestrictSpeedScale;
