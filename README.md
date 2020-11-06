@@ -668,7 +668,9 @@ In general, the game was well recieved. There was a 3 way split between "Average
 <img src="Images/fun.PNG">
 
 It was discovered that the UI for the game could be improved upon, as there appeared to be a large variety of answers for the question related to it. Some answered in the followup quesiton that the UI was not visible in light backgrounds, and that some of the icons were obscured. We attempted to improve the UI by adding black borders around the text to stand out from the background, and to change the colour of the selected weapon to yellow, so that the user can more easily see which weapon they are using in their peripherals.
-
+<p align="center">
+  <img src="Images/gameinterface.PNG">
+</p>
 <b>Before</b>
 <p align="center">
   <img src="Images/chrome_2020-11-06_15-04-00.png">
