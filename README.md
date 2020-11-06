@@ -318,7 +318,139 @@ else if (t.eulerAngles.y > 90 - 10f && t.eulerAngles.y < 90 + 10f && facingRight
     t.eulerAngles = new Vector3(0f, 90f, 0f);
 }
 ```
+As for how the objects and entities (player and enemies and turrets) interact with each other. The player is able to fire bullets at the enemies through Unity’s Physics.Raycast and Physics.RaycastAll for penetration. The player casts off a ray in the direction the cursor is facing fixed on the z axis (the depth). If the ray hits an enemy, the script uses GetComponent on the collider to grab the health script for the enemy and call the public Damage() method which causes it to take damage.
+```c#
+        mouseWorld = lm.mouseWorld;
+        Vector3 adjustedBarrelEnd = new Vector3(barrelEnd.position.x, barrelEnd.position.y, -2.5f);
+        Quaternion targetRot = chest.rotation;
+        targetRot = Quaternion.Euler(new Vector3(targetRot.eulerAngles.x, lm.playerIsRight ? 270f : 90f, 0f));
+        float hitDistance = rifleDist;
+        Vector3 targetDir = (targetRot * Vector3.forward).normalized;
+        Vector3 target = shootingOrigin.position + targetDir * rifleDist;
+        GameObject tracer = Instantiate(tracerRenderer, shootingOrigin.position, Quaternion.identity);
+        LineRenderer lr = tracer.GetComponent<LineRenderer>();
 
+        RaycastHit hit;
+        if (Physics.Raycast(shootingOrigin.position, targetDir, out hit, rifleDist, layerMask))
+        {
+            if (hit.transform.tag == "Enemy")
+            {
+                hit.transform.gameObject.GetComponent<HealthSystem>().Damage(10f / difficulty);
+            }
+            else if (hit.transform.tag == "Boss")
+            {
+                hit.transform.gameObject.GetComponent<HealthSystemBoss>().Damage(10f / difficulty);
+            }
+            hitDistance = hit.distance;
+            target = hit.point;
+        }
+```
+
+This is of course not one sided, the enemy can shoot back at the player. However, to make it more friendly and playable, instead of raycasting, which is instant, the enemies fire a slow moving projectile which on collision with the player,  uses GetComponent to grab the health script for the player and damage him/her. However, for the enemies to be able to shoot at the player, they must be able to see the player and face him/her. Thus, raycasting is used to check if the line of sight between the enemy and the player is obstructed as well as if the player is in range of the enemy, if both these conditions are met, the enemy will attempt to shoot at the player.
+```c#
+        if ((player.position - t.position).magnitude < 1.5f)
+        {
+            anim.SetBool("playerInRange", true);
+            inRange = true;
+            CheckRotation();
+        }
+        //Cast two rays, one for player sliding and one for player standing
+        else if (!playerslide.isSliding && (Physics.Raycast(t.position, dirToLook, out hit, Mathf.Infinity, layerMask)) || (playerslide.isSliding && Physics.Raycast(t.position, slideDirToLook, out hit, Mathf.Infinity, layerMask)))
+        {
+            //If player is in range and the raycast hits the player, meaning the player is in view, follow the player
+            if ((player.position - t.position).magnitude < spotRange && hit.transform.tag == "Player")
+            {
+                anim.SetBool("playerInRange", true);
+                inRange = true;
+                CheckRotation();
+                if (turningTimer <= 0)
+                {
+                    FollowPlayer();
+                }
+                else
+                {
+                    turningTimer -= Time.deltaTime;
+                }
+                timer = -1f;
+            }
+            else
+            {
+                inRange = false;
+                Patrol();
+                anim.SetBool("Stop", false);
+                anim.SetBool("playerInRange", false);
+            }
+        }
+```
+As for turrets, the interaction is one sided, the player cannot do anything to the turret, eg. harm or destroy the turrets. However, the turrets can fire at the player at will, using both raycasts (Railgun) and projectiles like the damageable enemies’ projectiles to harm the player. Like the damageable enemies detection of the player, turrets are given a range in which the player must be within for the turret to detect, the turrets’ player detection also have a minimum/maximum height as the barrel cannot rotate too low/high. Finally a raycast is used to check if the line of sight between the player and the turret is not obstructed. If all these conditions are met, the turret will attempt to shoot at the player. 
+
+<b>Extracted from R2Turret script:</b>
+```c#
+    public bool SearchPlayer()
+    {
+        Vector3 turretToPlayer;
+
+        //Account for sliding hitbox depending on if the player is sliding or not
+        dirToLook = player.position - t.position;
+        slideDirToLook = new Vector3(player.position.x, player.position.y - 1f, player.position.z) - t.position;
+        if (!playerslide.isSliding)
+        {
+            turretToPlayer = dirToLook;
+        }
+        else
+        {
+            turretToPlayer = slideDirToLook;
+        }
+        RaycastHit hit;
+        //Try to detect player through raycast
+        if (CheckHeight() && turretToPlayer.magnitude <= range && Physics.Raycast(t.position, turretToPlayer, out hit, Mathf.Infinity, playerLayer))
+        {
+            if (hit.collider.tag == "Player")
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+```
+The boss (Crimson) is a special case of an enemy, utilising 4 different moves, 2 which uses projectile firing which checks collision with the player to harm him/her. Another 2 moves uses locally static objects as hitbox checkers to identify if the player is in the specified dimensions on the intended moment of harming the player to damage him/her. The laser uses special raycasting, due to the visual effect of the laser being quick big (wide), the perpendicular vector to the original center raycast of the laser is obtained to cast 2 more parallel rays to the original ray offset by the perpendicular vector. Using all three rays, the laser attempts to detect the player in any of these rays and if at least one detects the player, the laser damages the player.
+
+<b>Use of perpendicular vectors to get parallel:</b>
+```c#
+        //Since the laser is wide, use 2 parallel raycasts through the perpendicular ray vector
+        Vector3 perp = Vector3.Cross(lookDir, Vector3.up).normalized;
+        perp = new Vector3(perp.z, perp.y, perp.x);
+        RaycastHit hit;
+        //Check three parallel raycasts for player
+        if (Physics.Raycast(laserOrigin, lookDir, out hit, Mathf.Infinity, groundPlayer))
+        {
+            Debug.Log(hit.collider.tag);
+            if (hit.collider.tag == "Player")
+            {
+                playerhit = true;
+            }
+        }
+        if (Physics.Raycast(laserOrigin + 0.75f * perp, lookDir, out hit, Mathf.Infinity, groundPlayer))
+        {
+            Debug.Log(hit.collider.tag);
+            if (hit.collider.tag == "Player")
+            {
+                playerhit = true;
+            }
+        }
+        if (Physics.Raycast(laserOrigin - 0.75f * perp, lookDir, out hit, Mathf.Infinity, groundPlayer))
+        {
+            Debug.Log(hit.collider.tag);
+            if (hit.collider.tag == "Player")
+            {
+                playerhit = true;
+            }
+        }
+        if (playerhit)
+        {
+            pH.Damage(laserDamage);
+        }
+```
 ## Camera motion 
 As for the camera motion, a simple fixed z coordinate (z dimension is the depth for this game) camera is implemented which essentially chases the player and attempts to focus the player in the center of the camera. To make the game feel more smooth, instead of snapping straight to the player, Spherical interpolation is used to give the camera a “falling behind” feeling while keeping up with the player.
 
@@ -447,6 +579,24 @@ V = normalize(_WorldSpaceCameraPos - v.worldVertex.xyz);
 H = normalize(V + L);
 ```
 
+The pulse, or forcefield (takes in a texture intended to be a grey scale hexagon texture), which takes in the vertices in object space and transforms it into clip space position to be passed into the fragment shader. Then the fragment shader calculates the distance of each pixel’s x coordinate from the center and uses a absolute sin function to create a pulsing effect. The texture is a greyscale texture therefore, a single color component, in this case red can be used to calculate the greyness of the hexagon and adjust each pixel’s noise.
+
+```c#
+    fixed4 frag (vertexOut i) : COLOR
+    {
+	float horizontalDist = abs(i.objPosition.x);
+	fixed4 hexagons = tex2D(_HexagonTex, i.uv);
+	//Calculate the noise
+	float noise = abs(sin(_Time.y*_PulseSpeed - horizontalDist.x*_PulseObjScale + hexagons.r));
+	//Calculate pulse color
+	fixed4 hexagonPulse = hexagons * _PulseIntensity * noise;
+	fixed4 color;
+	color.rgb = _Color.rgb + hexagonPulse.rgb*noise;
+	color.a = _Color.a;
+
+	return color;
+    }
+```
 As for the scripts to pass light information onto the shader, 3 types of similar scripts, "Light to shader static", "Light to shader skin", "Light to shader non-skin" are used.
 
 "Light to shader static" only checks the light information once at void Start() since the object is assumed to be static.
