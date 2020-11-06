@@ -12,7 +12,7 @@ public class Shooting : MonoBehaviour
     public GameObject explosion;
     public Transform shootingOrigin;
     public float distance = 50f;
-    private float shotgunDist = 20f;
+    private float shotgunDist = 28f;
     private float smgDist = 28f;
     private float rifleDist = 32f;
     private float railDist = 32f;
